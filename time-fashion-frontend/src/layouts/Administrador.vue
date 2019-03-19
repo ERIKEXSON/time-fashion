@@ -1,23 +1,76 @@
-
 <template>
-  <v-card
-    color="grey lighten-4"
-    flat
-    height="200px"
-    tile
-  >
-    <v-toolbar prominent extended>
-      <v-toolbar-side-icon></v-toolbar-side-icon>
+    <v-navigation-drawer
+        stateless
+        value="true"
+    >
+        <v-list>
+        <v-list-tile>
+            <v-list-tile-action>
+            <v-icon>home</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-title>TimeFashion</v-list-tile-title>
+        </v-list-tile>
 
-      <v-toolbar-title style="font-family: 'Sniglet', cursive">Time Fashion</v-toolbar-title>
+            <v-list-group
+            no-action
+            sub-group
+            value="true"
+            >
+            <template v-slot:activator>
+                <v-list-tile>
+                <v-list-tile-title>Admin</v-list-tile-title>
+                </v-list-tile>
+            </template>
 
-      <v-spacer></v-spacer>
+            <v-list-tile
+                v-for="(admin, i) in admins"
+                :key="i"
+                @click=""
+            >
+                <v-list-tile-title v-text="admin[0]"></v-list-tile-title>
+                <v-list-tile-action>
+                <v-icon v-text="admin[1]"></v-icon>
+                </v-list-tile-action>
+            </v-list-tile>
+            </v-list-group>
 
-      <v-btn style="font-family: 'Sniglet', cursive">search</v-btn>
-
-      <v-btn style="font-family: 'Sniglet', cursive">favorite</v-btn>
-
-      <v-btn style="font-family: 'Sniglet', cursive">more_vert</v-btn>
-    </v-toolbar>
-  </v-card>
+            <v-list-group
+                sub-group
+                no-action
+            >
+                <template v-slot:activator>
+                    <v-list-tile>
+                    <v-list-tile-title>Actions</v-list-tile-title>
+                    </v-list-tile>
+                </template>
+                <v-list-tile
+                    v-for="(crud, i) in cruds"
+                    :key="i"
+                    @click=""
+                >
+                    <v-list-tile-title v-text="crud[0]"></v-list-tile-title>
+                    <v-list-tile-action>
+                    <v-icon v-text="crud[1]"></v-icon>
+                    </v-list-tile-action>
+                    
+                </v-list-tile>
+            </v-list-group>
+        </v-list>
+    </v-navigation-drawer>
 </template>
+<script>
+export default {
+  data: () => ({
+    admins: [
+      ['Management', 'people_outline'],
+      ['Settings', 'settings']
+    ],
+    cruds: [
+      ['Create', 'add'],
+      ['Read', 'insert_drive_file'],
+      ['Update', 'update'],
+      ['Delete', 'delete']
+    ]
+  })
+}
+</script>
