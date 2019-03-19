@@ -13,3 +13,13 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+Vue({
+  el: '#app',
+  data: () => ({
+    drawer: null
+  }),
+
+  props: {
+    source: String
+  }
+})
