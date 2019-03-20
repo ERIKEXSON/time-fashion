@@ -146,7 +146,7 @@
           <v-btn flat @click="dialog = false">Registrar</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>   
+    </v-dialog>
       </v-btn>
       <v-btn icon>
         <v-icon>notifications</v-icon>

@@ -52,7 +52,7 @@
                     <v-list-tile-action>
                     <v-icon v-text="crud[1]"></v-icon>
                     </v-list-tile-action>
-                    
+
                 </v-list-tile>
             </v-list-group>
         </v-list>
