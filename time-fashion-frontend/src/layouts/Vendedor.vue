@@ -9,7 +9,7 @@
             <v-list-tile-action>
             <v-icon style="color:white">home</v-icon>
             </v-list-tile-action>
-            <v-list-tile-title>Administrador</v-list-tile-title>
+            <v-list-tile-title>Vendedor</v-list-tile-title>
         </v-list-tile>
 
             <v-list-tile
@@ -29,9 +29,7 @@
 export default {
   data: () => ({
     admins: [
-      ['Datos de los usuarios', 'people_outline'],
       ['Datos de los productos', 'assignment'],
-      ['Datos de las empresas', 'domain'],
       ['Inventario', 'all_inbox']
     ]
   })

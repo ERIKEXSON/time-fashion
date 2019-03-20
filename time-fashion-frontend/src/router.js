@@ -4,7 +4,8 @@ import Router from 'vue-router'
 import Principal from '@/layouts/Principal.vue'
 import Administrador from '@/layouts/Administrador.vue'
 import Usuario from '@/layouts/Usuario.vue'
-import Login from '@/layouts/Login.vue'
+import Vendedor from '@/layouts/Vendedor.vue'
+import Admin_inventario from '@/views/Admin_inventario.vue'
 
 Vue.use(Router)
 
@@ -28,9 +29,14 @@ export default new Router({
       component: Usuario
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: '/vendedor',
+      name: 'vendedor',
+      component: Vendedor
+    },
+    {
+      path: '/inventario',
+      name: 'inventario',
+      component: Admin_inventario
     }
   ]
 })
