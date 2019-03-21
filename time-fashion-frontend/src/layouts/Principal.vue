@@ -5,6 +5,7 @@
       :clipped="$vuetify.breakpoint.lgAndUp"
       fixed
       app
+      style="height: 572px"
     >
       <v-list dense>
         <template v-for="item in items">
@@ -70,17 +71,17 @@
 
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      color="purple darken-3"
+      color="cyan lighten-1"
       dark
       app
       fixed
-      height="150"
+      height="100"
     >
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">Time The Fashion!</span>
+      <v-toolbar-title style="width: 300px" class="ml-0 pl-3 ">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" class=""></v-toolbar-side-icon>
+        <span class="hidden-sm-and-down">Time Fashion!</span>
       </v-toolbar-title>
-      <v-text-field class="barra"
+      <v-text-field
         flat
         solo-inverted
         hide-details
@@ -131,6 +132,36 @@
         </v-layout>
       </v-container>
     </v-content>
+    <v-footer
+    dark
+    height="auto"
+  >
+    <v-card
+      class="flex"
+      flat
+      tile
+    >
+      <v-card-title class="cyan lighten-1">
+        <strong class="subheading">Get connected with us on social networks!</strong>
+
+        <v-spacer></v-spacer>
+
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-3"
+          dark
+          icon
+        >
+          <v-icon size="24px">{{ icon }}</v-icon>
+        </v-btn>
+      </v-card-title>
+
+      <v-card-actions class="grey darken-3 justify-center">
+        &copy;2019 — <strong>Vuetify</strong>
+      </v-card-actions>
+    </v-card>
+  </v-footer>
   </v-app>
 </template>
 <script>
@@ -176,10 +207,17 @@ export default {
     items1: [
       { title: 'Iniciar sesión' },
       { title: 'Crear cuenta' }
+    ],
+    icons: [
+      'fab fa-facebook',
+      'fab fa-twitter',
+      'fab fa-google-plus',
+      'fab fa-linkedin',
+      'fab fa-instagram'
     ]
-  }),
-  props: {
-    source: String
-  }
+  })
+}
+props: {
+  source: String
 }
 </script>
