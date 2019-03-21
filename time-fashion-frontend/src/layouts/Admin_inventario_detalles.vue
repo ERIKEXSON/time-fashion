@@ -2,7 +2,7 @@
   <v-card
       style="width: fit-content; height:fit-content; position: relative; top:0; bottom:0; left:0; rigth:0; margin:auto; font-size:30px">
     <v-card-title>
-      INVENTARIO
+      DETALLES
       <v-spacer></v-spacer>
       <div >
         <v-text-field
@@ -21,15 +21,10 @@
       :search="search"
     >
       <template v-slot:items="props">
-        <td class="text-xs-left">{{ props.item.name }}</td>
+        <td class="text-xs-left">{{ props.item.color }}</td>
         <td class="text-xs-left">{{ props.item.codigo }}</td>
-        <td class="text-xs-left">{{ props.item.marca }}</td>
-        <td class="text-xs-left">{{ props.item.valor }}</td>
-        <button
-        style="background-color: RGB(105, 105, 105, 0.2); font-size:15px; position: relative; color:#6a1b9a; border: solid 2px #6a1b9a; bottom: 5px; right: 8px"
-        >
-        Detalles
-        </button>
+        <td class="text-xs-left">{{ props.item.tallas }}</td>
+        <td class="text-xs-left">{{ props.item.cantidad }}</td>
       </template>
     </v-data-table>
   </v-card>
@@ -40,18 +35,23 @@ export default {
     return {
       search: '',
       headers: [
-        { text: 'Nombre', value: 'name' },
+        { text: 'Color', value: 'color' },
         { text: 'Código', value: 'codigo' },
-        { text: 'Marca', value: 'marca' },
-        { text: 'Valor', value: 'valor' },
-        { text: '' }
+        { text: 'Tallas', value: 'tallas' },
+        { text: 'Cantidad', value: 'cantidad' }
       ],
       desserts: [
         {
-          name: 'camison',
-          codigo: '87364502-1',
-          marca: 'roballo',
-          valor: 78234
+          color: 'Verde',
+          codigo: 'AS981DA',
+          tallas: 'S, M, XL',
+          cantidad: 15
+        },
+        {
+          color: 'Rojo',
+          codigo: 'KOKD9I3J',
+          tallas: 'S, M',
+          cantidad: 10
         }
       ]
     }
