@@ -5,7 +5,6 @@
       :clipped="$vuetify.breakpoint.lgAndUp"
       fixed
       app
-      style="height: 572px"
     >
       <v-list dense>
         <template v-for="item in items">
@@ -97,6 +96,7 @@
                 icon="true"
                 color="transparent"
                 v-on="on"
+                class="hidden-sm-and-down"
                 ><v-icon>perm_identity</v-icon>
                 </v-btn>
             </template>
@@ -104,24 +104,61 @@
                 <v-list-tile
                 v-for="(item, index) in items1"
                 :key="index"
-                @click=""
                 >
                 <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                 </v-list-tile>
             </v-list>
             </v-menu>
         </div>
-      <v-btn icon>
+      <v-btn icon class="hidden-sm-and-down">
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
-      <v-btn icon large>
+            <v-btn icon large class="hidden-sm-and-down">
         <v-avatar size="32px" tile>
-          <img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-          >
+          <img src="/assets/TimeFashion.png">
         </v-avatar>
       </v-btn>
+      <v-speed-dial
+        v-model="fab"
+        :direction="direction"
+        :transition="transition"
+        class="hidden-md-and-up"
+      >
+        <template v-slot:activator>
+          <v-btn
+            v-model="fab"
+            fab
+            icon="true"
+          >
+            <v-icon>more_vert</v-icon>
+            <v-icon>close</v-icon>
+          </v-btn>
+        </template>
+        <v-btn
+          fab
+          dark
+          small
+          color="green"
+        >
+          <v-icon>perm_identity</v-icon>
+        </v-btn>
+        <v-btn
+          fab
+          dark
+          small
+          color="indigo"
+        >
+          <v-icon>add_shopping_cart</v-icon>
+        </v-btn>
+        <v-btn
+          fab
+          dark
+          small
+          color="red"
+        >
+          <v-icon>notifications</v-icon>
+        </v-btn>
+      </v-speed-dial>
     </v-toolbar>
     <v-content>
       <v-container fill-height>
@@ -135,6 +172,7 @@
     <v-footer
     dark
     height="auto"
+    app
   >
     <v-card
       class="flex"
@@ -157,9 +195,6 @@
         </v-btn>
       </v-card-title>
 
-      <v-card-actions class="grey darken-3 justify-center">
-        &copy;2019 — <strong>Vuetify</strong>
-      </v-card-actions>
     </v-card>
   </v-footer>
   </v-app>
@@ -169,6 +204,11 @@ export default {
   data: () => ({
     dialog: false,
     drawer: false,
+    direction: 'bottom',
+    fab: false,
+    fling: false,
+    tabs: null,
+    transition: 'slide-y-reverse-transition',
     items: [
       {
         icon: 'keyboard_arrow_up',
@@ -211,8 +251,6 @@ export default {
     icons: [
       'fab fa-facebook',
       'fab fa-twitter',
-      'fab fa-google-plus',
-      'fab fa-linkedin',
       'fab fa-instagram'
     ]
   })
