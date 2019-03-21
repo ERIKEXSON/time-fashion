@@ -19,7 +19,6 @@
             <v-list-tile
                 v-for="(admin, i) in admins"
                 :key="i"
-                @click=""
             >
                 <v-list-tile-title v-text="admin[0]"></v-list-tile-title>
                 <v-list-tile-action>
@@ -55,7 +54,7 @@
       </v-data-table>
     </v-card>
   </v-app>
-  
+
 </template>
 <script>
 export default {

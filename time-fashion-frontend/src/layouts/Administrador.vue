@@ -39,18 +39,10 @@
       fixed
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <span class="hidden-sm-and-down">Time Fashion</span>
       </v-toolbar-title>
-      <v-text-field class="barra"
-        flat
-        solo-inverted
-        hide-details
-        prepend-inner-icon="search"
-        label="Buscar"
-      ></v-text-field>
       <v-btn icon>
-        <v-icon>add_shopping_cart</v-icon>
+        <v-icon >add_shopping_cart</v-icon>
       </v-btn>
       <v-btn icon large>
         <v-avatar size="32px" tile>
@@ -79,34 +71,34 @@ export default {
     drawer: true,
     admins: [
       {
-        text: 'Usuarios', 
+        text: 'Usuarios',
         icon: 'people_outline',
         to: '/admin/usuarios'
       },
       {
-        text: 'Productos', 
+        text: 'Productos',
         icon: 'assignment',
         to: '/admin/productos'
       },
       {
-        text: 'Empresas', 
+        text: 'Empresas',
         icon: 'domain',
         to: '/admin/empresas'
       },
       {
-        text: 'Inventario', 
+        text: 'Inventario',
         icon: 'all_inbox',
         to: '/admin/inventario'
       }
     ]
-    }
-    ),
-    created () {
-      this.$store.commit('SET_LAYOUT', 'administrador-layout')
-    },
-    props: {
-      source: String
-    }
+  }
+  ),
+  created () {
+    this.$store.commit('SET_LAYOUT', 'administrador-layout')
+  },
+  props: {
+    source: String
+  }
 }
 </script>
 <style lang="stylus">

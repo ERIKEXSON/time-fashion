@@ -47,7 +47,7 @@ export default new Router({
       component: AdminUsuarios
     },
     {
-      path:'/admin/inventario',
+      path: '/admin/inventario',
       name: 'inventario-admin',
       component: AdminInventario
     },
