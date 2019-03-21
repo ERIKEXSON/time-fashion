@@ -73,84 +73,42 @@
       dark
       app
       fixed
+      height="150"
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <span class="hidden-sm-and-down">Time The Fashion!</span>
       </v-toolbar-title>
-      <v-text-field
+      <v-text-field class="barra"
         flat
         solo-inverted
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
-        class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <v-btn icon @click.stop="dialog = !dialog">
-        <v-icon>perm_identity</v-icon>
-        <v-dialog v-model="dialog" width="400px">
-      <v-card>
-        <v-card-title
-          class="grey lighten-4 py-4 title"
-        >
-          Ingresar
-        </v-card-title>
-        <v-container grid-list-sm class="pa-4">
-          <v-layout row wrap>
-            <v-flex xs12 align-center justify-space-between>
-              <v-layout align-center>
-                <v-avatar size="40px" class="mr-3">
-                  <img
-                    src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png"
-                    alt=""
-                  >
-                </v-avatar>
-                <v-text-field
-                  placeholder="Nombre"
-                ></v-text-field>
-              </v-layout>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                prepend-icon="business"
-                placeholder="Apellidos"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                prepend-icon="mail"
-                placeholder="Email"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                type="tel"
-                prepend-icon="phone"
-                placeholder="(000) 000 - 0000"
-                mask="phone"
-              ></v-text-field>
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                prepend-icon="notes"
-                placeholder="Notes"
-              ></v-text-field>
-            </v-flex>
-          </v-layout>
-        </v-container>
-        <v-card-actions>
-          <v-btn flat color="primary">Iniciar Sesión</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn flat color="primary" @click="dialog = false">Cancelar</v-btn>
-          <v-btn flat @click="dialog = false">Registrar</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>notifications</v-icon>
-      </v-btn>
+
+         <div class="text-xs-center">
+            <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+                <v-btn
+                icon="true"
+                color="transparent"
+                v-on="on"
+                ><v-icon>perm_identity</v-icon>
+                </v-btn>
+            </template>
+            <v-list>
+                <v-list-tile
+                v-for="(item, index) in items1"
+                :key="index"
+                @click=""
+                >
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                </v-list-tile>
+            </v-list>
+            </v-menu>
+        </div>
       <v-btn icon>
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
@@ -165,30 +123,49 @@
     </v-toolbar>
   </v-app>
 </template>
-
 <script>
 export default {
   data: () => ({
     dialog: false,
     drawer: false,
     items: [
-      { icon: 'contacts', text: 'Contacts' },
-      { icon: 'history', text: 'Frequently contacted' },
-      { icon: 'content_copy', text: 'Duplicates' },
       {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
         text: 'Hombres',
         model: false,
         children: [
-          { icon: 'add', text: 'Create label' }
+          { icon: 'add', text: 'Ropa' },
+          { icon: 'add', text: 'Zapatos' },
+          { icon: 'add', text: 'Accesorios' }
         ]
       },
-      { icon: 'settings', text: 'Settings' },
-      { icon: 'chat_bubble', text: 'Send feedback' },
-      { icon: 'help', text: 'Help' },
-      { icon: 'phonelink', text: 'App downloads' },
-      { icon: 'keyboard', text: 'Go to the old version' }
+      {
+        icon: 'keyboard_arrow_up',
+        'icon-alt': 'keyboard_arrow_down',
+        text: 'Mujeres',
+        model: false,
+        children: [
+          { icon: 'add', text: 'Ropa' },
+          { icon: 'add', text: 'Zapatos' },
+          { icon: 'add', text: 'Accesorios' }
+        ]
+      },
+      {
+        icon: 'keyboard_arrow_up',
+        'icon-alt': 'keyboard_arrow_down',
+        text: 'Niños',
+        model: false,
+        children: [
+          { icon: 'add', text: 'Ropa' },
+          { icon: 'add', text: 'Zapatos' },
+          { icon: 'add', text: 'Accesorios' }
+        ]
+      }
+    ],
+    items1: [
+      { title: 'Iniciar sesión' },
+      { title: 'Crear cuenta' }
     ]
   }),
   props: {
