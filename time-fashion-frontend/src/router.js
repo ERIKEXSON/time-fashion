@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // vistas
-import Principal from '@/layouts/Principal.vue'
-import Administrador from '@/layouts/Administrador.vue'
-import Usuario from '@/layouts/Usuario.vue'
-import Vendedor from '@/layouts/Vendedor.vue'
+import Inicio from './views/Inicio.vue'
+import Productos from './views/admin/Productos.vue'
 
 Vue.use(Router)
 
@@ -13,24 +11,14 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/principal',
-      name: 'principal',
-      component: Principal
+      path: '/',
+      name: 'inicio',
+      component: Inicio
     },
     {
-      path: '/administrador',
-      name: 'administrador',
-      component: Administrador
-    },
-    {
-      path: '/usuario',
-      name: 'usuario',
-      component: Usuario
-    },
-    {
-      path: '/vendedor',
-      name: 'vendedor',
-      component: Vendedor
+      path: '/admin/productos',
+      name: 'productos-admin',
+      component: Productos
     }
   ]
 })

@@ -1,4 +1,5 @@
 <template>
+<v-app>
     <v-navigation-drawer
         stateless
         value="true"
@@ -24,6 +25,16 @@
             </v-list-tile>
         </v-list>
     </v-navigation-drawer>
+    <v-content>
+      <v-container fill-height>
+        <v-layout justify-center align-center>
+          <v-flex shrink>
+            <router-view></router-view>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+</v-app>
 </template>
 <script>
 export default {
