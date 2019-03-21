@@ -30,7 +30,8 @@ export default {
   data: () => ({
     admins: [
       ['Datos de los productos', 'assignment'],
-      ['Inventario', 'all_inbox']
+      ['Inventario', 'all_inbox'],
+      ['Empleados', 'assignment_ind']
     ]
   })
 }

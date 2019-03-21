@@ -23,7 +23,6 @@
         <td class="text-xs-left">{{ props.item.correo }}</td>
         <td class="text-xs-left">{{ props.item.direccion }}</td>
         <td class="text-xs-left">{{ props.item.telefono }}</td>
-        <td class="text-xs-left">{{ props.item.cargo }}</td>
       </template>
     </v-data-table>
   </v-card>
@@ -38,17 +37,15 @@ export default {
         { text: 'Apellido', value: 'apellido' },
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
-        { text: 'Teléfono', value: 'telefono' },
-        { text: 'Cargo', value: 'cargo' }
+        { text: 'Teléfono', value: 'telefono' }
       ],
       desserts: [
         {
           name: 'Errik',
-          apellido: 'Mamerto',
+          apellido: 'Marto',
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
-          telefono: '123123123',
-          cargo: 'Cajero'
+          telefono: '123123123'
         }
       ]
     }
