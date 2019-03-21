@@ -1,11 +1,15 @@
 <template>
 <v-app>
     <v-navigation-drawer
-        stateless
-        value="true"
-        style="background-color: RGB(105, 105, 105)"
+      v-model="drawer"
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      fixed
+      app
+      stateless
+      width="250"
+      class="grey darken-1"
     >
-        <v-list style="color: white">
+      <v-list style="color: white">
         <v-list-tile>
             <v-list-tile-action>
             <v-icon style="color:white">home</v-icon>
@@ -16,15 +20,47 @@
             <v-list-tile
                 v-for="(admin, i) in admins"
                 :key="i"
-                @click=""
+                :to="admin.to"
+                active-class="accent--text"
             >
-                <v-list-tile-title v-text="admin[0]"></v-list-tile-title>
+                <v-list-tile-title v-text="admin.text"></v-list-tile-title>
                 <v-list-tile-action>
-                <v-icon v-text="admin[1]" style="color:white"></v-icon>
+                <v-icon v-text="admin.icon" color="white" active-class="accent--text"></v-icon>
                 </v-list-tile-action>
             </v-list-tile>
         </v-list>
     </v-navigation-drawer>
+
+    <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="purple darken-3"
+      dark
+      app
+      fixed
+    >
+      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <span class="hidden-sm-and-down">Time Fashion</span>
+      </v-toolbar-title>
+      <v-text-field class="barra"
+        flat
+        solo-inverted
+        hide-details
+        prepend-inner-icon="search"
+        label="Buscar"
+      ></v-text-field>
+      <v-btn icon>
+        <v-icon>add_shopping_cart</v-icon>
+      </v-btn>
+      <v-btn icon large>
+        <v-avatar size="32px" tile>
+          <img
+            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+            alt="Vuetify"
+          >
+        </v-avatar>
+      </v-btn>
+    </v-toolbar>
     <v-content>
       <v-container fill-height>
         <v-layout justify-center align-center>
@@ -39,12 +75,42 @@
 <script>
 export default {
   data: () => ({
+    dialog: false,
+    drawer: true,
     admins: [
-      ['Datos de los usuarios', 'people_outline'],
-      ['Datos de los productos', 'assignment'],
-      ['Datos de las empresas', 'domain'],
-      ['Inventario', 'all_inbox']
+      {
+        text: 'Usuarios', 
+        icon: 'people_outline',
+        to: '/admin/usuarios'
+      },
+      {
+        text: 'Productos', 
+        icon: 'assignment',
+        to: '/admin/productos'
+      },
+      {
+        text: 'Empresas', 
+        icon: 'domain',
+        to: '/admin/empresas'
+      },
+      {
+        text: 'Inventario', 
+        icon: 'all_inbox',
+        to: '/admin/inventario'
+      }
     ]
-  })
+    }
+    ),
+    created () {
+      this.$store.commit('SET_LAYOUT', 'administrador-layout')
+    },
+    props: {
+      source: String
+    }
 }
 </script>
+<style lang="stylus">
+  .accent--text i{
+    color #82B1FF !important
+  }
+</style>
