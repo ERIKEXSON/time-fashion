@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <v-card
-        style="width: fit-content; height:fit-content; position: relative; top:0; bottom:0; left:0; rigth:0; margin:auto; font-size:30px">
+    <v-card width="1050">
       <v-card-title>
         DETALLES
         <v-spacer></v-spacer>

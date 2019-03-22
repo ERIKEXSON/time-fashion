@@ -1,9 +1,8 @@
 <template>
   <v-app>
-    <v-card
-      style="width: fit-content; height:fit-content; position: relative; top:0; bottom:0; left:0; rigth:0; margin:auto; font-size:30px">
-    <v-card-title>
-      INVENTARIO
+    <v-card width="1050">
+      <v-card-title>
+        INVENTARIO
       <v-spacer></v-spacer>
       <div >
         <v-text-field
@@ -26,11 +25,7 @@
         <td class="text-xs-left">{{ props.item.codigo }}</td>
         <td class="text-xs-left">{{ props.item.marca }}</td>
         <td class="text-xs-left">{{ props.item.valor }}</td>
-        <button
-        style="background-color: RGB(105, 105, 105, 0.2); font-size:15px; position: relative; color:#6a1b9a; border: solid 2px #6a1b9a; bottom: 5px; right: 8px"
-        >
-        Detalles
-        </button>
+        <v-btn to="/admin/inventario/detalles">Detalles</v-btn>
       </template>
       </v-data-table>
     </v-card>

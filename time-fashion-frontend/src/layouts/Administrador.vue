@@ -39,17 +39,6 @@
     <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
       <span class="hidden-sm-and-down">Time Fashion</span>
       </v-toolbar-title>
-      <v-btn icon>
-        <v-icon >add_shopping_cart</v-icon>
-      </v-btn>
-      <v-btn icon large>
-        <v-avatar size="32px" tile>
-          <img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-          >
-        </v-avatar>
-      </v-btn>
     </v-toolbar>
     <v-content>
       <v-container fill-height>
@@ -87,6 +76,10 @@ export default {
         text: 'Inventario',
         icon: 'all_inbox',
         to: '/admin/inventario'
+      },
+      {
+        text: 'Cerrar sesión',
+        to: '/'
       }
     ]
   }

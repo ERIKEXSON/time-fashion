@@ -1,32 +1,10 @@
 <template>
   <v-app>
     <v-card width="1050">
-      <v-card-title>
-        EMPRESAS
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-      </v-card-title>
-      <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :search="search"
-      >
-      <template v-slot:items="props">
-        <td class="text-xs-left">{{ props.item.name }}</td>
-        <td class="text-xs-left">{{ props.item.nit }}</td>
-        <td class="text-xs-left">{{ props.item.telefono }}</td>
-        <td class="text-xs-left">{{ props.item.correo }}</td>
-        <v-btn>Empleados</v-btn>
-      </template>
-      </v-data-table>
+      <v-card-title>NUEVA EMPRESA</v-card-title>
+      
     </v-card>
-
+    <v-spacer></v-spacer>
     <v-card width="1050">
       <v-card-title>
         EMPRESAS
@@ -49,7 +27,7 @@
         <td class="text-xs-left">{{ props.item.nit }}</td>
         <td class="text-xs-left">{{ props.item.telefono }}</td>
         <td class="text-xs-left">{{ props.item.correo }}</td>
-        <v-btn>Empleados</v-btn>
+        <v-btn to="/admin/empresas/empleados">Empleados</v-btn>
       </template>
       </v-data-table>
     </v-card>
