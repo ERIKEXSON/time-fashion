@@ -77,7 +77,7 @@
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3 ">
         <v-toolbar-side-icon @click.stop="drawer = !drawer" class=""></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">Time Fashion!</span>
+        <span class="hidden-sm-and-down">Time Fashion</span>
       </v-toolbar-title>
       <v-text-field
         flat
