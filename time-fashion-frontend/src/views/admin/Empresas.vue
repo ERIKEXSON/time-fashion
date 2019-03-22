@@ -1,9 +1,11 @@
 <template>
   <v-app>
+
     <v-card width="1050">
       <v-card-title>NUEVA EMPRESA</v-card-title>
-      
+      <v-btn>Agregar</v-btn>
     </v-card>
+
     <v-spacer></v-spacer>
     <v-card width="1050">
       <v-card-title>
