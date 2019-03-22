@@ -1,5 +1,5 @@
 <template>
-<v-app>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
@@ -9,28 +9,26 @@
       width="250"
       class="grey darken-1"
     >
-      <v-list style="color: white">
-        <v-list-tile>
-            <v-list-tile-action>
-            <v-icon style="color:white">home</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-title>Administrador</v-list-tile-title>
-        </v-list-tile>
-
-            <v-list-tile
-                v-for="(admin, i) in admins"
-                :key="i"
-                :to="admin.to"
-                active-class="accent--text"
-            >
-                <v-list-tile-title v-text="admin.text"></v-list-tile-title>
-                <v-list-tile-action>
-                <v-icon v-text="admin.icon" color="white" active-class="accent--text"></v-icon>
-                </v-list-tile-action>
-            </v-list-tile>
-        </v-list>
+    <v-list style="color: white">
+      <v-list-tile>
+          <v-list-tile-action>
+          <v-icon style="color:white">home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title>Administrador</v-list-tile-title>
+      </v-list-tile>
+      <v-list-tile
+          v-for="(admin, i) in admins"
+          :key="i"
+          :to="admin.to"
+          active-class="accent--text"
+      >
+          <v-list-tile-title v-text="admin.text"></v-list-tile-title>
+          <v-list-tile-action>
+          <v-icon v-text="admin.icon" color="white" active-class="accent--text"></v-icon>
+          </v-list-tile-action>
+      </v-list-tile>
+    </v-list>
     </v-navigation-drawer>
-
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="purple darken-3"
@@ -38,8 +36,8 @@
       app
       fixed
     >
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-        <span class="hidden-sm-and-down">Time Fashion</span>
+    <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+      <span class="hidden-sm-and-down">Time Fashion</span>
       </v-toolbar-title>
       <v-btn icon>
         <v-icon >add_shopping_cart</v-icon>
@@ -62,7 +60,7 @@
         </v-layout>
       </v-container>
     </v-content>
-</v-app>
+  </v-app>
 </template>
 <script>
 export default {
