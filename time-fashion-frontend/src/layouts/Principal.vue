@@ -6,6 +6,11 @@
       fixed
       app
     >
+    <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+        <v-layout pa-2 column fill-height class="lightbox white--text">
+          <v-spacer></v-spacer>
+        </v-layout>
+      </v-img>
       <v-list dense>
         <template v-for="item in items">
           <v-layout
@@ -77,7 +82,7 @@
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3 ">
         <v-toolbar-side-icon @click.stop="drawer = !drawer" class=""></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">Time Fashion</span>
+        <span class="hidden-sm-and-down">Time Fashion!</span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -113,8 +118,8 @@
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
             <v-btn icon large class="hidden-sm-and-down">
-        <v-avatar size="32px" tile>
-          <img src="/assets/TimeFashion.png">
+        <v-avatar size="40px" tile>
+          <img src="@/assets/logo.svg">
         </v-avatar>
       </v-btn>
       <v-speed-dial
@@ -159,7 +164,7 @@
         </v-btn>
       </v-speed-dial>
     </v-toolbar>
-    <v-content>
+    <v-content class="cyan lighten-5">
       <v-container fill-height>
         <v-layout justify-center align-center>
           <v-flex shrink>
