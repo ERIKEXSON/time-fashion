@@ -125,7 +125,8 @@
           label="Buscar"
           single-line
           hide-details
-        ></v-text-field>
+        >
+        </v-text-field>
         </v-card-title>
         <v-data-table
         :headers="headers"
@@ -212,7 +213,7 @@ export default {
   }
 }
 </script>
-<style>
+<!--<style>
   nav{
     border: #6a1b9a 3px solid;
     margin-bottom: 30px
@@ -222,4 +223,4 @@ export default {
     padding: 5px;
     color: white
   }
-</style>
+</style>-->

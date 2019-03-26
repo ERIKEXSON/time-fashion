@@ -1,10 +1,9 @@
 <template>
   <v-app>
-    <v-card width="1050">
-      <v-card-title>
-        DETALLES
-        <v-spacer></v-spacer>
-        <div >
+    <nav>
+      <div><h2>Detalles</h2></div>
+      <v-card width="1045">
+        <v-card-title>
           <v-text-field
           v-model="search"
           append-icon="search"
@@ -13,21 +12,21 @@
           hide-details
           >
           </v-text-field>
-        </div>
-      </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="desserts"
-        :search="search"
-      >
-        <template v-slot:items="props">
-          <td class="text-xs-left">{{ props.item.color }}</td>
-          <td class="text-xs-left">{{ props.item.codigo }}</td>
-          <td class="text-xs-left">{{ props.item.tallas }}</td>
-          <td class="text-xs-left">{{ props.item.cantidad }}</td>
-        </template>
-      </v-data-table>
-    </v-card>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="desserts"
+          :search="search"
+        >
+          <template v-slot:items="props">
+            <td class="text-xs-left">{{ props.item.color }}</td>
+            <td class="text-xs-left">{{ props.item.codigo }}</td>
+            <td class="text-xs-left">{{ props.item.tallas }}</td>
+            <td class="text-xs-left">{{ props.item.cantidad }}</td>
+          </template>
+        </v-data-table>
+      </v-card>
+    </nav>
   </v-app>
 </template>
 <script>

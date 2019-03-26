@@ -1,31 +1,32 @@
 <template>
   <v-app>
-    <v-card width="1050">
-      <v-card-title>
-        PRODUCTOS
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-      >
-      </v-text-field>
-      </v-card-title>
-      <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :search="search"
-      >
-        <template v-slot:items="props">
-          <td class="text-xs-left">{{ props.item.name }}</td>
-          <td class="text-xs-left">{{ props.item.codigo }}</td>
-          <td class="text-xs-left">{{ props.item.precio }}</td>
-          <td class="text-xs-left">{{ props.item.marca }}</td>
-        </template>
-      </v-data-table>
-    </v-card>
+    <nav>
+      <div><h2>Productos</h2></div>
+      <v-card width="1045">
+        <v-card-title>
+        <v-text-field
+          v-model="search"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
+        >
+        </v-text-field>
+        </v-card-title>
+        <v-data-table
+        :headers="headers"
+        :items="desserts"
+        :search="search"
+        >
+          <template v-slot:items="props">
+            <td class="text-xs-left">{{ props.item.name }}</td>
+            <td class="text-xs-left">{{ props.item.codigo }}</td>
+            <td class="text-xs-left">{{ props.item.precio }}</td>
+            <td class="text-xs-left">{{ props.item.marca }}</td>
+          </template>
+        </v-data-table>
+      </v-card>
+    </nav>
   </v-app>
 </template>
 <script>

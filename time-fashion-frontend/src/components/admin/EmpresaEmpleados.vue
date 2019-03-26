@@ -1,31 +1,32 @@
 <template>
   <v-app>
-    <v-card width="1050">
-      <v-card-title>
-        EMPLEADOS
-        <v-spacer></v-spacer>
-        <v-text-field
-          v-model="search"
-          append-icon="search"
-          label="Search"
-          single-line
-          hide-details
-        ></v-text-field>
-      </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="desserts"
-        :search="search"
-      >
-        <template v-slot:items="props">
-          <td class="text-xs-left">{{ props.item.name }}</td>
-          <td class="text-xs-left">{{ props.item.apellido }}</td>
-          <td class="text-xs-left">{{ props.item.correo }}</td>
-          <td class="text-xs-left">{{ props.item.direccion }}</td>
-          <td class="text-xs-left">{{ props.item.telefono }}</td>
-        </template>
-      </v-data-table>
-    </v-card>
+    <nav>
+      <div><h2>Empleados</h2></div>
+      <v-card width="1045">
+        <v-card-title>
+          <v-text-field
+            v-model="search"
+            append-icon="search"
+            label="Buscar"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="desserts"
+          :search="search"
+        >
+          <template v-slot:items="props">
+            <td class="text-xs-left">{{ props.item.name }}</td>
+            <td class="text-xs-left">{{ props.item.apellido }}</td>
+            <td class="text-xs-left">{{ props.item.correo }}</td>
+            <td class="text-xs-left">{{ props.item.direccion }}</td>
+            <td class="text-xs-left">{{ props.item.telefono }}</td>
+          </template>
+        </v-data-table>
+      </v-card>
+    </nav>
   </v-app>
 </template>
 <script>
