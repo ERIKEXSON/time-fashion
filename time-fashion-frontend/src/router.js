@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // vistas
 import Inicio from './views/Inicio.vue'
-import Admin from './layouts/Administrador.vue'
+import Admin from './views/admin/Inicio.vue'
 import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
