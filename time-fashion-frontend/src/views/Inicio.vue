@@ -1,43 +1,32 @@
 <template>
     <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
-      <v-flex xs sm6 md>
-        <v-card>
-          <img src="@/assets/mujeres.png" height="456px" width="500px" alt="">
-        </v-card>
+      <v-flex xs6 sm6 md>
+          <img src="@/assets/mujeres.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm6 md>
-        <v-card>
-          <img src="@/assets/hombres.png" height="456px" width="500px" alt="">
-        </v-card>
+      <v-flex xs6 sm6 md>
+          <img src="@/assets/hombres.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm4 md>
-        <v-card>
-          <img src="@/assets/tops.png" height="380px" width="355px" alt="">
-        </v-card>
+      </v-layout>
+
+      <v-layout row wrap>
+      <v-flex xs6 sm4 md>
+          <img src="@/assets/tops.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm4 md>
-          <img src="@/assets/frase.png" height="386px" width="355px" alt="">
+      <v-flex xs6 sm4 md>
+          <img src="@/assets/frase.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm4 md>
-        <v-card>
-          <img src="@/assets/joggers.png" height="380px" width="355px" alt="">
-        </v-card>
+      <v-flex xs6 sm4 md>
+          <img src="@/assets/joggers.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm4 md>
-        <v-card>
-          <img src="@/assets/shorts.png" height="380px" width="355px" alt="">
-        </v-card>
+      <v-flex xs6 sm4 md>
+          <img src="@/assets/shorts.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm4 md>
-        <v-card>
-          <img src="@/assets/busos.png" height="380px" width="355px" alt="">
-        </v-card>
+      <v-flex xs6 sm4 md>
+          <img src="@/assets/busos.png" class="img-responsive" alt="">
       </v-flex>
-      <v-flex xs sm4 md>
-        <v-card>
-          <img src="@/assets/camisas.png" height="380px" width="355px" alt="">
-        </v-card>
+      <v-flex xs6 sm4 md>
+          <img src="@/assets/camisas.png" class="img-responsive" alt="">
       </v-flex>
     </v-layout>
   </v-container>
@@ -49,3 +38,10 @@ export default {
   }
 }
 </script>
+<style>
+.img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+</style>

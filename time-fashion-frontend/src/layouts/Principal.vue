@@ -7,23 +7,39 @@
       app
       fixed
     >
+    <div class="text-xs-center">
+        <v-menu offset-y :nudge-width="200">
+            <template v-slot:activator="{ on }">
+              <v-btn
+                icon="true"
+                color="transparent"
+                v-on="on"
+                class="hidden-md-and-up"
+              ><v-icon>menu</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+            <v-list-tile
+              v-for="(item, index) in items2"
+              :key="index"
+            >
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </div>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3 ">
-        <span class="hidden-sm-and-down">Time Fashion!</span>
+        <span>Time Fashion!</span>
       </v-toolbar-title>
-      <v-btn icon class="hidden-sm-and-down">
-        <v-icon>add_shopping_cart</v-icon>
+      <v-btn color="transparent" class="hidden-sm-and-down">
+        <v-title>Hombre</v-title>
       </v-btn>
-              <v-spacer></v-spacer>
-
-      <v-btn icon class="hidden-sm-and-down">
-        <v-title>add_shopping_cart</v-title>
+      <v-btn color="transparent"  class="hidden-sm-and-down">
+        <v-title>Mujer</v-title>
       </v-btn>
-              <v-spacer></v-spacer>
-
-      <v-btn icon class="hidden-sm-and-down">
-        <v-icon>add_shopping_cart</v-icon>
+      <v-btn color="transparent"  class="hidden-sm-and-down">
+        <v-title>Niños</v-title>
       </v-btn>
-        <v-spacer></v-spacer>
       <v-text-field
         flat
         solo-inverted
@@ -146,51 +162,23 @@ export default {
     transition: 'slide-y-reverse-transition',
     items: [
       {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'Hombre',
-        model: false,
-        children: [
-          {text: 'Camisetas' },
-          {text: 'Tanks' },
-          {text: 'Polos' },
-          {text: 'Busos' },
-          {text: 'Camisas' },
-          {text: 'Shorts' },
-          {text: 'Jeans y Pantalones' },
-          {text: 'Joggers' },
-        ]
+        text: 'Hombre', icon: 'add'
       },
       {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'Mujere',
-        model: false,
-        children: [
-          {text: 'Tops' },
-          {text: 'Bikini' },
-          {text: 'Busos' },
-          {text: 'Vestidos' },
-          {text: 'Shorts y Faldas' },
-          {text: 'Camisas' },
-          {text: 'Jeans y Pantalones' },
-          {text: 'Joggers' },
-        ]
+        text: 'Mujer', icon: 'add'
       },
       {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'Niños',
-        model: false,
-        children: [
-          {text: 'Niño' },
-          {text: 'Niña' }
-        ]
+        text: 'Niños'
       }
     ],
     items1: [
       { title: 'Iniciar sesión' },
       { title: 'Crear cuenta' }
+    ],
+    items2: [
+      {title: 'Hombre',},
+      { title: 'Mujer',},
+      { title: 'Niños',}
     ],
     icons: [
       'fab fa-facebook',

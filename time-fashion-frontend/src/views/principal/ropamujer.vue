@@ -3,7 +3,7 @@
       <v-layout row wrap>
         <v-flex xs sm4 md>
           <v-card>
-            <v-card-text><img src="@/assets/mujer/chaqueta.jpg" alt=""></v-card-text>      
+            <v-card-text><img src="@/assets/mujer/chaqueta.jpg" alt=""></v-card-text>
             <v-card-title> Chaqueta Azul Oscuro Texto <v-spacer></v-spacer> $84.000</v-card-title>
           </v-card>
         </v-flex>
@@ -30,12 +30,12 @@
         </v-flex>
 
         <v-flex xs sm4 md>
-          <v-card> 
+          <v-card>
             <v-card-text><img src="@/assets/mujer/vestido.jpg" alt=""></v-card-text>
             <v-card-title> Vestido Azul Oscuro Flores<v-spacer></v-spacer> $48.000</v-card-title>
           </v-card>
         </v-flex>
-        
+
         <v-flex xs sm4 md>
           <v-card>
             <v-card-text><img src="@/assets/mujer/shorts.jpg" alt=""></v-card-text>
