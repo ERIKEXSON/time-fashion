@@ -12,7 +12,7 @@ export default {
     return {
     }
   },
-  components: { AdministradorLayout, PrincipalLayout },
+  components: { AdministradorLayout, PrincipalLayout},
   computed: mapState(['layout'])
 }
 </script>

@@ -2,28 +2,42 @@
     <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
       <v-flex xs sm6 md>
-        <v-card-text><img src="@/assets/mujeres.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/mujeres.png" height="456px" width="500px" alt="">
+        </v-card>
       </v-flex>
       <v-flex xs sm6 md>
-        <v-card-text><img src="@/assets/hombres.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/hombres.png" height="456px" width="500px" alt="">
+        </v-card>
       </v-flex>
       <v-flex xs sm4 md>
-        <v-card-text><img src="@/assets/tops.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/tops.png" height="380px" width="355px" alt="">
+        </v-card>
       </v-flex>
       <v-flex xs sm4 md>
-        <v-card-text><img src="@/assets/frase.png" alt=""></v-card-text>
+          <img src="@/assets/frase.png" height="386px" width="355px" alt="">
       </v-flex>
       <v-flex xs sm4 md>
-        <v-card-text><img src="@/assets/joggers.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/joggers.png" height="380px" width="355px" alt="">
+        </v-card>
       </v-flex>
       <v-flex xs sm4 md>
-        <v-card-text><img src="@/assets/shorts.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/shorts.png" height="380px" width="355px" alt="">
+        </v-card>
       </v-flex>
       <v-flex xs sm4 md>
-        <v-card-text><img src="@/assets/busos.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/busos.png" height="380px" width="355px" alt="">
+        </v-card>
       </v-flex>
       <v-flex xs sm4 md>
-        <v-card-text><img src="@/assets/camisas.png" alt=""></v-card-text>
+        <v-card>
+          <img src="@/assets/camisas.png" height="380px" width="355px" alt="">
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
