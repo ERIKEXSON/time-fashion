@@ -45,3 +45,10 @@
       </v-layout>
     </v-container>
 </template>
+<script>
+export default {
+  created () {
+    this.$store.commit('SET_LAYOUT', 'hombres-layout')
+  }
+}
+</script>

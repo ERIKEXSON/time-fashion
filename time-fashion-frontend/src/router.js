@@ -9,8 +9,7 @@ import AdminUsuarios from './views/admin/Usuarios.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import AdminInventarioDetalles from './components/admin/InventarioDetalles.vue'
 import AdminEmpresaEmpleados from './components/admin/EmpresaEmpleados.vue'
-import ropahombre from './views/principal/ropahombre.vue'
-import ropamujer from './views/principal/ropamujer.vue'
+import Hombre from './views/hombres/ropahombre.vue'
 
 Vue.use(Router)
 
@@ -59,14 +58,9 @@ export default new Router({
       component: AdminInventarioDetalles
     },
     {
-      path: '/ropahombre',
-      name: 'ropahombre',
-      component: ropahombre
-    },
-    {
-      path: '/ropamujer',
-      name: 'ropamujer',
-      component: ropamujer
+      path: '/hombre',
+      name: 'hombre',
+      component: Hombre
     }
   ]
 })

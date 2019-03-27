@@ -5,6 +5,7 @@
 <script>
 import AdministradorLayout from './layouts/Administrador.vue'
 import PrincipalLayout from './layouts/Principal.vue'
+import HombresLayout from './layouts/Hombres.vue'
 import { mapState } from 'vuex'
 export default {
   name: 'App',
@@ -12,7 +13,7 @@ export default {
     return {
     }
   },
-  components: { AdministradorLayout, PrincipalLayout },
+  components: { AdministradorLayout, PrincipalLayout, HombresLayout },
   computed: mapState(['layout'])
 }
 </script>

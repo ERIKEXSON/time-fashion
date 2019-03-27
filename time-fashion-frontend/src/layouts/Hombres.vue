@@ -148,6 +148,28 @@
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
       </v-card-actions>
+      <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="black"
+      dark
+      fixed
+      style="margin-top: 64px"
+      height="20px"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 240px"
+    >
+      <v-btn flat>Camisetas</v-btn>
+      <v-btn flat>Tanks</v-btn>
+      <v-btn flat>Polos</v-btn>
+      <v-btn flat>Camisas</v-btn>
+      <v-btn flat>Shorts</v-btn>
+      <v-btn flat>Jeans Y Pantalones</v-btn>
+      <v-btn flat>Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
   </v-app>
 </template>
 <script>
