@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav>
-      <div><h2>Empleados</h2></div>
+    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
+      <div style="background-color:#6a1b9a;padding: 5px;color: white"><h2>Empleados</h2></div>
       <v-card width="1045">
         <v-card-title>
           <v-text-field

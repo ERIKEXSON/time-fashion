@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav>
-      <div>
+    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
+      <div style="background-color:#6a1b9a;padding: 5px;color: white">
         <h2>Agregar usuarios</h2>
         <v-snackbar
           v-model="snackbar"
@@ -45,9 +45,9 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
-                  v-model="select"
-                  :items="items"
-                  :rules="[v => !!v || 'Este campo es requerido']"
+                  v-model="form.tipodocumento"
+                  :items="tipos"
+                  :rules="rules.tipodocumento"
                   label="Tipo de documento"
                   required
                 ></v-select>
@@ -57,6 +57,17 @@
                   v-model="form.correo"
                   :rules="rules.correo"
                   label="Correo"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.contraseña"
+                  :append-icon="show1 ? 'visibility' : 'visibility_off'"
+                  :rules="rules.contraseña"
+                  :type="show1 ? 'text' : 'password'"
+                  label="Contraseña"
+                  @click:append="show1 = !show1"
                   required
                 ></v-text-field>
               </v-flex>
@@ -138,8 +149,8 @@
         </v-dialog>
       </v-card>
     </nav>
-    <nav>
-      <div><h2>Usuarios</h2></div>
+    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
+      <div style="background-color:#6a1b9a;padding: 5px;color: white"><h2>Usuarios</h2></div>
       <v-card width="1045">
         <v-card-title>
           <v-text-field
@@ -156,9 +167,10 @@
           :search="search"
         >
           <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.name }}</td>
+            <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
+            <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
             <td class="text-xs-left">{{ props.item.correo }}</td>
             <td class="text-xs-left">{{ props.item.direccion }}</td>
             <td class="text-xs-left">{{ props.item.telefono }}</td>
@@ -175,22 +187,27 @@ export default {
       nombre: '',
       apellido: '',
       documento: '',
+      tipodocumento: '',
       correo: '',
+      contraseña: '',
       direccion: '',
       tel: '',
       terms: false
     })
     return {
-      items: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
+      show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
         apellido: [val => (val || '').length > 0 || 'Este campo es requerido'],
         documento: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        tipodocumento: [val => (val || '').length > 0 || 'Este campo es requerido'],
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
+        contraseña: [val => (val || '').length > 0 || 'Este campo es requerido'],
         direccion: [val => (val || '').length > 0 || 'Este campo es requerido'],
         tel: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
+      tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
       conditions: false,
       content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.`,
       snackbar: false,
@@ -201,15 +218,17 @@ export default {
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
         { text: 'Documento', value: 'documento' },
+        { text: 'Tipo de documento', value: 'tipodocumento'},
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
         { text: 'Teléfono', value: 'telefono' }
       ],
       desserts: [
         {
-          name: 'Errik',
+          nombre: 'Errik',
           apellido: 'Mamerto',
           documento: '123123123',
+          tipodocumento: 'CC',
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
           telefono: '123123123'
@@ -221,10 +240,14 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-          this.form.nit &&
-          this.form.telefono &&
-          this.form.correo &&
-          this.form.terms
+        this.form.apellido &&
+        this.form.documento &&
+        this.form.tipodocumento &&
+        this.form.correo &&
+        this.form.contraseña &&
+        this.form.direccion &&
+        this.form.tel &&
+        this.form.terms
       )
     }
   },

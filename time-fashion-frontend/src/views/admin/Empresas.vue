@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav>
-      <div>
+    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
+      <div style="background-color:#6a1b9a;padding: 5px;color: white">
         <h2>Agregar empresas</h2>
         <v-snackbar
           v-model="snackbar"
@@ -113,8 +113,8 @@
         </v-dialog>
       </v-card>
     </nav>
-    <nav>
-      <div>
+    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
+      <div style="background-color:#6a1b9a;padding: 5px;color: white">
         <h2>Empresas</h2>
       </div>
       <v-card width="1045">
@@ -213,14 +213,3 @@ export default {
   }
 }
 </script>
-<!--<style>
-  nav{
-    border: #6a1b9a 3px solid;
-    margin-bottom: 30px
-  }
-  nav>div{
-    background-color:#6a1b9a;
-    padding: 5px;
-    color: white
-  }
-</style>-->
