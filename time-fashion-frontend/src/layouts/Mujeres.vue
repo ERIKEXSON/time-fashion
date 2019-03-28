@@ -7,7 +7,7 @@
       app
       fixed
     >
-      <div class="text-xs-center">
+    <div class="text-xs-center">
         <v-menu offset-y :nudge-width="200">
             <template v-slot:activator="{ on }">
               <v-btn
@@ -28,13 +28,13 @@
           </v-list>
         </v-menu>
       </div>
-      <v-toolbar-title >
-          <img src="@/assets/logito.png" height="45px" width="90px">
-      </v-toolbar-title>
+      <v-btn color="transparent" to="/">
+        <img src="@/assets/logito.png" height="45px" width="90px" >
+      </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
         <v-title>Hombre</v-title>
       </v-btn>
-      <v-btn color="transparent"  class="hidden-sm-and-down" to="mujer">
+      <v-btn color="transparent"  class="hidden-sm-and-down">
         <v-title>Mujer</v-title>
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down">
@@ -68,40 +68,42 @@
           </v-list-tile>
         </v-list>
       </v-menu>
-      <div class="text-xs-center">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn
-              icon="true"
-              color="transparent"
-              v-on="on"
-            ><v-icon>perm_identity</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-tile
-              v-for="(item, index) in items1"
-              :key="index"
-            >
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-      </div>
+      <v-spacer></v-spacer>
+         <div class="text-xs-center">
+            <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+                <v-btn
+                icon="true"
+                color="transparent"
+                v-on="on"
+                ><v-icon>perm_identity</v-icon>
+                </v-btn>
+            </template>
+            <v-list>
+                <v-list-tile
+                v-for="(item, index) in items1"
+                :key="index"
+                >
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                </v-list-tile>
+            </v-list>
+            </v-menu>
+        </div>
       <v-btn icon >
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
-    </v-toolbar>
-    <v-content class="cyan lighten-5">
-      <v-container fill-height>
-        <v-layout justify-center align-center>
-          <v-flex shrink>
-            <router-view></router-view>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-    <v-card-actions class="black">
+
+      </v-toolbar>
+      <v-content class="cyan lighten-5">
+        <v-container fill-height>
+          <v-layout justify-center align-center>
+            <v-flex shrink>
+              <router-view></router-view>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+      <v-card-actions class="black">
       <v-layout
         align-end
         fill-height
@@ -122,6 +124,49 @@
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
       </v-card-actions>
+      <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 64px"
+      height="25px"
+      class="hidden-sm-and-down"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 240px"
+    >
+      <v-btn flat>Tops</v-btn>
+      <v-btn flat>Bikini</v-btn>
+      <v-btn flat>Busos</v-btn>
+      <v-btn flat>Vestidos</v-btn>
+      <v-btn flat>Shorts y Faldas</v-btn>
+      <v-btn flat>Camisas</v-btn>
+      <v-btn flat>Jeans Y Pantalones</v-btn>
+      <v-btn flat>Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 89px"
+      height="25px"
+      class="hidden-sm-and-down"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 550px"
+    >
+      <v-btn flat>S</v-btn>
+      <v-btn flat>M</v-btn>
+      <v-btn flat>L</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
   </v-app>
 </template>
 <script>
@@ -134,6 +179,17 @@ export default {
     fling: false,
     tabs: null,
     transition: 'slide-y-reverse-transition',
+    items: [
+      {
+        text: 'Hombre', icon: 'add'
+      },
+      {
+        text: 'Mujer', icon: 'add'
+      },
+      {
+        text: 'Niños'
+      }
+    ],
     items1: [
       { title: 'Iniciar sesión' },
       { title: 'Crear cuenta' }
@@ -142,9 +198,6 @@ export default {
       { title: 'Hombre' },
       { title: 'Mujer' },
       { title: 'Niños' }
-    ],
-    items3: [
-      { title: 'Buscar' }
     ],
     icons: [
       'fab fa-facebook',

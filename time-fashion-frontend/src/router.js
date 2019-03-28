@@ -10,6 +10,7 @@ import AdminInventario from './views/admin/Inventario.vue'
 import AdminInventarioDetalles from './components/admin/InventarioDetalles.vue'
 import AdminEmpresaEmpleados from './components/admin/EmpresaEmpleados.vue'
 import Hombre from './views/hombres/ropahombre.vue'
+import Mujer from './views/mujeres/ropamujer.vue'
 
 Vue.use(Router)
 
@@ -61,6 +62,11 @@ export default new Router({
       path: '/hombre',
       name: 'hombre',
       component: Hombre
+    },
+    {
+      path: '/mujer',
+      name: 'mujer',
+      component: Mujer
     }
   ]
 })

@@ -28,13 +28,13 @@
           </v-list>
         </v-menu>
       </div>
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3 ">
-        <span>Time Fashion!</span>
-      </v-toolbar-title>
+      <v-btn color="transparent" to="/">
+        <img src="@/assets/logito.png" height="45px" width="90px" >
+      </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down">
         <v-title>Hombre</v-title>
       </v-btn>
-      <v-btn color="transparent"  class="hidden-sm-and-down">
+      <v-btn color="transparent"  class="hidden-sm-and-down" to="mujer">
         <v-title>Mujer</v-title>
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down">
@@ -46,7 +46,28 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
+        class="hidden-sm-and-down"
       ></v-text-field>
+      <v-spacer></v-spacer>
+      <v-menu offset-y :nudge-width="200">
+        <template v-slot:activator="{ on }">
+          <v-btn
+            icon="true"
+            color="transparent"
+            v-on="on"
+            class="hidden-md-and-up"
+          ><v-icon>search</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-tile
+            v-for="(item, index) in items3"
+            :key="index"
+          >
+            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
       <v-spacer></v-spacer>
          <div class="text-xs-center">
             <v-menu offset-y>
@@ -55,7 +76,6 @@
                 icon="true"
                 color="transparent"
                 v-on="on"
-                class="hidden-sm-and-down"
                 ><v-icon>perm_identity</v-icon>
                 </v-btn>
             </template>
@@ -69,65 +89,21 @@
             </v-list>
             </v-menu>
         </div>
-      <v-btn icon class="hidden-sm-and-down">
+      <v-btn icon >
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
-            <v-btn icon large class="hidden-sm-and-down">
-        <v-avatar size="40px" tile>
-          <img src="@/assets/logo.svg">
-        </v-avatar>
-      </v-btn>
-      <v-speed-dial
-        v-model="fab"
-        :direction="direction"
-        :transition="transition"
-        class="hidden-md-and-up"
-      >
-        <template v-slot:activator>
-          <v-btn
-            v-model="fab"
-            fab
-            icon="true"
-          >
-            <v-icon>more_vert</v-icon>
-            <v-icon>close</v-icon>
-          </v-btn>
-        </template>
-        <v-btn
-          fab
-          dark
-          small
-          color="green"
-        >
-          <v-icon>perm_identity</v-icon>
-        </v-btn>
-        <v-btn
-          fab
-          dark
-          small
-          color="indigo"
-        >
-          <v-icon>add_shopping_cart</v-icon>
-        </v-btn>
-        <v-btn
-          fab
-          dark
-          small
-        >
-          <v-icon>notifications</v-icon>
-        </v-btn>
-      </v-speed-dial>
-    </v-toolbar>
-    <v-content class="cyan lighten-5">
-      <v-container fill-height>
-        <v-layout justify-center align-center>
-          <v-flex shrink>
-            <router-view></router-view>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-    <v-card-actions class="black">
+
+      </v-toolbar>
+      <v-content class="cyan lighten-5">
+        <v-container fill-height>
+          <v-layout justify-center align-center>
+            <v-flex shrink>
+              <router-view></router-view>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+      <v-card-actions class="black">
       <v-layout
         align-end
         fill-height
@@ -150,11 +126,12 @@
       </v-card-actions>
       <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      color="black"
+      color="grey darken-3"
       dark
       fixed
       style="margin-top: 64px"
-      height="20px"
+      height="25px"
+      class="hidden-sm-and-down"
       >
     <v-spacer></v-spacer>
 
@@ -168,6 +145,25 @@
       <v-btn flat>Shorts</v-btn>
       <v-btn flat>Jeans Y Pantalones</v-btn>
       <v-btn flat>Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 89px"
+      height="25px"
+      class="hidden-sm-and-down"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 550px"
+    >
+      <v-btn flat>S</v-btn>
+      <v-btn flat>M</v-btn>
+      <v-btn flat>L</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   </v-app>
