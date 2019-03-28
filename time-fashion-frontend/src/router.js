@@ -10,14 +10,11 @@ import AdminInventario from './views/admin/Inventario.vue'
 import AdminInventarioDetalles from './components/admin/InventarioDetalles.vue'
 import AdminEmpresaEmpleados from './components/admin/EmpresaEmpleados.vue'
 import Hombre from './views/hombres/ropahombre.vue'
-<<<<<<< HEAD
 import Mujer from './views/mujeres/ropamujer.vue'
-=======
 import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorProductosDetalles from './components/vendedor/InventarioDetalles.vue'
->>>>>>> c3b670776b9f340f2dc60737ea4aa2e365a2e30a
 
 Vue.use(Router)
 
@@ -71,11 +68,11 @@ export default new Router({
       component: Hombre
     },
     {
-<<<<<<< HEAD
       path: '/mujer',
       name: 'mujer',
       component: Mujer
-=======
+    },
+    {
       path: "/vendedor",
       name: "vendedor",
       component: Vendedor
@@ -94,7 +91,6 @@ export default new Router({
       path: "/vendedor/productos",
       name: "productosVendedor",
       component: VendedorProductos
->>>>>>> c3b670776b9f340f2dc60737ea4aa2e365a2e30a
     }
   ]
 });
