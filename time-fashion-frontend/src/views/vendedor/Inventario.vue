@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
+      <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
       <div style="background-color:#6a1b9a;padding: 5px;color: white">
-        <h2>Agregar usuarios</h2>
+        <h2>Agregar empresas</h2>
         <v-snackbar
           v-model="snackbar"
           absolute
@@ -11,7 +11,7 @@
           color="success"
           timeout="2000"
         >
-          <span>¡Registro exitoso!</span>
+          <span>Producto agregado</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
       </div>
@@ -29,61 +29,25 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.apellido"
-                  :rules="rules.apellido"
-                  label="Apellido"
+                  v-model="form.nit"
+                  :rules="rules.nit"
+                  label="Nit"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.documento"
-                  :rules="rules.documento"
-                  label="Documento"
+                  v-model="form.telefono"
+                  :rules="rules.telefono"
+                  label="Teléfono"
                   required
                 ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  v-model="form.tipodocumento"
-                  :items="tipos"
-                  :rules="rules.tipodocumento"
-                  label="Tipo de documento"
-                  required
-                ></v-select>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.correo"
                   :rules="rules.correo"
                   label="Correo"
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.contraseña"
-                  :append-icon="show1 ? 'visibility' : 'visibility_off'"
-                  :rules="rules.contraseña"
-                  :type="show1 ? 'text' : 'password'"
-                  label="Contraseña"
-                  @click:append="show1 = !show1"
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.direccion"
-                  :rules="rules.direccion"
-                  label="Dirección"
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.tel"
-                  :rules="rules.tel"
-                  label="Teléfono"
                   required
                 ></v-text-field>
               </v-flex>
@@ -112,7 +76,7 @@
               flat
               color="primary"
               type="submit"
-            >Registrar</v-btn>
+            >Agregar</v-btn>
           </v-card-actions>
         </v-form>
         <v-dialog v-model="terms" width="70%">
@@ -150,31 +114,40 @@
       </v-card>
     </nav>
     <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
-      <div style="background-color:#6a1b9a;padding: 5px;color: white"><h2>Usuarios</h2></div>
+      <div style="background-color:#6a1b9a;padding: 5px;color: white"><h2>Inventario</h2></div>
       <v-card width="1045">
         <v-card-title>
           <v-text-field
-            v-model="search"
-            append-icon="search"
-            label="Buscar"
-            single-line
-            hide-details
-          ></v-text-field>
-        </v-card-title>
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          :search="search"
-        >
-          <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.nombre }}</td>
-            <td class="text-xs-left">{{ props.item.apellido }}</td>
-            <td class="text-xs-left">{{ props.item.documento }}</td>
-            <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
-            <td class="text-xs-left">{{ props.item.correo }}</td>
-            <td class="text-xs-left">{{ props.item.direccion }}</td>
-            <td class="text-xs-left">{{ props.item.telefono }}</td>
-          </template>
+          v-model="search"
+          append-icon="search"
+          label="Buscar"
+          single-line
+          hide-details
+          >
+          </v-text-field>
+      </v-card-title>
+      <v-data-table
+        :headers="headers"
+        :items="desserts"
+        :search="search"
+      >
+        <template v-slot:items="props">
+            <td class="text-xs-left">{{ props.item.name }}</td>
+            <td class="text-xs-left">{{ props.item.codigo }}</td>
+            <td class="text-xs-left">{{ props.item.marca }}</td>
+            <td class="text-xs-left">{{ props.item.valor }}</td>
+            <td class="text-xs-center">
+                <div style="text-align: center; display: inline-block;">
+                    <v-btn fab dark small color="error">
+                    <v-icon dark color="black">delete</v-icon>
+                    </v-btn>
+                    <v-btn fab dark small color="warning">
+                    <v-icon dark color="black">edit</v-icon>
+                    </v-btn>
+                </div>
+                <div style="display: inline-block; margin-left: 40px"><v-btn to="/vendedor/inventario/detalles">Detalles</v-btn></div>
+            </td>
+        </template>
         </v-data-table>
       </v-card>
     </nav>
@@ -183,31 +156,21 @@
 <script>
 export default {
   data () {
-    const defaultForm = Object.freeze({
+      const defaultForm = Object.freeze({
       nombre: '',
-      apellido: '',
-      documento: '',
-      tipodocumento: '',
+      nit: '',
+      telefono: '',
       correo: '',
-      contraseña: '',
-      direccion: '',
-      tel: '',
       terms: false
     })
     return {
-      show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        apellido: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        documento: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tipodocumento: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
-        contraseña: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        direccion: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tel: [val => (val || '').length > 0 || 'Este campo es requerido']
+        nit: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        telefono: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
       },
-      tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
       conditions: false,
       content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.`,
       snackbar: false,
@@ -215,23 +178,18 @@ export default {
       defaultForm,
       search: '',
       headers: [
-        { text: 'Nombre', value: 'nombre' },
-        { text: 'Apellido', value: 'apellido' },
-        { text: 'Documento', value: 'documento' },
-        { text: 'Tipo de documento', value: 'tipodocumento'},
-        { text: 'Correo', value: 'correo' },
-        { text: 'Dirección', value: 'direccion' },
-        { text: 'Teléfono', value: 'telefono' }
+        { text: 'Nombre', value: 'name' },
+        { text: 'Código', value: 'codigo' },
+        { text: 'Marca', value: 'marca' },
+        { text: 'Valor', value: 'valor' },
+        { text: '' },
       ],
       desserts: [
         {
-          nombre: 'Errik',
-          apellido: 'Mamerto',
-          documento: '123123123',
-          tipodocumento: 'CC',
-          correo: 'asdasda@hola.com',
-          direccion: 'asdasdasd123123',
-          telefono: '123123123'
+          name: 'camison',
+          codigo: '87364502-1',
+          marca: 'roballoasdasdasdasd',
+          valor: 78234123123123
         }
       ]
     }
@@ -240,14 +198,10 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-        this.form.apellido &&
-        this.form.documento &&
-        this.form.tipodocumento &&
-        this.form.correo &&
-        this.form.contraseña &&
-        this.form.direccion &&
-        this.form.tel &&
-        this.form.terms
+          this.form.nit &&
+          this.form.telefono &&
+          this.form.correo &&
+          this.form.terms
       )
     }
   },
@@ -262,7 +216,7 @@ export default {
     }
   },
   created () {
-    this.$store.commit('SET_LAYOUT', 'administrador-layout')
+    this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }
 </script>

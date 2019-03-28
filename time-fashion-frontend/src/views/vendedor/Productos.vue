@@ -23,6 +23,19 @@
             <td class="text-xs-left">{{ props.item.codigo }}</td>
             <td class="text-xs-left">{{ props.item.precio }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
+            <div style="text-align: center">
+                <v-btn fab dark small color="success">
+                <v-icon dark color="black">add</v-icon>
+                </v-btn>
+
+                <v-btn fab dark small color="error">
+                <v-icon dark color="black">delete</v-icon>
+                </v-btn>
+
+                <v-btn fab dark small color="warning">
+                <v-icon dark color="black">edit</v-icon>
+                </v-btn>
+            </div>
           </template>
         </v-data-table>
       </v-card>
@@ -38,7 +51,8 @@ export default {
         { text: 'Nombre', value: 'name' },
         { text: 'Codigo', value: 'codigo' },
         { text: 'Precio', value: 'precio' },
-        { text: 'Marca', value: 'marca' }
+        { text: 'Marca', value: 'marca' },
+        { text: '' }
       ],
       desserts: [
         {
@@ -51,7 +65,7 @@ export default {
     }
   },
   created () {
-    this.$store.commit('SET_LAYOUT', 'administrador-layout')
+    this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }
 </script>
