@@ -7,8 +7,8 @@
       app
       fixed
     >
-      <div class="text-xs-center">
-        <v-menu offset-y>
+    <div class="text-xs-center">
+        <v-menu offset-y :nudge-width="200">
             <template v-slot:activator="{ on }">
               <v-btn
                 icon="true"
@@ -28,12 +28,12 @@
               <v-btn to="niños">
                 Niños
               </v-btn>
-          </v-list>
+            </v-list>
         </v-menu>
       </div>
-      <v-toolbar-title >
-          <img src="@/assets/logito.png" height="45px" width="90px">
-      </v-toolbar-title>
+      <v-btn color="transparent" to="/">
+        <img src="@/assets/logito.png" height="45px" width="90px" >
+      </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
         <v-title>Hombre</v-title>
       </v-btn>
@@ -71,40 +71,42 @@
           </v-list-tile>
         </v-list>
       </v-menu>
-      <div class="text-xs-center">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn
-              icon="true"
-              color="transparent"
-              v-on="on"
-            ><v-icon>perm_identity</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
+      <v-spacer></v-spacer>
+         <div class="text-xs-center">
+            <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+                <v-btn
+                icon="true"
+                color="transparent"
+                v-on="on"
+                ><v-icon>perm_identity</v-icon>
+                </v-btn>
+            </template>
+            <v-list>
               <v-btn color="transparent">
                 Iniciar sesión
               </v-btn>
               <v-btn color="transparent">
                 Registarse
               </v-btn>
-          </v-list>
-        </v-menu>
-      </div>
+            </v-list>
+            </v-menu>
+        </div>
       <v-btn icon >
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
-    </v-toolbar>
-    <v-content class="cyan lighten-5">
-      <v-container fill-height>
-        <v-layout justify-center align-center>
-          <v-flex shrink>
-            <router-view></router-view>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-    <v-card-actions class="black">
+
+      </v-toolbar>
+      <v-content class="cyan lighten-5">
+        <v-container fill-height>
+          <v-layout justify-center align-center>
+            <v-flex shrink>
+              <router-view></router-view>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+      <v-card-actions class="black">
       <v-layout
         align-end
         fill-height
@@ -125,6 +127,45 @@
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
       </v-card-actions>
+      <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 64px"
+      height="25px"
+      class="hidden-sm-and-down"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 240px"
+    >
+      <v-btn flat>Camisetas</v-btn>
+      <v-btn flat>Busos</v-btn>
+      <v-btn flat>Shorts</v-btn>
+      <v-btn flat  style="margin-right: 260px">Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 89px"
+      height="25px"
+      class="hidden-sm-and-down"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 550px"
+    >
+      <v-btn flat>5</v-btn>
+      <v-btn flat>7</v-btn>
+      <v-btn flat>9</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
   </v-app>
 </template>
 <script>
@@ -137,8 +178,25 @@ export default {
     fling: false,
     tabs: null,
     transition: 'slide-y-reverse-transition',
-    items3: [
-      { title: 'Buscar' }
+    items: [
+      {
+        text: 'Hombre', icon: 'add'
+      },
+      {
+        text: 'Mujer', icon: 'add'
+      },
+      {
+        text: 'Niños'
+      }
+    ],
+    items1: [
+      { title: 'Iniciar sesión' },
+      { title: 'Crear cuenta' }
+    ],
+    items2: [
+      { title: 'Hombre' },
+      { title: 'Mujer' },
+      { title: 'Niños' }
     ],
     icons: [
       'fab fa-facebook',

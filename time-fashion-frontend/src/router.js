@@ -15,7 +15,10 @@ import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorProductosDetalles from './components/vendedor/InventarioDetalles.vue'
-
+import Niños from './views/niños/inicio.vue'
+import Niño from './views/niños/ropaniño.vue'
+import Niña from './views/niños/ropaniña.vue'
+import Camisetas from './views/hombres/camisetas.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -88,9 +91,29 @@ export default new Router({
       component: VendedorProductosDetalles
     },
     {
-      path: "/vendedor/productos",
+      path: "/vendedor/roductos",
       name: "productosVendedor",
       component: VendedorProductos
+    },
+    {
+      path: "/niños",
+      name: "niños",
+      component: Niños
+    },
+    {
+      path: "/niño",
+      name: "niño",
+      component: Niño
+    },
+    {
+      path: "/niña",
+      name: "niña",
+      component: Niña
+    },
+    {
+      path: "/hombre/camisetas",
+      name: "camisetas",
+      component: Camisetas
     }
   ]
 });

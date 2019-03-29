@@ -8,7 +8,7 @@
       fixed
     >
     <div class="text-xs-center">
-        <v-menu offset-y :nudge-width="200">
+        <v-menu offset-y>
             <template v-slot:activator="{ on }">
               <v-btn
                 icon="true"
@@ -19,12 +19,15 @@
               </v-btn>
             </template>
             <v-list>
-            <v-list-tile
-              v-for="(item, index) in items2"
-              :key="index"
-            >
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile>
+                <v-btn to="hombre">
+                Hombre
+              </v-btn>
+              <v-btn to="mujer">
+                Mujer
+              </v-btn>
+              <v-btn to="niños">
+                Niños
+              </v-btn>
           </v-list>
         </v-menu>
       </div>
@@ -34,10 +37,10 @@
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
         <v-title>Hombre</v-title>
       </v-btn>
-      <v-btn color="transparent"  class="hidden-sm-and-down">
+      <v-btn color="transparent"  class="hidden-sm-and-down" to="mujer">
         <v-title>Mujer</v-title>
       </v-btn>
-      <v-btn color="transparent"  class="hidden-sm-and-down">
+      <v-btn color="transparent"  class="hidden-sm-and-down" to="niños">
         <v-title>Niños</v-title>
       </v-btn>
       <v-text-field
@@ -80,12 +83,12 @@
                 </v-btn>
             </template>
             <v-list>
-                <v-list-tile
-                v-for="(item, index) in items1"
-                :key="index"
-                >
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                </v-list-tile>
+              <v-btn color="transparent">
+                Iniciar sesión
+              </v-btn>
+              <v-btn color="transparent">
+                Registarse
+              </v-btn>
             </v-list>
             </v-menu>
         </div>
@@ -195,7 +198,7 @@ export default {
       { title: 'Crear cuenta' }
     ],
     items2: [
-      { title: 'Hombre' },
+      { title: 'Hombre', to: '/hombre' },
       { title: 'Mujer' },
       { title: 'Niños' }
     ],

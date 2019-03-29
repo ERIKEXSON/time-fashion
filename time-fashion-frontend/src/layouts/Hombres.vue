@@ -19,25 +19,28 @@
               </v-btn>
             </template>
             <v-list>
-            <v-list-tile
-              v-for="(item, index) in items2"
-              :key="index"
-            >
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
+              <v-btn to="hombre">
+                Hombre
+              </v-btn>
+              <v-btn to="mujer">
+                Mujer
+              </v-btn>
+              <v-btn to="niños">
+                Niños
+              </v-btn>
+            </v-list>
         </v-menu>
       </div>
       <v-btn color="transparent" to="/">
         <img src="@/assets/logito.png" height="45px" width="90px" >
       </v-btn>
-      <v-btn color="transparent" class="hidden-sm-and-down">
+      <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
         <v-title>Hombre</v-title>
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down" to="mujer">
         <v-title>Mujer</v-title>
       </v-btn>
-      <v-btn color="transparent"  class="hidden-sm-and-down">
+      <v-btn color="transparent"  class="hidden-sm-and-down" to="niños">
         <v-title>Niños</v-title>
       </v-btn>
       <v-text-field
@@ -80,12 +83,12 @@
                 </v-btn>
             </template>
             <v-list>
-                <v-list-tile
-                v-for="(item, index) in items1"
-                :key="index"
-                >
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                </v-list-tile>
+              <v-btn color="transparent">
+                Iniciar sesión
+              </v-btn>
+              <v-btn color="transparent">
+                Registarse
+              </v-btn>
             </v-list>
             </v-menu>
         </div>
@@ -138,7 +141,7 @@
     <v-toolbar-items
     style="margin-right: 240px"
     >
-      <v-btn flat>Camisetas</v-btn>
+      <v-btn to="camisetas" flat>Camisetas</v-btn>
       <v-btn flat>Tanks</v-btn>
       <v-btn flat>Polos</v-btn>
       <v-btn flat>Camisas</v-btn>

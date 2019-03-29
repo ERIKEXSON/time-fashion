@@ -2,7 +2,7 @@
     <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
       <v-flex xs6 sm6 md>
-          <img src="@/assets/mujeres.png" class="img-responsive" alt="">
+        <img src="@/assets/mujeres.png" class="img-responsive" alt="">
       </v-flex>
       <v-flex xs6 sm6 md>
           <img src="@/assets/hombres.png" class="img-responsive" alt="">
