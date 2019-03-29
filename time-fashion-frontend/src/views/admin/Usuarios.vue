@@ -168,7 +168,7 @@ export default {
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
         { text: 'Documento', value: 'documento' },
-        { text: 'Tipo de documento', value: 'tipodocumento'},
+        { text: 'Tipo de documento', value: 'tipodocumento' },
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
         { text: 'Teléfono', value: 'telefono' }

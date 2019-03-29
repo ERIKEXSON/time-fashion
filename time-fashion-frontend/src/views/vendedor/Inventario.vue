@@ -1,6 +1,6 @@
 <template>
   <v-app>
-      <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px">
+      <nav style="width:810px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar producto</h2>
         <v-snackbar
@@ -29,25 +29,17 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.nit"
-                  :rules="rules.nit"
-                  label="Nit"
+                  v-model="form.codigo"
+                  :rules="rules.codigo"
+                  label="Código"
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm12>
                 <v-text-field
-                  v-model="form.telefono"
-                  :rules="rules.telefono"
-                  label="Teléfono"
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.correo"
-                  :rules="rules.correo"
-                  label="Correo"
+                  v-model="form.marca"
+                  :rules="rules.marca"
+                  label="Marca"
                   required
                 ></v-text-field>
               </v-flex>
@@ -66,9 +58,9 @@
         </v-form>
       </v-card>
     </nav>
-    <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px; width: fit-content">
+    <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px; width: 810px">
       <div style="background-color:#000000;padding: 5px;color: white"><h2>Inventario</h2></div>
-      <v-card width="800">
+      <v-card>
         <v-card-title>
           <v-text-field
           v-model="search"
@@ -108,19 +100,17 @@
 <script>
 export default {
   data () {
-      const defaultForm = Object.freeze({
+    const defaultForm = Object.freeze({
       nombre: '',
-      nit: '',
-      telefono: '',
-      correo: ''
+      codigo: '',
+      marca: ''
     })
     return {
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        nit: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        telefono: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
+        codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,
@@ -145,9 +135,8 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-          this.form.nit &&
-          this.form.telefono &&
-          this.form.correo
+          this.form.codigo &&
+          this.form.marca
       )
     }
   },

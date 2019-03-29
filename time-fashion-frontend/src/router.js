@@ -22,52 +22,52 @@ import Camisetas from './views/hombres/camisetas.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      name: "inicio",
+      path: '/',
+      name: 'inicio',
       component: Inicio
     },
     {
-      path: "/admin",
-      name: "admin",
+      path: '/admin',
+      name: 'admin',
       component: Admin
     },
     {
-      path: "/admin/productos",
-      name: "productosAdmin",
+      path: '/admin/productos',
+      name: 'productosAdmin',
       component: AdminProductos
     },
     {
-      path: "/admin/empresas",
-      name: "empresasAdmin",
+      path: '/admin/empresas',
+      name: 'empresasAdmin',
       component: AdminEmpresas
     },
     {
-      path: "/admin/empresas/empleados",
-      name: "empleadosEmpresaAdmin",
+      path: '/admin/empresas/empleados',
+      name: 'empleadosEmpresaAdmin',
       component: AdminEmpresaEmpleados
     },
     {
-      path: "/admin/usuarios",
-      name: "usuariosAdmin",
+      path: '/admin/usuarios',
+      name: 'usuariosAdmin',
       component: AdminUsuarios
     },
     {
-      path: "/admin/inventario",
-      name: "inventarioAdmin",
+      path: '/admin/inventario',
+      name: 'inventarioAdmin',
       component: AdminInventario
     },
     {
-      path: "/admin/inventario/detalles",
-      name: "detallesInventarioAdmin",
+      path: '/admin/inventario/detalles',
+      name: 'detallesInventarioAdmin',
       component: AdminInventarioDetalles
     },
     {
-      path: "/hombre",
-      name: "hombre",
+      path: '/hombre',
+      name: 'hombre',
       component: Hombre
     },
     {
@@ -76,44 +76,44 @@ export default new Router({
       component: Mujer
     },
     {
-      path: "/vendedor",
-      name: "vendedor",
+      path: '/vendedor',
+      name: 'vendedor',
       component: Vendedor
     },
     {
-      path: "/vendedor/inventario",
-      name: "inventarioVendedor",
+      path: '/vendedor/inventario',
+      name: 'inventarioVendedor',
       component: VendedorInventario
     },
     {
-      path: "/vendedor/inventario/detalles",
-      name: "detallesInventarioVendedor",
+      path: '/vendedor/inventario/detalles',
+      name: 'detallesInventarioVendedor',
       component: VendedorProductosDetalles
     },
     {
-      path: "/vendedor/roductos",
-      name: "productosVendedor",
+      path: '/vendedor/productos',
+      name: 'productosVendedor',
       component: VendedorProductos
     },
     {
-      path: "/niños",
-      name: "niños",
+      path: '/niños',
+      name: 'niños',
       component: Niños
     },
     {
-      path: "/niño",
-      name: "niño",
+      path: '/niño',
+      name: 'niño',
       component: Niño
     },
     {
-      path: "/niña",
-      name: "niña",
+      path: '/niña',
+      name: 'niña',
       component: Niña
     },
     {
-      path: "/hombre/camisetas",
-      name: "camisetas",
+      path: '/hombre/camisetas',
+      name: 'camisetas',
       component: Camisetas
     }
   ]
-});
+})

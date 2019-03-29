@@ -1,5 +1,71 @@
 <template>
   <v-app>
+    <nav style="width:810px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
+      <div style="background-color:#000000;padding: 5px;color: white">
+        <h2>Agregar producto</h2>
+        <v-snackbar
+          v-model="snackbar"
+          absolute
+          top
+          right
+          color="success"
+          timeout="2000"
+        >
+          <span>Producto agregado</span>
+          <v-icon dark>check_circle</v-icon>
+        </v-snackbar>
+      </div>
+      <v-card flat>
+        <v-form ref="form" @submit.prevent="submit">
+          <v-container grid-list-xl fluid>
+            <v-layout wrap>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.nombre"
+                  :rules="rules.nombre"
+                  label="Nombre"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.codigo"
+                  :rules="rules.codigo"
+                  label="Código"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.precio"
+                  :rules="rules.precio"
+                  label="Precio"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.marca"
+                  :rules="rules.marca"
+                  label="Marca"
+                  required
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <v-card-actions>
+            <v-btn flat @click="resetForm">Cancelar</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+              :disabled="!formIsValid"
+              flat
+              color="primary"
+              type="submit"
+            >Agregar</v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card>
+    </nav>
     <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
       <v-card width="800">
@@ -45,7 +111,23 @@
 <script>
 export default {
   data () {
+    const defaultForm = Object.freeze({
+      nombre: '',
+      codigo: '',
+      precio: '',
+      marca: ''
+    })
     return {
+      form: Object.assign({}, defaultForm),
+      rules: {
+        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        precio: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
+      },
+      conditions: false,
+      snackbar: false,
+      defaultForm,
       search: '',
       headers: [
         { text: 'Nombre', value: 'name' },
@@ -62,6 +144,26 @@ export default {
           marca: 'roballo'
         }
       ]
+    }
+  },
+  computed: {
+    formIsValid () {
+      return (
+        this.form.nombre &&
+          this.form.codigo &&
+          this.form.precio &&
+          this.form.marca
+      )
+    }
+  },
+  methods: {
+    resetForm () {
+      this.form = Object.assign({}, this.defaultForm)
+      this.$refs.form.reset()
+    },
+    submit () {
+      this.snackbar = true
+      this.resetForm()
     }
   },
   created () {

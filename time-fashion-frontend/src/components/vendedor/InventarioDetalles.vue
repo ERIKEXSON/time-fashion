@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <nav style="text-align: center; border:  #000000 3px solid;margin-bottom: 30px">
+    <nav style="width: 810px; text-align: center; border:  #000000 3px solid;margin-bottom: 30px">
       <div style="background-color: #000000;padding: 5px;color: white">
         <h2>Agregar detalle</h2>
         <v-snackbar
@@ -66,9 +66,9 @@
         </v-form>
       </v-card>
     </nav>
-    <nav style=" text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
+    <nav style="width: 810px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
       <div style="background-color: #000000;padding: 5px;color: white"><h2>Detalles</h2></div>
-      <v-card width="1045">
+      <v-card>
         <v-card-title>
           <v-text-field
           v-model="search"
@@ -106,7 +106,7 @@
 <script>
 export default {
   data () {
-     const defaultForm = Object.freeze({
+    const defaultForm = Object.freeze({
       color1: '',
       codigo1: '',
       tallas1: '',
