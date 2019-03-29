@@ -90,9 +90,6 @@
             <td class="text-xs-left">{{ props.item.precio }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
             <div style="text-align: center">
-                <v-btn fab dark small color="success">
-                <v-icon dark color="black">add</v-icon>
-                </v-btn>
 
                 <v-btn fab dark small color="error">
                 <v-icon dark color="black">delete</v-icon>
