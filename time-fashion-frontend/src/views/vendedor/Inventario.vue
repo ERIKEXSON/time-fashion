@@ -1,8 +1,8 @@
 <template>
   <v-app>
-      <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
-      <div style="background-color:#6a1b9a;padding: 5px;color: white">
-        <h2>Agregar empresas</h2>
+      <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px">
+      <div style="background-color:#000000;padding: 5px;color: white">
+        <h2>Agregar producto</h2>
         <v-snackbar
           v-model="snackbar"
           absolute
@@ -51,21 +51,6 @@
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12>
-                <v-checkbox
-                  v-model="form.terms"
-                  color="green"
-                >
-                  <template v-slot:label>
-                    <div @click.stop="">
-                      Acepta los
-                      <a href="javascript:;" @click.stop="terms = true">términos</a>
-                      y
-                      <a href="javascript:;" @click.stop="conditions = true">condiciones</a>
-                    </div>
-                  </template>
-                </v-checkbox>
-              </v-flex>
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -79,43 +64,11 @@
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
-        <v-dialog v-model="terms" width="70%">
-          <v-card>
-            <v-card-title class="title">Términos</v-card-title>
-            <v-card-text v-for="n in 5" :key="n">
-              {{ content }}
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                flat
-                color="purple"
-                @click="terms = false"
-              >Ok</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-        <v-dialog v-model="conditions" width="70%">
-          <v-card>
-            <v-card-title class="title">Condiciones</v-card-title>
-            <v-card-text v-for="n in 5" :key="n">
-              {{ content }}
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                flat
-                color="purple"
-                @click="conditions = false"
-              >Ok</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
       </v-card>
     </nav>
-    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
-      <div style="background-color:#6a1b9a;padding: 5px;color: white"><h2>Inventario</h2></div>
-      <v-card width="1045">
+    <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px; width: fit-content">
+      <div style="background-color:#000000;padding: 5px;color: white"><h2>Inventario</h2></div>
+      <v-card width="800">
         <v-card-title>
           <v-text-field
           v-model="search"
@@ -135,7 +88,6 @@
             <td class="text-xs-left">{{ props.item.name }}</td>
             <td class="text-xs-left">{{ props.item.codigo }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
-            <td class="text-xs-left">{{ props.item.valor }}</td>
             <td class="text-xs-center">
                 <div style="text-align: center; display: inline-block;">
                     <v-btn fab dark small color="error">
@@ -160,8 +112,7 @@ export default {
       nombre: '',
       nit: '',
       telefono: '',
-      correo: '',
-      terms: false
+      correo: ''
     })
     return {
       form: Object.assign({}, defaultForm),
@@ -172,24 +123,20 @@ export default {
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
       },
       conditions: false,
-      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.`,
       snackbar: false,
-      terms: false,
       defaultForm,
       search: '',
       headers: [
         { text: 'Nombre', value: 'name' },
         { text: 'Código', value: 'codigo' },
         { text: 'Marca', value: 'marca' },
-        { text: 'Valor', value: 'valor' },
-        { text: '' },
+        { text: '' }
       ],
       desserts: [
         {
           name: 'camison',
           codigo: '87364502-1',
-          marca: 'roballoasdasdasdasd',
-          valor: 78234123123123
+          marca: 'roballoasdasdasdasd'
         }
       ]
     }
@@ -200,8 +147,7 @@ export default {
         this.form.nombre &&
           this.form.nit &&
           this.form.telefono &&
-          this.form.correo &&
-          this.form.terms
+          this.form.correo
       )
     }
   },

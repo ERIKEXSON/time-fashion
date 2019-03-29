@@ -7,7 +7,7 @@
       app
       stateless
       width="250"
-      class="grey darken-1"
+      class="secondary"
     >
     <v-list style="color: white">
       <v-list-tile>
@@ -31,14 +31,14 @@
     </v-navigation-drawer>
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      color="purple darken-3"
+      color="black"
       dark
       app
       fixed
     >
     <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-      <span class="hidden-sm-and-down">Time Fashion</span>
-      </v-toolbar-title>
+      <v-btn depressed style="background-color: transparent" to="/"><img src="@/assets/logito.png" height="45px" width="90px"></v-btn>
+    </v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fill-height>

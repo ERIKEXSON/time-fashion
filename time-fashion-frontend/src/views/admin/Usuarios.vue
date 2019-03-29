@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
-      <div style="background-color:#6a1b9a;padding: 5px;color: white">
+    <nav style="text-align:center; border: #000000 3px solid;margin-bottom: 30px">
+      <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar usuarios</h2>
         <v-snackbar
           v-model="snackbar"
@@ -87,21 +87,6 @@
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12>
-                <v-checkbox
-                  v-model="form.terms"
-                  color="green"
-                >
-                  <template v-slot:label>
-                    <div @click.stop="">
-                      Acepta los
-                      <a href="javascript:;" @click.stop="terms = true">términos</a>
-                      y
-                      <a href="javascript:;" @click.stop="conditions = true">condiciones</a>
-                    </div>
-                  </template>
-                </v-checkbox>
-              </v-flex>
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -115,42 +100,10 @@
             >Registrar</v-btn>
           </v-card-actions>
         </v-form>
-        <v-dialog v-model="terms" width="70%">
-          <v-card>
-            <v-card-title class="title">Términos</v-card-title>
-            <v-card-text v-for="n in 5" :key="n">
-              {{ content }}
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                flat
-                color="purple"
-                @click="terms = false"
-              >Ok</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-        <v-dialog v-model="conditions" width="70%">
-          <v-card>
-            <v-card-title class="title">Condiciones</v-card-title>
-            <v-card-text v-for="n in 5" :key="n">
-              {{ content }}
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                flat
-                color="purple"
-                @click="conditions = false"
-              >Ok</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
       </v-card>
     </nav>
-    <nav style="border: #6a1b9a 3px solid;margin-bottom: 30px">
-      <div style="background-color:#6a1b9a;padding: 5px;color: white"><h2>Usuarios</h2></div>
+    <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
+      <div style="background-color: #000000; padding: 5px;color: white"><h2>Usuarios</h2></div>
       <v-card width="1045">
         <v-card-title>
           <v-text-field
@@ -191,8 +144,7 @@ export default {
       correo: '',
       contraseña: '',
       direccion: '',
-      tel: '',
-      terms: false
+      tel: ''
     })
     return {
       show1: false,
@@ -209,9 +161,7 @@ export default {
       },
       tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
       conditions: false,
-      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.`,
       snackbar: false,
-      terms: false,
       defaultForm,
       search: '',
       headers: [
@@ -246,8 +196,7 @@ export default {
         this.form.correo &&
         this.form.contraseña &&
         this.form.direccion &&
-        this.form.tel &&
-        this.form.terms
+        this.form.tel
       )
     }
   },
