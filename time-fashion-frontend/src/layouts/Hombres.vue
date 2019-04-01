@@ -141,13 +141,14 @@
     <v-toolbar-items
     style="margin-right: 240px"
     >
-      <v-btn to="camisetas" flat>Camisetas</v-btn>
-      <v-btn flat>Tanks</v-btn>
-      <v-btn flat>Polos</v-btn>
-      <v-btn flat>Camisas</v-btn>
-      <v-btn flat>Shorts</v-btn>
-      <v-btn flat>Jeans Y Pantalones</v-btn>
-      <v-btn flat>Joggers</v-btn>
+      <v-btn to="/camisetas" flat>Camisetas</v-btn>
+      <v-btn to="/tanks" flat>Tanks</v-btn>
+      <v-btn to="/polos" flat>Polos</v-btn>
+      <v-btn to="/busos" flat>Busos</v-btn>
+      <v-btn to="/camisas" flat>Camisas</v-btn>
+      <v-btn to="shorts" flat>Shorts</v-btn>
+      <v-btn to="jeans-y-pantalones" flat>Jeans Y Pantalones</v-btn>
+      <v-btn to="joggers" flat>Joggers</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <v-toolbar

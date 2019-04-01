@@ -5,32 +5,32 @@
           <img src="@/assets/hombre/camisetas/grande.png" class="img-responsive hidden-sm-and-down" style="margin-top: 10px" alt="">
       </v-flex>
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/camisetas/azul.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/polos/azul.jpg" class="img-responsive" alt=""></v-card-text>
             <v-card-title class="precio"> Vestido Mostaza Texto<v-spacer></v-spacer> $30.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/camisetas/blanco.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/polos/blanco.jpg" class="img-responsive" alt=""></v-card-text>
             <v-card-title class="precio">Buso Rosado Texto<v-spacer></v-spacer> $48.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/camisetas/gris.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/polos/flores.jpg" class="img-responsive" alt=""></v-card-text>
             <v-card-title class="precio"> Top Rosado Texto <v-spacer></v-spacer> $24.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/camisetas/negro.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/polos/gris.jpg" class="img-responsive" alt=""></v-card-text>
             <v-card-title class="precio"> Top Azul Oscuro Flores<v-spacer></v-spacer> $25.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/camisetas/blanco1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/polos/rojo.jpg" class="img-responsive" alt=""></v-card-text>
             <v-card-title class="precio"> Vestido Negro Cuadros<v-spacer></v-spacer> $38.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/camisetas/rosado.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src= "@/assets/hombre/polos/vino.jpg" class="img-responsive" alt=""></v-card-text>
             <v-card-title class="precio"> Top Verde Texto <v-spacer></v-spacer> $26.000</v-card-title>
         </v-flex>
       </v-layout>

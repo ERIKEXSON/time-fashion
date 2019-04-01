@@ -19,6 +19,14 @@ import Niños from './views/niños/inicio.vue'
 import Niño from './views/niños/ropaniño.vue'
 import Niña from './views/niños/ropaniña.vue'
 import Camisetas from './views/hombres/camisetas.vue'
+import Tanks from './views/hombres/tanks.vue'
+import Polos from './views/hombres/polos.vue'
+import Busos from './views/hombres/busos.vue'
+import Camisas from './views/hombres/camisas.vue'
+import Shorts from './views/hombres/shorts.vue'
+import Jeans from './views/hombres/jeans.vue'
+import Joggers from './views/hombres/joggers.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -111,9 +119,44 @@ export default new Router({
       component: Niña
     },
     {
-      path: '/hombre/camisetas',
+      path: '/camisetas',
       name: 'camisetas',
       component: Camisetas
+    },
+    {
+      path: '/tanks',
+      name: 'tanks',
+      component: Tanks
+    },
+    {
+      path: '/polos',
+      name: 'polos',
+      component: Polos
+    },
+    {
+      path: '/busos',
+      name: 'busos',
+      component: Busos
+    },
+    {
+      path: '/camisas',
+      name: 'camisas',
+      component: Camisas
+    },
+    {
+      path: '/shorts',
+      name: 'shorts',
+      component: Shorts
+    },
+    {
+      path: '/jeans-y-pantalones',
+      name: 'jeans',
+      component: Jeans
+    },
+    {
+      path: '/joggers',
+      name: 'joggers',
+      component: Joggers
     }
   ]
 })
