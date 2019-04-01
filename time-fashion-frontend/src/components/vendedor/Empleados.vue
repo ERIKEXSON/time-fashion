@@ -2,7 +2,7 @@
   <v-app>
     <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white">
-        <h2>Agregar producto</h2>
+        <h2>Agregar empleado</h2>
         <v-snackbar
           v-model="snackbar"
           absolute
@@ -11,7 +11,7 @@
           color="success"
           timeout="2000"
         >
-          <span>Producto agregado</span>
+          <span>Empleado agregado</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
       </div>
@@ -29,25 +29,25 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.codigo"
-                  :rules="rules.codigo"
-                  label="Código"
+                  v-model="form.apellido"
+                  :rules="rules.apellido"
+                  label="Apellido"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.precio"
-                  :rules="rules.precio"
-                  label="Precio"
+                  v-model="form.correo"
+                  :rules="rules.correo"
+                  label="Correo"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.marca"
-                  :rules="rules.marca"
-                  label="Marca"
+                  v-model="form.telefono"
+                  :rules="rules.telefono"
+                  label="Teléfono"
                   required
                 ></v-text-field>
               </v-flex>
@@ -67,7 +67,7 @@
       </v-card>
     </nav>
     <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
-      <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
+      <div style="background-color:#000000;padding: 5px;color: white"><h2>Empleados</h2></div>
       <v-card width="1045">
         <v-card-title>
         <v-text-field
@@ -86,9 +86,9 @@
         >
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.name }}</td>
-            <td class="text-xs-left">{{ props.item.codigo }}</td>
-            <td class="text-xs-left">{{ props.item.precio }}</td>
-            <td class="text-xs-left">{{ props.item.marca }}</td>
+            <td class="text-xs-left">{{ props.item.apellido }}</td>
+            <td class="text-xs-left">{{ props.item.correo }}</td>
+            <td class="text-xs-left">{{ props.item.telefono }}</td>
             <div style="text-align: center">
 
                 <v-btn fab dark small color="error">
@@ -110,17 +110,17 @@ export default {
   data () {
     const defaultForm = Object.freeze({
       nombre: '',
-      codigo: '',
-      precio: '',
-      marca: ''
+      apellido: '',
+      correo: '',
+      telefono: ''
     })
     return {
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        precio: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
+        apellido: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        telefono: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
       },
       conditions: false,
       snackbar: false,
@@ -128,17 +128,17 @@ export default {
       search: '',
       headers: [
         { text: 'Nombre', value: 'name' },
-        { text: 'Codigo', value: 'codigo' },
-        { text: 'Precio', value: 'precio' },
-        { text: 'Marca', value: 'marca' },
+        { text: 'Apellido', value: 'apellido' },
+        { text: 'Correo', value: 'correo' },
+        { text: 'Telefono', value: 'telefono' },
         { text: '' }
       ],
       desserts: [
         {
-          name: 'Shorts',
-          codigo: 'ASD812A',
-          precio: 1000000,
-          marca: 'roballo'
+          name: 'simon',
+          apellido: 'tolomeo',
+          correo: 'elmontador@simon.co',
+          telefono: '8622t347627364'
         }
       ]
     }
@@ -147,9 +147,9 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-          this.form.codigo &&
-          this.form.precio &&
-          this.form.marca
+          this.form.apellido &&
+          this.form.correo &&
+          this.form.telefono
       )
     }
   },

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <nav style="width: 810px; text-align: center; border:  #000000 3px solid;margin-bottom: 30px">
+    <nav style="width: 1045px; text-align: center; border:  #000000 3px solid;margin-bottom: 30px">
       <div style="background-color: #000000;padding: 5px;color: white">
         <h2>Agregar detalle</h2>
         <v-snackbar
@@ -54,19 +54,19 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm">Cancelar</v-btn>
-            <v-spacer></v-spacer>
+            <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
             <v-btn
               :disabled="!formIsValid"
               flat
               color="primary"
               type="submit"
+              style="background-color: #00FF08"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
     </nav>
-    <nav style="width: 810px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
+    <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
       <div style="background-color: #000000;padding: 5px;color: white"><h2>Detalles</h2></div>
       <v-card>
         <v-card-title>

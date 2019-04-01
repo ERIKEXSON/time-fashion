@@ -58,6 +58,11 @@ export default {
     drawer: true,
     admins: [
       {
+        text: 'Empleados',
+        icon: 'people_outline',
+        to: '/vendedor/empleados'
+      },
+      {
         text: 'Productos',
         icon: 'assignment',
         to: '/vendedor/productos'
@@ -84,6 +89,6 @@ export default {
 </script>
 <style lang="stylus">
   .accent--text i{
-    color #82B1FF !important
+    color #22C1D7 !important
   }
 </style>

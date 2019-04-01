@@ -1,6 +1,6 @@
 <template>
   <v-app>
-      <nav style="width:810px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
+      <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar producto</h2>
         <v-snackbar
@@ -46,21 +46,21 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm">Cancelar</v-btn>
-            <v-spacer></v-spacer>
+            <v-btn flat @click="resetForm" style="background-color: #00FF08; color: black">Cancelar</v-btn>
             <v-btn
               :disabled="!formIsValid"
               flat
-              color="primary"
+              color="black"
               type="submit"
+              style="background-color: #00FF08"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
     </nav>
-    <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px; width: 810px">
+    <nav style="text-align: center; border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white"><h2>Inventario</h2></div>
-      <v-card>
+      <v-card width= 1045>
         <v-card-title>
           <v-text-field
           v-model="search"
@@ -83,13 +83,13 @@
             <td class="text-xs-center">
                 <div style="text-align: center; display: inline-block;">
                     <v-btn fab dark small color="error">
-                    <v-icon dark color="black">delete</v-icon>
+                    <v-icon dark color="white">delete</v-icon>
                     </v-btn>
                     <v-btn fab dark small color="warning">
-                    <v-icon dark color="black">edit</v-icon>
+                    <v-icon dark color="white">edit</v-icon>
                     </v-btn>
                 </div>
-                <div style="display: inline-block; margin-left: 40px"><v-btn to="/vendedor/inventario/detalles">Detalles</v-btn></div>
+                <div style="display: inline-block; margin-left: 40px"><v-btn style="background-color: #00FF08" to="/vendedor/inventario/detalles">Detalles</v-btn></div>
             </td>
         </template>
         </v-data-table>
