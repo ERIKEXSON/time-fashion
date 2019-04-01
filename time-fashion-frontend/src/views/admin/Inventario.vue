@@ -23,7 +23,7 @@
           <td class="text-xs-left">{{ props.item.codigo }}</td>
           <td class="text-xs-left">{{ props.item.marca }}</td>
           <td class="text-xs-left">{{ props.item.valor }}</td>
-          <v-btn to="/admin/inventario/detalles">Detalles</v-btn>
+          <v-btn to="/admin/inventario/detalles" outline>Detalles</v-btn>
         </template>
         </v-data-table>
       </v-card>
