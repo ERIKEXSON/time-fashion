@@ -86,7 +86,7 @@
               <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
-              <v-btn color="transparent">
+              <v-btn to="/registrarse" color="transparent">
                 Registarse
               </v-btn>
             </v-list>
@@ -141,8 +141,8 @@
     <v-toolbar-items
     style="margin-right: 240px"
     >
-      <v-btn flat>Camisetas</v-btn>
-      <v-btn flat>Busos</v-btn>
+      <v-btn to="/camisetas-niño" flat>Camisetas</v-btn>
+      <v-btn to="/busos-niño" flat>Busos</v-btn>
       <v-btn flat>Shorts</v-btn>
       <v-btn flat  style="margin-right: 260px">Joggers</v-btn>
     </v-toolbar-items>

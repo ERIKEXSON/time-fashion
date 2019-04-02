@@ -19,17 +19,27 @@ import VendedorProductosDetalles from './components/vendedor/InventarioDetalles.
 import Niños from './views/niños/inicio.vue'
 import Niño from './views/niños/ropaniño.vue'
 import Niña from './views/niños/ropaniña.vue'
-import Camisetas from './views/hombres/camisetas.vue'
-import Tanks from './views/hombres/tanks.vue'
-import Polos from './views/hombres/polos.vue'
-import Busos from './views/hombres/busos.vue'
-import Camisas from './views/hombres/camisas.vue'
-import Shorts from './views/hombres/shorts.vue'
-import Jeans from './views/hombres/jeans.vue'
-import Joggers from './views/hombres/joggers.vue'
+import Camisetashombre from './views/hombres/camisetas.vue'
+import Tankshombre from './views/hombres/tanks.vue'
+import Poloshombre from './views/hombres/polos.vue'
+import Busoshombre from './views/hombres/busos.vue'
+import Camisashombre from './views/hombres/camisas.vue'
+import Shortshombre from './views/hombres/shorts.vue'
+import Jeanshombre from './views/hombres/jeans.vue'
+import Joggershombre from './views/hombres/joggers.vue'
 import Login from './views/Login.vue'
 import Carrito from './views/carrito.vue'
 import Registrarse from './views/registrarse.vue'
+import Topsmujer from './views/mujeres/tops.vue'
+import Bikinimujer from './views/mujeres/bikini.vue'
+import Busosmujer from './views/mujeres/buso.vue'
+import Vestidosmujer from './views/mujeres/vestidos.vue'
+import Shortsmujer from './views/mujeres/short.vue'
+import Camisasmujer from './views/mujeres/camisa.vue'
+import Pantalonesmujer from './views/mujeres/pantalones.vue'
+import Joggersmujer from './views/mujeres/joggers.vue'
+import Camisetasniño from './views/niños/niño/camisetas.vue'
+import Busosniño from './views/niños/niño/busos.vue'
 
 Vue.use(Router)
 
@@ -128,44 +138,44 @@ export default new Router({
       component: Niña
     },
     {
-      path: '/camisetas',
+      path: '/camisetas-hombre',
       name: 'camisetas',
-      component: Camisetas
+      component: Camisetashombre
     },
     {
-      path: '/tanks',
+      path: '/tanks-hombre',
       name: 'tanks',
-      component: Tanks
+      component: Tankshombre
     },
     {
-      path: '/polos',
+      path: '/polos-hombre',
       name: 'polos',
-      component: Polos
+      component: Poloshombre
     },
     {
-      path: '/busos',
+      path: '/busos-hombre',
       name: 'busos',
-      component: Busos
+      component: Busoshombre
     },
     {
-      path: '/camisas',
+      path: '/camisas-hombre',
       name: 'camisas',
-      component: Camisas
+      component: Camisashombre
     },
     {
-      path: '/shorts',
+      path: '/shorts-hombre',
       name: 'shorts',
-      component: Shorts
+      component: Shortshombre
     },
     {
-      path: '/jeans-y-pantalones',
+      path: '/jeans-y-pantalones-hombre',
       name: 'jeans',
-      component: Jeans
+      component: Jeanshombre
     },
     {
-      path: '/joggers',
+      path: '/joggers-hombre',
       name: 'joggers',
-      component: Joggers
+      component: Joggershombre
     },
     {
       path: '/login',
@@ -181,6 +191,56 @@ export default new Router({
       path: '/registrarse',
       name: 'registrarse',
       component: Registrarse
+    },
+    {
+      path: '/tops-mujer',
+      name: 'tops',
+      component: Topsmujer
+    },
+    {
+      path: '/bikini-mujer',
+      name: 'bikini',
+      component: Bikinimujer
+    },
+    {
+      path: '/busos-mujer',
+      name: '/buso',
+      component: Busosmujer
+    },
+    {
+      path: '/vestidos-mujer',
+      name: '/vestidos',
+      component: Vestidosmujer
+    },
+    {
+      path: '/shorts-y-faldas-mujer',
+      name: '/short',
+      component: Shortsmujer
+    },
+    {
+      path: '/camisas-mujer',
+      name: '/camisa',
+      component: Camisasmujer
+    },
+    {
+      path: '/jeans-y-pantalones-mujer',
+      name: '/pantalones',
+      component: Pantalonesmujer
+    },
+    {
+      path: '/joggers-mujer',
+      name: '/jogger',
+      component: Joggersmujer
+    },
+    {
+      path: '/camisetas-niño',
+      name: '/camiseta',
+      component: Camisetasniño
+    },
+    {
+      path: '/busos-niño',
+      name: '/busos-niño',
+      component: Busosniño
     }
   ]
 })

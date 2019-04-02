@@ -86,7 +86,7 @@
               <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
-              <v-btn color="transparent">
+              <v-btn to="/registrarse" color="transparent">
                 Registarse
               </v-btn>
             </v-list>
@@ -141,14 +141,86 @@
     <v-toolbar-items
     style="margin-right: 240px"
     >
-      <v-btn flat>Tops</v-btn>
-      <v-btn flat>Bikini</v-btn>
-      <v-btn flat>Busos</v-btn>
-      <v-btn flat>Vestidos</v-btn>
-      <v-btn flat>Shorts y Faldas</v-btn>
-      <v-btn flat>Camisas</v-btn>
-      <v-btn flat>Jeans Y Pantalones</v-btn>
-      <v-btn flat>Joggers</v-btn>
+      <v-btn to="/tops-mujer" flat>tops</v-btn>
+      <v-btn to="/bikini-mujer" flat>bikini</v-btn>
+      <v-btn to="/busos-mujer" flat>busos</v-btn>
+      <v-btn to="/vestidos-mujer" flat >vestidos</v-btn>
+      <v-btn to="/shorts-y-faldas-mujer" flat >shorts y faldas</v-btn>
+      <v-btn to="/camisas-mujer" flat >camisas</v-btn>
+      <v-btn to="/jeans-y-pantalones-mujer" flat >Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-mujer" flat >Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+   <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 55px"
+      height="25px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 20px"
+    >
+      <v-btn to="/tops-mujer" flat>tops</v-btn>
+      <v-btn to="/bikini-mujer" flat>bikini</v-btn>
+      <v-btn to="/busos-mujer" flat>busos</v-btn>
+      <v-btn to="/vestidos-mujer" flat class="hidden-sm-and-down">vestidos</v-btn>
+      <v-btn to="/shorts-y-faldas-mujer" flat class="hidden-sm-and-down">shorts y faldas</v-btn>
+      <v-btn to="/camisas-mujer" flat class="hidden-sm-and-down">camisas</v-btn>
+      <v-btn to="/jeans-y-pantalones-mujer" flat class="hidden-sm-and-down">Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-mujer" flat class="hidden-sm-and-down">Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 80px"
+      height="25px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 20px"
+    >
+      <v-btn to="/tops-mujer" flat class="hidden-sm-and-down">tops</v-btn>
+      <v-btn to="/bikini-mujer" flat class="hidden-sm-and-down">bikini</v-btn>
+      <v-btn to="/busos-mujer" flat class="hidden-sm-and-down">busos</v-btn>
+      <v-btn to="/vestidos-mujer" flat >vestidos</v-btn>
+      <v-btn to="/shorts-y-faldas-mujer" flat >shorts y faldas</v-btn>
+      <v-btn to="/camisas-mujer" flat >camisas</v-btn>
+      <v-btn to="/jeans-y-pantalones-mujer" flat class="hidden-sm-and-down">Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-mujer" flat class="hidden-sm-and-down">Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 105px"
+      height="25px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 20px"
+    >
+      <v-btn to="/tops-mujer" flat class="hidden-sm-and-down">tops</v-btn>
+      <v-btn to="/bikini-mujer" flat class="hidden-sm-and-down">bikini</v-btn>
+      <v-btn to="/busos-mujer" flat class="hidden-sm-and-down">busos</v-btn>
+      <v-btn to="/vestidos-mujer" flat class="hidden-sm-and-down" >vestidos</v-btn>
+      <v-btn to="/shorts-y-faldas-mujer" flat class="hidden-sm-and-down" >shorts y faldas</v-btn>
+      <v-btn to="/camisas-mujer" flat class="hidden-sm-and-down" >camisas</v-btn>
+      <v-btn to="/jeans-y-pantalones-mujer" flat >Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-mujer" flat >Joggers</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <v-toolbar

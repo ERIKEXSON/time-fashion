@@ -5,12 +5,12 @@
           <img src="@/assets/mujer/grande.png" class="img-responsive hidden-sm-and-down" style="margin-top: 10px" alt="">
       </v-flex>
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/mujer/chaqueta.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/mujer/chaqueta.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Chaqueta Azul Oscuro <v-spacer></v-spacer> $84.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/mujer/joggers.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/mujer/joggers.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio">Joggers Negro Básico<v-spacer></v-spacer> $54.000</v-card-title>
         </v-flex>
 
