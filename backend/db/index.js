@@ -30,7 +30,6 @@ module.exports = async function (config) {
   const BillModel = setupBillModel(config)
 
   const Payment_methodModel= setupPayment_methodModel(config)
-  const BillModel = setupBillModel(config)
 
   const OfferModel=setupOfferModel(config)
   const Offer_DetailModel=setupOffer_detailModel(config)
