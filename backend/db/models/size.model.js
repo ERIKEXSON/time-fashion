@@ -5,10 +5,10 @@ const setupDatabase = require('../lib/db')
 
 module.exports = function setupMetricModel (config) {
   const sequelize = setupDatabase(config)
-  return sequelize.define('offerdetail', {
+  return sequelize.define('size', {
     uuid: {
-        type: Sequelize.CHAR(36),
-        defaultValue: Sequelize.UUIDV4
+      type: Sequelize.CHAR(36),
+      defaultValue: Sequelize.UUIDV4
     },
-  })
+})
 }
