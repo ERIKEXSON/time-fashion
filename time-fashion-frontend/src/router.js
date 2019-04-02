@@ -26,6 +26,8 @@ import Camisas from './views/hombres/camisas.vue'
 import Shorts from './views/hombres/shorts.vue'
 import Jeans from './views/hombres/jeans.vue'
 import Joggers from './views/hombres/joggers.vue'
+import Login from './views/Login.vue'
+import Carrito from './views/carrito.vue'
 
 Vue.use(Router)
 
@@ -157,6 +159,16 @@ export default new Router({
       path: '/joggers',
       name: 'joggers',
       component: Joggers
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/carrito',
+      name: 'carrito',
+      component: Carrito
     }
   ]
 })

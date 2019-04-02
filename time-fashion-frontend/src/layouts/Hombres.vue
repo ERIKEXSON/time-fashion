@@ -83,7 +83,7 @@
                 </v-btn>
             </template>
             <v-list>
-              <v-btn color="transparent">
+              <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
               <v-btn color="transparent">
@@ -92,7 +92,7 @@
             </v-list>
             </v-menu>
         </div>
-      <v-btn icon >
+      <v-btn icon to="/carrito" >
         <v-icon>add_shopping_cart</v-icon>
       </v-btn>
 
