@@ -85,7 +85,7 @@
               <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
-              <v-btn color="transparent">
+              <v-btn to="/registrarse" color="transparent">
                 Registarse
               </v-btn>
           </v-list>

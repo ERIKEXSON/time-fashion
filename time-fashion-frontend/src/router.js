@@ -29,6 +29,7 @@ import Jeans from './views/hombres/jeans.vue'
 import Joggers from './views/hombres/joggers.vue'
 import Login from './views/Login.vue'
 import Carrito from './views/carrito.vue'
+import Registrarse from './views/registrarse.vue'
 
 Vue.use(Router)
 
@@ -175,6 +176,11 @@ export default new Router({
       path: '/carrito',
       name: 'carrito',
       component: Carrito
+    },
+    {
+      path: '/registrarse',
+      name: 'registrarse',
+      component: Registrarse
     }
   ]
 })
