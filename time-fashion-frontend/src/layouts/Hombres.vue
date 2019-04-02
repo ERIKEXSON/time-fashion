@@ -86,7 +86,7 @@
               <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
-              <v-btn color="transparent">
+              <v-btn to="/registrarse" color="transparent">
                 Registarse
               </v-btn>
             </v-list>
@@ -141,14 +141,86 @@
     <v-toolbar-items
     style="margin-right: 240px"
     >
-      <v-btn to="/camisetas" flat>Camisetas</v-btn>
-      <v-btn to="/tanks" flat>Tanks</v-btn>
-      <v-btn to="/polos" flat>Polos</v-btn>
-      <v-btn to="/busos" flat>Busos</v-btn>
-      <v-btn to="/camisas" flat>Camisas</v-btn>
-      <v-btn to="shorts" flat>Shorts</v-btn>
-      <v-btn to="jeans-y-pantalones" flat>Jeans Y Pantalones</v-btn>
-      <v-btn to="joggers" flat>Joggers</v-btn>
+      <v-btn to="/camisetas-hombre" flat>Camisetas</v-btn>
+      <v-btn to="/tanks-hombre" flat>Tanks</v-btn>
+      <v-btn to="/polos-hombre" flat>Polos</v-btn>
+      <v-btn to="/busos-hombre" flat >Busos</v-btn>
+      <v-btn to="/camisas-hombre" flat >Camisas</v-btn>
+      <v-btn to="/shorts-hombre" flat >Shorts</v-btn>
+      <v-btn to="/jeans-y-pantalones-hombre" flat >Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-hombre" flat >Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+   <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 55px"
+      height="25px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 20px"
+    >
+      <v-btn to="/camisetas-hombre" flat>Camisetas</v-btn>
+      <v-btn to="/tanks-hombre" flat>Tanks</v-btn>
+      <v-btn to="/polos-hombre" flat>Polos</v-btn>
+      <v-btn to="/busos-hombre" flat class="hidden-sm-and-down">Busos</v-btn>
+      <v-btn to="/camisas-hombre" flat class="hidden-sm-and-down">Camisas</v-btn>
+      <v-btn to="/shorts-hombre" flat class="hidden-sm-and-down">Shorts</v-btn>
+      <v-btn to="/jeans-y-pantalones-hombre" flat class="hidden-sm-and-down">Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-hombre" flat class="hidden-sm-and-down">Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 80px"
+      height="25px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 20px"
+    >
+      <v-btn to="/camisetas-hombre" flat class="hidden-sm-and-down">Camisetas</v-btn>
+      <v-btn to="/tanks-hombre" flat class="hidden-sm-and-down">Tanks</v-btn>
+      <v-btn to="/polos-hombre" flat class="hidden-sm-and-down">Polos</v-btn>
+      <v-btn to="/busos-hombre" flat >Busos</v-btn>
+      <v-btn to="/camisas-hombre" flat >Camisas</v-btn>
+      <v-btn to="/shorts-hombre" flat >Shorts</v-btn>
+      <v-btn to="/jeans-y-pantalones-hombre" flat class="hidden-sm-and-down">Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-hombre" flat class="hidden-sm-and-down">Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 105px"
+      height="25px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 20px"
+    >
+      <v-btn to="/camisetas-hombre" flat class="hidden-sm-and-down">Camisetas</v-btn>
+      <v-btn to="/tanks-hombre" flat class="hidden-sm-and-down">Tanks</v-btn>
+      <v-btn to="/polos-hombre" flat class="hidden-sm-and-down">Polos</v-btn>
+      <v-btn to="/busos-hombre" flat class="hidden-sm-and-down" >Busos</v-btn>
+      <v-btn to="/camisas-hombre" flat class="hidden-sm-and-down" >Camisas</v-btn>
+      <v-btn to="/shorts-hombre" flat class="hidden-sm-and-down" >Shorts</v-btn>
+      <v-btn to="/jeans-y-pantalones-hombre" flat >Jeans Y Pantalones</v-btn>
+      <v-btn to="/joggers-hombre" flat >Joggers</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <v-toolbar

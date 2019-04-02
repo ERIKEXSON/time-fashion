@@ -5,12 +5,12 @@
           <img src="@/assets/hombre/camisetas/grande.png" class="img-responsive hidden-sm-and-down" style="margin-top: 10px" alt="">
       </v-flex>
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/busos/amarillo.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/busos/amarillo.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Vestido Mostaza Texto<v-spacer></v-spacer> $30.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/busos/gris.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/busos/gris.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio">Buso Rosado Texto<v-spacer></v-spacer> $48.000</v-card-title>
         </v-flex>
 

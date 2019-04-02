@@ -4,9 +4,9 @@
                 <v-layout align-center justify-center>
                 <v-flex xs12 sm md12>
                     <v-card class="elevation-12">
-                    <v-toolbar color="black">
+                    <v-toolbar color="black" >
                         <div style="width:417.66px; text-align:center">
-                            <v-toolbar-title style="color:white">Ingresa tu usuario y contraseña</v-toolbar-title>
+                            <v-toolbar-title style="color:white" >Ingresa tu usuario y contraseña</v-toolbar-title>
                         </div>
                     </v-toolbar>
                     <v-card-text>

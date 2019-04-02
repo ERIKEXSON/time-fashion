@@ -5,12 +5,12 @@
           <img src="@/assets/hombre/grande.png" class="img-responsive hidden-sm-and-down" style="margin-top: 10px" alt="">
       </v-flex>
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/29458-1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/29458-1.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Jeans Azul Rotos <v-spacer></v-spacer> $84.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/29634-1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/29634-1.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio">Shorts Blanco Texto<v-spacer></v-spacer> $65.000</v-card-title>
         </v-flex>
 
