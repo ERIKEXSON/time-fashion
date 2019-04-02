@@ -94,6 +94,6 @@ export default {
 </script>
 <style lang="stylus">
   .accent--text i{
-    color #82B1FF !important
+    color #22C1D7 !important
   }
 </style>

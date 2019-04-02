@@ -90,13 +90,13 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm">Cancelar</v-btn>
-            <v-spacer></v-spacer>
+            <v-btn flat @click="resetForm" outline>Cancelar</v-btn>
             <v-btn
               :disabled="!formIsValid"
               flat
               color="primary"
               type="submit"
+              outline
             >Registrar</v-btn>
           </v-card-actions>
         </v-form>

@@ -12,6 +12,7 @@ import AdminEmpresaEmpleados from './components/admin/EmpresaEmpleados.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
+import VendedorEmpleados from './components/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorProductosDetalles from './components/vendedor/InventarioDetalles.vue'
@@ -89,6 +90,11 @@ export default new Router({
       path: '/vendedor',
       name: 'vendedor',
       component: Vendedor
+    },
+    {
+      path: '/vendedor/empleados',
+      name: 'empleados',
+      component: VendedorEmpleados
     },
     {
       path: '/vendedor/inventario',
