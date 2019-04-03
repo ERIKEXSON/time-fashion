@@ -58,7 +58,7 @@
             <v-btn
               :disabled="!formIsValid"
               flat
-              color="primary"
+              color=""
               type="submit"
               style="background-color: #00FF08"
             >Agregar</v-btn>

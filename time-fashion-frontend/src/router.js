@@ -5,7 +5,9 @@ import Inicio from './views/Inicio.vue'
 import Admin from './views/admin/Inicio.vue'
 import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
+import AdminAgregarEmpresa from './views/admin/AgregarEmpresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
+import AdminAgregarUsuarios from './views/admin/AgregarUsuarios.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import AdminInventarioDetalles from './components/admin/InventarioDetalles.vue'
 import AdminEmpresaEmpleados from './components/admin/EmpresaEmpleados.vue'
@@ -70,6 +72,11 @@ export default new Router({
       component: AdminEmpresas
     },
     {
+      path: '/admin/agregarempresa',
+      name: 'agregarEmpresaAdmin',
+      component: AdminAgregarEmpresa
+    },
+    {
       path: '/admin/empresas/empleados',
       name: 'empleadosEmpresaAdmin',
       component: AdminEmpresaEmpleados
@@ -78,6 +85,11 @@ export default new Router({
       path: '/admin/usuarios',
       name: 'usuariosAdmin',
       component: AdminUsuarios
+    },
+    {
+      path: '/admin/agregarusuario',
+      name: 'agregarUsuarioAdmin',
+      component: AdminAgregarUsuarios
     },
     {
       path: '/admin/inventario',
@@ -206,42 +218,42 @@ export default new Router({
     },
     {
       path: '/busos-mujer',
-      name: '/buso',
+      name: 'buso',
       component: Busosmujer
     },
     {
       path: '/vestidos-mujer',
-      name: '/vestidos',
+      name: 'vestidos',
       component: Vestidosmujer
     },
     {
       path: '/shorts-y-faldas-mujer',
-      name: '/short',
+      name: 'short',
       component: Shortsmujer
     },
     {
       path: '/camisas-mujer',
-      name: '/camisa',
+      name: 'camisa',
       component: Camisasmujer
     },
     {
       path: '/jeans-y-pantalones-mujer',
-      name: '/pantalones',
+      name: 'pantalones',
       component: Pantalonesmujer
     },
     {
       path: '/joggers-mujer',
-      name: '/jogger',
+      name: 'jogger',
       component: Joggersmujer
     },
     {
       path: '/camisetas-niño',
-      name: '/camiseta',
+      name: 'camiseta',
       component: Camisetasniño
     },
     {
       path: '/busos-niño',
-      name: '/busos-niño',
+      name: 'busos-niño',
       component: Busosniño
     },
     {
