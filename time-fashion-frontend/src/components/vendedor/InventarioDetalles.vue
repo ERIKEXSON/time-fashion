@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <v-app>
     <nav style="width: 1045px; text-align: center; border:  #000000 3px solid;margin-bottom: 30px">
       <div style="background-color: #000000;padding: 5px;color: white">
