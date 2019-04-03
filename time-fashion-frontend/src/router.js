@@ -40,6 +40,8 @@ import Pantalonesmujer from './views/mujeres/pantalones.vue'
 import Joggersmujer from './views/mujeres/joggers.vue'
 import Camisetasniño from './views/niños/niño/camisetas.vue'
 import Busosniño from './views/niños/niño/busos.vue'
+import Shortsniño from './views/niños/niño/shorts.vue'
+import Joggersniño from './views/niños/niño/joggers.vue'
 
 Vue.use(Router)
 
@@ -241,6 +243,16 @@ export default new Router({
       path: '/busos-niño',
       name: '/busos-niño',
       component: Busosniño
+    },
+    {
+      path: '/shorts-niño',
+      name: '/shorts-niño',
+      component: Shortsniño
+    },
+    {
+      path: '/joggers-niño',
+      name: '/joggers-niño',
+      component: Joggersniño
     }
   ]
 })

@@ -1,5 +1,29 @@
 <template>
   <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      fixed
+      app
+    >
+    <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+        <v-layout pa-2 column fill-height class="lightbox white--text">
+          <v-spacer></v-spacer>
+        </v-layout>
+      </v-img>
+      <v-list dense>
+        <template v-for="item in items">
+          <v-list-tile :key="item.text" :to="item.to">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="black"
@@ -7,31 +31,11 @@
       app
       fixed
     >
-      <div class="text-xs-center">
-        <v-menu offset-y>
-            <template v-slot:activator="{ on }">
-              <v-btn
-                icon="true"
-                color="transparent"
-                v-on="on"
-                class="hidden-md-and-up"
-              ><v-icon>menu</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-btn to="hombre">
-                Hombre
-              </v-btn>
-              <v-btn to="mujer">
-                Mujer
-              </v-btn>
-              <v-btn to="niños">
-                Niños
-              </v-btn>
-          </v-list>
-        </v-menu>
-      </div>
-      <v-btn color="transparent" to="/">
+    <v-toolbar-title style="width: 100px" class="ml-0 pl-3">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
+      </v-toolbar-title>
+
+      <v-btn color="transparent" to="/" class="hidden-sm-and-down">
           <img src="@/assets/logito.png" height="45px" width="90px">
       </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
@@ -49,28 +53,8 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
-        class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <v-menu offset-y :nudge-width="200">
-        <template v-slot:activator="{ on }">
-          <v-btn
-            icon="true"
-            color="transparent"
-            v-on="on"
-            class="hidden-md-and-up"
-          ><v-icon>search</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-tile
-            v-for="(item, index) in items3"
-            :key="index"
-          >
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
       <div class="text-xs-center">
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
@@ -137,14 +121,17 @@ export default {
     fling: false,
     tabs: null,
     transition: 'slide-y-reverse-transition',
-    items3: [
-      { title: 'Buscar' }
-    ],
+    items: [
+        { icon: '', text: 'Home', to: '/'},
+        { icon: 'add', text: 'Hombre', to: '/hombre' },
+        { icon: 'add', text: 'Mujer', to: '/mujer' },
+        { icon: 'add', text: 'Niños', to: '/niños' },
+      ],
     icons: [
       'fab fa-facebook',
       'fab fa-instagram',
       'fab fa-whatsapp'
-    ]
+    ],
   })
 }
 props: {

@@ -15,21 +15,21 @@
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/30126-1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/30126-1.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Jeans Azul Destroyer<v-spacer></v-spacer> $78.000</v-card-title>
         </v-flex>
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/30129-1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/30129-1.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Camisa Blanca Craneo<v-spacer></v-spacer> $84.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/30151-1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/30151-1.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Camiseta Mostaza Texto <v-spacer></v-spacer> $38.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/30834-1.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/30834-1.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Camisa Azul Flores <v-spacer></v-spacer> $68.000 </v-card-title>
         </v-flex>
       </v-layout>

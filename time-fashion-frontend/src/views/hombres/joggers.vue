@@ -15,22 +15,22 @@
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/joggers/ilustrado.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/joggers/ilustrado.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Top Rosado Texto <v-spacer></v-spacer> $24.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/joggers/mostaza.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/joggers/mostaza.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Top Azul Oscuro Flores<v-spacer></v-spacer> $25.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src="@/assets/hombre/joggers/negro.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src="@/assets/hombre/joggers/negro.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Vestido Negro Cuadros<v-spacer></v-spacer> $38.000</v-card-title>
         </v-flex>
 
         <v-flex xs6 sm4 md>
-            <v-card-text><img src= "@/assets/hombre/joggers/rosado.jpg" class="img-responsive" alt=""></v-card-text>
+            <v-card-text><img src= "@/assets/hombre/joggers/rosado.jpg" class="img-responsive" style="margin-top: 30px" alt=""></v-card-text>
             <v-card-title class="precio"> Top Verde Texto <v-spacer></v-spacer> $26.000</v-card-title>
         </v-flex>
       </v-layout>
