@@ -1,4 +1,5 @@
 <template>
+  <v-app>
     <nav style="text-align:center;border: #000000 3px solid">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar empresas</h2>
@@ -14,7 +15,7 @@
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
       </div>
-      <v-card flat>
+      <v-card width="1045">
         <v-form ref="form" @submit.prevent="submit">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
@@ -36,17 +37,17 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.telefono"
-                  :rules="rules.telefono"
-                  label="Teléfono"
+                  v-model="form.correo"
+                  :rules="rules.correo"
+                  label="Correo"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.correo"
-                  :rules="rules.correo"
-                  label="Correo"
+                  v-model="form.telefono"
+                  :rules="rules.telefono"
+                  label="Teléfono"
                   required
                 ></v-text-field>
               </v-flex>
@@ -57,7 +58,7 @@
             <v-btn
               :disabled="!formIsValid"
               flat
-              color="primary"
+              color="black"
               type="submit"
               outline
             >Registrar</v-btn>
@@ -65,6 +66,7 @@
         </v-form>
       </v-card>
     </nav>
+  </v-app>
 </template>
 <script>
 export default {
