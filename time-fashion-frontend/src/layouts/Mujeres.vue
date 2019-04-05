@@ -55,7 +55,7 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
-        
+
       ></v-text-field>
       <v-spacer></v-spacer>
          <div class="text-xs-center">
@@ -241,11 +241,11 @@ export default {
     tabs: null,
     transition: 'slide-y-reverse-transition',
     items: [
-        { icon: '', text: 'Home', to: '/'},
-        { icon: 'add', text: 'Hombre', to: '/hombre' },
-        { icon: 'add', text: 'Mujer', to: '/mujer' },
-        { icon: 'add', text: 'Niños', to: '/niños' },
-      ],
+      { icon: '', text: 'Home', to: '/' },
+      { icon: 'add', text: 'Hombre', to: '/hombre' },
+      { icon: 'add', text: 'Mujer', to: '/mujer' },
+      { icon: 'add', text: 'Niños', to: '/niños' }
+    ],
     items1: [
       { title: 'Iniciar sesión' },
       { title: 'Crear cuenta' }
