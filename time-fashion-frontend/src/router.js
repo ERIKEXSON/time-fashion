@@ -9,8 +9,6 @@ import AdminAgregarEmpresa from './views/admin/AgregarEmpresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
 import AdminAgregarUsuarios from './views/admin/AgregarUsuarios.vue'
 import AdminInventario from './views/admin/Inventario.vue'
-import AdminInventarioDetalles from './components/admin/InventarioDetalles.vue'
-import AdminEmpresaEmpleados from './views/admin/EmpresaEmpleados.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
@@ -77,11 +75,6 @@ export default new Router({
       component: AdminAgregarEmpresa
     },
     {
-      path: '/admin/empresas/empleados',
-      name: 'empleadosEmpresaAdmin',
-      component: AdminEmpresaEmpleados
-    },
-    {
       path: '/admin/usuarios',
       name: 'usuariosAdmin',
       component: AdminUsuarios
@@ -95,11 +88,6 @@ export default new Router({
       path: '/admin/inventario',
       name: 'inventarioAdmin',
       component: AdminInventario
-    },
-    {
-      path: '/admin/inventario/detalles',
-      name: 'detallesInventarioAdmin',
-      component: AdminInventarioDetalles
     },
     {
       path: '/hombre',

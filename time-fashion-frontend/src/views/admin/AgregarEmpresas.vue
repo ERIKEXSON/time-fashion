@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <nav style="text-align:center;border: #000000 3px solid">
+    <nav style="text-align:center; border: #000000 3px solid">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar empresas</h2>
         <v-snackbar
@@ -10,9 +10,10 @@
           right
           color="success"
           timeout="2000"
+          class="snackbar"
         >
           <span>¡Registro exitoso!</span>
-          <v-icon dark>check_circle</v-icon>
+          <v-icon>check_circle</v-icon>
         </v-snackbar>
       </div>
       <v-card width="1045">
@@ -54,14 +55,14 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm" outline>Cancelar</v-btn>
-            <v-btn
+            <div class="botonCancelar"><v-btn flat @click="resetForm">Cancelar</v-btn></div>
+            <div class="botonRegistrar"><v-btn
               :disabled="!formIsValid"
               flat
               color="black"
               type="submit"
-              outline
-            >Registrar</v-btn>
+            >Registrar
+            </v-btn></div>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -115,3 +116,23 @@ export default {
   }
 }
 </script>
+<style>
+ .botonCancelar{
+    background-color: rgba(206, 98, 252, 0.795);
+    transition: all .2s linear
+ }
+ .botonCancelar:hover{
+    background-color: rgba(136, 16, 248, 0.795)
+ }
+ .botonRegistrar{
+    background-color: rgba(206, 98, 252, 0.795);
+    margin-left: 10px;
+    transition: all .2s linear
+ }
+ .botonRegistrar:hover{
+    background-color: rgba(136, 16, 248, 0.795)
+ }
+ .snackbar{
+   color: black
+ }
+</style>
