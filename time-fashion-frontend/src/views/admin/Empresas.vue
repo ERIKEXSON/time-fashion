@@ -26,10 +26,27 @@
           <td class="text-xs-left">{{ props.item.telefono }}</td>
           <td class="text-xs-left">{{ props.item.correo }}</td>
           <v-btn to="/admin/empresas/empleados" outline>Empleados</v-btn>
+          <!--<a href="javascript:;" @click.stop="terms = true">terms</a>-->
         </template>
         </v-data-table>
       </v-card>
     </nav>
+    <!--<v-dialog v-model="terms" width="70%">
+      <v-card>
+        <v-card-title class="title">Terms</v-card-title>
+        <v-card-text v-for="n in 5" :key="n">
+          {{ content }}
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            flat
+            color="purple"
+            @click="terms = false"
+          >Ok</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>-->
   </v-app>
 </template>
 <script>
@@ -42,7 +59,6 @@ export default {
         { text: 'NIT', value: 'nit' },
         { text: 'Teléfono', value: 'telefono' },
         { text: 'Correo', value: 'correo' },
-        { text: '' },
         { text: '' }
       ],
       desserts: [

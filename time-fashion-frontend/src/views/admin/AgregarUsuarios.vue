@@ -1,4 +1,5 @@
 <template>
+  <v-app>
     <nav style="text-align:center; border: #000000 3px solid">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar usuarios</h2>
@@ -14,7 +15,7 @@
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
       </div>
-      <v-card flat>
+      <v-card width="1045">
         <v-form ref="form" @submit.prevent="submit">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
@@ -101,6 +102,7 @@
         </v-form>
       </v-card>
     </nav>
+  </v-app>
 </template>
 <script>
 export default {

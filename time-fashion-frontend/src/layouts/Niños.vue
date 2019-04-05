@@ -36,7 +36,7 @@
     <v-toolbar-title style="width: 100px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       </v-toolbar-title>
-      
+
       <v-btn color="transparent" to="/" class="hidden-sm-and-down">
         <img src="@/assets/logito.png" height="45px" width="90px" >
       </v-btn>
@@ -55,7 +55,7 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
-        
+
       ></v-text-field>
       <v-spacer></v-spacer>
          <div class="text-xs-center">
@@ -177,11 +177,11 @@ export default {
     tabs: null,
     transition: 'slide-y-reverse-transition',
     items: [
-        { icon: '', text: 'Home', to: '/'},
-        { icon: 'add', text: 'Hombre', to: '/hombre' },
-        { icon: 'add', text: 'Mujer', to: '/mujer' },
-        { icon: 'add', text: 'Niños', to: '/niños' },
-      ],
+      { icon: '', text: 'Home', to: '/' },
+      { icon: 'add', text: 'Hombre', to: '/hombre' },
+      { icon: 'add', text: 'Mujer', to: '/mujer' },
+      { icon: 'add', text: 'Niños', to: '/niños' }
+    ],
     items1: [
       { title: 'Iniciar sesión' },
       { title: 'Crear cuenta' }
