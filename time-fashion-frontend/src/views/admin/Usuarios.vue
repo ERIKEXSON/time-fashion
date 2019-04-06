@@ -227,10 +227,6 @@
                           </v-data-table>
                         </v-card>
                       </nav>
-                      <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <div class="botonCerrar"><v-btn flat @click="contacto = false">Cerrar</v-btn></div>
-                      </v-card-actions>
                     </v-card-text>
                   </v-card>
                 </v-tab-item>
