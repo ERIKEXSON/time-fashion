@@ -11,6 +11,7 @@ import VendedorLayout from './layouts/Vendedor.vue'
 import NiñosLayout from './layouts/Niños.vue'
 import NiñoLayouts from './layouts/Niño.vue'
 import NiñaLayouts from './layouts/Niña.vue'
+import ClienteLayout from './layouts/Cliente.vue'
 import { mapState } from 'vuex'
 export default {
   name: 'App',
@@ -18,7 +19,7 @@ export default {
     return {
     }
   },
-  components: { AdministradorLayout, PrincipalLayout, HombresLayout, MujeresLayout, VendedorLayout, NiñosLayout, NiñoLayouts, NiñaLayouts },
+  components: { AdministradorLayout, PrincipalLayout, HombresLayout, MujeresLayout, VendedorLayout, NiñosLayout, NiñoLayouts, NiñaLayouts, ClienteLayout },
   computed: mapState(['layout'])
 }
 </script>
