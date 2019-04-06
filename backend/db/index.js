@@ -10,7 +10,7 @@ const setupOfferModel =require('./models/offer.model')
 const setupOffer_detailModel =require('./models/offer_detail.model')
 const setupRequested_detailModel =require('./models/requested_detayl.model')
 const setupInventoryModel = require("./models/inventory.model")
-const setupColourModel = require("./models/colour.model")
+const setupColorModel = require("./models/color.model")
 const setupSizeModel = require("./models/size.model")
 const setupProductsModel = require("./models/products.model")
 const setupBrandModel = require("./models/brand.model")
@@ -31,7 +31,7 @@ module.exports = async function (config) {
   const Offer_DetailModel=setupOffer_detailModel(config)
   const Requested_detaylModel=setupRequested_detailModel(config)
   const InventoryModel= setupInventoryModel(config)
-  const ColourModel= setupColourModel(config)
+  const ColourModel= setupColorModel(config)
   const SizeModel= setupSizeModel(config)
   const ProductsModel= setupProductsModel(config)
   const BrandModel= setupBrandModel(config)
@@ -71,8 +71,8 @@ module.exports = async function (config) {
   Requested_detaylModel.belongsTo(OrderModel)
 
   //relacion de inventario a color
-  InventoryModel.hasMany(ColourModel)
-  ColourMode.belongsTo(InventoryModel)
+  InventoryModel.hasMany(ColorModel)
+  ColorModel.belongsTo(InventoryModel)
 
   //relacion de inventario a talla
   InventoryModel.hasMany(SizeModel)
@@ -103,8 +103,8 @@ module.exports = async function (config) {
   BrandModel.belongsTo(ProductsModel)
 
   //relacion de productos a color
-  ProductsModel.hasMany(ColourModel)
-  ColourModel.belongsTo( ProductsModel)
+  ProductsModel.hasMany(ColorModel)
+  ColorModel.belongsTo( ProductsModel)
 
  //relacion de detalle_talla a tallas
  SizeModel.hasMany(Detail_sizeModel)
