@@ -9,6 +9,6 @@ module.exports = function setupMetricModel (config) {
     uuid: {
       type: Sequelize.CHAR(36),
       defaultValue: Sequelize.UUIDV4
-    },
-})
+    }
+  })
 }

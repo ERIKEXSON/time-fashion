@@ -13,6 +13,6 @@ module.exports = function setupMetricModel (config) {
     dirrecion: {
       type: Sequelize.TEXT,
       allowNull: false
-    },
+    }
   })
 }

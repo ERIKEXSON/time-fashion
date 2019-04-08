@@ -7,16 +7,16 @@ module.exports = function setupMetricModel (config) {
   const sequelize = setupDatabase(config)
   return sequelize.define('bill', {
     uuid: {
-        type: Sequelize.CHAR(36),
-        defaultValue: Sequelize.UUIDV4
+      type: Sequelize.CHAR(36),
+      defaultValue: Sequelize.UUIDV4
     },
-    numero_cuotas:{
-        type: Sequelize.TEXT,
-        allowNull: false
+    numero_cuotas: {
+      type: Sequelize.TEXT,
+      allowNull: false
     },
-    valor_total:{
-        type: Sequelize.FLOAT,
-        allowNull: false
-    },
+    valor_total: {
+      type: Sequelize.FLOAT,
+      allowNull: false
+    }
   })
 }
