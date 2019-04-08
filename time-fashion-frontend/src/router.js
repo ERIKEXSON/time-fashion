@@ -5,7 +5,6 @@ import Inicio from './views/Inicio.vue'
 import Admin from './views/admin/Inicio.vue'
 import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
-import AdminAgregarEmpresa from './views/admin/AgregarEmpresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
@@ -68,11 +67,6 @@ export default new Router({
       path: '/admin/empresas',
       name: 'empresasAdmin',
       component: AdminEmpresas
-    },
-    {
-      path: '/admin/agregarempresa',
-      name: 'agregarEmpresaAdmin',
-      component: AdminAgregarEmpresa
     },
     {
       path: '/admin/usuarios',

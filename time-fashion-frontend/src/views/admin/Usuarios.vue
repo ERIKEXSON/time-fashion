@@ -156,83 +156,37 @@
       </v-dialog>
       <v-dialog v-model="compras" width="1085">
         <v-card>
-          <template>
-            <div>
-              <v-toolbar tabs>
-                <v-toolbar-title>Historial de compras</v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-btn icon>
-                  <v-icon>search</v-icon>
-                </v-btn>
-                <template v-slot:extension>
-                  <v-tabs
-                    v-model="tabs"
-                    fixed-tabs
-                    color="transparent"
-                  >
-                    <v-tab href="#mobile-tabs-5-1" class="primary--text">
-                      <v-icon>phone</v-icon>
-                    </v-tab>
-                    <v-tab href="#mobile-tabs-5-2" class="primary--text">
-                      <v-icon>favorite</v-icon>
-                    </v-tab>
-                  </v-tabs>
-                </template>
-              </v-toolbar>
-              <v-tabs-items v-model="tabs" class="white elevation-1">
-                <v-tab-item
-                  v-for="i in 3"
-                  :key="i"
-                  :value="'mobile-tabs-5-' + i"
+          <v-card-text>
+            <nav class="borde">
+              <div class="tituloCuadro"><h2>Historial de pedidos</h2></div>
+              <v-card width="1045">
+                <v-card-title>
+                  <v-text-field
+                    v-model="search"
+                    append-icon="search"
+                    label="Buscar"
+                    single-line
+                    hide-details
+                  ></v-text-field>
+                </v-card-title>
+                <v-data-table
+                  :headers="historialPedidos"
+                  :items="pedidoInventado"
+                  :search="search"
                 >
-                  <v-card v-if="i == 1">
-                    <v-card-text>
-                      <nav class="borde">
-                        <div class="tituloCuadro"><h2>Datos de contacto</h2></div>
-                        <v-card width="1045">
-                          <v-data-table
-                            :headers="datosContacto"
-                            :items="desserts"
-                            :search="search"
-                          >
-                            <template v-slot:items="props">
-                              <td class="text-xs-left">{{ props.item.correo }}</td>
-                              <td class="text-xs-left">{{ props.item.direccion }}</td>
-                              <td class="text-xs-left">{{ props.item.telefono }}</td>
-                            </template>
-                          </v-data-table>
-                        </v-card>
-                      </nav>
-                      <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <div class="botonCerrar"><v-btn flat @click="contacto = false">Cerrar</v-btn></div>
-                      </v-card-actions>
-                    </v-card-text>
-                  </v-card>
-                  <v-card v-if="i == 2">
-                    <v-card-text>
-                      <nav class="borde">
-                        <div class="tituloCuadro"><h2>asdasdasd</h2></div>
-                        <v-card width="1045">
-                          <v-data-table
-                            :headers="datosContacto"
-                            :items="desserts"
-                            :search="search"
-                          >
-                            <template v-slot:items="props">
-                              <td class="text-xs-left">{{ props.item.correo }}</td>
-                              <td class="text-xs-left">{{ props.item.direccion }}</td>
-                              <td class="text-xs-left">{{ props.item.telefono }}</td>
-                            </template>
-                          </v-data-table>
-                        </v-card>
-                      </nav>
-                    </v-card-text>
-                  </v-card>
-                </v-tab-item>
-              </v-tabs-items>
-            </div>
-          </template>
+                  <template v-slot:items="props">
+                    <td class="text-xs-left">{{ props.item.informacion }}</td>
+                    <td class="text-xs-left">{{ props.item.estado }}</td>
+                    <v-btn>hola</v-btn>
+                  </template>
+                </v-data-table>
+              </v-card>
+            </nav>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="botonCerrar"><v-btn flat @click="compras = false">Cerrar</v-btn></div>
+            </v-card-actions>
+          </v-card-text>
         </v-card>
       </v-dialog>
     </nav>
@@ -293,6 +247,17 @@ export default {
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
         { text: 'Teléfono', value: 'telefono' }
+      ],
+      historialPedidos: [
+        { text: 'Información del pedido', value: 'informacion' },
+        { text: 'Estado del pedido', value: 'estado' },
+        { text: 'Acciones de pedido' }
+      ],
+      pedidoInventado: [
+        {
+          informacion: 'asdasd',
+          estado: 'Entrega pendiente'
+        }
       ]
     }
   },
@@ -348,11 +313,11 @@ export default {
     margin-left: 10px;
     transition: all .2s linear
  }
- .botonRegistrar:hover{
+ .botonRegistrar button:not([disabled="disabled"]):hover{
     background-color: rgba(136, 16, 248, 0.795)
  }
  .snackbar{
-   color: black
+    color: black
  }
  .botonContacto{
     display: inline-block;
