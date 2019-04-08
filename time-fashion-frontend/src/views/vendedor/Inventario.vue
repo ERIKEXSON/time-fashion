@@ -118,15 +118,15 @@
                   </v-text-field>
                 </v-card-title>
                 <v-data-table
-                  :headers="headers"
-                  :items="desserts"
+                  :headers="encabezado"
+                  :items="contenido"
                   :search="search"
                 >
                   <template v-slot:items="props">
-                    <td class="text-xs-left">{{ props.item.color }}</td>
-                    <td class="text-xs-left">{{ props.item.codigo }}</td>
-                    <td class="text-xs-left">{{ props.item.tallas }}</td>
-                    <td class="text-xs-left">{{ props.item.cantidad }}</td>
+                    <td class="text-xs-left">{{ props.item.color1 }}</td>
+                    <td class="text-xs-left">{{ props.item.codigo1 }}</td>
+                    <td class="text-xs-left">{{ props.item.tallas1 }}</td>
+                    <td class="text-xs-left">{{ props.item.cantidad1 }}</td>
                     <td class="text-xs-center">
                       <v-btn fab dark small color="error">
                       <v-icon dark color="black">delete</v-icon>
@@ -155,14 +155,22 @@ export default {
     const defaultForm = Object.freeze({
       nombre: '',
       codigo: '',
-      marca: ''
+      marca: '',
+      color1: '',
+      codigo1: '',
+      tallas1: '',
+      cantidad1: ''
     })
     return {
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
         codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido']
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        color1: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        codigo1: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        tallas1: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        cantidad1: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,
@@ -174,11 +182,32 @@ export default {
         { text: 'Marca', value: 'marca' },
         { text: '' }
       ],
+       encabezado: [
+        { text: 'Color', value: 'color1' },
+        { text: 'Código', value: 'codigo1' },
+        { text: 'Tallas', value: 'tallas1' },
+        { text: 'Cantidad', value: 'cantidad1' },
+        { text: '' }
+      ],
       desserts: [
         {
           name: 'camison',
           codigo: '87364502-1',
           marca: 'roballoasdasdasdasd'
+        }
+      ],
+      contenido: [
+        {
+          color: 'VeDA',
+          tallas: 'S, Mrde',
+          codigo: 'AS981, XL',
+          cantidad: 15
+        },
+        {
+          color: 'Rojo',
+          codigo: 'KOKD9I3J',
+          tallas: 'S, M',
+          cantidad: 10
         }
       ]
     }
@@ -187,8 +216,12 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-          this.form.codigo &&
-          this.form.marca
+        this.form.codigo &&
+        this.form.marca &&
+        this.form.color1 &&
+        this.form.codigo1 &&
+        this.form.tallas1 &&
+        this.form.cantidad1
       )
     }
   },

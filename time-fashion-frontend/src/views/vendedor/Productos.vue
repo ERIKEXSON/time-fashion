@@ -1,6 +1,73 @@
 <template>
   <v-app>
-    <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
+     <nav class="cuadro" >
+      <div style="background-color:#000000;padding: 5px;color: white">
+        <h2>Agregar producto</h2>
+        <v-snackbar
+          v-model="snackbar"
+          absolute
+          top
+          right
+          color="success"
+          timeout="2000"
+        >
+          <span>Producto agregado</span>
+          <v-icon dark>check_circle</v-icon>
+        </v-snackbar>
+      </div>
+      <v-card flat>
+        <v-form ref="form" @submit.prevent="submit">
+          <v-container grid-list-xl fluid>
+            <v-layout wrap>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.nombre"
+                  :rules="rules.nombre"
+                  label="Nombre"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.codigo"
+                  :rules="rules.codigo"
+                  label="Código"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.precio"
+                  :rules="rules.precio"
+                  label="Precio"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.marca"
+                  :rules="rules.marca"
+                  label="Marca"
+                  required
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <v-card-actions>
+            <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
+            <v-btn
+              :disabled="!formIsValid"
+              flat
+              color=""
+              type="submit"
+              style="background-color: #00FF08"
+            >Agregar</v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card>
+     </nav>
+<!--Lista de Productos-->
+    <nav class="cuadro2">
       <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
       <v-card width="1045">
         <v-card-title>
@@ -67,14 +134,14 @@ export default {
         { text: 'Marca', value: 'marca' },
         { text: '' }
       ],
-      desserts: [
+       desserts: [
         {
           name: 'Shorts',
           codigo: 'ASD812A',
           precio: 1000000,
           marca: 'roballo'
         }
-      ]
+      ],
     }
   },
   computed: {
@@ -102,3 +169,17 @@ export default {
   }
 }
 </script>
+<style>
+.cuadro{
+ text-align:center;
+ border: #000000 3px solid;
+ margin-bottom: 30px
+}
+.cuadro2{
+ border: #000000 3px solid;
+ width:fit-content ;
+ text-align: center;
+ margin-top:50px
+}
+</style>
+
