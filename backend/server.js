@@ -4,7 +4,7 @@ const http = require('http')
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
-const { errorHandler, /*media, image,*/ home } = require('@time-fashion/api')
+const { errorHandler, /* media, image, */ home } = require('@time-fashion/api')
 const { getLogger, logHandler, terminate } = require('@time-fashion/utils')
 
 const app = express()
