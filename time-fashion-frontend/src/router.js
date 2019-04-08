@@ -7,15 +7,16 @@ import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
 import AdminAgregarEmpresa from './views/admin/AgregarEmpresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
-import AdminAgregarUsuarios from './views/admin/AgregarUsuarios.vue'
 import AdminInventario from './views/admin/Inventario.vue'
-import Hombre from './views/hombres/ropahombre.vue'
-import Mujer from './views/mujeres/ropamujer.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
-import VendedorProductosDetalles from './views/vendedor/InventarioDetalles.vue'
+import Cliente from './views/cliente/Inicio.vue'
+import Client from './views/cliente/perfil.vue'
+import Clientecompra from './views/cliente/miscompras.vue'
+import Hombre from './views/hombres/ropahombre.vue'
+import Mujer from './views/mujeres/ropamujer.vue'
 import Niños from './views/niños/inicio.vue'
 import Niño from './views/niños/ropaniño.vue'
 import Niña from './views/niños/ropaniña.vue'
@@ -80,11 +81,6 @@ export default new Router({
       component: AdminUsuarios
     },
     {
-      path: '/admin/agregarusuario',
-      name: 'agregarUsuarioAdmin',
-      component: AdminAgregarUsuarios
-    },
-    {
       path: '/admin/inventario',
       name: 'inventarioAdmin',
       component: AdminInventario
@@ -113,11 +109,6 @@ export default new Router({
       path: '/vendedor/inventario',
       name: 'inventarioVendedor',
       component: VendedorInventario
-    },
-    {
-      path: '/vendedor/inventario/detalles',
-      name: 'detallesInventarioVendedor',
-      component: VendedorProductosDetalles
     },
     {
       path: '/vendedor/productos',
@@ -253,6 +244,21 @@ export default new Router({
       path: '/joggers-niño',
       name: '/joggers-niño',
       component: Joggersniño
+    },
+    {
+      path: '/cliente',
+      name: 'cliente',
+      component: Cliente
+    },
+    {
+      path:'/cliente/perfil',
+      name:'clientucho',
+      component: Client
+    },
+    {
+      path:'/cliente/compra',
+      name:'Miscompras',
+      component: Clientecompra
     }
   ]
 })

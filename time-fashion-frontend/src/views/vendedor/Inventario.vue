@@ -182,7 +182,7 @@ export default {
         { text: 'Marca', value: 'marca' },
         { text: '' }
       ],
-       encabezado: [
+      encabezado: [
         { text: 'Color', value: 'color1' },
         { text: 'Código', value: 'codigo1' },
         { text: 'Tallas', value: 'tallas1' },
@@ -250,7 +250,7 @@ export default {
     background-color:rgb(145, 45, 45);
 }
 .btd{
-  display: inline-block; 
+  display: inline-block;
   margin-left: 40px;
    background-color: rgba(34, 194, 215, 0.61);
   transition: all .2s linear

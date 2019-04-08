@@ -134,14 +134,14 @@ export default {
         { text: 'Marca', value: 'marca' },
         { text: '' }
       ],
-       desserts: [
+      desserts: [
         {
           name: 'Shorts',
           codigo: 'ASD812A',
           precio: 1000000,
           marca: 'roballo'
         }
-      ],
+      ]
     }
   },
   computed: {
@@ -182,4 +182,3 @@ export default {
  margin-top:50px
 }
 </style>
-

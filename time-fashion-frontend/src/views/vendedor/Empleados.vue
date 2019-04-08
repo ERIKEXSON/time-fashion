@@ -124,7 +124,7 @@ export default {
       correo: '',
       telefono: '',
       documento: '',
-      tipodoc: '',
+      tipodoc: ''
     })
     return {
       show1: false,
@@ -137,7 +137,7 @@ export default {
         documento: [val => (val || '').length > 0 || 'Este campo es requerido'],
         tipodocumento: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
-      tipos:['Tarjeta de identidad','Cédula de Ciudadania','Otro'],
+      tipos: ['Tarjeta de identidad', 'Cédula de Ciudadania', 'Otro'],
       conditions: false,
       snackbar: false,
       defaultForm,
@@ -147,8 +147,8 @@ export default {
         { text: 'Apellido', value: 'apellido' },
         { text: 'Correo', value: 'correo' },
         { text: 'Telefono', value: 'telefono' },
-        { text: 'Documento', value:'documento'},
-        { text: 'Tipodocumento', value:'tipodocumento'},
+        { text: 'Documento', value: 'documento' },
+        { text: 'Tipodocumento', value: 'tipodocumento' },
         { text: '' }
       ],
       desserts: [
@@ -158,7 +158,7 @@ export default {
           correo: 'elmontador@simon.co',
           telefono: '8622t347627364',
           documento: '9872920',
-          tipodocumento:''
+          tipodocumento: ''
         }
       ]
     }

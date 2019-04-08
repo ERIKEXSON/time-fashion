@@ -103,7 +103,7 @@ export default {
             title: 'Agregados',
             icon: 'featured_play_list',
             to: '/vendedor/empleados'
-          },
+          }
         ]
       },
       {
@@ -114,7 +114,7 @@ export default {
             title: 'Agregados',
             icon: 'featured_play_list',
             to: '/vendedor/productos'
-          },
+          }
         ]
       }
     ],

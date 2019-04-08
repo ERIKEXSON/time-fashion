@@ -10,7 +10,7 @@ const setupOfferModel =require('./models/offer.model')
 const setupOffer_detailModel =require('./models/offer_detail.model')
 const setupRequested_detailModel =require('./models/requested_detayl.model')
 const setupInventoryModel = require("./models/inventory.model")
-const setupColourModel = require("./models/colour.model")
+const setupColorModel = require("./models/color.model")
 const setupSizeModel = require("./models/size.model")
 const setupProductsModel = require("./models/products.model")
 const setupBrandModel = require("./models/brand.model")
@@ -22,29 +22,20 @@ const setupDetail_size = require("./models/detail_size.model")
 module.exports = async function (config) {
   const sequelize = setupDatabase(config)
   const UserModel = setupUserModel(config)
-  
   const OrderModel = setupOrderModel(config)
   const DirectionModel = setupDirectionModel(config)
- 
   const CancellationModel = setupCancellationModel(config)
   const BillModel = setupBillModel(config)
-
   const Payment_methodModel= setupPayment_methodModel(config)
-
   const OfferModel=setupOfferModel(config)
   const Offer_DetailModel=setupOffer_detailModel(config)
-
   const Requested_detaylModel=setupRequested_detailModel(config)
-
   const InventoryModel= setupInventoryModel(config)
-  const ColourModel= setupColourModel(config)
-
+  const ColorModel= setupColorModel(config)
   const SizeModel= setupSizeModel(config)
   const ProductsModel= setupProductsModel(config)
-
   const BrandModel= setupBrandModel(config)
   const LineModel= setupLineModel(config)
-
   const Detail_sizeModel= setupDetail_size(config)
 
   //relacion de usuario a pedidos
@@ -78,13 +69,14 @@ module.exports = async function (config) {
   //relacion de pedidos  a detalles_pedido
   OrderModel.hasMany(Requested_detaylModel)
   Requested_detaylModel.belongsTo(OrderModel)
+
   //relacion de inventario a color
-  InventoryModel.hasMany(ColourModel)
-  InventoryModel.belongsTo(ColourModel)
+  InventoryModel.hasMany(ColorModel)
+  ColorModel.belongsTo(InventoryModel)
 
   //relacion de inventario a talla
   InventoryModel.hasMany(SizeModel)
-  InventoryModel.belongsTo(SizeModel)
+  SizeModel.belongsTo(InventoryModel)
 
   //relacion de inentario a personas
   InventoryModel.hasMany(UserModel)
@@ -92,11 +84,11 @@ module.exports = async function (config) {
 
   //relacion de inventario a productos
   InventoryModel.hasMany(ProductsModel)
-  InventoryModel.belongsTo(ProductsModel)
+  ProductsModel.belongsTo(InventoryModel)
 
   //relacon de productos a lineas
    ProductsModel.hasMany(LineModel)
-   ProductsModel.belongsTo(LineModel)
+   LineModel.belongsTo(ProductsModel)
 
   //relacion de productos a personas
   ProductsModel.hasMany(UserModel)
@@ -111,8 +103,8 @@ module.exports = async function (config) {
   BrandModel.belongsTo(ProductsModel)
 
   //relacion de productos a color
-  ProductsModel.hasMany(ColourModel)
-  ProductsModel.belongsTo(ColourModel)
+  ProductsModel.hasMany(ColorModel)
+  ColorModel.belongsTo( ProductsModel)
 
  //relacion de detalle_talla a tallas
  SizeModel.hasMany(Detail_sizeModel)
