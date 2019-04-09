@@ -126,10 +126,46 @@
     <v-toolbar-items
     style="margin-right: 240px"
     >
-      <v-btn flat>Busos</v-btn>
-      <v-btn flat>Joggers</v-btn>
-      <v-btn flat>Vestidos</v-btn>
-      <v-btn flat  style="margin-right: 260px">Tops</v-btn>
+      <v-btn to="busos-niña" flat>Busos</v-btn>
+      <v-btn to="joggers-niña" flat>Joggers</v-btn>
+      <v-btn to="vestidos-niña" flat>Vestidos</v-btn>
+      <v-btn to="tops-niña" flat  style="margin-right: 260px">Tops</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+    <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 56px"
+      height="20px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: 60px"
+    >
+      <v-btn to="/busos-niña" flat>Busos</v-btn>
+      <v-btn to="/joggers-niña" flat>Joggers</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+  <v-toolbar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="grey darken-3"
+      dark
+      fixed
+      style="margin-top: 76px"
+      height="20px"
+      class="hidden-md-and-up"
+      >
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items
+    style="margin-right: -75px"
+    >
+      <v-btn to="/vestidos-niña" flat>Vestidos</v-btn>
+      <v-btn to="/tops-niña" flat  style="margin-right: 260px">Tops</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <v-toolbar
@@ -164,11 +200,11 @@ export default {
     tabs: null,
     transition: 'slide-y-reverse-transition',
     items: [
-        { icon: '', text: 'Home', to: '/'},
-        { icon: 'add', text: 'Hombre', to: '/hombre' },
-        { icon: 'add', text: 'Mujer', to: '/mujer' },
-        { icon: 'add', text: 'Niños', to: '/niños' },
-      ],
+      { icon: '', text: 'Home', to: '/' },
+      { icon: 'add', text: 'Hombre', to: '/hombre' },
+      { icon: 'add', text: 'Mujer', to: '/mujer' },
+      { icon: 'add', text: 'Niños', to: '/niños' }
+    ],
     items1: [
       { title: 'Iniciar sesión' },
       { title: 'Crear cuenta' }
