@@ -177,7 +177,7 @@
                   <template v-slot:items="props">
                     <td class="text-xs-left">{{ props.item.informacion }}</td>
                     <td class="text-xs-left">{{ props.item.estado }}</td>
-                    <v-btn>hola</v-btn>
+                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn>Seguir pedido</v-btn></div></td>
                   </template>
                 </v-data-table>
               </v-card>
@@ -334,6 +334,14 @@ export default {
     background-color: rgb(145, 45, 45)
  }
  .botonCompras:hover{
+    background-color: rgb(145, 45, 45)
+ }
+  .botonSeguirPedido{
+    display: inline-block;
+    background-color: rgba(34, 194, 215, 0.61);
+    transition: all .2s linear
+  }
+  .botonSeguirPedido:hover{
     background-color: rgb(145, 45, 45)
  }
 </style>

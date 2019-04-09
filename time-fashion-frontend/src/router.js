@@ -245,13 +245,13 @@ export default new Router({
       component: Cliente
     },
     {
-      path:'/cliente/perfil',
-      name:'clientucho',
+      path: '/cliente/perfil',
+      name: 'clientucho',
       component: Client
     },
     {
-      path:'/cliente/compra',
-      name:'Miscompras',
+      path: '/cliente/compra',
+      name: 'Miscompras',
       component: Clientecompra
     }
   ]

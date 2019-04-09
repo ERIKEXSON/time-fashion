@@ -59,13 +59,13 @@ export default {
     drawer: true,
     admins: [
       {
-        text:'perfilprueba',
-        to:'/cliente/perfil'
+        text: 'perfilprueba',
+        to: '/cliente/perfil'
       },
       {
         text: 'Mis compras',
         icon: 'assignment',
-        to:'/cliente/compra'
+        to: '/cliente/compra'
       },
       {
         text: 'Valoraciones',
@@ -76,20 +76,20 @@ export default {
         icon: ''
       },
       {
-        text:'Artículos vistos recientemente',
-        icon:''
+        text: 'Artículos vistos recientemente',
+        icon: ''
       },
       {
-        text:'Mi dirección de entrega',
-        icon:''
+        text: 'Mi dirección de entrega',
+        icon: ''
       },
       {
-        text:'Cambiar contraseña',
-        icon:''
+        text: 'Cambiar contraseña',
+        icon: ''
       },
       {
-        text:'Centro de Denuncias',
-        icon:''
+        text: 'Centro de Denuncias',
+        icon: ''
       }
     ]
   }
