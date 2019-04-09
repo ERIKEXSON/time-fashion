@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
+     <nav class="cuadro" >
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar producto</h2>
         <v-snackbar
@@ -65,8 +65,9 @@
           </v-card-actions>
         </v-form>
       </v-card>
-    </nav>
-    <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
+     </nav>
+<!--Lista de Productos-->
+    <nav class="cuadro2">
       <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
       <v-card width="1045">
         <v-card-title>
@@ -168,3 +169,16 @@ export default {
   }
 }
 </script>
+<style>
+.cuadro{
+ text-align:center;
+ border: #000000 3px solid;
+ margin-bottom: 30px
+}
+.cuadro2{
+ border: #000000 3px solid;
+ width:fit-content ;
+ text-align: center;
+ margin-top:50px
+}
+</style>
