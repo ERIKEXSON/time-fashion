@@ -123,6 +123,14 @@
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
             <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
+            <div style="text-align: center; display: inline-block;">
+              <v-btn fab dark small color="warning">
+                <v-icon dark color="white">edit</v-icon>
+              </v-btn>
+              <v-btn fab dark small color="error">
+                <v-icon dark color="white">delete</v-icon>
+              </v-btn>
+            </div>
             <div class="botonContacto"><v-btn @click="contacto = true">Datos de contacto</v-btn></div>
             <div class="botonCompras"><v-btn @click="compras = true">Compras</v-btn></div>
           </template>
@@ -175,9 +183,10 @@
                   :search="search"
                 >
                   <template v-slot:items="props">
+                    <td class="text-xs-left">{{ props.item.numero }}</td>
                     <td class="text-xs-left">{{ props.item.informacion }}</td>
                     <td class="text-xs-left">{{ props.item.estado }}</td>
-                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn>Seguir pedido</v-btn></div></td>
+                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div></td>
                   </template>
                 </v-data-table>
               </v-card>
@@ -185,6 +194,71 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <div class="botonCerrar"><v-btn flat @click="compras = false">Cerrar</v-btn></div>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="seguirPedido" width="1085">
+        <v-card>
+          <v-card-text>
+            <nav class="borde">
+              <div class="tituloCuadro"><h2>Información del envío</h2></div>
+              <v-stepper non-linear>
+                <v-stepper-header>
+                  <v-stepper-step
+                    step="1"
+                    editable
+                  >
+                    Pedido enviado por vendedor
+                  </v-stepper-step>
+                  <v-divider></v-divider>
+                  <v-stepper-step
+                    step="2"
+                    editable
+                  >
+                    Salida de país de origen
+                  </v-stepper-step>
+                  <v-divider></v-divider>
+                  <v-stepper-step
+                    step="3"
+                    editable
+                  >
+                    Llegada a país de destino
+                  </v-stepper-step>
+                  <v-stepper-step
+                    step="4"
+                    editable
+                  >
+                    Entregado
+                  </v-stepper-step>
+                </v-stepper-header>
+                <v-stepper-items>
+                <v-stepper-content step="1">
+                  <v-card
+                    class="mb-5"
+                  ><h3>{{ pedidoInventado }}</h3></v-card>
+                </v-stepper-content>
+                <v-stepper-content step="2">
+                  <v-card
+                    class="mb-5"
+                  ><h3>China</h3></v-card>
+                </v-stepper-content>
+                <v-stepper-content step="3">
+                  <v-card
+                    class="mb-5"
+                  ><h3>Colombia</h3></v-card>
+                </v-stepper-content>
+                <v-stepper-content step="4">
+                  <v-card
+                    class="mb-5"
+                  ><h3>No se ha confirmado entrega</h3></v-card>
+                </v-stepper-content>
+                </v-stepper-items>
+              </v-stepper>
+            </nav>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="botonCerrar"><v-btn flat @click="seguirPedido = false">Cerrar</v-btn></div>
             </v-card-actions>
           </v-card-text>
         </v-card>
@@ -206,8 +280,10 @@ export default {
       tel: ''
     })
     return {
+      e1: 0,
       contacto: false,
       compras: false,
+      seguirPedido: false,
       snackbar: false,
       tabs: null,
       form: Object.assign({}, defaultForm),
@@ -249,12 +325,14 @@ export default {
         { text: 'Teléfono', value: 'telefono' }
       ],
       historialPedidos: [
+        { text: 'Número de pedido', value: 'numero' },
         { text: 'Información del pedido', value: 'informacion' },
         { text: 'Estado del pedido', value: 'estado' },
         { text: 'Acciones de pedido' }
       ],
       pedidoInventado: [
         {
+          numero: '123123123',
           informacion: 'asdasd',
           estado: 'Entrega pendiente'
         }
