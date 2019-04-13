@@ -106,7 +106,8 @@
                     <v-card
                         class="mb-5"
                     >
-                    <h3>{{ entrega }}</h3>
+                    <h3 v-if="confirmarPedido">Pedido entregado</h3>
+                    <h3 v-else>Pedido no a sido entregado</h3>
                     </v-card>
                     </v-stepper-content>
                     </v-stepper-items>
@@ -125,7 +126,6 @@
 export default {
   data () {
     return {
-      entrega,
       confirmarPedido: false,
       seguirPedido: false,
       search: '',
@@ -159,15 +159,6 @@ export default {
         informacion: this.pedidoInventado[0].informacion,
         estado: this.pedidoInventado[0].estado
       }]
-    }
-  },
-  methods: {
-    Entrega () {
-      if (confirmarPedido == true) {
-        entrega = 'Pedido entregado'
-      } else {
-        entrega = 'Pedidos no ha sido entregado'
-      }
     }
   }
 }
