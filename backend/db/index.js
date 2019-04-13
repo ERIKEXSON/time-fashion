@@ -92,7 +92,7 @@ module.exports = async function (config) {
 
   // relacion de productos a personas
   UserModel.hasMany(ProductsModel)
-  ProductsModel.belongsTo( UserModel)
+  ProductsModel.belongsTo(UserModel)
 
   // relacion de productos a tallas
   SizeModel.hasMany(ProductsModel)
@@ -115,8 +115,8 @@ module.exports = async function (config) {
   Offer_DetailModel.belongsTo(ProductsModel)
 
   // relacion de detalle_pedido a inventarios
-  InventoryModel.hasMany(Requested_detaylModel)
-  Requested_detaylModel.belongsTo( InventoryModel)
+  Requested_detaylModel.hasMany(InventoryModel)
+  InventoryModel.belongsTo(Requested_detaylModel)
 
   await sequelize.authenticate()
 
