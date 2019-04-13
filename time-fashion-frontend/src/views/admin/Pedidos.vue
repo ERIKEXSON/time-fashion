@@ -145,11 +145,11 @@ export default {
   },
   computed: {
     historialPedidosInventado () {
-      return {
+      return [{
         numero: this.pedidoInventado[0].numero,
-        informacion: this.pedidoInventado[1].informacion,
-        estado: this.pedidoInventado[2].estado
-      }
+        informacion: this.pedidoInventado[0].informacion,
+        estado: this.pedidoInventado[0].estado
+      }]
     }
   }
 }
