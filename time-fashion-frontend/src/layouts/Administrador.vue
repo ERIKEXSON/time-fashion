@@ -73,8 +73,8 @@ export default {
       },
       {
         text: 'Ventas',
-        icon: 'home'
-
+        icon: 'home',
+        to: '/admin/ventas'
       },
       {
         text: 'Productos',

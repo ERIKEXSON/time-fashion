@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav style="text-align:center;border: #000000 3px solid">
-      <div style="background-color:#000000;padding: 5px;color: white"><h2>Inventario</h2></div>
+    <nav class="borde">
+      <div class="tituloCuadro"><h2>Inventario</h2></div>
       <v-card width="1045">
         <v-card-title>
           <v-text-field
@@ -29,8 +29,8 @@
       <v-dialog v-model="detalles" width="1085">
         <v-card>
           <v-card-text>
-            <nav style="border: #000000 3px solid">
-              <div style="background-color:#000000;padding: 5px;color: white"><h2>Detalles</h2></div>
+            <nav class="borde">
+              <div class="tituloCuadro"><h2>Detalles</h2></div>
               <v-card width="1045">
                 <v-card-title>
                   <v-text-field
@@ -113,6 +113,16 @@ export default {
 }
 </script>
 <style>
+  .borde{
+    text-align:center;
+    border: #000000 3px solid;
+    margin-bottom: 30px
+  }
+  .tituloCuadro{
+    background-color:#000000;
+    padding: 5px;
+    color: white
+  }
   .botonCerrar{
     background-color: rgba(34, 194, 215, 0.61);
     transition: all .2s linear

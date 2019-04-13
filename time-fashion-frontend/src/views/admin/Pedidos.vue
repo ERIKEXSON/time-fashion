@@ -20,8 +20,9 @@
                 <template v-slot:items="props">
                     <td class="text-xs-left">{{ props.item.numero }}</td>
                     <td class="text-xs-left">{{ props.item.informacion }}</td>
+                    <td class="text-xs-left">{{ props.item.valor }}</td>
                     <td class="text-xs-left">{{ props.item.estado }}</td>
-                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div><div class="botonConfirmarPedido"><v-btn @click="confirmarPedido = true">Confirmar pedido</v-btn></div></td>
+                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div></td>
                 </template>
                 </v-data-table>
             </v-card>
@@ -63,29 +64,23 @@
                     <v-stepper-items>
                     <v-stepper-content step="1">
                     <v-card
+                        flat
                         class="mb-5"
                     >
                      <nav class="borde">
-                        <div class="tituloCuadro"><h2>Pedidos</h2></div>
+                        <div class="tituloCuadro"><h2>Factura</h2></div>
                         <v-card width="993">
                             <v-card-title>
-                            <v-text-field
-                                v-model="search"
-                                append-icon="search"
-                                label="Buscar"
-                                single-line
-                                hide-details
-                            ></v-text-field>
                             </v-card-title>
                             <v-data-table
-                            :headers="historialPedidosDialog"
-                            :items="historialPedidosInventado"
-                            :search="search"
+                            :headers="factura"
+                            :items="detallesFactura"
                             >
                             <template v-slot:items="props">
-                                <td class="text-xs-left">{{ props.item.numero }}</td>
-                                <td class="text-xs-left">{{ props.item.informacion }}</td>
-                                <td class="text-xs-left">{{ props.item.estado }}</td>
+                                <td class="text-xs-left">{{ props.item.cantidad }}</td>
+                                <td class="text-xs-left">{{ props.item.descripcion }}</td>
+                                <td class="text-xs-left">{{ props.item.preciounitario }}</td>
+                                <td class="text-xs-left">{{ props.item.valorventa }}</td>
                             </template>
                             </v-data-table>
                         </v-card>
@@ -94,16 +89,19 @@
                     </v-stepper-content>
                     <v-stepper-content step="2">
                     <v-card
+                        flat
                         class="mb-5"
                     ><h3>China</h3></v-card>
                     </v-stepper-content>
                     <v-stepper-content step="3">
                     <v-card
+                        flat
                         class="mb-5"
                     ><h3>Colombia</h3></v-card>
                     </v-stepper-content>
                     <v-stepper-content step="4">
                     <v-card
+                        flat
                         class="mb-5"
                     >
                     <h3 v-if="confirmarPedido">Pedido entregado</h3>
@@ -126,40 +124,62 @@
 export default {
   data () {
     return {
-      confirmarPedido: false,
       seguirPedido: false,
       search: '',
       historialPedidos: [
         { text: 'Número de pedido', value: 'numero' },
         { text: 'Información del pedido', value: 'informacion' },
+        { text: 'Valor', value: 'valor' },
         { text: 'Estado del pedido', value: 'estado' },
         { text: 'Acciones de pedido' }
       ],
-      historialPedidosDialog: [
-        { text: 'Número de pedido', value: 'numero' },
-        { text: 'Información del pedido', value: 'informacion' },
-        { text: 'Estado del pedido', value: 'estado' }
+      factura: [
+        { text: 'Cantidad', value: 'cantidad', sortable: false },
+        { text: 'Descripcion', value: 'descripcion' },
+        { text: 'Precio unitario', value: 'preciounitario' },
+        { text: 'Valor de venta', value: 'valorventa' }
+      ],
+      detallesFactura: [
+        {
+          cantidad: 3,
+          descripcion: 'camisa negra',
+          preciounitario: 15000,
+          valorventa: 45000
+        },
+        {
+          cantidad: 6,
+          descripcion: 'camisa blanca',
+          preciounitario: 9000,
+          valorventa: 54000
+        }
       ],
       pedidoInventado: [
         {
           numero: '1363413',
           informacion: 'asdasd',
+          valor: 1231231,
           estado: 'Entrega pendiente'
+        },
+        {
+          numero: '3452',
+          valor: 1432423,
+          estado: 'entrega pendiente'
+        },
+        {
+          numero: '678678',
+          valor: 6345,
+          estado: 'cancelado'
+        },
+        {
+          numero: '678678546',
+          valor: 235472,
+          estado: 'devolucion'
         }
       ]
     }
   },
   created () {
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
-  },
-  computed: {
-    historialPedidosInventado () {
-      return [{
-        numero: this.pedidoInventado[0].numero,
-        informacion: this.pedidoInventado[0].informacion,
-        estado: this.pedidoInventado[0].estado
-      }]
-    }
   }
 }
 </script>

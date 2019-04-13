@@ -7,6 +7,7 @@ import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
 import AdminPedidos from './views/admin/Pedidos.vue'
+import AdminVentas from './views/admin/Ventas.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
@@ -81,8 +82,13 @@ export default new Router({
     },
     {
       path: '/admin/pedidos',
-      name: 'comprasAdmin',
+      name: 'pedidosAdmin',
       component: AdminPedidos
+    },
+    {
+      path: '/admin/ventas',
+      name: 'ventasAdmin',
+      component: AdminVentas
     },
     {
       path: '/admin/inventario',
