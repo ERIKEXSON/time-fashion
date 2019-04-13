@@ -71,20 +71,20 @@ module.exports = async function (config) {
   Requested_detaylModel.belongsTo(OrderModel)
 
   // relacion de inventario a color
-  InventoryModel.hasMany(ColorModel)
-  ColorModel.belongsTo(InventoryModel)
+  ColorModel.hasMany(InventoryModel)
+  InventoryModel.belongsTo(InventoryModel)
 
   // relacion de inventario a talla
-  InventoryModel.hasMany(SizeModel)
-  SizeModel.belongsTo(InventoryModel)
+  SizeModel.hasMany(InventoryModel)
+  InventoryModel.belongsTo(SizeModel)
 
   // relacion de inventario a personas
   UserModel.hasMany(InventoryModel)
   InventoryModel.belongsTo(UserModel)
 
   // relacion de inventario a productos
-  InventoryModel.hasMany(ProductsModel)
-  ProductsModel.belongsTo(InventoryModel)
+  ProductsModel.hasMany(InventoryModel)
+  InventoryModel.belongsTo(ProductsModel)
 
   // relacion de productos a lineas
   LineModel.hasMany(ProductsModel)
@@ -115,8 +115,8 @@ module.exports = async function (config) {
   Offer_DetailModel.belongsTo(ProductsModel)
 
   // relacion de detalle_pedido a inventarios
-  InventoryMode.hasMany(Requested_detaylModel)
-  Requested_detaylModel.belongsTo( InventoryMode)
+  InventoryModel.hasMany(Requested_detaylModel)
+  Requested_detaylModel.belongsTo( InventoryModel)
 
   await sequelize.authenticate()
 
