@@ -67,6 +67,16 @@ export default {
         to: '/admin/usuarios'
       },
       {
+        text: 'Pedidos',
+        icon: 'money',
+        to: '/admin/pedidos'
+      },
+      {
+        text: 'Ventas',
+        icon: 'home'
+
+      },
+      {
         text: 'Productos',
         icon: 'assignment',
         to: '/admin/productos'
