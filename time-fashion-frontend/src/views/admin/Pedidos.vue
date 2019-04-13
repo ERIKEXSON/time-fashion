@@ -21,7 +21,7 @@
                     <td class="text-xs-left">{{ props.item.numero }}</td>
                     <td class="text-xs-left">{{ props.item.informacion }}</td>
                     <td class="text-xs-left">{{ props.item.estado }}</td>
-                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div></td>
+                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div><div class="botonConfirmarPedido"><v-btn @click="confirmarPedido = true">Confirmar pedido</v-btn></div></td>
                 </template>
                 </v-data-table>
             </v-card>
@@ -78,7 +78,7 @@
                             ></v-text-field>
                             </v-card-title>
                             <v-data-table
-                            :headers="historialPedidos"
+                            :headers="historialPedidosDialog"
                             :items="historialPedidosInventado"
                             :search="search"
                             >
@@ -105,7 +105,9 @@
                     <v-stepper-content step="4">
                     <v-card
                         class="mb-5"
-                    ><h3>No se ha confirmado entrega</h3></v-card>
+                    >
+                    <h3>{{ entrega }}</h3>
+                    </v-card>
                     </v-stepper-content>
                     </v-stepper-items>
                 </v-stepper>
@@ -123,6 +125,8 @@
 export default {
   data () {
     return {
+      entrega,
+      confirmarPedido: false,
       seguirPedido: false,
       search: '',
       historialPedidos: [
@@ -131,9 +135,14 @@ export default {
         { text: 'Estado del pedido', value: 'estado' },
         { text: 'Acciones de pedido' }
       ],
+      historialPedidosDialog: [
+        { text: 'Número de pedido', value: 'numero' },
+        { text: 'Información del pedido', value: 'informacion' },
+        { text: 'Estado del pedido', value: 'estado' }
+      ],
       pedidoInventado: [
         {
-          numero: '123123123',
+          numero: '1363413',
           informacion: 'asdasd',
           estado: 'Entrega pendiente'
         }
@@ -150,6 +159,15 @@ export default {
         informacion: this.pedidoInventado[0].informacion,
         estado: this.pedidoInventado[0].estado
       }]
+    }
+  },
+  methods: {
+    Entrega () {
+      if (confirmarPedido == true) {
+        entrega = 'Pedido entregado'
+      } else {
+        entrega = 'Pedidos no ha sido entregado'
+      }
     }
   }
 }
@@ -171,6 +189,15 @@ export default {
     transition: all .2s linear
   }
   .botonSeguirPedido:hover{
+    background-color: rgb(145, 45, 45)
+ }
+ .botonConfirmarPedido{
+     display: inline-block;
+     margin-left: 10px;
+     background-color: rgba(34, 194, 215, 0.61);
+     transition: all .2s linear
+ }
+ .botonConfirmarPedido:hover{
     background-color: rgb(145, 45, 45)
  }
 </style>
