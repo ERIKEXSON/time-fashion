@@ -115,8 +115,8 @@ module.exports = async function (config) {
   Offer_DetailModel.belongsTo(ProductsModel)
 
   // relacion de detalle_pedido a inventarios
-  InventoryModel.hasMany(Requested_detaylModel)
-  Requested_detaylModel.belongsTo(InventoryModel)
+  InventoryMode.hasMany(Requested_detaylModel)
+  Requested_detaylModel.belongsTo( InventoryMode)
 
   await sequelize.authenticate()
 
