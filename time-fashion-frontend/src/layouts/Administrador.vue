@@ -53,10 +53,6 @@ export default {
     drawer: true,
     admins: [
       {
-        text: 'Administrador',
-        icon: 'home'
-      },
-      {
         text: 'Empresas',
         icon: 'domain',
         to: '/admin/empresas'

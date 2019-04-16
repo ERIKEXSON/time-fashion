@@ -86,6 +86,14 @@
                   required
                 ></v-text-field>
               </v-flex>
+              <v-flex xs12 sm12>
+                <v-text-field
+                  v-model="form.empresa"
+                  :rules="rules.empresa"
+                  label="Empresa"
+                  required
+                ></v-text-field>
+              </v-flex>
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -175,13 +183,12 @@ export default {
       correo: '',
       rol: '',
       direccion: '',
-      tel: ''
+      tel: '',
+      empresa: ''
     })
     return {
       e1: 0,
       contacto: false,
-      compras: false,
-      seguirPedido: false,
       snackbar: false,
       tabs: null,
       form: Object.assign({}, defaultForm),
@@ -193,10 +200,11 @@ export default {
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
         rol: [val => (val || '').length > 0 || 'Este campo es requerido'],
         direccion: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tel: [val => (val || '').length > 0 || 'Este campo es requerido']
+        tel: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        empresa: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
-      rol: ['Administrador', 'Vendedor', 'Cliente'],
+      rol: ['Administrador', 'Vendedor'],
       defaultForm,
       search: '',
       headers: [
@@ -214,26 +222,14 @@ export default {
           tipodocumento: 'CC',
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
-          telefono: '123123123'
+          telefono: '123123123',
+          empresa: 'adidas'
         }
       ],
       datosContacto: [
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
         { text: 'Teléfono', value: 'telefono' }
-      ],
-      historialPedidos: [
-        { text: 'Número de pedido', value: 'numero' },
-        { text: 'Información del pedido', value: 'informacion' },
-        { text: 'Estado del pedido', value: 'estado' },
-        { text: 'Acciones de pedido' }
-      ],
-      pedidoInventado: [
-        {
-          numero: '123123123',
-          informacion: 'asdasd',
-          estado: 'Entrega pendiente'
-        }
       ]
     }
   },

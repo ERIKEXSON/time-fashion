@@ -163,17 +163,22 @@ export default {
         {
           numero: '3452',
           valor: 1432423,
-          estado: 'entrega pendiente'
+          estado: 'Entrega confirmada'
         },
         {
           numero: '678678',
           valor: 6345,
-          estado: 'cancelado'
+          estado: 'Cancelado'
         },
         {
           numero: '678678546',
           valor: 235472,
-          estado: 'devolucion'
+          estado: 'Devolucion'
+        },
+        {
+          numero: '345234',
+          valor: 23423523,
+          estado: 'Pendiente de envio'
         }
       ]
     }

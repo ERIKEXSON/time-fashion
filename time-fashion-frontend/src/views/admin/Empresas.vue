@@ -195,9 +195,9 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-            this.form.nit &&
-            this.form.telefono &&
-            this.form.correo
+        this.form.nit &&
+        this.form.telefono &&
+        this.form.correo
       )
     }
   },

@@ -20,8 +20,10 @@
                 >
                     <template v-slot:items="props">
                         <td class="text-xs-left">{{ props.item.id }}</td>
-                        <td class="text-xs-left">{{ props.item.valor }}</td>
                         <td class="text-xs-left">{{ props.item.empresa }}</td>
+                        <td class="text-xs-left">{{ props.item.valor }}</td>
+                        <td class="text-xs-left">{{ dineroempresa }}</td>
+                        <td class="text-xs-left">{{ dineroservicio }}</td>
                     </template>
                 </v-data-table>
             </v-card>
@@ -35,18 +37,28 @@ export default {
       search: '',
       headers: [
         { text: 'ID del pedido', value: 'id' },
-        { text: 'Valor', value: 'valor' },
-        { text: 'Empresa', value: 'empresa' }
+        { text: 'Empresa', value: 'empresa' },
+        { text: 'Valor de venta', value: 'valor' },
+        { text: 'Dinero para empresa', value: 'dineroEmpresa' },
+        { text: 'Dinero servicio', value: 'dineroServicio' }
       ],
       desserts: [
         {
           id: '41234234',
-          valor: 12354234,
-          empresa: 'asdasd'
+          empresa: 'asdasd',
+          valor: 12354234
         }
       ]
     }
   },
+  /* methods: {
+    dineroempresa(){
+      dineroEmpresa: this.desserts[0].valor-(this.desserts[0].valor*30%)
+    },
+    dineroservicio(){
+      dineroServicio: this.desserts[0].valor*30%
+    }
+  }, */
   created () {
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
