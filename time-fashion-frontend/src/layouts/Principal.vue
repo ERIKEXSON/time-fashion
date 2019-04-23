@@ -59,7 +59,7 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn
-              icon="true"
+              icon
               color="transparent"
               v-on="on"
             ><v-icon>perm_identity</v-icon>

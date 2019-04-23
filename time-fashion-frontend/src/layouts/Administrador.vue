@@ -88,10 +88,7 @@ export default {
       }
     ]
   }
-  ),
-  props: {
-    source: String
-  }
+  )
 }
 </script>
 <style lang="stylus">
