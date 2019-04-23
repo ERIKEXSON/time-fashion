@@ -131,6 +131,7 @@
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
             <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
+            <td class="text-xs-left">{{ props.item.empresa }}</td>
             <div style="text-align: center; display: inline-block;">
               <v-btn fab dark small color="warning">
                 <v-icon dark color="white">edit</v-icon>
@@ -212,6 +213,7 @@ export default {
         { text: 'Apellido', value: 'apellido' },
         { text: 'Documento', value: 'documento' },
         { text: 'Tipo de documento', value: 'tipodocumento' },
+        { text: 'Empresa', value: 'empresa' },
         { text: '' }
       ],
       desserts: [
@@ -243,7 +245,8 @@ export default {
         this.form.correo &&
         this.form.rol &&
         this.form.direccion &&
-        this.form.tel
+        this.form.tel &&
+        this.form.empresa
       )
     }
   },

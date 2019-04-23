@@ -134,9 +134,6 @@ export default {
     ]
   })
 }
-props: {
-  source: String
-}
 </script>
 <style>
     .v-btn--active:before, .v-btn:hover:before, .v-btn:focus:before {
