@@ -1,6 +1,8 @@
 <template>
     <v-app>
-      <h1>asdasdasd</h1>
+      <v-card>
+        
+      </v-card>
     </v-app>
 </template>
 <script>
