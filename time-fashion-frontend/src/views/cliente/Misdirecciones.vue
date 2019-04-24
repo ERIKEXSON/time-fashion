@@ -25,7 +25,7 @@
         rows="1"
       ></v-textarea>
       <v-textarea
-        
+
         box
         color="primary"
         label="Dirección de la calle"
@@ -74,21 +74,21 @@
   </nav>
 </template>
 <script>
-  export default {
-    data: () => ({
-      agreement: false,
-      form: false,
-      isLoading: false,
-      phone: undefined,
-      rules: {
-        length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
-        required: v => !!v || 'This field is required'
-      }
-    }),
+export default {
+  data: () => ({
+    agreement: false,
+    form: false,
+    isLoading: false,
+    phone: undefined,
+    rules: {
+      length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
+      required: v => !!v || 'This field is required'
+    }
+  }),
   created () {
     this.$store.commit('SET_LAYOUT', 'cliente-layout')
   }
-  }
+}
 </script>
 <style>
 .fond{

@@ -8,14 +8,6 @@
       width="250"
       class="secondary"
     >
-      <v-list>
-        <v-list-tile color='words'>
-            <v-list-tile-action>
-            <v-icon>home</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-title>Mi cuenta</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
       <v-list-tile
       color='words'
       v-for="admin in admins"
@@ -59,56 +51,22 @@ export default {
     drawer: true,
     admins: [
       {
-        text: 'perfilprueba',
+        text: 'Perfil',
         to: '/cliente/perfil'
       },
       {
         text: 'Mis compras',
-        icon: 'assignment',
         to: '/cliente/compra'
-<<<<<<< HEAD
-=======
-      },
-      {
-        text: 'Valoraciones',
-        icon: 'all_inbox'
->>>>>>> 93988053e22910c0fdade0bf1af6af846c505ea3
-      },
-      {
-        text: 'Mis cupones',
-        to: '/cliente/cupon'
-      },
-      {
-        text: 'Artículos vistos recientemente',
-<<<<<<< HEAD
-        to: ''
       },
       {
         text: 'Mi dirección de entrega',
         to: '/cliente/direccion'
       },
       {
-        text: 'Cambiar contraseña',
-        to: ''
+        text: 'Cambiar contraseña'
       },
       {
-        text: 'Centro de Denuncias',
-        to: ''
-=======
-        icon: ''
-      },
-      {
-        text: 'Mi dirección de entrega',
-        icon: ''
-      },
-      {
-        text: 'Cambiar contraseña',
-        icon: ''
-      },
-      {
-        text: 'Centro de Denuncias',
-        icon: ''
->>>>>>> 93988053e22910c0fdade0bf1af6af846c505ea3
+        text: 'Centro de Denuncias'
       }
     ]
   }
