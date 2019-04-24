@@ -66,6 +66,13 @@ export default {
         text: 'Mis compras',
         icon: 'assignment',
         to: '/cliente/compra'
+<<<<<<< HEAD
+=======
+      },
+      {
+        text: 'Valoraciones',
+        icon: 'all_inbox'
+>>>>>>> 93988053e22910c0fdade0bf1af6af846c505ea3
       },
       {
         text: 'Mis cupones',
@@ -73,6 +80,7 @@ export default {
       },
       {
         text: 'Artículos vistos recientemente',
+<<<<<<< HEAD
         to: ''
       },
       {
@@ -86,6 +94,21 @@ export default {
       {
         text: 'Centro de Denuncias',
         to: ''
+=======
+        icon: ''
+      },
+      {
+        text: 'Mi dirección de entrega',
+        icon: ''
+      },
+      {
+        text: 'Cambiar contraseña',
+        icon: ''
+      },
+      {
+        text: 'Centro de Denuncias',
+        icon: ''
+>>>>>>> 93988053e22910c0fdade0bf1af6af846c505ea3
       }
     ]
   }

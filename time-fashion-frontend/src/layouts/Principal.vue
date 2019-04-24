@@ -59,7 +59,7 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn
-              icon="true"
+              icon
               color="transparent"
               v-on="on"
             ><v-icon>perm_identity</v-icon>
@@ -134,7 +134,9 @@ export default {
     ]
   })
 }
-props: {
-  source: String
-}
 </script>
+<style>
+    .v-btn--active:before, .v-btn:hover:before, .v-btn:focus:before {
+    background-color: transparent;
+}
+</style>

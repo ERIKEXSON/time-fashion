@@ -9,7 +9,7 @@
           top
           right
           color="success"
-          timeout="2000"
+          timeout=2000
           class="snackbar"
         >
           <span>¡Registro exitoso!</span>
@@ -195,9 +195,9 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-            this.form.nit &&
-            this.form.telefono &&
-            this.form.correo
+        this.form.nit &&
+        this.form.telefono &&
+        this.form.correo
       )
     }
   },

@@ -6,6 +6,8 @@ import Admin from './views/admin/Inicio.vue'
 import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
+import AdminPedidos from './views/admin/Pedidos.vue'
+import AdminVentas from './views/admin/Ventas.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
@@ -44,6 +46,10 @@ import Camisetasniño from './views/niños/niño/camisetas.vue'
 import Busosniño from './views/niños/niño/busos.vue'
 import Shortsniño from './views/niños/niño/shorts.vue'
 import Joggersniño from './views/niños/niño/joggers.vue'
+import Busosniña from './views/niños/niña/busos.vue'
+import Joggersniña from './views/niños/niña/joggers.vue'
+import Vestidosniña from './views/niños/niña/vestidos.vue'
+import Topsniña from './views/niños/niña/tops.vue'
 
 Vue.use(Router)
 
@@ -75,6 +81,16 @@ export default new Router({
       path: '/admin/usuarios',
       name: 'usuariosAdmin',
       component: AdminUsuarios
+    },
+    {
+      path: '/admin/pedidos',
+      name: 'pedidosAdmin',
+      component: AdminPedidos
+    },
+    {
+      path: '/admin/ventas',
+      name: 'ventasAdmin',
+      component: AdminVentas
     },
     {
       path: '/admin/inventario',
@@ -240,6 +256,26 @@ export default new Router({
       path: '/joggers-niño',
       name: '/joggers-niño',
       component: Joggersniño
+    },
+    {
+      path: '/busos-niña',
+      name: '/busos-niña',
+      component: Busosniña
+    },
+    {
+      path: '/joggers-niña',
+      name: '/joggers-niña',
+      component: Joggersniña
+    },
+    {
+      path: '/vestidos-niña',
+      name: '/vestidos-niña',
+      component: Vestidosniña
+    },
+    {
+      path: '/tops-niña',
+      name: '/tops-niña',
+      component: Topsniña
     },
     {
       path: '/cliente',

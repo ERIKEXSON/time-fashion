@@ -86,6 +86,14 @@
                   required
                 ></v-text-field>
               </v-flex>
+              <v-flex xs12 sm12>
+                <v-text-field
+                  v-model="form.empresa"
+                  :rules="rules.empresa"
+                  label="Empresa"
+                  required
+                ></v-text-field>
+              </v-flex>
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -123,8 +131,16 @@
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
             <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
+            <td class="text-xs-left">{{ props.item.empresa }}</td>
+            <div style="text-align: center; display: inline-block;">
+              <v-btn fab dark small color="warning">
+                <v-icon dark color="white">edit</v-icon>
+              </v-btn>
+              <v-btn fab dark small color="error">
+                <v-icon dark color="white">delete</v-icon>
+              </v-btn>
+            </div>
             <div class="botonContacto"><v-btn @click="contacto = true">Datos de contacto</v-btn></div>
-            <div class="botonCompras"><v-btn @click="compras = true">Compras</v-btn></div>
           </template>
         </v-data-table>
       </v-card>
@@ -154,41 +170,6 @@
           </v-card-text>
         </v-card>
       </v-dialog>
-      <v-dialog v-model="compras" width="1085">
-        <v-card>
-          <v-card-text>
-            <nav class="borde">
-              <div class="tituloCuadro"><h2>Historial de pedidos</h2></div>
-              <v-card width="1045">
-                <v-card-title>
-                  <v-text-field
-                    v-model="search"
-                    append-icon="search"
-                    label="Buscar"
-                    single-line
-                    hide-details
-                  ></v-text-field>
-                </v-card-title>
-                <v-data-table
-                  :headers="historialPedidos"
-                  :items="pedidoInventado"
-                  :search="search"
-                >
-                  <template v-slot:items="props">
-                    <td class="text-xs-left">{{ props.item.informacion }}</td>
-                    <td class="text-xs-left">{{ props.item.estado }}</td>
-                    <v-btn>hola</v-btn>
-                  </template>
-                </v-data-table>
-              </v-card>
-            </nav>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <div class="botonCerrar"><v-btn flat @click="compras = false">Cerrar</v-btn></div>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
     </nav>
   </v-app>
 </template>
@@ -203,11 +184,12 @@ export default {
       correo: '',
       rol: '',
       direccion: '',
-      tel: ''
+      tel: '',
+      empresa: ''
     })
     return {
+      e1: 0,
       contacto: false,
-      compras: false,
       snackbar: false,
       tabs: null,
       form: Object.assign({}, defaultForm),
@@ -219,10 +201,11 @@ export default {
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
         rol: [val => (val || '').length > 0 || 'Este campo es requerido'],
         direccion: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tel: [val => (val || '').length > 0 || 'Este campo es requerido']
+        tel: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        empresa: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
-      rol: ['Administrador', 'Vendedor', 'Cliente'],
+      rol: ['Administrador', 'Vendedor'],
       defaultForm,
       search: '',
       headers: [
@@ -230,6 +213,7 @@ export default {
         { text: 'Apellido', value: 'apellido' },
         { text: 'Documento', value: 'documento' },
         { text: 'Tipo de documento', value: 'tipodocumento' },
+        { text: 'Empresa', value: 'empresa' },
         { text: '' }
       ],
       desserts: [
@@ -240,24 +224,14 @@ export default {
           tipodocumento: 'CC',
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
-          telefono: '123123123'
+          telefono: '123123123',
+          empresa: 'adidas'
         }
       ],
       datosContacto: [
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
         { text: 'Teléfono', value: 'telefono' }
-      ],
-      historialPedidos: [
-        { text: 'Información del pedido', value: 'informacion' },
-        { text: 'Estado del pedido', value: 'estado' },
-        { text: 'Acciones de pedido' }
-      ],
-      pedidoInventado: [
-        {
-          informacion: 'asdasd',
-          estado: 'Entrega pendiente'
-        }
       ]
     }
   },
@@ -271,7 +245,8 @@ export default {
         this.form.correo &&
         this.form.rol &&
         this.form.direccion &&
-        this.form.tel
+        this.form.tel &&
+        this.form.empresa
       )
     }
   },
@@ -334,6 +309,14 @@ export default {
     background-color: rgb(145, 45, 45)
  }
  .botonCompras:hover{
+    background-color: rgb(145, 45, 45)
+ }
+  .botonSeguirPedido{
+    display: inline-block;
+    background-color: rgba(34, 194, 215, 0.61);
+    transition: all .2s linear
+  }
+  .botonSeguirPedido:hover{
     background-color: rgb(145, 45, 45)
  }
 </style>
