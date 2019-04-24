@@ -59,37 +59,33 @@ export default {
     drawer: true,
     admins: [
       {
-        text:'perfilprueba',
-        to:'/cliente/perfil'
+        text: 'perfilprueba',
+        to: '/cliente/perfil'
       },
       {
         text: 'Mis compras',
         icon: 'assignment',
-        to:'/cliente/compra'
-      },
-      {
-        text: 'Valoraciones',
-        icon: 'all_inbox'
+        to: '/cliente/compra'
       },
       {
         text: 'Mis cupones',
-        icon: ''
+        to: '/cliente/cupon'
       },
       {
-        text:'Artículos vistos recientemente',
-        icon:''
+        text: 'Artículos vistos recientemente',
+        to: ''
       },
       {
-        text:'Mi dirección de entrega',
-        icon:''
+        text: 'Mi dirección de entrega',
+        to: '/cliente/direccion'
       },
       {
-        text:'Cambiar contraseña',
-        icon:''
+        text: 'Cambiar contraseña',
+        to: ''
       },
       {
-        text:'Centro de Denuncias',
-        icon:''
+        text: 'Centro de Denuncias',
+        to: ''
       }
     ]
   }

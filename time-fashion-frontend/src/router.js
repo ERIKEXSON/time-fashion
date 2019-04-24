@@ -14,6 +14,8 @@ import VendedorProductos from './views/vendedor/Productos.vue'
 import Cliente from './views/cliente/Inicio.vue'
 import Client from './views/cliente/perfil.vue'
 import Clientecompra from './views/cliente/miscompras.vue'
+import Clientecupon from './views/cliente/miscupones.vue'
+import Clientedireccion from './views/cliente/misdirecciones.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
 import Niños from './views/niños/inicio.vue'
@@ -245,14 +247,24 @@ export default new Router({
       component: Cliente
     },
     {
-      path:'/cliente/perfil',
-      name:'clientucho',
+      path: '/cliente/perfil',
+      name: 'clientucho',
       component: Client
     },
     {
-      path:'/cliente/compra',
-      name:'Miscompras',
+      path: '/cliente/compra',
+      name: 'Miscompras',
       component: Clientecompra
+    },
+    {
+      path: '/cliente/cupon',
+      name: 'Miscupones',
+      component: Clientecupon
+    },
+    {
+      path: '/cliente/direccion',
+      name: 'Misdirecciones',
+      component: Clientedireccion
     }
   ]
 })
