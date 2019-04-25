@@ -23,7 +23,7 @@
                 <v-text-field
                   v-model="form.nombre"
                   :rules="rules.nombre"
-                  label="Nombre"
+                  label="Descripción"
                   required
                 ></v-text-field>
               </v-flex>
@@ -50,6 +50,42 @@
                   label="Marca"
                   required
                 ></v-text-field>
+              </v-flex><!--
+              <nav class="detalles">
+              <h2>Detalles del producto</h2>
+              </nav>-->
+              <spacer></spacer>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.cantidad"
+                  :rules="rules.cantidad"
+                  label="Cantidad"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.tallas"
+                  :rules="rules.tallas"
+                  label="Tallas"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.color"
+                  :rules="rules.color"
+                  label="Color"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.posicion"
+                  :rules="rules.posicion"
+                  label="Posicion"
+                  required
+                ></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -69,40 +105,87 @@
 <!--Lista de Productos-->
     <nav class="cuadro2">
       <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
-      <v-card width="1045">
+      <v-card width= 1045>
         <v-card-title>
-        <v-text-field
+          <v-text-field
           v-model="search"
           append-icon="search"
-          label="Search"
+          label="Buscar"
           single-line
           hide-details
-        >
-        </v-text-field>
-        </v-card-title>
-        <v-data-table
+          >
+          </v-text-field>
+      </v-card-title>
+      <v-data-table
         :headers="headers"
         :items="desserts"
         :search="search"
-        >
-          <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.name }}</td>
+      >
+        <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.codigo }}</td>
-            <td class="text-xs-left">{{ props.item.precio }}</td>
+            <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
-            <div style="text-align: center">
-
-                <v-btn fab dark small color="error">
-                <v-icon dark color="black">delete</v-icon>
-                </v-btn>
-
-                <v-btn fab dark small color="warning">
-                <v-icon dark color="black">edit</v-icon>
-                </v-btn>
-            </div>
-          </template>
+            <td class="text-xs-left">{{ props.item.cantidadtotal }}</td>
+            <td class="text-xs-left">{{ props.item.tallas }}</td>
+            <td class="text-xs-left">{{ props.item.color }}</td>
+            <td class="text-xs-left">{{ props.item.posicion }}</td>
+            <td class="text-xs-center">
+                <div style="text-align: center; display: inline-block;"></div>
+                <div class="btd"><v-btn @click.up="conditions=true">Detalles</v-btn></div>
+            </td>
+        </template>
         </v-data-table>
       </v-card>
+      <v-dialog v-model="conditions" width="1085">
+        <v-card>
+          <v-card-text>
+            <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
+              <div style="background-color: #000000;padding: 5px;color: white"><h2>Detalles</h2></div>
+              <v-card>
+                <v-card-title>
+                  <v-text-field
+                  v-model="search"
+                  append-icon="search"
+                  label="Search"
+                  single-line
+                  hide-details
+                  >
+                  </v-text-field>
+                </v-card-title>
+                <v-data-table
+                  :headers="encabezado"
+                  :items="contenido"
+                  :search="search"
+                >
+                  <template v-slot:items="props">
+                    <td class="text-xs-left">{{ props.item.codigo }}</td>
+                    <td class="text-xs-left">{{ props.item.descripcion }}</td>
+                    <td class="text-xs-left">{{ props.item.marca }}</td>
+                    <td class="text-xs-left">{{ props.item.color }}</td>
+                    <td class="text-xs-left">{{ props.item.tallas }}</td>
+                    <td class="text-xs-left">{{ props.item.cantidad }}</td>
+                    <td class="text-xs-left">{{ props.item.posicion }}</td>
+                    <td class="text-xs-left">{{ props.item.precio }}</td>
+
+                    <td class="text-xs-center">
+                      <v-btn fab dark small color="error">
+                      <v-icon dark color="black">delete</v-icon>
+                      </v-btn>
+                      <v-btn fab dark small color="warning">
+                      <v-icon dark color="black">edit</v-icon>
+                      </v-btn>
+                    </td>
+                  </template>
+                </v-data-table>
+              </v-card>
+            </nav>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="bt"><v-btn flat @click="conditions=false">Cerrar</v-btn></div>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </nav>
   </v-app>
 </template>
@@ -110,10 +193,13 @@
 export default {
   data () {
     const defaultForm = Object.freeze({
-      nombre: '',
       codigo: '',
+      nombre: '',
+      marca: '',
       precio: '',
-      marca: ''
+      tallas: '',
+      cantidad: '',
+      posicion: ''
     })
     return {
       form: Object.assign({}, defaultForm),
@@ -121,25 +207,50 @@ export default {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
         codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
         precio: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        cantidad: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        posicion: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,
       defaultForm,
       search: '',
       headers: [
-        { text: 'Nombre', value: 'name' },
-        { text: 'Codigo', value: 'codigo' },
-        { text: 'Precio', value: 'precio' },
+        { text: 'Código', value: 'codigo' },
+        { text: 'Nombre', value: 'nombre' },
         { text: 'Marca', value: 'marca' },
+        { text: 'Precio', value: 'precio' },
         { text: '' }
       ],
       desserts: [
         {
-          name: 'Shorts',
-          codigo: 'ASD812A',
-          precio: 1000000,
-          marca: 'roballo'
+          codigo: 'ASD812',
+          nombre: 'Shorts',
+          marca: 'roballo',
+          precio: 10000
+        }
+      ],
+      encabezado: [
+        { text: 'Código', value: 'codigo' },
+        { text: 'Descripción', value: 'descripción' },
+        { text: 'Marca', value: 'marca' },
+        { text: 'Color', value: 'color' },
+        { text: 'Tallas', value: 'tallas' },
+        { text: 'Cantidad', value: 'cantidad' },
+        { text: 'Posición', value: 'posicion' },
+        { text: 'Precio', value: 'Precio' }
+      ],
+      contenido: [
+        {
+          codigo: 'jhass676',
+          descripcion: 'camison',
+          marca: 'nuevo',
+          color: 'Verde',
+          tallas: 'S,M',
+          cantidad: 15,
+          posicion: 'almacen4xdxdxd',
+          precio: 50000
         }
       ]
     }
@@ -150,7 +261,10 @@ export default {
         this.form.nombre &&
           this.form.codigo &&
           this.form.precio &&
-          this.form.marca
+          this.form.marca &&
+          this.form.tallas &&
+          this.form.cantidad &&
+          this.form.posicion
       )
     }
   },
@@ -180,5 +294,9 @@ export default {
  width:fit-content ;
  text-align: center;
  margin-top:50px
+}
+.detalle{
+ margin-left: 40px;
+ text-align:center;
 }
 </style>

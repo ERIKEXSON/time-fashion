@@ -9,14 +9,6 @@
       class="secondary"
     >
       <v-list>
-        <v-list-tile color='words'>
-            <v-list-tile-action>
-            <v-icon>home</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-title>Vendedor</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-      <v-list>
         <v-list-group
           v-for="item in items"
           :key="item.title"
@@ -33,24 +25,6 @@
               </v-list-tile-content>
             </v-list-tile>
           </template>
-          <v-list-tile
-            v-for="subItem in item.items"
-            :key="subItem.title"
-            active-class="accent--text"
-            :to="subItem.to"
-            style="margin-left: -20px"
-            color='words'
-          >
-            <v-list-tile-action>
-              <v-icon>{{ subItem.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
-            </v-list-tile-content>
-            <v-list-tile-action>
-              <v-icon>{{ subItem.action }}</v-icon>
-            </v-list-tile-action>
-          </v-list-tile>
         </v-list-group>
       </v-list>
       <v-list-tile
@@ -94,31 +68,17 @@ export default {
   data: () => ({
     dialog: false,
     drawer: true,
-    items: [
+    admins: [
       {
-        title: 'Empleados',
+        text: 'Empleados',
         icon: 'people_outline',
-        items: [
-          {
-            title: 'Agregados',
-            icon: 'featured_play_list',
-            to: '/vendedor/empleados'
-          }
-        ]
+        to: '/vendedor/empleados'
       },
       {
-        title: 'Productos',
+        text: 'Productos',
         icon: 'assignment',
-        items: [
-          {
-            title: 'Agregados',
-            icon: 'featured_play_list',
-            to: '/vendedor/productos'
-          }
-        ]
-      }
-    ],
-    admins: [
+        to: '/vendedor/productos'
+      },
       {
         text: 'Inventario',
         icon: 'all_inbox',
