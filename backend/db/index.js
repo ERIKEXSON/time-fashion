@@ -9,7 +9,7 @@ const setupPayment_methodModel = require('./models/payment_method.model')
 const setupOfferModel = require('./models/offer.model')
 const setupOffer_detailModel = require('./models/offer_detail.model')
 const setupRequested_detailModel = require('./models/requested_detayl.model')
-const setupInventoryModel = require('./models/inventory.model')
+const setupInventoriesModel = require('./models/inventories.model')
 const setupColorModel = require('./models/color.model')
 const setupSizeModel = require('./models/size.model')
 const setupProductsModel = require('./models/products.model')
@@ -30,7 +30,7 @@ module.exports = async function (config) {
   const OfferModel = setupOfferModel(config)
   const Offer_DetailModel = setupOffer_detailModel(config)
   const Requested_detaylModel = setupRequested_detailModel(config)
-  const InventoryModel = setupInventoryModel(config)
+  const InventoriesModel = setupInventoriesModel(config)
   const ColorModel = setupColorModel(config)
   const SizeModel = setupSizeModel(config)
   const ProductsModel = setupProductsModel(config)
@@ -71,20 +71,20 @@ module.exports = async function (config) {
   Requested_detaylModel.belongsTo(OrderModel)
 
   // relacion de inventario a color
-  ColorModel.hasMany(InventoryModel)
-  InventoryModel.belongsTo(InventoryModel)
+  ColorModel.hasMany(InventoriesModel)
+  InventoriesModel.belongsTo(ColorModel)
 
   // relacion de inventario a talla
-  SizeModel.hasMany(InventoryModel)
-  InventoryModel.belongsTo(SizeModel)
+  SizeModel.hasMany(InventoriesModel)
+  InventoriesModel.belongsTo(SizeModel)
 
   // relacion de inventario a personas
-  UserModel.hasMany(InventoryModel)
-  InventoryModel.belongsTo(UserModel)
+  UserModel.hasMany(InventoriesModel)
+  InventoriesModel.belongsTo(UserModel)
 
   // relacion de inventario a productos
-  ProductsModel.hasMany(InventoryModel)
-  InventoryModel.belongsTo(ProductsModel)
+  ProductsModel.hasMany(InventoriesModel)
+  InventoriesModel.belongsTo(ProductsModel)
 
   // relacion de productos a lineas
   LineModel.hasMany(ProductsModel)
@@ -115,8 +115,8 @@ module.exports = async function (config) {
   Offer_DetailModel.belongsTo(ProductsModel)
 
   // relacion de detalle_pedido a inventarios
-  Requested_detaylModel.hasMany(InventoryModel)
-  InventoryModel.belongsTo(Requested_detaylModel)
+  Requested_detaylModel.hasMany(InventoriesModel)
+  InventoriesModel.belongsTo(Requested_detaylModel)
 
   await sequelize.authenticate()
 
