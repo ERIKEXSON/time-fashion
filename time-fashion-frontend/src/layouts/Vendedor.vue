@@ -85,6 +85,11 @@ export default {
         to: '/vendedor/Inventario'
       },
       {
+        text: 'Pedidos',
+        icon: 'money',
+        to: '/vendedor/pedidos'
+      },
+      {
         text: 'Cerrar sesión',
         to: '/'
       }

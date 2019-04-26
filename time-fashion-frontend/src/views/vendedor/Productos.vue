@@ -1,16 +1,9 @@
 <template>
   <v-app>
-     <nav class="cuadro" >
+    <nav class="cuadro">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar producto</h2>
-        <v-snackbar
-          v-model="snackbar"
-          absolute
-          top
-          right
-          color="success"
-          timeout="2000"
-        >
+        <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
           <span>Producto agregado</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
@@ -20,73 +13,18 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.nombre"
-                  :rules="rules.nombre"
-                  label="Descripción"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.nombre" :rules="rules.nombre" label="Descripción" required ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.codigo"
-                  :rules="rules.codigo"
-                  label="Código"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.codigo" :rules="rules.codigo" label="Código" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.precio"
-                  :rules="rules.precio"
-                  label="Precio"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.precio" :rules="rules.precio" label="Precio" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.marca"
-                  :rules="rules.marca"
-                  label="Marca"
-                  required
-                ></v-text-field>
-              </v-flex><!--
-              <nav class="detalles">
-              <h2>Detalles del producto</h2>
-              </nav>-->
-              <spacer></spacer>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.cantidad"
-                  :rules="rules.cantidad"
-                  label="Cantidad"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.tallas"
-                  :rules="rules.tallas"
-                  label="Tallas"
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.color"
-                  :rules="rules.color"
-                  label="Color"
-                  required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.posicion"
-                  :rules="rules.posicion"
-                  label="Posicion"
-                  required
-                ></v-text-field>
-              </v-flex>
+
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -94,123 +32,77 @@
             <v-btn
               :disabled="!formIsValid"
               flat
-              color=""
+              color
               type="submit"
               style="background-color: #00FF08"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
-     </nav>
-<!--Lista de Productos-->
+    </nav>
+    <!--Lista de Productos-->
     <nav class="cuadro2">
-      <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
-      <v-card width= 1045>
+      <div style="background-color:#000000;padding: 5px;color: white">
+        <h2>Productos</h2>
+      </div>
+      <v-card width="1045">
         <v-card-title>
           <v-text-field
-          v-model="search"
-          append-icon="search"
-          label="Buscar"
-          single-line
-          hide-details
-          >
-          </v-text-field>
-      </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="desserts"
-        :search="search"
-      >
-        <template v-slot:items="props">
+            v-model="search"
+            append-icon="search"
+            label="Buscar"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table :headers="headers" :items="desserts" :search="search" expand>
+          <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.codigo }}</td>
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
-            <td class="text-xs-left">{{ props.item.cantidadtotal }}</td>
-            <td class="text-xs-left">{{ props.item.tallas }}</td>
-            <td class="text-xs-left">{{ props.item.color }}</td>
-            <td class="text-xs-left">{{ props.item.posicion }}</td>
-            <td class="text-xs-center">
-                <div style="text-align: center; display: inline-block;"></div>
-                <div class="btd"><v-btn @click.up="conditions=true">Detalles</v-btn></div>
-            </td>
-        </template>
+            <td class="text-xs-left">{{ props.item.valor }}</td>
+            <td class="text-xs-left"><div class="btd"><v-btn @click="conditions=true">Imágenes</v-btn></div></td>
+          </template>
         </v-data-table>
       </v-card>
       <v-dialog v-model="conditions" width="1085">
-        <v-card>
-          <v-card-text>
-            <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
-              <div style="background-color: #000000;padding: 5px;color: white"><h2>Detalles</h2></div>
-              <v-card>
-                <v-card-title>
-                  <v-text-field
-                  v-model="search"
-                  append-icon="search"
-                  label="Search"
-                  single-line
-                  hide-details
-                  >
-                  </v-text-field>
-                </v-card-title>
-                <v-data-table
-                  :headers="encabezado"
-                  :items="contenido"
-                  :search="search"
-                >
-                  <template v-slot:items="props">
-                    <td class="text-xs-left">{{ props.item.codigo }}</td>
-                    <td class="text-xs-left">{{ props.item.descripcion }}</td>
-                    <td class="text-xs-left">{{ props.item.marca }}</td>
-                    <td class="text-xs-left">{{ props.item.color }}</td>
-                    <td class="text-xs-left">{{ props.item.tallas }}</td>
-                    <td class="text-xs-left">{{ props.item.cantidad }}</td>
-                    <td class="text-xs-left">{{ props.item.posicion }}</td>
-                    <td class="text-xs-left">{{ props.item.precio }}</td>
-
-                    <td class="text-xs-center">
-                      <v-btn fab dark small color="error">
-                      <v-icon dark color="black">delete</v-icon>
-                      </v-btn>
-                      <v-btn fab dark small color="warning">
-                      <v-icon dark color="black">edit</v-icon>
-                      </v-btn>
-                    </td>
-                  </template>
-                </v-data-table>
-              </v-card>
-            </nav>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <div class="bt"><v-btn flat @click="conditions=false">Cerrar</v-btn></div>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
+         <v-card>
+            <v-card-text>
+                <nav>
+                <div class="tituloCuadro"><h2>Imagenes de muestra</h2></div>
+                <v-img :src="img" class="imagen"></v-img>
+                <v-img :src="img" class="imagen"></v-img>
+                <v-img :src="img" class="imagen"></v-img>
+                <v-img :src="img" class="imagen"></v-img>
+                </nav>
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <div class="botonCerrar"><v-btn flat @click="conditions = false">Cerrar</v-btn></div>
+                </v-card-actions>
+            </v-card-text>
+            </v-card>
       </v-dialog>
     </nav>
   </v-app>
 </template>
 <script>
+import img from '@/assets/busos.png'
 export default {
   data () {
     const defaultForm = Object.freeze({
       codigo: '',
       nombre: '',
       marca: '',
-      precio: '',
-      tallas: '',
-      cantidad: '',
-      posicion: ''
+      precio: ''
     })
     return {
+      img,
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
         codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
         precio: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        cantidad: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        posicion: [val => (val || '').length > 0 || 'Este campo es requerido']
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,
@@ -220,37 +112,14 @@ export default {
         { text: 'Código', value: 'codigo' },
         { text: 'Nombre', value: 'nombre' },
         { text: 'Marca', value: 'marca' },
-        { text: 'Precio', value: 'precio' },
-        { text: '' }
+        { text: 'Precio', value: 'valor' }
       ],
       desserts: [
         {
           codigo: 'ASD812',
           nombre: 'Shorts',
           marca: 'roballo',
-          precio: 10000
-        }
-      ],
-      encabezado: [
-        { text: 'Código', value: 'codigo' },
-        { text: 'Descripción', value: 'descripción' },
-        { text: 'Marca', value: 'marca' },
-        { text: 'Color', value: 'color' },
-        { text: 'Tallas', value: 'tallas' },
-        { text: 'Cantidad', value: 'cantidad' },
-        { text: 'Posición', value: 'posicion' },
-        { text: 'Precio', value: 'Precio' }
-      ],
-      contenido: [
-        {
-          codigo: 'jhass676',
-          descripcion: 'camison',
-          marca: 'nuevo',
-          color: 'Verde',
-          tallas: 'S,M',
-          cantidad: 15,
-          posicion: 'almacen4xdxdxd',
-          precio: 50000
+          valor: 10000
         }
       ]
     }
@@ -259,12 +128,9 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-          this.form.codigo &&
-          this.form.precio &&
-          this.form.marca &&
-          this.form.tallas &&
-          this.form.cantidad &&
-          this.form.posicion
+        this.form.codigo &&
+        this.form.precio &&
+        this.form.marca
       )
     }
   },
@@ -284,19 +150,31 @@ export default {
 }
 </script>
 <style>
-.cuadro{
- text-align:center;
- border: #000000 3px solid;
- margin-bottom: 30px
+.cuadro {
+  text-align: center;
+  border: #000000 3px solid;
+  margin-bottom: 30px;
 }
-.cuadro2{
- border: #000000 3px solid;
- width:fit-content ;
- text-align: center;
- margin-top:50px
+.cuadro2 {
+  border: #000000 3px solid;
+  width: fit-content;
+  text-align: center;
+  margin-top: 50px;
 }
-.detalle{
- margin-left: 40px;
- text-align:center;
+.detalle {
+  margin-left: 40px;
+  text-align: center;
+}
+.tituloCuadro{
+  text-align: center;
+   background-color:#000000;
+   padding: 5px;
+   color: white
+ }
+.imagen{
+  margin:20px 10px;
+  width: 239px;
+  height: 349px;
+  display:inline-block
 }
 </style>

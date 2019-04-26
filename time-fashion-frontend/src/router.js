@@ -13,6 +13,7 @@ import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
+import VendedorPedidos from './views/vendedor/pedidos.vue'
 import Cliente from './views/cliente/Inicio.vue'
 import Client from './views/cliente/perfil.vue'
 import Clientecompra from './views/cliente/miscompras.vue'
@@ -125,6 +126,11 @@ export default new Router({
       path: '/vendedor/productos',
       name: 'productosVendedor',
       component: VendedorProductos
+    },
+    {
+      path: '/vendedor/pedidos',
+      name: 'pedidosVendedor',
+      component: VendedorPedidos
     },
     {
       path: '/niños',
