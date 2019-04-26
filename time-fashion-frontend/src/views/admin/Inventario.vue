@@ -76,7 +76,7 @@ export default {
         { text: 'Nombre', value: 'name' },
         { text: 'Código', value: 'codigo' },
         { text: 'Marca', value: 'marca' },
-        { text: '' }
+        { text: '', sortable: false }
       ],
       desserts: [
         {

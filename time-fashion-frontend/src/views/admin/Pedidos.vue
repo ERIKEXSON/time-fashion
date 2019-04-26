@@ -54,6 +54,7 @@
                     >
                         Llegada a país de destino
                     </v-stepper-step>
+                    <v-divider></v-divider>
                     <v-stepper-step
                         step="4"
                         editable
@@ -131,13 +132,13 @@ export default {
         { text: 'Información del pedido', value: 'informacion' },
         { text: 'Valor', value: 'valor' },
         { text: 'Estado del pedido', value: 'estado' },
-        { text: 'Acciones de pedido' }
+        { text: 'Acciones de pedido', sortable: false }
       ],
       factura: [
         { text: 'Cantidad', value: 'cantidad', sortable: false },
-        { text: 'Descripcion', value: 'descripcion' },
-        { text: 'Precio unitario', value: 'preciounitario' },
-        { text: 'Valor de venta', value: 'valorventa' }
+        { text: 'Descripcion', value: 'descripcion', sortable: false },
+        { text: 'Precio unitario', value: 'preciounitario', sortable: false },
+        { text: 'Valor de venta', value: 'valorventa', sortable: false }
       ],
       detallesFactura: [
         {
@@ -205,15 +206,6 @@ export default {
     transition: all .2s linear
   }
   .botonSeguirPedido:hover{
-    background-color: rgb(145, 45, 45)
- }
- .botonConfirmarPedido{
-     display: inline-block;
-     margin-left: 10px;
-     background-color: rgba(34, 194, 215, 0.61);
-     transition: all .2s linear
- }
- .botonConfirmarPedido:hover{
     background-color: rgb(145, 45, 45)
  }
 </style>
