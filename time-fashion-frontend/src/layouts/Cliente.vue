@@ -56,7 +56,7 @@ export default {
       },
       {
         text: 'Mis compras',
-        to: '/cliente/compra'
+        to: '/cliente/compras'
       },
       {
         text: 'Mi dirección de entrega',

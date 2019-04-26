@@ -214,7 +214,7 @@ export default {
         { text: 'Documento', value: 'documento' },
         { text: 'Tipo de documento', value: 'tipodocumento' },
         { text: 'Empresa', value: 'empresa' },
-        { text: '' }
+        { text: '', sortable: false }
       ],
       desserts: [
         {

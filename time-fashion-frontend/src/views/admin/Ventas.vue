@@ -22,8 +22,6 @@
                         <td class="text-xs-left">{{ props.item.id }}</td>
                         <td class="text-xs-left">{{ props.item.empresa }}</td>
                         <td class="text-xs-left">{{ props.item.valor }}</td>
-                        <!--<td class="text-xs-left" :v-model="dineroEmpresa()"></td>
-                        <td class="text-xs-left">{{ dineroServicio() }}</td>-->
                     </template>
                 </v-data-table>
             </v-card>
@@ -38,9 +36,9 @@ export default {
       headers: [
         { text: 'ID del pedido', value: 'id' },
         { text: 'Empresa', value: 'empresa' },
-        { text: 'Valor de venta', value: 'valor' }/*,
+        { text: 'Valor de venta', value: 'valor' },
         { text: 'Dinero para empresa', value: 'dineroempresa' },
-        { text: 'Dinero servicio', value: 'dineroservicio' } */
+        { text: 'Dinero servicio', value: 'dineroservicio' }
       ],
       desserts: [
         {
@@ -53,14 +51,6 @@ export default {
   },
   created () {
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
-  }/*,
-  methods: {
-    dineroEmpresa () {
-      this.dineroempresa = this.valor - (this.valor * 0.3)
-    },
-    dineroServicio () {
-      this.dineroservicio = this.valor * 0.3
-    }
-  } */
+  }
 }
 </script>

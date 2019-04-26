@@ -1,9 +1,8 @@
 <template>
   <v-app>
     <div class="imagenInicio">
-      <img src="@/assets/perfil.png" width="100" height="100">
-      <h2>Bienvenido, {{ usuario }}</h2>
-      <h3>Gestiona tu información para mejorar tu experiencia</h3>
+      <img src="@/assets/perfil.png" width="300" height="300">
+      <h1>Bienvenido, {{ usuario }}</h1>
     </div>
   </v-app>
 </template>
@@ -23,6 +22,6 @@ export default {
   .imagenInicio{
     text-align: center;
     width: fit-content;
-    margin: auto
+    margin: 100px auto 0 auto
   }
 </style>

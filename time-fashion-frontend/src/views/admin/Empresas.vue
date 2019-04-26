@@ -163,7 +163,7 @@ export default {
         { text: 'NIT', value: 'nit' },
         { text: 'Teléfono', value: 'telefono' },
         { text: 'Correo', value: 'correo' },
-        { text: '' }
+        { text: '', sortable: false }
       ],
       desserts: [
         {
