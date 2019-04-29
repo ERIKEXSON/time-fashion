@@ -90,6 +90,11 @@ export default {
         to: '/vendedor/pedidos'
       },
       {
+        text: 'Factura',
+        icon: '',
+        to: '/vendedor/factura'
+      },
+      {
         text: 'Cerrar sesión',
         to: '/'
       }

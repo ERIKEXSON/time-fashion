@@ -159,10 +159,10 @@ export default {
     return {
       form: Object.assign({}, defaultForm),
       rules: {
-        tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],
         cantidad: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        posicion: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        color: [val => (val || '').length > 0 || 'Este campo es requerido']
+        tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        color: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        posicion: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipoproducto: ['Pantalon', 'Camisa', 'Pantaloneta', 'Camisetilla', 'Boxer', 'zapatos', 'accesorios'],
       conditions: false,

@@ -14,9 +14,10 @@ import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorPedidos from './views/vendedor/pedidos.vue'
+import VendedorFactura from './views/vendedor/factura.vue'
 import Cliente from './views/cliente/Inicio.vue'
-import Client from './views/cliente/Perfil.vue'
-import Clientecompra from './views/cliente/Miscompras.vue'
+import Client from './views/cliente/perfil.vue'
+import Clientecompra from './views/cliente/miscompras.vue'
 import Clientedireccion from './views/cliente/Misdirecciones.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
@@ -131,6 +132,11 @@ export default new Router({
       path: '/vendedor/pedidos',
       name: 'pedidosVendedor',
       component: VendedorPedidos
+    },
+    {
+      path: '/vendedor/factura',
+      name: 'facturavenndedor',
+      component: VendedorFactura
     },
     {
       path: '/niños',
