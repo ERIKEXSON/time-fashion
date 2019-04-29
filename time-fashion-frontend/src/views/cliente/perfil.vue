@@ -10,7 +10,7 @@
             <v-card width="1045">
               <v-card-title primary-title>
                 <div>
-                  <div class="headline">Perfil</div>
+                  <div class="headline"><strong>Perfil</strong></div>
                   <span>Mantén tu información actualizada para evitar errores en compras y/o envíos</span>
                 </div>
               </v-card-title>
@@ -23,7 +23,7 @@
                       <v-flex xs12 sm7>
                         <v-text-field
                           v-model="form.nombres"
-                          :rules="rules.nombres"
+                          :rules="rules.required"
                           required
                         ></v-text-field>
                       </v-flex>
@@ -35,7 +35,7 @@
                       <v-flex xs12 sm7>
                         <v-text-field
                           v-model="form.apellidos"
-                          :rules="rules.apellidos"
+                          :rules="rules.required"
                           required
                         ></v-text-field>
                       </v-flex>
@@ -68,7 +68,7 @@
                             ref="picker"
                             v-model="date"
                             :max="new Date().toISOString().substr(0, 10)"
-                            min="1950-01-01"
+                            min="1930-01-01"
                             @change="save"
                           ></v-date-picker>
                         </v-menu>
@@ -78,42 +78,87 @@
                       <v-flex xs12 sm4>
                         <v-subheader>Género</v-subheader>
                       </v-flex>
-                    </v-layout>
-                    <v-layout row>
-                      <v-flex xs12 sm4>
-                        <v-subheader>Contraseña</v-subheader>
+                      <v-flex xs12 sm7>
+                        <v-select
+                        v-model="form.genero"
+                        :items="generos"
+                        ></v-select>
                       </v-flex>
                     </v-layout>
                     <v-layout row>
                       <v-flex xs12 sm4>
                         <v-subheader>Correo</v-subheader>
                       </v-flex>
+                      <v-flex xs12 sm7>
+                        <v-text-field
+                          v-model="form.correo"
+                          :rules="rules.correo"
+                          required
+                        ></v-text-field>
+                      </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                      <v-flex xs12 sm4>
+                        <v-subheader>Contraseña</v-subheader>
+                      </v-flex>
+                      <v-flex xs12 sm7>
+                        <v-text-field
+                          v-model="form.contrasena"
+                          :append-icon="show1 ? 'visibility' : 'visibility_off'"
+                          :rules="rules.required"
+                          :type="show1 ? 'text' : 'password'"
+                          @click:append="show1 = !show1"
+                          counter
+                          required
+                        ></v-text-field>
+                      </v-flex>
                     </v-layout>
                     <v-layout row>
                       <v-flex xs12 sm4>
                         <v-subheader>Teléfono</v-subheader>
+                      </v-flex>
+                      <v-flex xs12 sm7>
+                        <v-text-field
+                          v-model="form.telefono"
+                          :rules="rules.required"
+                          required
+                        ></v-text-field>
                       </v-flex>
                     </v-layout>
                     <v-layout row>
                       <v-flex xs12 sm4>
                         <v-subheader>Tipo de documento</v-subheader>
                       </v-flex>
+                      <v-flex xs12 sm7>
+                        <v-select
+                          v-model="form.tipodocumento"
+                          :items="tipos"
+                          :rules="rules.required"
+                          required
+                        ></v-select>
+                      </v-flex>
                     </v-layout>
                     <v-layout row>
                       <v-flex xs12 sm4>
                         <v-subheader>Documento</v-subheader>
                       </v-flex>
+                      <v-flex xs12 sm7>
+                        <v-text-field
+                          v-model="form.documento"
+                          :rules="rules.required"
+                          required
+                        ></v-text-field>
+                      </v-flex>
                     </v-layout>
                   </v-container>
               </v-card-actions>
               <v-card-actions>
-                <div class="botonCancelar"><v-btn flat @click="resetForm">Cancelar</v-btn></div>
-                <div class="botonRegistrar"><v-btn
+                <div class="botonConfirmar"><v-btn
                   :disabled="!formIsValid"
                   flat
                   color="black"
                   type="submit"
-                >Registrar
+                >Confirmar
                 </v-btn></div>
               </v-card-actions>
             </v-card>
@@ -127,10 +172,11 @@
 export default {
   data () {
     const defaultForm = Object.freeze({
-      nombres: 'Errik',
-      apellidos: 'Mamerto Avellana',
+      // aqui poner los datos que hallan en la base de datos para que el usuario pueda editarlos
+      nombres: '',
+      apellidos: '',
       genero: '',
-      contraseña: 'daasdasdasda',
+      contrasena: '',
       correo: '',
       telefono: '',
       tipodocumento: '',
@@ -139,14 +185,13 @@ export default {
     return {
       form: Object.assign({}, defaultForm),
       rules: {
-        nombres: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        apellidos: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        genero: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tipodocumento: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        documento: [val => (val || '').length > 0 || 'Este campo es requerido'],
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
-        telefono: [val => (val || '').length > 0 || 'Este campo es requerido']
-      }
+        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        minimo: [v => v.length >= 8 || 'Minimo 8 caracteres']
+      },
+      generos: ['Masculino', 'Femenino'],
+      show1: false,
+      tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía']
     }
   },
   watch: {
@@ -159,21 +204,15 @@ export default {
       return (
         this.form.nombres &&
         this.form.apellidos &&
-        this.form.fechanacimiento &&
-        this.form.genero &&
-        this.form.contraseña &&
+        this.form.contrasena &&
         this.form.correo &&
-        this.form.celular &&
+        this.form.telefono &&
         this.form.tipodocumento &&
         this.form.documento
       )
     }
   },
   methods: {
-    resetForm () {
-      this.form = Object.assign({}, this.defaultForm)
-      this.$refs.form.reset()
-    },
     submit () {
       this.snackbar = true
       this.resetForm()
@@ -187,3 +226,13 @@ export default {
   }
 }
 </script>
+<style>
+   .botonConfirmar{
+    background-color: rgba(206, 98, 252, 0.795);
+    margin: auto auto 20px auto;
+    transition: all .2s linear
+ }
+ .botonConfirmar button:not([disabled="disabled"]):hover{
+    background-color: rgba(136, 16, 248, 0.795)
+ }
+</style>
