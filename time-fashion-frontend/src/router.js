@@ -16,16 +16,10 @@ import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorPedidos from './views/vendedor/pedidos.vue'
 import VendedorFactura from './views/vendedor/factura.vue'
 import Cliente from './views/cliente/Inicio.vue'
-<<<<<<< HEAD
-import Client from './views/cliente/perfil.vue'
-import Clientecompra from './views/cliente/miscompras.vue'
-import Clientedireccion from './views/cliente/Misdirecciones.vue'
-=======
 import ClientePerfil from './views/cliente/Perfil.vue'
-import ClienteCompras from './views/cliente/Miscompras.vue'
-import ClienteDireccion from './views/cliente/Misdirecciones.vue'
-import ClienteMetododePago from './views/cliente/MetodosdePago.vue'
->>>>>>> e4408f91a4d512eff0466e93399e3f7e0f7d37f1
+import ClienteCompras from './views/cliente/miscompras.vue'
+import ClienteDireccion from './views/cliente/misdirecciones.vue'
+import ClienteMetododePago from './views/cliente/metodosdePago.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
 import Niños from './views/niños/inicio.vue'
@@ -320,5 +314,6 @@ export default new Router({
       name: 'clienteMetodosdePago',
       component: ClienteMetododePago
     }
+
   ]
 })
