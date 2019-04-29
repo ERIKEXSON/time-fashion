@@ -55,6 +55,10 @@ export default {
         to: '/cliente/perfil'
       },
       {
+        text: 'Métodos de pago',
+        to: '/cliente/metodosdepago'
+      },
+      {
         text: 'Mis compras',
         to: '/cliente/compras'
       },

@@ -39,13 +39,13 @@
           <img src="@/assets/logito.png" height="45px" width="90px">
       </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
-        <v-title>Hombre</v-title>
+        Hombre
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down" to="mujer">
-        <v-title>Mujer</v-title>
+        Mujer
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down" to="niños">
-        <v-title>Niños</v-title>
+        Niños
       </v-btn>
       <v-text-field
         flat
