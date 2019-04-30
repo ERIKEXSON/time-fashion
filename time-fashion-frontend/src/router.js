@@ -17,7 +17,7 @@ import VendedorPedidos from './views/vendedor/pedidos.vue'
 import VendedorFactura from './views/vendedor/factura.vue'
 import Cliente from './views/cliente/Inicio.vue'
 import ClientePerfil from './views/cliente/Perfil.vue'
-import ClienteCompras from './views/cliente/miscompras.vue'
+import ClientePedidos from './views/cliente/MisPedidos.vue'
 import ClienteDireccion from './views/cliente/misdirecciones.vue'
 import ClienteMetododePago from './views/cliente/metodosdePago.vue'
 import Hombre from './views/hombres/ropahombre.vue'
@@ -300,9 +300,9 @@ export default new Router({
       component: ClientePerfil
     },
     {
-      path: '/cliente/compras',
-      name: 'clienteMiscompras',
-      component: ClienteCompras
+      path: '/cliente/mispedidos',
+      name: 'clienteMisPedidos',
+      component: ClientePedidos
     },
     {
       path: '/cliente/direccion',

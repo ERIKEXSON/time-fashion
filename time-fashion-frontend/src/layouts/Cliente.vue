@@ -59,8 +59,8 @@ export default {
         to: '/cliente/metodosdepago'
       },
       {
-        text: 'Mis compras',
-        to: '/cliente/compras'
+        text: 'Mis pedidos',
+        to: '/cliente/mispedidos'
       },
       {
         text: 'Mi dirección de entrega',
