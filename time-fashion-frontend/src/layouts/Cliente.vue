@@ -63,7 +63,7 @@ export default {
         to: '/cliente/mispedidos'
       },
       {
-        text: 'Mi dirección de entrega',
+        text: 'Mis direcciones',
         to: '/cliente/direccion'
       },
       {
@@ -71,6 +71,10 @@ export default {
       },
       {
         text: 'Centro de Denuncias'
+      },
+      {
+        text: 'Cerrar sesión',
+        to: '/'
       }
     ]
   }

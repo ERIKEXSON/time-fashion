@@ -132,6 +132,7 @@
             <td class="text-xs-left">{{ props.item.documento }}</td>
             <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
             <td class="text-xs-left">{{ props.item.empresa }}</td>
+            <td class="text-xs-left">{{ props.item.rol }}</td>
             <div style="text-align: center; display: inline-block;">
               <v-btn fab dark small color="warning">
                 <v-icon dark color="white">edit</v-icon>
@@ -214,6 +215,7 @@ export default {
         { text: 'Documento', value: 'documento' },
         { text: 'Tipo de documento', value: 'tipodocumento' },
         { text: 'Empresa', value: 'empresa' },
+        { text: 'Rol', value: 'rol' },
         { text: '', sortable: false }
       ],
       desserts: [
@@ -225,7 +227,8 @@ export default {
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
           telefono: '123123123',
-          empresa: 'adidas'
+          empresa: 'adidas',
+          rol: 'administrador'
         }
       ],
       datosContacto: [

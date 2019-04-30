@@ -4,13 +4,13 @@
             <div class="tituloCuadro"><h2>Historial de pedidos</h2></div>
             <v-card width="1045">
                 <v-card-title>
-                <v-text-field
-                    v-model="search"
-                    append-icon="search"
-                    label="Buscar"
-                    single-line
-                    hide-details
-                ></v-text-field>
+                    <v-text-field
+                        v-model="search"
+                        append-icon="search"
+                        label="Buscar"
+                        single-line
+                        hide-details
+                    ></v-text-field>
                 </v-card-title>
                 <v-data-table
                 :headers="historialPedidos"
@@ -20,9 +20,10 @@
                 <template v-slot:items="props">
                     <td class="text-xs-left">{{ props.item.numero }}</td>
                     <td class="text-xs-left">{{ props.item.informacion }}</td>
+                    <td class="text-xs-left">{{ props.item.fecha }}</td>
                     <td class="text-xs-left">{{ props.item.valor }}</td>
                     <td class="text-xs-left">{{ props.item.estado }}</td>
-                    <td class="text-xs-left"><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div><div class="botonConfirmarPedido"><v-btn @click="confirmarPedido = true">Confirmar pedido</v-btn></div></td>
+                    <td class="text-xs-left" width=70%><div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div><div class="botonConfirmarPedido"><v-btn @click="confirmarPedido = true">Confirmar pedido</v-btn></div></td>
                 </template>
                 </v-data-table>
             </v-card>
@@ -77,12 +78,12 @@
                             :headers="factura"
                             :items="detallesFactura"
                             >
-                            <template v-slot:items="props">
-                                <td class="text-xs-left">{{ props.item.cantidad }}</td>
-                                <td class="text-xs-left">{{ props.item.descripcion }}</td>
-                                <td class="text-xs-left">{{ props.item.preciounitario }}</td>
-                                <td class="text-xs-left">{{ props.item.valorventa }}</td>
-                            </template>
+                                <template v-slot:items="props">
+                                    <td class="text-xs-left">{{ props.item.cantidad }}</td>
+                                    <td class="text-xs-left">{{ props.item.descripcion }}</td>
+                                    <td class="text-xs-left">{{ props.item.preciounitario }}</td>
+                                    <td class="text-xs-left">{{ props.item.valorventa }}</td>
+                                </template>
                             </v-data-table>
                         </v-card>
                         </nav>
@@ -129,7 +130,8 @@ export default {
       search: '',
       historialPedidos: [
         { text: 'Número de pedido', value: 'numero' },
-        { text: 'Información del pedido', value: 'informacion' },
+        { text: 'Información', value: 'informacion' },
+        { text: 'Fecha', value: 'fecha' },
         { text: 'Valor', value: 'valor' },
         { text: 'Estado del pedido', value: 'estado' },
         { text: 'Acciones de pedido', sortable: false }
@@ -158,11 +160,13 @@ export default {
         {
           numero: '1363413',
           informacion: 'asdasd',
+          fecha: '25-04-2018',
           valor: 1231231,
           estado: 'Entrega pendiente'
         },
         {
           numero: '3452',
+          fecha: '25-04-2018',
           valor: 1432423,
           estado: 'Entrega confirmada'
         },
@@ -173,6 +177,7 @@ export default {
         },
         {
           numero: '678678546',
+          fecha: '25-04-2018',
           valor: 235472,
           estado: 'Devolucion'
         },

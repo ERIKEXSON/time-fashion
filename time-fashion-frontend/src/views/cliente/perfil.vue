@@ -121,6 +121,7 @@
                         <v-text-field
                           v-model="form.telefono"
                           :rules="rules.required"
+                          :mask="phone"
                           required
                         ></v-text-field>
                       </v-flex>
@@ -148,6 +149,16 @@
                           :rules="rules.required"
                           required
                         ></v-text-field>
+                      </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                      <v-flex xs12 sm4>
+                        <v-subheader>Nacionalidad</v-subheader>
+                      </v-flex>
+                      <v-flex xs12 sm7>
+                        <v-select
+                          v-model="form.nacionalidad"
+                        ></v-select>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -180,14 +191,15 @@ export default {
       correo: '',
       telefono: '',
       tipodocumento: '',
-      documento: ''
+      documento: '',
+      nacionalidad: ''
     })
     return {
+      phone: 'phone',
       form: Object.assign({}, defaultForm),
       rules: {
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
-        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        minimo: [v => v.length >= 8 || 'Minimo 8 caracteres']
+        required: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       generos: ['Masculino', 'Femenino'],
       show1: false,
