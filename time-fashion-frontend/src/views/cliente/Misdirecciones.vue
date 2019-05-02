@@ -68,6 +68,17 @@
                 ></v-select>
               </v-flex>
             </v-layout>
+            <v-layout row>
+              <v-flex sm4>
+                <v-subheader v-text="'Código postal'"></v-subheader>
+              </v-flex>
+              <v-flex sm7>
+                <v-text-field
+                  v-model="form.codigopostal"
+                  :mask="codpostal"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
           </v-container>
         </v-card-actions>
       </v-card>
@@ -90,7 +101,8 @@ export default {
         required: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       paises: ['Colombia', 'España', 'Otro :v'],
-      departamentos: ['La esquina', 'Santander']
+      departamentos: ['La esquina', 'Santander'],
+      codpostal: '#####'
     }
   },
   computed: {
