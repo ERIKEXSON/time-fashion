@@ -1,20 +1,21 @@
 'use strict'
 
 const { getLogger } = require('@time-fashion/utils')
-// const image = require('./image')
-// const media = require('./media')
+const user = require('./user')
+const brand = require('./brand')
+
 
 const log = getLogger(__dirname, __filename)
 // prueba
 module.exports = {
   home (req, res) {
     res.send({
-      image: '/image',
-      media: '/media'
+      user: '/user',
+      brand: '/brand'
     })
   },
-  // image,
-  // media,
+  user,
+  brand,
   errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500

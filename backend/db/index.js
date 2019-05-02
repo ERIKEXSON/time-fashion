@@ -1,4 +1,11 @@
 'use strict'
+//config
+const { db:config } = require('@time-fashion/config')
+
+//controladores
+const setupUser = require('./lib/users')
+const setupBrand = require('./lib/brands')
+//modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
 const setupOrderModel = require('./models/order.model')
@@ -19,7 +26,7 @@ const setupDetail_size = require('./models/detail_size.model')
 
 // const setupAgent = require('./lib/agent')
 
-module.exports = async function (config) {
+module.exports = async function () {
   const sequelize = setupDatabase(config)
   const UserModel = setupUserModel(config)
   const OrderModel = setupOrderModel(config)
@@ -120,15 +127,13 @@ module.exports = async function (config) {
 
   await sequelize.authenticate()
 
-  if (config.setup) {
-    await sequelize.sync({ force: true })
-  }
-
-  const Agent = {}
-  const Metric = {}
-
+  const User = setupUser(UserModel)
+  const Brand = setupBrand(BrandModel)
   return {
-    Agent,
-    Metric
+    async setup() {
+      await sequelize.sync({ force: true })
+    },
+    User,
+    Brand
   }
 }
