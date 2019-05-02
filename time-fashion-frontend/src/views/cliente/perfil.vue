@@ -1,5 +1,16 @@
 <template>
   <v-app>
+    <v-snackbar
+      v-model="snackbar"
+      absolute
+      top
+      right
+      color="success"
+      class="snackbar"
+    >
+      <span>Perfil actualizado</span>
+      <v-icon>check_circle</v-icon>
+    </v-snackbar>
     <v-form ref="form" @submit.prevent="submit">
       <v-container
         fluid
