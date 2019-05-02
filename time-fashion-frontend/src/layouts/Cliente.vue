@@ -8,19 +8,21 @@
       width="250"
       class="secondary"
     >
-      <v-list-tile
-      color='words'
-      v-for="admin in admins"
-      :key="admin.admins"
-      :to="admin.to"
-      >
-        <v-list-tile-action v-if="admin.icon">
-          <v-icon>{{ admin.icon }}</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-tile>{{ admin.text }}</v-list-tile-tile>
-        </v-list-tile-content>
-      </v-list-tile>
+      <v-list>
+        <v-list-tile
+          color='words'
+          v-for="admin in admins"
+          :key="admin.admins"
+          :to="admin.to"
+        >
+          <v-list-tile-action v-if="admin.icon">
+            <v-icon>{{ admin.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-tile>{{ admin.text }}</v-list-tile-tile>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
     </v-navigation-drawer>
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
