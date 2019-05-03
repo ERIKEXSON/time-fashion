@@ -42,16 +42,27 @@
             </template>
             <!--tercera parte-->
             <div>
-            <nav class= "resul">
-                <h3>Base impponible al % de IVA</h3>
-                <h3>g</h3>
-                <h3>f</h3>
-                <h3>d</h3>
+            <nav class= "resul1">
+                <div>
+                <h3>Base imponible al % de IVA:</h3>
+                </div>
+                <div>
+                  <h3>sdjhb</h3>
+                </div>
+                <div>
+                  <h3>f</h3>
+                </div>
             </nav>
-            <nav class="resul">
-                <h2>TOTAL IVA</h2>
-                <h2>TOTAL RETENCION</h2>
-                <h2>TOTAL FACTURA</h2>
+            <nav class="resul2">
+                <div>
+                  <h2>TOTAL IVA:</h2>
+                </div>
+                <div>
+                <h2>TOTAL RETENCION:</h2>
+                </div>
+                <div>
+                <h2>TOTAL FACTURA:</h2>
+                </div>
             </nav>
             </div>
 
@@ -83,6 +94,13 @@ export default {
           precio: 24,
           neto: 4.0,
           iva: '1%'
+        },
+        {
+          name: '3',
+          detalle: 'camisa addidas ',
+          precio: 24000,
+          neto: 3.0,
+          iva: '0,5%'
         }
       ]
     }
@@ -125,9 +143,14 @@ export default {
   display: inline-block;
   margin: 10px;
 }
-.resul{
+.resul1{
   display:inline-block;
-  margin: 20px 100px 0 50px;
+  margin: 20px 150px 0 5px;
+  text-align: left
+}
+.resul2{
+   display:inline-block;
+  margin: 20px 150px 0 50px;
   text-align: left
 }
 </style>

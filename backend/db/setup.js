@@ -3,7 +3,6 @@
 const { getLogger, terminate } = require('@time-fashion/utils')
 const inquirer = require('inquirer')
 const dbs = require('./')
-const { db } = require('@time-fashion/config')
 
 const log = getLogger(__dirname, __filename)
 
