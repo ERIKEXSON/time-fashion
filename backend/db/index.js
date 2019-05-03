@@ -5,6 +5,7 @@ const { db:config } = require('@time-fashion/config')
 //controladores
 const setupUser = require('./lib/users')
 const setupBrand = require('./lib/brands')
+const setupDetail_size= require('./lib/detail_size')
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -22,9 +23,9 @@ const setupSizeModel = require('./models/size.model')
 const setupProductsModel = require('./models/products.model')
 const setupBrandModel = require('./models/brand.model')
 const setupLineModel = require('./models/line.model')
-const setupDetail_size = require('./models/detail_size.model')
+const setupDetail_sizeModel = require('./models/detail_size.model')
 
-// const setupAgent = require('./lib/agent')
+
 
 module.exports = async function () {
   const sequelize = setupDatabase(config)
@@ -43,7 +44,7 @@ module.exports = async function () {
   const ProductsModel = setupProductsModel(config)
   const BrandModel = setupBrandModel(config)
   const LineModel = setupLineModel(config)
-  const Detail_sizeModel = setupDetail_size(config)
+  const Detail_sizeModel = setupDetail_sizeModel(config)
 
   // relacion de usuario a pedidos
   UserModel.hasMany(OrderModel)
@@ -129,11 +130,13 @@ module.exports = async function () {
 
   const User = setupUser(UserModel)
   const Brand = setupBrand(BrandModel)
+  const detail_size= setupDetail_size(Detail_sizeModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
     },
     User,
-    Brand
+    Brand,
+    Detail_size,
   }
 }
