@@ -53,10 +53,6 @@ export default {
     drawer: true,
     admins: [
       {
-        text: 'Administrador',
-        icon: 'home'
-      },
-      {
         text: 'Empresas',
         icon: 'domain',
         to: '/admin/empresas'
@@ -65,6 +61,16 @@ export default {
         text: 'Usuarios',
         icon: 'people_outline',
         to: '/admin/usuarios'
+      },
+      {
+        text: 'Pedidos',
+        icon: 'money',
+        to: '/admin/pedidos'
+      },
+      {
+        text: 'Ventas',
+        icon: 'home',
+        to: '/admin/ventas'
       },
       {
         text: 'Productos',
@@ -82,10 +88,7 @@ export default {
       }
     ]
   }
-  ),
-  props: {
-    source: String
-  }
+  )
 }
 </script>
 <style lang="stylus">

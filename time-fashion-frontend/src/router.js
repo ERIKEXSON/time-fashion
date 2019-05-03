@@ -5,15 +5,21 @@ import Inicio from './views/Inicio.vue'
 import Admin from './views/admin/Inicio.vue'
 import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
-import AdminAgregarEmpresa from './views/admin/AgregarEmpresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
+import AdminPedidos from './views/admin/Pedidos.vue'
+import AdminVentas from './views/admin/Ventas.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
-import VendedorEmpleados from './components/vendedor/Empleados.vue'
+import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
-import VendedorProductosDetalles from './components/vendedor/InventarioDetalles.vue'
+import VendedorPedidos from './views/vendedor/pedidos.vue'
+import VendedorFactura from './views/vendedor/factura.vue'
 import Cliente from './views/cliente/Inicio.vue'
+import ClientePerfil from './views/cliente/Perfil.vue'
+import ClientePedidos from './views/cliente/MisPedidos.vue'
+import ClienteDireccion from './views/cliente/MisDirecciones.vue'
+import ClienteMetododePago from './views/cliente/MetodosdePago.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
 import Niños from './views/niños/inicio.vue'
@@ -42,6 +48,10 @@ import Camisetasniño from './views/niños/niño/camisetas.vue'
 import Busosniño from './views/niños/niño/busos.vue'
 import Shortsniño from './views/niños/niño/shorts.vue'
 import Joggersniño from './views/niños/niño/joggers.vue'
+import Busosniña from './views/niños/niña/busos.vue'
+import Joggersniña from './views/niños/niña/joggers.vue'
+import Vestidosniña from './views/niños/niña/vestidos.vue'
+import Topsniña from './views/niños/niña/tops.vue'
 
 Vue.use(Router)
 
@@ -70,14 +80,19 @@ export default new Router({
       component: AdminEmpresas
     },
     {
-      path: '/admin/agregarempresa',
-      name: 'agregarEmpresaAdmin',
-      component: AdminAgregarEmpresa
-    },
-    {
       path: '/admin/usuarios',
       name: 'usuariosAdmin',
       component: AdminUsuarios
+    },
+    {
+      path: '/admin/pedidos',
+      name: 'pedidosAdmin',
+      component: AdminPedidos
+    },
+    {
+      path: '/admin/ventas',
+      name: 'ventasAdmin',
+      component: AdminVentas
     },
     {
       path: '/admin/inventario',
@@ -110,14 +125,19 @@ export default new Router({
       component: VendedorInventario
     },
     {
-      path: '/vendedor/inventario/detalles',
-      name: 'detallesInventarioVendedor',
-      component: VendedorProductosDetalles
-    },
-    {
       path: '/vendedor/productos',
       name: 'productosVendedor',
       component: VendedorProductos
+    },
+    {
+      path: '/vendedor/pedidos',
+      name: 'pedidosVendedor',
+      component: VendedorPedidos
+    },
+    {
+      path: '/vendedor/factura',
+      name: 'facturavenndedor',
+      component: VendedorFactura
     },
     {
       path: '/niños',
@@ -250,9 +270,50 @@ export default new Router({
       component: Joggersniño
     },
     {
+      path: '/busos-niña',
+      name: '/busos-niña',
+      component: Busosniña
+    },
+    {
+      path: '/joggers-niña',
+      name: '/joggers-niña',
+      component: Joggersniña
+    },
+    {
+      path: '/vestidos-niña',
+      name: '/vestidos-niña',
+      component: Vestidosniña
+    },
+    {
+      path: '/tops-niña',
+      name: '/tops-niña',
+      component: Topsniña
+    },
+    {
       path: '/cliente',
       name: 'cliente',
       component: Cliente
+    },
+    {
+      path: '/cliente/perfil',
+      name: 'clientePerfil',
+      component: ClientePerfil
+    },
+    {
+      path: '/cliente/mispedidos',
+      name: 'clienteMisPedidos',
+      component: ClientePedidos
+    },
+    {
+      path: '/cliente/direccion',
+      name: 'clienteMisdirecciones',
+      component: ClienteDireccion
+    },
+    {
+      path: '/cliente/metodosdepago',
+      name: 'clienteMetodosdePago',
+      component: ClienteMetododePago
     }
+
   ]
 })

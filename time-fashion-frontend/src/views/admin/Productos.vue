@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav style=" text-align:center;border: #000000 3px solid;margin-bottom: 30px">
-      <div style="background-color:#000000;padding: 5px;color: white"><h2>Productos</h2></div>
+    <nav class="borde">
+      <div class="tituloCuadro"><h2>Productos</h2></div>
       <v-card width="1045">
         <v-card-title>
         <v-text-field
@@ -23,6 +23,7 @@
             <td class="text-xs-left">{{ props.item.codigo }}</td>
             <td class="text-xs-left">{{ props.item.precio }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
+            <td class="text-xs-left">{{ props.item.empresa }}</td>
           </template>
         </v-data-table>
       </v-card>
@@ -38,14 +39,16 @@ export default {
         { text: 'Nombre', value: 'name' },
         { text: 'Codigo', value: 'codigo' },
         { text: 'Precio', value: 'precio' },
-        { text: 'Marca', value: 'marca' }
+        { text: 'Marca', value: 'marca' },
+        { text: 'Empresa', value: 'empresa' }
       ],
       desserts: [
         {
           name: 'Shorts',
           codigo: 'ASD812A',
           precio: 1000000,
-          marca: 'roballo'
+          marca: 'roballo',
+          empresa: 'asdasd'
         }
       ]
     }
@@ -55,3 +58,15 @@ export default {
   }
 }
 </script>
+<style>
+.borde{
+   text-align:center;
+   border: #000000 3px solid;
+   margin-bottom: 30px
+ }
+ .tituloCuadro{
+   background-color:#000000;
+   padding: 5px;
+   color: white
+ }
+</style>

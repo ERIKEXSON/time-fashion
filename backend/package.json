@@ -10,7 +10,7 @@
     "start-debug-brk": "cross-env DEBUG=* node --inspect-brk server.js",
     "clean": "rimraf */node_modules node_modules",
     "lint": "standard --fix",
-    "setup-db": "cross-env DEBUG=* node db/setup.js"
+    "setup-db": "node db/setup.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +25,7 @@
     "@time-fashion/errors": "file:errors",
     "@time-fashion/utils": "file:utils",
     "cors": "^2.8.4",
-    "cross-env": "^5.1.6",
+    "cross-env": "^5.2.0",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
     "rimraf": "^2.6.2"

@@ -148,8 +148,6 @@
     >
       <v-btn to="/camisetas-niño" flat>Camisetas</v-btn>
       <v-btn to="/busos-niño" flat>Busos</v-btn>
-      <v-btn to="/shorts-niño" class="hidden-sm-and-down" flat>Shorts</v-btn>
-      <v-btn to="/joggers-niño" class="hidden-sm-and-down" flat  style="margin-right: 260px">Joggers</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <v-toolbar
@@ -166,8 +164,6 @@
     <v-toolbar-items
     style="margin-right: -75px"
     >
-      <v-btn to="/camisetas-niño" class="hidden-sm-and-down" flat>Camisetas</v-btn>
-      <v-btn to="/busos-niño" class="hidden-sm-and-down" flat>Busos</v-btn>
       <v-btn to="/shorts-niño" flat>Shorts</v-btn>
       <v-btn to="/joggers-niño" flat  style="margin-right: 260px">Joggers</v-btn>
     </v-toolbar-items>
@@ -219,8 +215,5 @@ export default {
       'fab fa-whatsapp'
     ]
   })
-}
-props: {
-  source: String
 }
 </script>

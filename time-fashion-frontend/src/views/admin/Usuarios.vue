@@ -86,6 +86,14 @@
                   required
                 ></v-text-field>
               </v-flex>
+              <v-flex xs12 sm12>
+                <v-text-field
+                  v-model="form.empresa"
+                  :rules="rules.empresa"
+                  label="Empresa"
+                  required
+                ></v-text-field>
+              </v-flex>
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -123,8 +131,17 @@
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
             <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
+            <td class="text-xs-left">{{ props.item.empresa }}</td>
+            <td class="text-xs-left">{{ props.item.rol }}</td>
+            <div style="text-align: center; display: inline-block;">
+              <v-btn fab dark small color="warning">
+                <v-icon dark color="white">edit</v-icon>
+              </v-btn>
+              <v-btn fab dark small color="error">
+                <v-icon dark color="white">delete</v-icon>
+              </v-btn>
+            </div>
             <div class="botonContacto"><v-btn @click="contacto = true">Datos de contacto</v-btn></div>
-            <div class="botonCompras"><v-btn @click="compras = true">Compras</v-btn></div>
           </template>
         </v-data-table>
       </v-card>
@@ -154,87 +171,6 @@
           </v-card-text>
         </v-card>
       </v-dialog>
-      <v-dialog v-model="compras" width="1085">
-        <v-card>
-          <template>
-            <div>
-              <v-toolbar tabs>
-                <v-toolbar-title>Historial de compras</v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-btn icon>
-                  <v-icon>search</v-icon>
-                </v-btn>
-                <template v-slot:extension>
-                  <v-tabs
-                    v-model="tabs"
-                    fixed-tabs
-                    color="transparent"
-                  >
-                    <v-tab href="#mobile-tabs-5-1" class="primary--text">
-                      <v-icon>phone</v-icon>
-                    </v-tab>
-                    <v-tab href="#mobile-tabs-5-2" class="primary--text">
-                      <v-icon>favorite</v-icon>
-                    </v-tab>
-                  </v-tabs>
-                </template>
-              </v-toolbar>
-              <v-tabs-items v-model="tabs" class="white elevation-1">
-                <v-tab-item
-                  v-for="i in 3"
-                  :key="i"
-                  :value="'mobile-tabs-5-' + i"
-                >
-                  <v-card v-if="i == 1">
-                    <v-card-text>
-                      <nav class="borde">
-                        <div class="tituloCuadro"><h2>Datos de contacto</h2></div>
-                        <v-card width="1045">
-                          <v-data-table
-                            :headers="datosContacto"
-                            :items="desserts"
-                            :search="search"
-                          >
-                            <template v-slot:items="props">
-                              <td class="text-xs-left">{{ props.item.correo }}</td>
-                              <td class="text-xs-left">{{ props.item.direccion }}</td>
-                              <td class="text-xs-left">{{ props.item.telefono }}</td>
-                            </template>
-                          </v-data-table>
-                        </v-card>
-                      </nav>
-                      <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <div class="botonCerrar"><v-btn flat @click="contacto = false">Cerrar</v-btn></div>
-                      </v-card-actions>
-                    </v-card-text>
-                  </v-card>
-                  <v-card v-if="i == 2">
-                    <v-card-text>
-                      <nav class="borde">
-                        <div class="tituloCuadro"><h2>asdasdasd</h2></div>
-                        <v-card width="1045">
-                          <v-data-table
-                            :headers="datosContacto"
-                            :items="desserts"
-                            :search="search"
-                          >
-                            <template v-slot:items="props">
-                              <td class="text-xs-left">{{ props.item.correo }}</td>
-                              <td class="text-xs-left">{{ props.item.direccion }}</td>
-                              <td class="text-xs-left">{{ props.item.telefono }}</td>
-                            </template>
-                          </v-data-table>
-                        </v-card>
-                      </nav>
-                    </v-card-text>
-                  </v-card>
-                </v-tab-item>
-              </v-tabs-items>
-            </div>
-          </template>
-        </v-card>
-      </v-dialog>
     </nav>
   </v-app>
 </template>
@@ -249,11 +185,12 @@ export default {
       correo: '',
       rol: '',
       direccion: '',
-      tel: ''
+      tel: '',
+      empresa: ''
     })
     return {
+      e1: 0,
       contacto: false,
-      compras: false,
       snackbar: false,
       tabs: null,
       form: Object.assign({}, defaultForm),
@@ -265,10 +202,11 @@ export default {
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
         rol: [val => (val || '').length > 0 || 'Este campo es requerido'],
         direccion: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tel: [val => (val || '').length > 0 || 'Este campo es requerido']
+        tel: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        empresa: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
-      rol: ['Administrador', 'Vendedor', 'Cliente'],
+      rol: ['Administrador', 'Vendedor'],
       defaultForm,
       search: '',
       headers: [
@@ -276,7 +214,9 @@ export default {
         { text: 'Apellido', value: 'apellido' },
         { text: 'Documento', value: 'documento' },
         { text: 'Tipo de documento', value: 'tipodocumento' },
-        { text: '' }
+        { text: 'Empresa', value: 'empresa' },
+        { text: 'Rol', value: 'rol' },
+        { text: '', sortable: false }
       ],
       desserts: [
         {
@@ -286,7 +226,9 @@ export default {
           tipodocumento: 'CC',
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
-          telefono: '123123123'
+          telefono: '123123123',
+          empresa: 'adidas',
+          rol: 'administrador'
         }
       ],
       datosContacto: [
@@ -306,7 +248,8 @@ export default {
         this.form.correo &&
         this.form.rol &&
         this.form.direccion &&
-        this.form.tel
+        this.form.tel &&
+        this.form.empresa
       )
     }
   },
@@ -348,11 +291,11 @@ export default {
     margin-left: 10px;
     transition: all .2s linear
  }
- .botonRegistrar:hover{
+ .botonRegistrar button:not([disabled="disabled"]):hover{
     background-color: rgba(136, 16, 248, 0.795)
  }
  .snackbar{
-   color: black
+    color: black
  }
  .botonContacto{
     display: inline-block;
@@ -369,6 +312,14 @@ export default {
     background-color: rgb(145, 45, 45)
  }
  .botonCompras:hover{
+    background-color: rgb(145, 45, 45)
+ }
+  .botonSeguirPedido{
+    display: inline-block;
+    background-color: rgba(34, 194, 215, 0.61);
+    transition: all .2s linear
+  }
+  .botonSeguirPedido:hover{
     background-color: rgb(145, 45, 45)
  }
 </style>

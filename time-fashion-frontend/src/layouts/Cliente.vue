@@ -9,26 +9,20 @@
       class="secondary"
     >
       <v-list>
-        <v-list-tile color='words'>
-            <v-list-tile-action>
-            <v-icon>home</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-title>Administrador</v-list-tile-title>
+        <v-list-tile
+          color='words'
+          v-for="admin in admins"
+          :key="admin.admins"
+          :to="admin.to"
+        >
+          <v-list-tile-action v-if="admin.icon">
+            <v-icon>{{ admin.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-tile>{{ admin.text }}</v-list-tile-tile>
+          </v-list-tile-content>
         </v-list-tile>
       </v-list>
-      <v-list-tile
-      color='words'
-      v-for="admin in admins"
-      :key="admin.admins"
-      :to="admin.to"
-      >
-        <v-list-tile-action v-if="admin.icon">
-          <v-icon>{{ admin.icon }}</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-tile>{{ admin.text }}</v-list-tile-tile>
-        </v-list-tile-content>
-      </v-list-tile>
     </v-navigation-drawer>
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
@@ -59,15 +53,30 @@ export default {
     drawer: true,
     admins: [
       {
-        text: 'cambiar',
-        icon: 'assignment'
+        text: 'Perfil',
+        to: '/cliente/perfil'
       },
       {
-        text: 'cambiar',
-        icon: 'all_inbox'
+        text: 'Métodos de pago',
+        to: '/cliente/metodosdepago'
       },
       {
-        text: 'cambiar'
+        text: 'Mis pedidos',
+        to: '/cliente/mispedidos'
+      },
+      {
+        text: 'Mis direcciones',
+        to: '/cliente/direccion'
+      },
+      {
+        text: 'Cambiar contraseña'
+      },
+      {
+        text: 'Centro de Denuncias'
+      },
+      {
+        text: 'Cerrar sesión',
+        to: '/'
       }
     ]
   }
@@ -79,6 +88,6 @@ export default {
 </script>
 <style lang="stylus">
   .accent--text i{
-    color #22C1D7 !important
+    color: #22C1D7 !important
   }
 </style>
