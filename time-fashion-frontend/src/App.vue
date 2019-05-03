@@ -16,10 +16,24 @@ import { mapState } from 'vuex'
 export default {
   name: 'App',
   data () {
-    return {
-    }
+    return {}
   },
-  components: { AdministradorLayout, PrincipalLayout, HombresLayout, MujeresLayout, VendedorLayout, NiñosLayout, NiñoLayouts, NiñaLayouts, ClienteLayout },
+  components: {
+    AdministradorLayout,
+    PrincipalLayout,
+    HombresLayout,
+    MujeresLayout,
+    VendedorLayout,
+    NiñosLayout,
+    NiñoLayouts,
+    NiñaLayouts,
+    ClienteLayout
+  },
   computed: mapState(['layout'])
 }
 </script>
+<style>
+  .swal2-show {
+    font-family: 'Roboto', sans-serif !important;
+  }
+</style>

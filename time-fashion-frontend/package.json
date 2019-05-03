@@ -10,6 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
     "roboto-fontface": "*",
+    "sweetalert2": "^8.10.0",
     "vue": "^2.6.6",
     "vue-phone-mask-input": "^1.1.11",
     "vue-router": "^3.0.1",
