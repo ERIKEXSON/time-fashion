@@ -6,6 +6,7 @@ function setupBrand(brandModel) {
     const result  = await brandModel.create(brand)
     return result.toJSON()
   }
+  
   return {
     createBrand
   }
