@@ -17,5 +17,16 @@ router.post('/', async function(req, res, next) {
     next(err)
   }
 })
+router.put('/:uuid', async function (req, res, next) {
+  try {
+    const { uuid } = req.params
+    const { brandUpdate } = req.body
+    const { User } = await db()
+    const result = await User.updateBrand(uuid, brandUpdate)
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
 
 module.exports = router
