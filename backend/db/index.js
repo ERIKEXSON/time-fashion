@@ -17,7 +17,8 @@ const setupBrandModel = require("./models/brand.model")
 const setupLineModel = require("./models/line.model")
 const setupDetail_size = require("./models/detail_size.model")
 
-// const setupAgent = require('./lib/agent')
+// const setupAgent = r
+equire('./lib/agent')
 
 module.exports = async function (config) {
   const sequelize = setupDatabase(config)
