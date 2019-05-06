@@ -24,7 +24,19 @@
               <v-flex xs12 sm6>
                 <v-text-field v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
               </v-flex>
-
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.linea" :rules="rules.linea" label="Linea" required></v-text-field>
+              </v-flex>
+              <!--cargar imagen-->
+            <v-text-field label="Seleccionar Imagen" @click='pickFile' v-model='imageName' prepend-icon='attach_file' required></v-text-field>
+					  <input
+						type="file"
+						style="display: none"
+						ref="image"
+						accept="image/*"
+						@change="onFilePicked"
+            multiple
+					  >
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -61,6 +73,11 @@
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
             <td class="text-xs-left">{{ props.item.valor }}</td>
+            <td class="text-xs-left">{{ props.item.linea }}</td>
+             <td class="text-xs-center">
+               <v-btn fab dark small color="error"><v-icon dark color="black">delete</v-icon></v-btn>
+              <v-btn fab dark small color="warning"><v-icon dark color="black">edit</v-icon></v-btn>
+            </td>
             <td class="text-xs-left"><div class="btd"><v-btn @click="conditions=true">Imágenes</v-btn></div></td>
           </template>
         </v-data-table>
@@ -70,7 +87,7 @@
             <v-card-text>
                 <nav>
                 <div class="tituloCuadro"><h2>Imagenes de muestra</h2></div>
-                <v-img :src="img" class="imagen"></v-img>
+                <v-img :src="imageurl" class="imagen"></v-img>
                 <v-img :src="img" class="imagen"></v-img>
                 <v-img :src="img" class="imagen"></v-img>
                 <v-img :src="img" class="imagen"></v-img>
@@ -93,16 +110,19 @@ export default {
       codigo: '',
       nombre: '',
       marca: '',
-      precio: ''
+      precio: '',
+      linea: ''
     })
     return {
+      imageName: '',
       img,
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
         codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
         precio: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido']
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        linea: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,
@@ -112,14 +132,16 @@ export default {
         { text: 'Código', value: 'codigo' },
         { text: 'Nombre', value: 'nombre' },
         { text: 'Marca', value: 'marca' },
-        { text: 'Precio', value: 'valor' }
+        { text: 'Precio', value: 'valor' },
+        { text: 'linea', value: 'linea' }
       ],
       desserts: [
         {
           codigo: 'ASD812',
           nombre: 'Shorts',
           marca: 'roballo',
-          valor: 10000
+          valor: 10000,
+          linea: 'zapatos'
         }
       ]
     }
@@ -130,7 +152,8 @@ export default {
         this.form.nombre &&
         this.form.codigo &&
         this.form.precio &&
-        this.form.marca
+        this.form.marca &&
+        this.form.linea
       )
     }
   },
@@ -138,6 +161,28 @@ export default {
     resetForm () {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
+    },
+    pickFile () {
+      this.$refs.image.click()
+    },
+    onFilePicked (e) {
+      const files = e.target.files
+      if (files[0] !== undefined) {
+        this.imageName = files[0].name
+        if (this.imageName.lastIndexOf('.') <= 0) {
+          return
+        }
+        const fr = new FileReader()
+        fr.readAsDataURL(files[0])
+        fr.addEventListener('load', () => {
+          this.imageUrl = fr.result
+          this.imageFile = files[0]
+        })
+      } else {
+        this.imageName = ''
+        this.imageFile = ''
+        this.imageUrl = ''
+      }
     },
     submit () {
       this.snackbar = true

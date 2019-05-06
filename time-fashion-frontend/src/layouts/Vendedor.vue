@@ -91,7 +91,7 @@ export default {
       },
       {
         text: 'Factura',
-        icon: '',
+        icon: 'assignment',
         to: '/vendedor/factura'
       },
       {

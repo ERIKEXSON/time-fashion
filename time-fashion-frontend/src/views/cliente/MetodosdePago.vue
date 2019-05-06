@@ -97,7 +97,7 @@
                   </div>
                   <div class="botonAgregarTarjeta">
                     <v-btn
-                      v-show="visa"
+                      @click="visa = false"
                       :disabled="!formIsValid"
                       flat
                       type="submit"

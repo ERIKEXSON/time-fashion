@@ -31,6 +31,7 @@
                 <v-text-field
                   v-model="form.cantidad"
                   :rules="rules.cantidad"
+                  :mask="numeros"
                   label="Cantidad"
                   required
                 ></v-text-field>
@@ -158,6 +159,7 @@ export default {
     })
     return {
       form: Object.assign({}, defaultForm),
+      numeros: '#####',
       rules: {
         cantidad: [val => (val || '').length > 0 || 'Este campo es requerido'],
         tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],

@@ -5,6 +5,7 @@ const { db:config } = require('@time-fashion/config')
 //controladores
 const setupUser = require('./lib/users')
 const setupBrand = require('./lib/brands')
+const setupDetail_size= require('./lib/detail_size')
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -17,12 +18,11 @@ const setupOfferModel = require('./models/offer.model')
 const setupOffer_detailModel = require('./models/offer_detail.model')
 const setupRequested_detailModel = require('./models/requested_detayl.model')
 const setupInventoriesModel = require('./models/inventories.model')
-const setupColorModel = require('./models/color.model')
 const setupSizeModel = require('./models/size.model')
 const setupProductsModel = require('./models/products.model')
 const setupBrandModel = require('./models/brand.model')
 const setupLineModel = require('./models/line.model')
-const setupDetail_size = require('./models/detail_size.model')
+const setupDetail_sizeModel = require('./models/detail_size.model')
 
 
 
@@ -38,12 +38,11 @@ module.exports = async function () {
   const Offer_DetailModel = setupOffer_detailModel(config)
   const Requested_detaylModel = setupRequested_detailModel(config)
   const InventoriesModel = setupInventoriesModel(config)
-  const ColorModel = setupColorModel(config)
   const SizeModel = setupSizeModel(config)
   const ProductsModel = setupProductsModel(config)
   const BrandModel = setupBrandModel(config)
   const LineModel = setupLineModel(config)
-  const Detail_sizeModel = setupDetail_size(config)
+  const Detail_sizeModel = setupDetail_sizeModel(config)
 
   // relacion de usuario a pedidos
   UserModel.hasMany(OrderModel)
@@ -77,9 +76,6 @@ module.exports = async function () {
   OrderModel.hasMany(Requested_detaylModel)
   Requested_detaylModel.belongsTo(OrderModel)
 
-  // relacion de inventario a color
-  ColorModel.hasMany(InventoriesModel)
-  InventoriesModel.belongsTo(ColorModel)
 
   // relacion de inventario a talla
   SizeModel.hasMany(InventoriesModel)
@@ -109,9 +105,6 @@ module.exports = async function () {
   BrandModel.hasMany(ProductsModel)
   ProductsModel.belongsTo(BrandModel)
 
-  // relacion de productos a color
-  ColorModel.hasMany(ProductsModel)
-  ProductsModel.belongsTo(ColorModel)
 
   // relacion de tallas a detalle_tallas
   SizeModel.hasMany(Detail_sizeModel)
@@ -129,11 +122,13 @@ module.exports = async function () {
 
   const User = setupUser(UserModel)
   const Brand = setupBrand(BrandModel)
+  const detail_size= setupDetail_size(Detail_sizeModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
     },
     User,
-    Brand
+    Brand,
+    Detail_size,
   }
 }
