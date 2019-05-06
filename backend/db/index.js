@@ -23,7 +23,9 @@ const setupProductsModel = require('./models/products.model')
 const setupBrandModel = require('./models/brand.model')
 const setupLineModel = require('./models/line.model')
 const setupDetail_sizeModel = require('./models/detail_size.model')
-const setupCountryModel=
+const setupCountryModel = require('./models/country.model')
+const setupDepartmentModel = require('./models/department.model')
+const setupCityModel = require('./models/city.model')
 
 
 
@@ -44,6 +46,9 @@ module.exports = async function () {
   const BrandModel = setupBrandModel(config)
   const LineModel = setupLineModel(config)
   const Detail_sizeModel = setupDetail_sizeModel(config)
+  const CountryModel = setupCountryModel(config)
+  const DepartmentModel = setupDepartmentModel(config)
+  const CityModel = setupCityModel(config)
 
   // relacion de usuario a pedidos
   UserModel.hasMany(OrderModel)
@@ -118,6 +123,22 @@ module.exports = async function () {
   // relacion de detalle_pedido a inventarios
   Requested_detaylModel.hasMany(InventoriesModel)
   InventoriesModel.belongsTo(Requested_detaylModel)
+
+  //reacion de personas a paises
+  CountryModel.hasMany(UserModel)
+  UserModel.belongsTo(CountryModel)
+
+  //relacion de paises a departamentos
+  CountryModel.hasMany(DepartmentModel)
+  DepartmentModel.belongsTo(CountryModel)
+
+  //relacion de cuidades a departamentos
+  DepartmentModel.hasMany(CityModel)
+  CityModel.belongsTo(DepartmentModel)
+
+  //relacion de paises a ciudades 
+  CountryModel.hasMany(CityModel)
+  CityModel.belongsTo(CountryModel)
 
   await sequelize.authenticate()
 

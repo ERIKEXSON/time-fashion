@@ -28,15 +28,8 @@
                 <v-text-field v-model="form.linea" :rules="rules.linea" label="Linea" required></v-text-field>
               </v-flex>
               <!--cargar imagen-->
-            <v-text-field label="Seleccionar Imagen" @click='pickFile' v-model='imageName' prepend-icon='attach_file' required></v-text-field>
-					  <input
-						type="file"
-						style="display: none"
-						ref="image"
-						accept="image/*"
-						@change="onFilePicked"
-            multiple
-					  >
+              <v-text-field label="Seleccionar Imagen" @click='pickFile' v-model='imageName' prepend-icon='attach_file' required></v-text-field>
+					    <input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked" multiple>
             </v-layout>
           </v-container>
           <v-card-actions>
