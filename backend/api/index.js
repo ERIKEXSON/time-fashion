@@ -3,6 +3,12 @@
 const { getLogger } = require('@time-fashion/utils')
 const user = require('./user')
 const brand = require('./brand')
+<<<<<<< HEAD
+const offer = require('./offer')
+=======
+const detail_size = require('./detail_size')
+
+>>>>>>> e0dc06a8459d4748dcf33b4dfacd6dd003a4c585
 
 
 const log = getLogger(__dirname, __filename)
@@ -11,11 +17,22 @@ module.exports = {
   home (req, res) {
     res.send({
       user: '/user',
-      brand: '/brand'
+      brand: '/brand',
+<<<<<<< HEAD
+      offer: '/offer'
     })
   },
   user,
   brand,
+  offer,
+=======
+      detail_size:'/detail_size'
+     })
+  },
+  user,
+  brand,
+  detail_size,
+>>>>>>> e0dc06a8459d4748dcf33b4dfacd6dd003a4c585
   errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500
