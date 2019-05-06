@@ -23,7 +23,6 @@ function setupBrand(brandModel) {
     const cond = { where : { uuid } }
     return brandModel.findOne(cond)
   }
-
   return {
     createBrand,
     updateBrand,

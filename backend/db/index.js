@@ -4,7 +4,7 @@ const { db:config } = require('@time-fashion/config')
 
 //controladores
 const setupUser = require('./lib/users')
-const setupBrand = require('./lib/brands')
+const setupBrand = require('./lib/brand')
 const setupDetail_size= require('./lib/detail_size')
 const setupOffer = require('./lib/offer')
 //modelos
