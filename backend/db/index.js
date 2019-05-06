@@ -23,7 +23,7 @@ const setupProductsModel = require('./models/products.model')
 const setupBrandModel = require('./models/brand.model')
 const setupLineModel = require('./models/line.model')
 const setupDetail_sizeModel = require('./models/detail_size.model')
-const setupCountryModel=
+const setupCountryModel =
 
 
 
@@ -123,7 +123,7 @@ module.exports = async function () {
 
   const User = setupUser(UserModel)
   const Brand = setupBrand(BrandModel)
-  const detail_size= setupDetail_size(Detail_sizeModel)
+  const Detail_size= setupDetail_size(Detail_sizeModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
