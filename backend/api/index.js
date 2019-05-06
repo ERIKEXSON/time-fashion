@@ -3,6 +3,8 @@
 const { getLogger } = require('@time-fashion/utils')
 const user = require('./user')
 const brand = require('./brand')
+const detail_size = require('./detail_size')
+
 
 
 const log = getLogger(__dirname, __filename)
@@ -11,11 +13,13 @@ module.exports = {
   home (req, res) {
     res.send({
       user: '/user',
-      brand: '/brand'
-    })
+      brand: '/brand',
+      detail_size:'/detail_size'
+     })
   },
   user,
   brand,
+  detail_size,
   errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500

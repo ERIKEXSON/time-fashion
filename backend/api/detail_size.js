@@ -11,10 +11,21 @@ router.post('/', async function(req, res, next) {
   try {
     const { detail_sizeNew} = req.body
     const { Detail_size} = await db()
-    const result = await Detail_size.createDetail_zise(detail_sizeNew)
+    const result = await Detail_size.createDetail_size(detail_sizeNew)
     res.send(result)
   } catch (err) {
     next(err)
   }
+  router.put('/:uuid', async function (req, res, next) {
+    try {
+      const { uuid } = req.params
+      const { detail_sizeUpdate } = req.body
+      const { Detail_size } = await db()
+      const result = await Detail_size.updateDetail_size(uuid, detail_sizeUpdate)
+      res.send(result)
+    } catch (err) {
+      next(err)
+    }
+  })
 })
   module.exports = router

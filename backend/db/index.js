@@ -4,7 +4,7 @@ const { db:config } = require('@time-fashion/config')
 
 //controladores
 const setupUser = require('./lib/users')
-const setupBrand = require('./lib/brands')
+const setupBrand = require('./lib/brand')
 const setupDetail_size= require('./lib/detail_size')
 //modelos
 const setupDatabase = require('./lib/db')
@@ -123,7 +123,7 @@ module.exports = async function () {
 
   const User = setupUser(UserModel)
   const Brand = setupBrand(BrandModel)
-  const detail_size= setupDetail_size(Detail_sizeModel)
+  const Detail_size= setupDetail_size(Detail_sizeModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
