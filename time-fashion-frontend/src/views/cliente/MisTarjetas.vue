@@ -1,17 +1,16 @@
 <template>
   <v-app>
     <v-toolbar class="elevation-1" color="white">
-      <v-toolbar-title>Mis direcciones</v-toolbar-title>
+      <v-toolbar-title>Mis tarjetas</v-toolbar-title>
       <v-divider
         class="mx-2"
         inset
         vertical
       ></v-divider>
-      <h4>Mantén tu información actualizada para evitar errores en envíos</h4>
       <v-spacer></v-spacer>
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" class="mb-2" v-on="on">Agregar dirección</v-btn>
+          <v-btn color="primary" class="mb-2" v-on="on">Agregar tarjeta</v-btn>
         </template>
         <v-card>
           <v-card-title>
@@ -78,37 +77,37 @@ export default {
       rules: { required: [val => (val || '').length > 0 || 'Este campo es requerido'] },
       dialog: false,
       headers: [
-        { text: 'Nombres', value: 'nombres', sortable: false },
-        { text: 'Apellidos', value: 'apellidos', sortable: false },
-        { text: 'Pais', value: 'pais', sortable: false },
-        { text: 'Estado/Provincia/Región', value: 'vivienda', sortable: false },
-        { text: 'Dirección', value: 'direccion', sortable: false },
-        { text: 'Teléfono móvil', value: 'celular', sortable: false },
+        { text: 'Número de tarjeta', value: 'numerotarjeta', sortable: false },
+        { text: 'Nombre y apellido', value: 'nombres', sortable: false },
+        { text: 'Fecha de expiración', value: 'fechaexpiracion', sortable: false },
+        { text: 'Código de seguridad', value: 'codigoseguridad', sortable: false },
+        { text: 'Tipo de documento', value: 'tipodocumento', sortable: false },
+        { text: 'Número de documento', value: 'documento', sortable: false },
         { text: 'Acciones', sortable: false }
       ],
       desserts: [],
       editedIndex: -1,
       editedItem: {
+        numerotarjeta: '',
         nombres: '',
-        apellidos: '',
-        pais: '',
-        vivienda: '',
-        direccion: '',
-        celular: ''
+        fechaexpiracion: '',
+        codigoseguridad: '',
+        tipodocumento: '',
+        documento: ''
       },
       defaultItem: {
+        numerotarjeta: '',
         nombres: '',
-        apellidos: '',
-        pais: '',
-        vivienda: '',
-        direccion: '',
-        celular: ''
+        fechaexpiracion: '',
+        codigoseguridad: '',
+        tipodocumento: '',
+        documento: ''
       }
     }
   },
   computed: {
     formTitle () {
-      return this.editedIndex === -1 ? 'Nueva dirección' : 'Editar dirección'
+      return this.editedIndex === -1 ? 'Nueva tarjeta' : 'Editar tarjeta'
     }
   },
   watch: {
@@ -138,7 +137,7 @@ export default {
         this.desserts.splice(index, 1)
         Swal.fire(
           '¡Eliminado!',
-          'Tu dirección ha sido eliminada',
+          'Tu tarjeta ha sido eliminada',
           'success'
         )
       }

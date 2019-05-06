@@ -19,7 +19,7 @@ import Cliente from './views/cliente/Inicio.vue'
 import ClientePerfil from './views/cliente/Perfil.vue'
 import ClientePedidos from './views/cliente/MisPedidos.vue'
 import ClienteDireccion from './views/cliente/MisDirecciones.vue'
-import ClienteMetododePago from './views/cliente/MetodosdePago.vue'
+import ClienteMisTarjetas from './views/cliente/MisTarjetas.vue'
 import Hombre from './views/hombres/ropahombre.vue'
 import Mujer from './views/mujeres/ropamujer.vue'
 import Niños from './views/niños/inicio.vue'
@@ -310,9 +310,9 @@ export default new Router({
       component: ClienteDireccion
     },
     {
-      path: '/cliente/metodosdepago',
-      name: 'clienteMetodosdePago',
-      component: ClienteMetododePago
+      path: '/cliente/mistarjetas',
+      name: 'clienteMisTarjetas',
+      component: ClienteMisTarjetas
     }
 
   ]
