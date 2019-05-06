@@ -19,7 +19,7 @@
                 <v-text-field v-model="form.codigo" :rules="rules.codigo" label="Código" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.precio" :rules="rules.precio" label="Precio" required></v-text-field>
+                <v-text-field v-model="form.precio" :rules="rules.precio" label="Precio" required :mask="numeros"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
@@ -114,6 +114,7 @@ export default {
       linea: ''
     })
     return {
+      numeros: '##############',
       imageName: '',
       img,
       form: Object.assign({}, defaultForm),

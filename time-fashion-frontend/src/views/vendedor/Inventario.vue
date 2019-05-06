@@ -159,7 +159,7 @@ export default {
     })
     return {
       form: Object.assign({}, defaultForm),
-      numeros: '#####',
+      numeros: '#########',
       rules: {
         cantidad: [val => (val || '').length > 0 || 'Este campo es requerido'],
         tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],
