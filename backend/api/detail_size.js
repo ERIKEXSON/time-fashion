@@ -9,7 +9,7 @@ const router = new Router()
 
 router.post('/', async function(req, res, next) {
   try {
-    const { detail_size} = req.body
+    const { detail_sizeNew} = req.body
     const { Detail_size} = await db()
     const result = await Detail_size.createDetail_zise(detail_sizeNew)
     res.send(result)
