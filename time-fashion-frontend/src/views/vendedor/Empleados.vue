@@ -49,6 +49,7 @@
                       :rules="rules.telefono"
                       label="Teléfono"
                       required
+                      :mask="numeros"
                     ></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6>
@@ -57,6 +58,7 @@
                       :rules="rules.documento"
                       label="Documento de Identidad"
                       required
+                      :mask="numeros"
                     ></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6>
@@ -127,6 +129,7 @@ export default {
       tipodoc: ''
     })
     return {
+      numeros: '###########',
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
