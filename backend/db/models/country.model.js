@@ -16,11 +16,11 @@ module.exports = function setupMetricModel (config) {
       },
       codigo_nacional:{
           type:Sequelize.TEXT,
-          sequelize:false
+          allowNull:false
       },
       continente:{
           type: Sequelize.TEXT,
-          sequelize:false
+          allowNull:false
       }
   })
 }
