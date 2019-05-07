@@ -24,22 +24,10 @@ module.exports = {
   },
   user,
   brand,
+  detail_size,
   offer,
 
-  detail_Size
-  
-     }
-  
-  user,
-  brand,
-  detail_size,
-  offer
-
-  errorHandler (err, req, res, next) 
-
-  detail_size,
-  errorHandler (err, req, res, next) 
-
+  errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500
       const { id } = req
@@ -52,5 +40,6 @@ module.exports = {
     next()
   
   
-
+  }
+}
 
