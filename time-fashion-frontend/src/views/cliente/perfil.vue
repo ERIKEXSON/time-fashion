@@ -194,7 +194,6 @@
 export default {
   data () {
     const defaultForm = Object.freeze({
-      // aqui poner los datos que hallan en la base de datos para que el usuario pueda editarlos
       nombres: '',
       apellidos: '',
       genero: '',
