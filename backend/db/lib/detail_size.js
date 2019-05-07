@@ -1,19 +1,35 @@
 'use strict'
 
-function setupDetail_size(detail_sizeModel) {
-  async function createDetail_size (detail_size){
-    const result  = await detail_sizeModel.create(detail_size)
+function setupDetailSize(detailSizeModel) {
+  async function createDetailSize (detailSize){
+    console.log(detailSize)    
+    const result  = await detailSizeModel.create(detailSize)
     return result.toJSON()
   }
-  async function updateDetail_size(uuid, detail_size) {
+  async function updateDetailSize(uuid, detailSize) {
     const cond = { where : { uuid } }
-    const result = await detail_sizeModel.update(detail_size, cond)
-    return result ? detail_sizeModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    const result = await detailSizeModel.update(detailSize, cond)
+    return result ? detailSizeModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+  }
+  async function deleteDetailSize(uuid) {
+    const cond = { where : { uuid } }
+    const result = await detailSizeModel.destroy(cond)
+    return result ? true : false
+  }
+  function findAllDetailSize(){
+    return detailSizeModel.findAll()
+  }
+  function findUuidDetailSize(uuid) {
+    const cond = { where : { uuid } }
+    return brandModel.findOne(cond)
   }
   return {
-    createDetail_size,
-    updateDetail_size,
+    createDetailSize,
+    updateDetailSize,
+    deleteDetailSize,
+    findAllDetailSize,
+    findUuidDetailSize
   }
 }
 
-module.exports = setupDetail_size
+module.exports = setupDetailSize

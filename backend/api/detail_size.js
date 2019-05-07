@@ -9,9 +9,9 @@ const router = new Router()
 
 router.post('/', async function(req, res, next) {
   try {
-    const { detail_sizeNew} = req.body
-    const { Detail_size} = await db()
-    const result = await Detail_size.createDetail_size(detail_sizeNew)
+    const { DetailSizeNew } = req.body
+    const { DetailSize} = await db()
+    const result = await DetailSize.createDetailSize(DetailSizeNew)
     res.send(result)
   } catch (err) {
     next(err)
@@ -19,13 +19,42 @@ router.post('/', async function(req, res, next) {
   router.put('/:uuid', async function (req, res, next) {
     try {
       const { uuid } = req.params
-      const { detail_sizeUpdate } = req.body
-      const { Detail_size } = await db()
-      const result = await Detail_size.updateDetail_size(uuid, detail_sizeUpdate)
+      const { DetailSizeUpdate } = req.body
+      const { DetailSize } = await db()
+      const result = await DetailSize.updateDetailSize(uuid, DetailSizeUpdate)
       res.send(result)
     } catch (err) {
       next(err)
     }
   })
+})
+router.delete('/:uuid', async function(req, res, next) {
+  try {
+    const { uuid } = req.params
+    const { DetailSize} = await db()
+    const result = await DetailSize.deleteDetailSize(uuid)
+    res.send(result)    
+  } catch (err) {
+    next(err)
+  }
+})
+router.get('/', async function (req, res, next) {
+  try {
+    const { DetailSize} = await db()
+    const result = await DetailSize.findAllDetailSize()
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+router.get('/:uuid', async function (req, res, next) {
+  try {
+    const { uuid } = req.params
+    const { DetailSize} = await db()
+    const result = await DetailSize.findUuidDetailSize(uuid)
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
 })
   module.exports = router

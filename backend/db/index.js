@@ -5,8 +5,12 @@ const { db:config } = require('@time-fashion/config')
 //controladores
 const setupUser = require('./lib/users')
 const setupBrand = require('./lib/brand')
-const setupDetail_size= require('./lib/detail_size')
+const setupDetailSize= require('./lib/detail_size')
 const setupOffer = require('./lib/offer')
+const setupCountry = require('./lib/country')
+const setupBill = require('./lib/bill')
+const setupCity = require('./lib/city')
+const setupCancellation= require('./lib/cancellation')
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -145,15 +149,23 @@ module.exports = async function () {
 
   const User = setupUser(UserModel)
   const Brand = setupBrand(BrandModel)
-  const Detail_size= setupDetail_size(Detail_sizeModel)
+  const DetailSize= setupDetailSize(Detail_sizeModel)
   const Offer = setupOffer(OfferModel)
+  const Country = setupCountry(CountryModel)
+  const Bill = setupBill(BillModel)
+  const City = setupCity(CityModel)
+  const Cancellation=setupCancellation(CancellationModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
     },
     User,
     Brand,
-    Detail_size,
+    DetailSize,
     Offer,
+    Country,
+    Bill,
+    City,
+    Cancellation,
   }
 }

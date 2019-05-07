@@ -17,7 +17,7 @@ router.post('/', async function(req, res, next) {
       next(err)
     }
   })
-  router.put('/:uuid', async function (req, res, next) {g
+  router.put('/:uuid', async function (req, res, next) {
     try {
       const { uuid } = req.params
       const { offerUpdate } = req.body
