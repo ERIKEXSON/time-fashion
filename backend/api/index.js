@@ -14,31 +14,16 @@ module.exports = {
     res.send({
       user: '/user',
       brand: '/brand',
-
       offer: '/offer',
-      detail_Size:'/detail_size',
-      detail_size:'/detail_size',
-      offer: '/offer',
+      detail_size:'/detail_size'
 
     })
   },
   user,
   brand,
   offer,
-
-  detail_Size
-  
-     }
-  
-  user,
-  brand,
   detail_size,
-  offer
-
-  errorHandler (err, req, res, next) 
-
-  detail_size,
-  errorHandler (err, req, res, next) 
+  errorHandler (err, req, res, next) {
 
     if (err) {
       let code = err.code || 500
@@ -50,6 +35,9 @@ module.exports = {
       return
     }
     next()
+  }
+}
+
   
   
 
