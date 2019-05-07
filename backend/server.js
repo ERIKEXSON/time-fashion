@@ -4,7 +4,7 @@ const http = require('http')
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
-const { errorHandler,  home , user,  brand, detail_size, offer} = require('@time-fashion/api')
+const { errorHandler,  home , user,  brand, detail_size, offer, country} = require('@time-fashion/api')
 const { getLogger, logHandler, terminate } = require('@time-fashion/utils')
 
 const app = express()
@@ -21,7 +21,8 @@ app.use('/user', user)
 app.use('/brand', brand)
 app.use('/detail_size',detail_size)
 app.use('/offer',offer)
-app.get('/', home)
+app.use('/country',country)
+app.get('/',home)
 app.use(errorHandler)
 
 module.exports = server
