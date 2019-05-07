@@ -6,6 +6,7 @@ const brand = require('./brand')
 const offer = require('./offer')
 const detail_size = require('./detail_size')
 
+
 const log = getLogger(__dirname, __filename)
 // prueba
 module.exports = {
@@ -13,13 +14,18 @@ module.exports = {
     res.send({
       user: '/user',
       brand: '/brand',
+
       offer: '/offer',
-      detail_Size:'/detail_size'
+      detail_Size:'/detail_size',
+      detail_size:'/detail_size',
+      offer: '/offer',
+
     })
   },
   user,
   brand,
   offer,
+
   detail_Size
   
      }
@@ -30,6 +36,10 @@ module.exports = {
   offer
 
   errorHandler (err, req, res, next) 
+
+  detail_size,
+  errorHandler (err, req, res, next) 
+
     if (err) {
       let code = err.code || 500
       const { id } = req
@@ -39,8 +49,8 @@ module.exports = {
       res.status(code).send({ error: message })
       return
     }
-
     next()
+  
   
 
 
