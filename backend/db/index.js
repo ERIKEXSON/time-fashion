@@ -10,6 +10,10 @@ const setupOffer = require('./lib/offer')
 const setupCountry = require('./lib/country')
 const setupBill = require('./lib/bill')
 const setupCity = require('./lib/city')
+<<<<<<< HEAD
+=======
+const setupCancellation= require('./lib/cancellation')
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -153,6 +157,10 @@ module.exports = async function () {
   const Country = setupCountry(CountryModel)
   const Bill = setupBill(BillModel)
   const City = setupCity(CityModel)
+<<<<<<< HEAD
+=======
+  const Cancellation=setupCancellation(CancellationModel)
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -164,5 +172,9 @@ module.exports = async function () {
     Country,
     Bill,
     City,
+<<<<<<< HEAD
+=======
+    Cancellation,
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
   }
 }

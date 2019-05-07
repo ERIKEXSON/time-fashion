@@ -4,7 +4,11 @@ const http = require('http')
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
+<<<<<<< HEAD
 const { errorHandler,  home , user,  brand, detail_size, offer, country, bill, city} = require('@time-fashion/api')
+=======
+const { errorHandler,  home , user,  brand, detail_size, offer, country, bill, city, cancellation} = require('@time-fashion/api')
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
 const { getLogger, logHandler, terminate } = require('@time-fashion/utils')
 
 const app = express()
@@ -19,12 +23,22 @@ app.use(express.json())
 app.use(logHandler)
 app.use('/user', user)
 app.use('/brand', brand)
+<<<<<<< HEAD
 app.use('/detail_size',detail_size)
 app.use('/offer',offer)
 app.use('/country',country)
 app.use('/bill',bill)
 app.use('/city',city)
 app.get('/',home)
+=======
+app.use('/detail_size', detail_size)
+app.use('/offer', offer)
+app.use('/country', country)
+app.use('/bill', bill)
+app.use('/city', city)
+app.use('/cancellation', cancellation)
+app.get('/', home)
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
 app.use(errorHandler)
 
 module.exports = server

@@ -13,6 +13,7 @@
     "roboto-fontface": "*",
     "sweetalert2": "^8.10.0",
     "vue": "^2.6.6",
+    "vue-imask": "^5.1.1",
     "vue-phone-mask-input": "^1.1.11",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4",
