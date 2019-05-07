@@ -7,11 +7,11 @@ const db = require('@time-fashion/db')
 const log = getLogger(__dirname, __filename)
 const router = new Router()
 
-router.post('/', async function(req, res, next) {
+router.post('/', async function(req, res, next){
   try {
-    const { brandNew } = req.body
-    const { Brand } = await db()
-    const result = await Brand.createBrand(brandNew)
+    const { countryNew } = req.body
+    const { Country } = await db()
+    const result = await Country.createCountry(countryNew)
     res.send(result)
   } catch (err) {
     next(err)
@@ -20,9 +20,9 @@ router.post('/', async function(req, res, next) {
 router.put('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { brandUpdate } = req.body
-    const { Brand } = await db()
-    const result = await Brand.updateBrand(uuid, brandUpdate)
+    const { countryUpdate } = req.body
+    const { Country } = await db()
+    const result = await Country.updateCountry(uuid, countryUpdate)
     res.send(result)
   } catch (err) {
     next(err)
@@ -31,8 +31,8 @@ router.put('/:uuid', async function (req, res, next) {
 router.delete('/:uuid', async function(req, res, next) {
   try {
     const { uuid } = req.params
-    const { Brand } = await db()
-    const result = await Brand.deleteBrand(uuid)
+    const { Country } = await db()
+    const result = await Country.deleteCountry(uuid)
     res.send(result)    
   } catch (err) {
     next(err)
@@ -40,8 +40,8 @@ router.delete('/:uuid', async function(req, res, next) {
 })
 router.get('/', async function (req, res, next) {
   try {
-    const { Brand } = await db()
-    const result = await Brand.findAllBrand()
+    const { Country } = await db()
+    const result = await Country.findAllCountry()
     res.send(result)
   } catch (err) {
     next(err)
@@ -50,11 +50,12 @@ router.get('/', async function (req, res, next) {
 router.get('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { Brand} = await db()
-    const result = await Brand.findUuidBrand(uuid)
+    const { Country} = await db()
+    const result = await Country.findUuidCountry(uuid)
     res.send(result)
   } catch (err) {
     next(err)
   }
 })
+
 module.exports = router

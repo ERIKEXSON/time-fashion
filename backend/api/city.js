@@ -7,11 +7,11 @@ const db = require('@time-fashion/db')
 const log = getLogger(__dirname, __filename)
 const router = new Router()
 
-router.post('/', async function(req, res, next) {
+router.post('/', async function(req, res, next){
   try {
-    const { brandNew } = req.body
-    const { Brand } = await db()
-    const result = await Brand.createBrand(brandNew)
+    const { cityNew } = req.body
+    const { City } = await db()
+    const result = await City.createCity(cityNew)
     res.send(result)
   } catch (err) {
     next(err)
@@ -20,9 +20,9 @@ router.post('/', async function(req, res, next) {
 router.put('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { brandUpdate } = req.body
-    const { Brand } = await db()
-    const result = await Brand.updateBrand(uuid, brandUpdate)
+    const { cityUpdate } = req.body
+    const { City } = await db()
+    const result = await City.updateCity(uuid, cityUpdate)
     res.send(result)
   } catch (err) {
     next(err)
@@ -31,8 +31,8 @@ router.put('/:uuid', async function (req, res, next) {
 router.delete('/:uuid', async function(req, res, next) {
   try {
     const { uuid } = req.params
-    const { Brand } = await db()
-    const result = await Brand.deleteBrand(uuid)
+    const { City } = await db()
+    const result = await City.deleteCity(uuid)
     res.send(result)    
   } catch (err) {
     next(err)
@@ -40,8 +40,8 @@ router.delete('/:uuid', async function(req, res, next) {
 })
 router.get('/', async function (req, res, next) {
   try {
-    const { Brand } = await db()
-    const result = await Brand.findAllBrand()
+    const { City } = await db()
+    const result = await City.findAllCity()
     res.send(result)
   } catch (err) {
     next(err)
@@ -50,11 +50,12 @@ router.get('/', async function (req, res, next) {
 router.get('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { Brand} = await db()
-    const result = await Brand.findUuidBrand(uuid)
+    const { City } = await db()
+    const result = await City.findUuidCity(uuid)
     res.send(result)
   } catch (err) {
     next(err)
   }
 })
+
 module.exports = router

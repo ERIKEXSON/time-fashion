@@ -9,9 +9,9 @@ const router = new Router()
 
 router.post('/', async function(req, res, next) {
   try {
-    const { brandNew } = req.body
-    const { Brand } = await db()
-    const result = await Brand.createBrand(brandNew)
+    const { cancellationNew } = req.body
+    const { Cancellation } = await db()
+    const result = await Cancellation.createCancellation(cancellationNew)
     res.send(result)
   } catch (err) {
     next(err)
@@ -20,9 +20,9 @@ router.post('/', async function(req, res, next) {
 router.put('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { brandUpdate } = req.body
-    const { Brand } = await db()
-    const result = await Brand.updateBrand(uuid, brandUpdate)
+    const { cancellationUpdate } = req.body
+    const { Cancellation} = await db()
+    const result = await Cancellation.updateCancellation(uuid, cancellationUpdate)
     res.send(result)
   } catch (err) {
     next(err)
@@ -31,8 +31,8 @@ router.put('/:uuid', async function (req, res, next) {
 router.delete('/:uuid', async function(req, res, next) {
   try {
     const { uuid } = req.params
-    const { Brand } = await db()
-    const result = await Brand.deleteBrand(uuid)
+    const { Cancellation } = await db()
+    const result = await Cancellation.deleteCancellation(uuid)
     res.send(result)    
   } catch (err) {
     next(err)
@@ -40,8 +40,8 @@ router.delete('/:uuid', async function(req, res, next) {
 })
 router.get('/', async function (req, res, next) {
   try {
-    const { Brand } = await db()
-    const result = await Brand.findAllBrand()
+    const { Cancellation } = await db()
+    const result = await Cancellation.findAllCancellation()
     res.send(result)
   } catch (err) {
     next(err)
@@ -50,8 +50,8 @@ router.get('/', async function (req, res, next) {
 router.get('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { Brand} = await db()
-    const result = await Brand.findUuidBrand(uuid)
+    const { Cancellation} = await db()
+    const result = await Cancellation.findUuidCancellation(uuid)
     res.send(result)
   } catch (err) {
     next(err)
