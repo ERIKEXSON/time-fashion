@@ -16,10 +16,19 @@ function setupDetailSize(detailSizeModel) {
     const result = await detailSizeModel.destroy(cond)
     return result ? true : false
   }
+  function findAllDetailSize(){
+    return detailSizeModel.findAll()
+  }
+  function findUuidDetailSize(uuid) {
+    const cond = { where : { uuid } }
+    return brandModel.findOne(cond)
+  }
   return {
     createDetailSize,
     updateDetailSize,
     deleteDetailSize,
+    findAllDetailSize,
+    findUuidDetailSize
   }
 }
 
