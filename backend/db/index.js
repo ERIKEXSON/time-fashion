@@ -8,12 +8,12 @@ const setupBrand = require('./lib/brand')
 const setupDetailSize= require('./lib/detail_size')
 const setupOffer = require('./lib/offer')
 const setupCountry = require('./lib/country')
-<<<<<<< HEAD
 const setupBill = require('./lib/bill')
 const setupCity = require('./lib/city')
+<<<<<<< HEAD
 =======
 const setupCancellation= require('./lib/cancellation')
->>>>>>> d750e1363afeccec449d620401c0ba821e785fec
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -155,12 +155,12 @@ module.exports = async function () {
   const DetailSize= setupDetailSize(Detail_sizeModel)
   const Offer = setupOffer(OfferModel)
   const Country = setupCountry(CountryModel)
-<<<<<<< HEAD
   const Bill = setupBill(BillModel)
-  const City = setupCity(City)
+  const City = setupCity(CityModel)
+<<<<<<< HEAD
 =======
   const Cancellation=setupCancellation(CancellationModel)
->>>>>>> d750e1363afeccec449d620401c0ba821e785fec
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -170,11 +170,11 @@ module.exports = async function () {
     DetailSize,
     Offer,
     Country,
-<<<<<<< HEAD
     Bill,
     City,
+<<<<<<< HEAD
 =======
     Cancellation,
->>>>>>> d750e1363afeccec449d620401c0ba821e785fec
+>>>>>>> b8361aa5ea53dba90f52ab93f8d96fe1bccada80
   }
 }

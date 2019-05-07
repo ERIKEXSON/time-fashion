@@ -8,25 +8,6 @@
       width="250"
       class="secondary"
     >
-      <v-list>
-        <v-list-group
-          v-for="item in items"
-          :key="item.title"
-          :prepend-icon="item.action"
-          no-action
-        >
-          <template v-slot:activator>
-            <v-list-tile-action>
-              <v-icon right>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile active-class="accent--text" color='words'>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </template>
-        </v-list-group>
-      </v-list>
       <v-list-tile
       color='words'
       v-for="admin in admins"
