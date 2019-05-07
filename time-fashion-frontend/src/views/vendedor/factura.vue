@@ -5,7 +5,7 @@
         <h2>Factura</h2>
       </div>
       <nav>
-        <h2 class="fecha" :mask="DateTime">Fecha: {{ date }}</h2>
+        <h2 class="fecha" type ="Date">Fecha: {{ }}</h2>
         <h2 class="Numfac">Numero: {{ uno }}</h2>
       </nav>
       <v-card flat>
@@ -109,19 +109,19 @@ export default {
 <style>
 .cabe {
   display: inline-block;
-  margin: 2px 150px 5px 5px;
+  margin: 2px 80px 5px 5px;
   text-align: left;
 }
 .cabe1 {
   display: inline-block;
-  margin: 2px 15px 5px 10px;
+  margin: 2px 25px 5px 10px;
   text-align: left;
 }
 .ima {
   width: 300px;
   height: 120px;
   display: inline-block;
-  margin: 2px 50px 5px 5px;
+  margin: 2px 35px 5px 5px;
 }
 .cuadrofactura {
   width: 845px;

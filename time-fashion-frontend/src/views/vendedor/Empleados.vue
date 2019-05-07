@@ -9,7 +9,6 @@
               top
               right
               color="success"
-              timeout="2000"
             >
               <span>Empleado agregado</span>
               <v-icon dark>check_circle</v-icon>
@@ -105,7 +104,7 @@
         :search="search"
         >
           <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.name }}</td>
+            <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.correo }}</td>
             <td class="text-xs-left">{{ props.item.telefono }}</td>
@@ -146,7 +145,7 @@ export default {
       defaultForm,
       search: '',
       headers: [
-        { text: 'Nombre', value: 'name' },
+        { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
         { text: 'Correo', value: 'correo' },
         { text: 'Telefono', value: 'telefono' },
@@ -156,7 +155,7 @@ export default {
       ],
       desserts: [
         {
-          name: 'simon',
+          nombre: 'simon',
           apellido: 'tolomeo',
           correo: 'elmontador@simon.co',
           telefono: '8622t347627364',
