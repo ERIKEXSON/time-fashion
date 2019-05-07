@@ -38,4 +38,23 @@ router.delete('/:uuid', async function(req, res, next) {
     next(err)
   }
 })
+router.get('/', async function (req, res, next) {
+  try {
+    const { DetailSize} = await db()
+    const result = await DetailSize.findAllDetailSize()
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+router.get('/:uuid', async function (req, res, next) {
+  try {
+    const { uuid } = req.params
+    const { DetailSize} = await db()
+    const result = await DetailSize.findUuidDetailSize(uuid)
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
   module.exports = router
