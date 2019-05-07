@@ -5,6 +5,7 @@ const user = require('./user')
 const brand = require('./brand')
 const offer = require('./offer')
 const detail_size = require('./detail_size')
+const country = require('./country')
 
 
 const log = getLogger(__dirname, __filename)
@@ -15,7 +16,8 @@ module.exports = {
       user: '/user',
       brand: '/brand',
       offer: '/offer',
-      detail_size:'/detail_size'
+      detail_size:'/detail_size',
+      country:'/country'
 
     })
   },

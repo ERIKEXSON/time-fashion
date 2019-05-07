@@ -7,6 +7,7 @@ const setupUser = require('./lib/users')
 const setupBrand = require('./lib/brand')
 const setupDetailSize= require('./lib/detail_size')
 const setupOffer = require('./lib/offer')
+const setupCountry = require('./lib/country')
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -147,6 +148,7 @@ module.exports = async function () {
   const Brand = setupBrand(BrandModel)
   const DetailSize= setupDetailSize(Detail_sizeModel)
   const Offer = setupOffer(OfferModel)
+  const Country = setupCountry(CountryModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -155,5 +157,6 @@ module.exports = async function () {
     Brand,
     DetailSize,
     Offer,
+    Country,
   }
 }
