@@ -8,7 +8,7 @@ module.exports = function setupMetricModel (config) {
   return sequelize.define('city', {
       nombre:{
           type:sequelize.TEXT,
-          sequelize:false
+          allowNull:false
       }
   })
 }
