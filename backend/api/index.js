@@ -21,14 +21,8 @@ module.exports = {
   },
   user,
   brand,
-<<<<<<< HEAD
   offer,
   detail_size,
-  errorHandler (err, req, res, next) {
-=======
-  detail_size,
-  offer,
->>>>>>> 93ce4ad9a5511deb1e4cd20d489eb354999980d9
 
   errorHandler (err, req, res, next) {
     if (err) {
@@ -46,6 +40,5 @@ module.exports = {
 
   
   
-  }
-}
+ 
 
