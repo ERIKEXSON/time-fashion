@@ -8,6 +8,7 @@ const detail_size = require('./detail_size')
 const country = require('./country')
 const bill = require('./bill')
 const city = require('./city')
+const cancellation = require('./cancellation')
 
 
 const log = getLogger(__dirname, __filename)
@@ -22,6 +23,7 @@ module.exports = {
       country:'/country',
       bill:'/bill',
       city:'/city',
+      cancellation: '/cancellation'
 
     })
   },
@@ -32,8 +34,7 @@ module.exports = {
   country,
   bill,
   city,
- 
-
+  cancellation,
   errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500
