@@ -31,3 +31,5 @@ async function updateOffer(uuid, offer) {
   }
 
 }
+
+module.exports = setupOffer
