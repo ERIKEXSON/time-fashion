@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <nav class="cuadro">
+    <nav class="cuadro2">
       <div style="background-color:#000000;padding: 5px;color: white; text-align:center">
         <h2>Agregar inventario</h2>
         <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
@@ -55,7 +55,7 @@
       <div style="background-color:#000000;padding: 5px; color: white; text-align:center" >
         <h2>Productos del Inventario</h2>
       </div>
-      <v-card width="1050">
+      <v-card width="1045">
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -242,5 +242,6 @@ export default {
 }
 .cuadro2{
   margin-top:50px;
+  border: #000000 3px solid
 }
 </style>
