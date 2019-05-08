@@ -11,6 +11,9 @@ const city = require('./city')
 const cancellation = require('./cancellation')
 const department = require('./department')
 const direction = require('./direction')
+const inventories = require('./inventories')
+const line = require('./line')
+const offer_detail = require('./offer_datail')
 
 
 const log = getLogger(__dirname, __filename)
@@ -28,6 +31,9 @@ module.exports = {
       cancellation: '/cancellation',
       department: '/department',
       direction: '/direction',
+      inventories:'/inventories',
+      line:'/line',
+      offer_detail:'/offer_detail'
 
     })
   },
@@ -41,6 +47,9 @@ module.exports = {
   cancellation,
   department,
   direction,
+  inventories,
+  line,
+  offer_detail,
 
   errorHandler (err, req, res, next) {
     if (err) {
