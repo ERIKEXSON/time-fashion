@@ -97,8 +97,8 @@
           <v-dialog v-model="conditions" width="1085">
             <v-card>
               <v-card-text>
-                <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px"> 
-                  <h3>kajhscuybfnjQY</h3>            
+                <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
+                  <h3>kajhscuybfnjQY</h3>
                 </nav>
                 <v-card-actions>
                   <v-spacer></v-spacer>
