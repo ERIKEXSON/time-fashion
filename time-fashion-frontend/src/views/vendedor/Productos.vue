@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
-<<<<<<< HEAD
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Agregar Producto</h2>
         <v-snackbar v-model="snackbar" absolute top right color="success">
@@ -67,113 +66,6 @@
       </v-card>
     </nav>
     <!--Lista de productos-->
-=======
-        <div style="background-color:#000000;padding: 5px;color: white">
-          <h2>Agregar Producto</h2>
-          <v-snackbar
-              v-model="snackbar"
-              absolute
-              top
-              right
-              color="success"
-            >
-              <span>Producto agregado</span>
-              <v-icon dark>check_circle</v-icon>
-            </v-snackbar>
-          </div>
-          <v-card flat>
-            <v-form ref="form" @submit.prevent="submit">
-              <v-container grid-list-xl fluid>
-                <v-layout wrap>
-                  <v-flex xs12 sm6>
-                    <v-text-field v-model="form.nombre" :rules="rules.nombre" label="Nombre" required></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.codigo" :rules="rules.codigo" label="Codigo" required></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm4>
-                    <v-text-field
-                      v-model="form.presio" :rules="rules.presio" label="Presio" required :mask="numeros"></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm4>
-                    <v-text-field
-                      v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm4>
-                    <v-text-field
-                      v-model="form.linea" :rules="rules.linea" label="Linea" required></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
-                  <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
-                  <v-text-field label="Select Image" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
-                  <input
-                    type="file"
-                    style="display: none"
-                    ref="image"
-                    accept="image/*"
-                    @change="onFilePicked"
-                    multiple
-                  >
-                </v-flex>
-                </v-layout>
-            </v-container>
-            <v-card-actions>
-              <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
-              <v-btn
-                :disabled="!formIsValid"
-                flat
-                color=""
-                type="submit"
-                style="background-color: #00FF08"
-               >Agregar</v-btn>
-      <nav class="cuadro">
-        <div style="background-color:#000000;padding: 5px;color: white">
-          <h2>Agregar producto</h2>
-          <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
-            <span>Producto agregado</span>
-            <v-icon dark>check_circle</v-icon>
-          </v-snackbar>
-        </div>
-        <v-card flat>
-          <v-form ref="form" @submit.prevent="submit">
-            <v-container grid-list-xl fluid>
-              <v-layout wrap>
-                <v-flex xs12 sm6>
-                  <v-text-field v-model="form.nombre" :rules="rules.nombre" label="Descripción" required ></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <v-text-field v-model="form.codigo" :rules="rules.codigo" label="Código" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <v-text-field v-model="form.precio" :rules="rules.precio" label="Precio" required :mask="numeros"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <v-text-field v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <v-text-field v-model="form.linea" :rules="rules.linea" label="Linea" required></v-text-field>
-                </v-flex>
-                <!--cargar imagen-->
-                <v-text-field label="Seleccionar Imagen" @click='pickFile' v-model='imageName' prepend-icon='attach_file' required></v-text-field>
-                <input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked" multiple>
-              </v-layout>
-            </v-container>
-            <v-card-actions>
-              <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
-              <v-btn
-                :disabled="!formIsValid"
-                flat
-                color
-                type="submit"
-                style="background-color: #00FF08"
-              >Agregar</v-btn>
-            </v-card-actions>
-          </v-form>
-        </v-card>
-    </nav>
-<!--Lista de productos-->
->>>>>>> 17beb3698dbdbdd5640ef21cc0c9432b395ee9a6
     <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Productos</h2>
