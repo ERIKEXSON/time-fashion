@@ -1,161 +1,185 @@
 <template>
   <v-app>
-    <v-toolbar class="elevation-1" color="white">
-      <v-toolbar-title>Mis tarjetas</v-toolbar-title>
-      <v-divider
-        class="mx-2"
-        inset
-        vertical
-      ></v-divider>
-      <v-spacer></v-spacer>
-      <v-dialog v-model="dialog" max-width="500px">
-        <template v-slot:activator="{ on }">
-          <v-btn color="primary" class="mb-2" v-on="on">Agregar tarjeta</v-btn>
-        </template>
-        <v-card>
-          <v-card-title>
-            <span class="headline">{{ formTitle }}</span>
-          </v-card-title>
-          <v-card-text>
-            <v-container grid-list-md>
-              <v-layout wrap>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.nombres" label="Nombres" :rules="rules.required" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.apellidos" label="Apellidos" :rules="rules.required" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.pais" label="País" :rules="rules.required" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.vivienda" label="Estado/Provincia/Región" :rules="rules.required" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.direccion" label="Dirección" :rules="rules.required" required></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.celular" label="Teléfono móvil" :rules="rules.required" required></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click="close">Cancelar</v-btn>
-            <v-btn color="blue darken-1" flat @click="save">Guardar</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-toolbar>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      class="elevation-1"
-      hide-actions
+    <v-snackbar
+      v-model="snackbar"
+      absolute
+      top
+      right
+      color="success"
+      class="snackbar"
     >
-      <template v-slot:items="props">
-        <td class="text-xs-left">{{ props.item.nombres }}</td>
-        <td class="text-xs-left">{{ props.item.apellidos }}</td>
-        <td class="text-xs-left">{{ props.item.pais }}</td>
-        <td class="text-xs-left">{{ props.item.vivienda }}</td>
-        <td class="text-xs-left">{{ props.item.direccion }}</td>
-        <td class="text-xs-left">{{ props.item.celular }}</td>
-        <td class="justify-center layout px-0">
-          <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>
-          <v-icon small @click="deleteItem(props.item)">delete</v-icon>
-        </td>
-      </template>
-    </v-data-table>
+      <span>Tarjeta agregada</span>
+      <v-icon>check_circle</v-icon>
+    </v-snackbar>
+    <v-form ref="form" @submit.prevent="submit">
+      <v-container grid-list-xl fluid>
+        <nav class="borde">
+          <div class="tituloCuadro"><h2>Agrega tu tarjeta</h2></div>
+          <v-card width="1045">
+            <v-card-text>
+              <v-card-actions>
+                <v-container fluid>
+                  <v-layout row>
+                    <v-flex xs12 sm4>
+                      <v-text-field
+                        v-model="form.numerotarjeta"
+                        :mask="tarjetacredito"
+                        :rules="rules.tarjeta"
+                        label="Número de tarjeta"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex sm2>
+                      <v-text-field
+                        v-model="form.caducidad"
+                        :rules="rules.required"
+                        :mask="caducidad"
+                        label="Fecha caducidad"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex sm1>
+                      <v-text-field
+                        :mask="codigo"
+                        v-model="form.codigocvv"
+                        :rules="rules.required"
+                        label="CVV"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex sm5>
+                      <v-text-field
+                        v-model="form.nombre"
+                        :rules="rules.required"
+                        label="Nombre y apellido"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row>
+                    <v-flex sm6>
+                      <v-select
+                        v-model="form.tipodocumento"
+                        :rules="rules.required"
+                        label="Tipo de documento"
+                        :items="tipos"
+                        required
+                      ></v-select>
+                    </v-flex>
+                    <v-flex sm6>
+                      <v-text-field
+                        v-model="form.documento"
+                        :rules="rules.required"
+                        label="Documento"
+                        required
+                        :mask="doc"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-card-actions>
+                    <div class="botonCancelar">
+                    <v-btn flat @click="resetForm">Cancelar</v-btn>
+                    </div>
+                    <div class="botonAgregarTarjeta">
+                      <v-btn
+                        :disabled="!formIsValid"
+                        flat
+                        type="submit"
+                      >Agregar tarjeta</v-btn>
+                    </div>
+                  </v-card-actions>
+                </v-container>
+              </v-card-actions>
+            </v-card-text>
+          </v-card>
+        </nav>
+      </v-container>
+    </v-form>
+    <nav class="borde">
+      <div class="tituloCuadro"><h2>Mis tarjetas</h2></div>
+      <v-card width="1045">
+        <v-data-table
+          :headers="headers"
+          :items="desserts"
+          :search="search"
+          hide-actions
+        >
+          <template v-slot:items="props">
+            <td class="text-xs-left">{{ props.item.numerotarjeta }}</td>
+            <td class="text-xs-left">{{ props.item.caducidad }}</td>
+            <td class="text-xs-left">{{ props.item.codigocvv }}</td>
+            <td class="text-xs-left">{{ props.item.nombre }}</td>
+            <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
+            <td class="text-xs-left">{{ props.item.documento }}</td>
+          </template>
+        </v-data-table>
+      </v-card>
+    </nav>
   </v-app>
 </template>
 <script>
-import Swal from 'sweetalert2'
 export default {
+  name: 'mis tarjetas',
   data () {
+    const defaultForm = Object.freeze({
+      numerotarjeta: '',
+      caducidad: '',
+      codigocvv: '',
+      nombre: '',
+      tipodocumento: '',
+      documento: ''
+    })
     return {
-      rules: { required: [val => (val || '').length > 0 || 'Este campo es requerido'] },
-      dialog: false,
-      headers: [
-        { text: 'Número de tarjeta', value: 'numerotarjeta', sortable: false },
-        { text: 'Nombre y apellido', value: 'nombres', sortable: false },
-        { text: 'Fecha de expiración', value: 'fechaexpiracion', sortable: false },
-        { text: 'Código de seguridad', value: 'codigoseguridad', sortable: false },
-        { text: 'Tipo de documento', value: 'tipodocumento', sortable: false },
-        { text: 'Número de documento', value: 'documento', sortable: false },
-        { text: 'Acciones', sortable: false }
-      ],
-      desserts: [],
-      editedIndex: -1,
-      editedItem: {
-        numerotarjeta: '',
-        nombres: '',
-        fechaexpiracion: '',
-        codigoseguridad: '',
-        tipodocumento: '',
-        documento: ''
+      form: Object.assign({}, defaultForm),
+      rules: {
+        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        tarjeta: [val => (val || '').length > 0 || 'Este campo es requerido', val => (val || '').length > 15 || 'Ingrese número de tarjeta válido']
       },
-      defaultItem: {
-        numerotarjeta: '',
-        nombres: '',
-        fechaexpiracion: '',
-        codigoseguridad: '',
-        tipodocumento: '',
-        documento: ''
-      }
+      tipos: ['Cédula de ciudadanía', 'Tarjeta de identidad'],
+      tarjetacredito: 'credit-card',
+      caducidad: '##/####',
+      codigo: '###',
+      doc: '###############',
+      headers: [
+        { text: 'N° de tarjeta', value: 'numerotarjeta', sortable: false },
+        { text: 'Fecha caducidad', value: 'caducidad', sortable: false },
+        { text: 'CVV', value: 'codigocvv', sortable: false },
+        { text: 'Nombre y apellido', value: 'nombre', sortable: false },
+        { text: 'Tipo de documento', value: 'tipodocumento', sortable: false },
+        { text: 'Documento', value: 'documento', sortable: false }
+      ],
+      desserts: [
+        {
+          numerotarjeta: '134642756125',
+          caducidad: '31/1235',
+          codigocvv: '134',
+          nombre: 'adasdasdsa',
+          tipodocumento: 'CC',
+          documento: '56456464'
+        }
+      ]
     }
   },
   computed: {
-    formTitle () {
-      return this.editedIndex === -1 ? 'Nueva tarjeta' : 'Editar tarjeta'
-    }
-  },
-  watch: {
-    dialog (val) {
-      val || this.close()
+    formIsValid () {
+      return (
+        this.form.numerotarjeta &&
+        this.form.caducidad &&
+        this.form.codigocvv &&
+        this.form.nombre &&
+        this.form.tipodocumento &&
+        this.form.documento
+      )
     }
   },
   methods: {
-    editItem (item) {
-      this.editedIndex = this.desserts.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
+    resetForm () {
+      this.form = Object.assign({}, this.defaultForm)
+      this.$refs.form.reset()
     },
-    async deleteItem (item) {
-      const result = await Swal.fire({
-        title: '¿Estás seguro?',
-        text: 'Esto no será reversible',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, ¡bórralo!',
-        cancelButtonText: 'No, ¡cancélalo!'
-      })
-      if (result.value) {
-        const index = this.desserts.indexOf(item)
-        this.desserts.splice(index, 1)
-        Swal.fire(
-          '¡Eliminado!',
-          'Tu tarjeta ha sido eliminada',
-          'success'
-        )
-      }
-    },
-    close () {
-      this.dialog = false
-      setTimeout(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-      }, 300)
-    },
-    save () {
-      if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem)
-      } else {
-        this.desserts.push(this.editedItem)
-      }
-      this.close()
+    submit () {
+      this.snackbar = true
+      this.resetForm()
     }
   },
   created () {
@@ -163,3 +187,35 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .borde{
+    text-align:center;
+    border: #000000 3px solid;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: fit-content
+  }
+  .snackbar{
+      color: black
+  }
+  .botonCancelar{
+    background-color: rgba(206, 98, 252, 0.795);
+    transition: all .2s linear;
+    margin-bottom: -30px
+ }
+ .botonCancelar:hover{
+    background-color: rgba(136, 16, 248, 0.795)
+ }
+  .botonAgregarTarjeta{
+      background-color: rgba(206, 98, 252, 0.795);
+      margin-left: 10px;
+      transition: all .2s linear;
+      margin-bottom: -30px
+  }
+  .botonAgregarTarjeta button:not([disabled="disabled"]):hover{
+      background-color: rgba(136, 16, 248, 0.795)
+  }
+ .tabla{
+   margin: 0 auto
+ }
+</style>

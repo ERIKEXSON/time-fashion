@@ -11,6 +11,8 @@ const setupCountry = require('./lib/country')
 const setupBill = require('./lib/bill')
 const setupCity = require('./lib/city')
 const setupCancellation= require('./lib/cancellation')
+const setupDepartment = require('./lib/department')
+const setupDirection = require('./lib/direction')
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -137,13 +139,10 @@ module.exports = async function () {
   CountryModel.hasMany(DepartmentModel)
   DepartmentModel.belongsTo(CountryModel)
 
-  //relacion de cuidades a departamentos
+  //relacion de Departamentos a ciudades
   DepartmentModel.hasMany(CityModel)
   CityModel.belongsTo(DepartmentModel)
 
-  //relacion de paises a ciudades 
-  CountryModel.hasMany(CityModel)
-  CityModel.belongsTo(CountryModel)
 
   await sequelize.authenticate()
 
@@ -154,7 +153,9 @@ module.exports = async function () {
   const Country = setupCountry(CountryModel)
   const Bill = setupBill(BillModel)
   const City = setupCity(CityModel)
-  const Cancellation=setupCancellation(CancellationModel)
+  const Cancellation = setupCancellation(CancellationModel)
+  const Department = setupDepartment(DepartmentModel)
+  const Direction = setupDirection(DirectionModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -167,5 +168,7 @@ module.exports = async function () {
     Bill,
     City,
     Cancellation,
+    Department,
+    Direction,
   }
 }

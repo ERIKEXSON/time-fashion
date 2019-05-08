@@ -9,6 +9,8 @@ const country = require('./country')
 const bill = require('./bill')
 const city = require('./city')
 const cancellation = require('./cancellation')
+const department = require('./department')
+const direction = require('./direction')
 
 
 const log = getLogger(__dirname, __filename)
@@ -23,7 +25,9 @@ module.exports = {
       country:'/country',
       bill:'/bill',
       city:'/city',
-      cancellation: '/cancellation'
+      cancellation: '/cancellation',
+      department: '/department',
+      direction: '/direction',
 
     })
   },
@@ -35,6 +39,9 @@ module.exports = {
   bill,
   city,
   cancellation,
+  department,
+  direction,
+
   errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500
