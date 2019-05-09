@@ -14,7 +14,9 @@ const direction = require('./direction')
 const inventories = require('./inventories')
 const line = require('./line')
 const offer_detail = require('./offer_datail')
-
+const order = require('./order')
+const payment_method = require('./payment_method')
+const size = require('./size')
 
 const log = getLogger(__dirname, __filename)
 // prueba
@@ -33,7 +35,10 @@ module.exports = {
       direction: '/direction',
       inventories:'/inventories',
       line:'/line',
-      offer_detail:'/offer_detail'
+      offer_detail:'/offer_detail',
+      order:'/order',
+      payment_method:'/payment_method',
+      size:'/size',
 
     })
   },
@@ -50,6 +55,10 @@ module.exports = {
   inventories,
   line,
   offer_detail,
+  order,
+  payment_method,
+  size,
+
 
   errorHandler (err, req, res, next) {
     if (err) {

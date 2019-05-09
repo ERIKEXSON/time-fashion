@@ -16,6 +16,9 @@ const setupDirection = require('./lib/direction')
 const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
+const setupOrder = require('./lib/order')
+const setupPaymentmethod = require('./lib/payment_method')
+const setupSize =require('./lib/size')
 
 //modelos
 const setupDatabase = require('./lib/db')
@@ -163,6 +166,10 @@ module.exports = async function () {
   const Inventories = setupInventories(InventoriesModel)
   const Line = setupLine(LineModel)
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
+  const Order = setupOrder(OrderModel)
+  const Paymentmethod = setupPaymentmethod(Payment_methodModel)
+  const Size = setupSize(SizeModel)
+
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -180,5 +187,8 @@ module.exports = async function () {
     Inventories,
     Line,
     Offerdetail,
+    Order,
+    Paymentmethod,
+    Size,
   }
 }
