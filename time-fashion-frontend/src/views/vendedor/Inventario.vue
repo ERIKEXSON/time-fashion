@@ -120,7 +120,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <div class="bt">
-                <v-btn flat @click="conditions=false">Cerrar</v-btn>
+                <v-btn round @click="conditions=false">Cerrar</v-btn>
               </div>
             </v-card-actions>
           </v-card-text>

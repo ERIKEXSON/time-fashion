@@ -88,11 +88,19 @@
             <td class="text-xs-left">{{ props.item.marca }}</td>
             <td class="text-xs-left">{{ props.item.linea }}</td>
             <td class="text-xs-left">
-              <v-btn fab small color="error"> <v-icon color="black">delete</v-icon></v-btn>
-              <v-btn fab small color="warning"><v-icon color="black">edit</v-icon></v-btn>
-              <v-btn fab small color="primary" @click="conditions=true"><v-icon color="black">image</v-icon></v-btn>
+              <v-btn fab small color="error">
+                <v-icon color="black">delete</v-icon>
+              </v-btn>
+              <v-btn fab small color="warning">
+                <v-icon color="black">edit</v-icon>
+              </v-btn>
+              <v-btn fab small color="primary" @click="conditions=true">
+                <v-icon color="black">image</v-icon>
+              </v-btn>
             </td>
           </template>
+<<<<<<< HEAD
+=======
           <!--mostrar la imagen-->
           <v-dialog v-model="conditions" width="1085">
             <v-card>
@@ -109,12 +117,34 @@
               </v-card-text>
             </v-card>
          </v-dialog>
+>>>>>>> 380e29d7e04b6e0bde789a71443054de0521ee9d
         </v-data-table>
       </v-card>
+      <!--mostrar la imagen-->
+      <v-dialog v-model="conditions" width="1085">
+        <v-card>
+          <v-card-text>
+            <nav class="cuadima">
+              <h3>Imagenes de muestra</h3>
+            </nav>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="btce">
+                <v-btn flat @click="conditions=false">Cerrar</v-btn>
+              </div>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </nav>
   </v-app>
 </template>
 <script>
+import buso from '@/assets/busos.png'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -125,6 +155,7 @@ export default {
       linea: ''
     })
     return {
+      imageUrl: buso,
       imageName: '',
       numeros: '$###.###.##',
       show1: false,
@@ -136,7 +167,7 @@ export default {
         marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
         linea: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
-      conditions: true,
+      conditions: false,
       snackbar: false,
       defaultForm,
       search: '',
@@ -207,3 +238,21 @@ export default {
   }
 }
 </script>
+<style>
+.cuadima {
+  width: 1045px;
+  text-align: center;
+  margin-bottom: 30px;
+  background-color: #000000;
+  color: whitesmoke;
+}
+.btce {
+  background-color: rgba(34, 194, 215, 0.61);
+  transition: all 0.2s linear;
+  text-align: center;
+}
+.im{
+  display:inline-block;
+  margin-left: 10px
+}
+</style>

@@ -14,9 +14,9 @@ const direction = require('./direction')
 const inventories = require('./inventories')
 const line = require('./line')
 const offer_detail = require('./offer_datail')
-const order = require('./order')
-const payment_method = require('./payment_method')
-const size = require('./size')
+const products = require('./products')
+const requested_detayl = require('./requested_detayl')
+
 
 const log = getLogger(__dirname, __filename)
 // prueba
@@ -36,9 +36,8 @@ module.exports = {
       inventories:'/inventories',
       line:'/line',
       offer_detail:'/offer_detail',
-      order:'/order',
-      payment_method:'/payment_method',
-      size:'/size',
+      products:'/products',
+      requested_detayl:'/requested_detayl'
 
     })
   },
@@ -55,10 +54,8 @@ module.exports = {
   inventories,
   line,
   offer_detail,
-  order,
-  payment_method,
-  size,
-
+  products,
+  requested_detayl,
 
   errorHandler (err, req, res, next) {
     if (err) {
