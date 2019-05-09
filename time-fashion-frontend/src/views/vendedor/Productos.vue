@@ -88,122 +88,152 @@
             <td class="text-xs-left">{{ props.item.marca }}</td>
             <td class="text-xs-left">{{ props.item.linea }}</td>
             <td class="text-xs-left">
-              <v-btn fab small color="error"> <v-icon color="black">delete</v-icon></v-btn>
-              <v-btn fab small color="warning"><v-icon color="black">edit</v-icon></v-btn>
-              <v-btn fab small color="primary" @click="conditions=true"><v-icon color="black">image</v-icon></v-btn>
+              <v-btn fab small color="error">
+                <v-icon color="black">delete</v-icon>
+              </v-btn>
+              <v-btn fab small color="warning">
+                <v-icon color="black">edit</v-icon>
+              </v-btn>
+              <v-btn fab small color="primary" @click="conditions=true">
+                <v-icon color="black">image</v-icon>
+              </v-btn>
             </td>
           </template>
-          <!--mostrar la imagen-->
-          <v-dialog v-model="conditions" width="1085">
-            <v-card>
-              <v-card-text>
-                <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px"> 
-                  <h3>kajhscuybfnjQY</h3>            
-                </nav>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <div class="bt">
-                    <v-btn flat @click="conditions=false">Cerrar</v-btn>
-                  </div>
-                </v-card-actions>
-              </v-card-text>
-            </v-card>
-         </v-dialog>
         </v-data-table>
       </v-card>
+      <!--mostrar la imagen-->
+      <v-dialog v-model="conditions" width="1085">
+        <v-card>
+          <v-card-text>
+            <nav class="cuadima">
+              <h3>Imagenes de muestra</h3>
+            </nav>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="btce">
+                <v-btn flat @click="conditions=false">Cerrar</v-btn>
+              </div>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </nav>
   </v-app>
 </template>
 <script>
+import buso from "@/assets/busos.png";
 export default {
-  data () {
+  data() {
     const defaultForm = Object.freeze({
-      nombre: '',
-      codigo: '',
-      presio: '',
-      marca: '',
-      linea: ''
-    })
+      nombre: "",
+      codigo: "",
+      presio: "",
+      marca: "",
+      linea: ""
+    });
     return {
-      imageName: '',
-      numeros: '$###.###.##',
+      imageUrl: buso,
+      imageName: "",
+      numeros: "$###.###.##",
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
-        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        presio: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        linea: [val => (val || '').length > 0 || 'Este campo es requerido']
+        nombre: [val => (val || "").length > 0 || "Este campo es requerido"],
+        codigo: [val => (val || "").length > 0 || "Este campo es requerido"],
+        presio: [val => (val || "").length > 0 || "Este campo es requerido"],
+        marca: [val => (val || "").length > 0 || "Este campo es requerido"],
+        linea: [val => (val || "").length > 0 || "Este campo es requerido"]
       },
-      conditions: true,
+      conditions: false,
       snackbar: false,
       defaultForm,
-      search: '',
+      search: "",
       headers: [
-        { text: 'Nombre', value: 'nombre' },
-        { text: 'Codigo', value: 'codigo' },
-        { text: 'Presio', value: 'presio' },
-        { text: 'Marca', value: 'marca' },
-        { text: 'Linea', value: 'linea' },
-        { text: 'Acciones', sortable: false }
+        { text: "Nombre", value: "nombre" },
+        { text: "Codigo", value: "codigo" },
+        { text: "Presio", value: "presio" },
+        { text: "Marca", value: "marca" },
+        { text: "Linea", value: "linea" },
+        { text: "Acciones", sortable: false }
       ],
       desserts: [
         {
-          nombre: 'camisa',
-          codigo: '654tgtg',
-          presio: '6454654',
-          marca: 'roballo',
-          linea: 'zapatos'
+          nombre: "camisa",
+          codigo: "654tgtg",
+          presio: "6454654",
+          marca: "roballo",
+          linea: "zapatos"
         }
       ]
-    }
+    };
   },
   computed: {
-    formIsValid () {
+    formIsValid() {
       return (
         this.form.nombre &&
         this.form.codigo &&
         this.form.presio &&
         this.form.marca &&
         this.form.linea
-      )
+      );
     }
   },
   methods: {
-    resetForm () {
-      this.form = Object.assign({}, this.defaultForm)
-      this.$refs.form.reset()
+    resetForm() {
+      this.form = Object.assign({}, this.defaultForm);
+      this.$refs.form.reset();
     },
-    submit () {
-      this.snackbar = true
-      this.resetForm()
+    submit() {
+      this.snackbar = true;
+      this.resetForm();
     },
-    pickFile () {
-      this.$refs.image.click()
+    pickFile() {
+      this.$refs.image.click();
     },
-    onFilePicked (e) {
-      const files = e.target.files
+    onFilePicked(e) {
+      const files = e.target.files;
       if (files[0] !== undefined) {
-        this.imageName = files[0].name
-        if (this.imageName.lastIndexOf('.') <= 0) {
-          return
+        this.imageName = files[0].name;
+        if (this.imageName.lastIndexOf(".") <= 0) {
+          return;
         }
-        const fr = new FileReader()
-        fr.readAsDataURL(files[0])
-        fr.addEventListener('load', () => {
-          this.imageUrl = fr.result
-          this.imageFile = files[0]
-        })
+        const fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener("load", () => {
+          this.imageUrl = fr.result;
+          this.imageFile = files[0];
+        });
       } else {
-        this.imageName = ''
-        this.imageFile = ''
-        this.imageUrl = ''
+        this.imageName = "";
+        this.imageFile = "";
+        this.imageUrl = "";
       }
     }
   },
-  created () {
-    this.$store.commit('SET_LAYOUT', 'vendedor-layout')
+  created() {
+    this.$store.commit("SET_LAYOUT", "vendedor-layout");
   }
-}
+};
 </script>
+<style>
+.cuadima {
+  width: 1045px;
+  text-align: center;
+  margin-bottom: 30px;
+  background-color: #000000;
+  color: whitesmoke;
+}
+.btce {
+  background-color: rgba(34, 194, 215, 0.61);
+  transition: all 0.2s linear;
+  text-align: center;
+}
+.im{
+  display:inline-block;
+  margin-left: 10px 
+}
+</style>
