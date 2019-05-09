@@ -99,6 +99,25 @@
               </v-btn>
             </td>
           </template>
+<<<<<<< HEAD
+=======
+          <!--mostrar la imagen-->
+          <v-dialog v-model="conditions" width="1085">
+            <v-card>
+              <v-card-text>
+                <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
+                  <h3>kajhscuybfnjQY</h3>
+                </nav>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <div class="bt">
+                    <v-btn flat @click="conditions=false">Cerrar</v-btn>
+                  </div>
+                </v-card-actions>
+              </v-card-text>
+            </v-card>
+         </v-dialog>
+>>>>>>> 380e29d7e04b6e0bde789a71443054de0521ee9d
         </v-data-table>
       </v-card>
       <!--mostrar la imagen-->
@@ -125,99 +144,99 @@
   </v-app>
 </template>
 <script>
-import buso from "@/assets/busos.png";
+import buso from '@/assets/busos.png'
 export default {
-  data() {
+  data () {
     const defaultForm = Object.freeze({
-      nombre: "",
-      codigo: "",
-      presio: "",
-      marca: "",
-      linea: ""
-    });
+      nombre: '',
+      codigo: '',
+      presio: '',
+      marca: '',
+      linea: ''
+    })
     return {
       imageUrl: buso,
-      imageName: "",
-      numeros: "$###.###.##",
+      imageName: '',
+      numeros: '$###.###.##',
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
-        nombre: [val => (val || "").length > 0 || "Este campo es requerido"],
-        codigo: [val => (val || "").length > 0 || "Este campo es requerido"],
-        presio: [val => (val || "").length > 0 || "Este campo es requerido"],
-        marca: [val => (val || "").length > 0 || "Este campo es requerido"],
-        linea: [val => (val || "").length > 0 || "Este campo es requerido"]
+        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        presio: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        linea: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,
       defaultForm,
-      search: "",
+      search: '',
       headers: [
-        { text: "Nombre", value: "nombre" },
-        { text: "Codigo", value: "codigo" },
-        { text: "Presio", value: "presio" },
-        { text: "Marca", value: "marca" },
-        { text: "Linea", value: "linea" },
-        { text: "Acciones", sortable: false }
+        { text: 'Nombre', value: 'nombre' },
+        { text: 'Codigo', value: 'codigo' },
+        { text: 'Presio', value: 'presio' },
+        { text: 'Marca', value: 'marca' },
+        { text: 'Linea', value: 'linea' },
+        { text: 'Acciones', sortable: false }
       ],
       desserts: [
         {
-          nombre: "camisa",
-          codigo: "654tgtg",
-          presio: "6454654",
-          marca: "roballo",
-          linea: "zapatos"
+          nombre: 'camisa',
+          codigo: '654tgtg',
+          presio: '6454654',
+          marca: 'roballo',
+          linea: 'zapatos'
         }
       ]
-    };
+    }
   },
   computed: {
-    formIsValid() {
+    formIsValid () {
       return (
         this.form.nombre &&
         this.form.codigo &&
         this.form.presio &&
         this.form.marca &&
         this.form.linea
-      );
+      )
     }
   },
   methods: {
-    resetForm() {
-      this.form = Object.assign({}, this.defaultForm);
-      this.$refs.form.reset();
+    resetForm () {
+      this.form = Object.assign({}, this.defaultForm)
+      this.$refs.form.reset()
     },
-    submit() {
-      this.snackbar = true;
-      this.resetForm();
+    submit () {
+      this.snackbar = true
+      this.resetForm()
     },
-    pickFile() {
-      this.$refs.image.click();
+    pickFile () {
+      this.$refs.image.click()
     },
-    onFilePicked(e) {
-      const files = e.target.files;
+    onFilePicked (e) {
+      const files = e.target.files
       if (files[0] !== undefined) {
-        this.imageName = files[0].name;
-        if (this.imageName.lastIndexOf(".") <= 0) {
-          return;
+        this.imageName = files[0].name
+        if (this.imageName.lastIndexOf('.') <= 0) {
+          return
         }
-        const fr = new FileReader();
-        fr.readAsDataURL(files[0]);
-        fr.addEventListener("load", () => {
-          this.imageUrl = fr.result;
-          this.imageFile = files[0];
-        });
+        const fr = new FileReader()
+        fr.readAsDataURL(files[0])
+        fr.addEventListener('load', () => {
+          this.imageUrl = fr.result
+          this.imageFile = files[0]
+        })
       } else {
-        this.imageName = "";
-        this.imageFile = "";
-        this.imageUrl = "";
+        this.imageName = ''
+        this.imageFile = ''
+        this.imageUrl = ''
       }
     }
   },
-  created() {
-    this.$store.commit("SET_LAYOUT", "vendedor-layout");
+  created () {
+    this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
-};
+}
 </script>
 <style>
 .cuadima {
@@ -234,6 +253,6 @@ export default {
 }
 .im{
   display:inline-block;
-  margin-left: 10px 
+  margin-left: 10px
 }
 </style>
