@@ -9,6 +9,7 @@ const setupDetailSize= require('./lib/detail_size')
 const setupOffer = require('./lib/offer')
 const setupCountry = require('./lib/country')
 const setupCancellation= require('./lib/cancellation')
+const setupDepartment=require('./lib/department')
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -151,6 +152,7 @@ module.exports = async function () {
   const Offer = setupOffer(OfferModel)
   const Country = setupCountry(CountryModel)
   const Cancellation=setupCancellation(CancellationModel)
+  const Department=setupDepartment(DepartmentModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -161,5 +163,6 @@ module.exports = async function () {
     Offer,
     Country,
     Cancellation,
+    Department,
   }
 }

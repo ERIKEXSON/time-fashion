@@ -7,6 +7,7 @@ const offer = require('./offer')
 const detail_size = require('./detail_size')
 const country = require('./country')
 const cancellation = require('./cancellation')
+const department = require('./department')
 
 
 const log = getLogger(__dirname, __filename)
@@ -19,7 +20,8 @@ module.exports = {
       offer: '/offer',
       detail_size:'/detail_size',
       country:'/country',
-      cancellation:'/cancellation'
+      cancellation:'/cancellation',
+      department:'/department',
 
     })
   },
@@ -29,6 +31,7 @@ module.exports = {
   detail_size,
   country,
   cancellation,
+  department,
 
   errorHandler (err, req, res, next) {
     if (err) {
