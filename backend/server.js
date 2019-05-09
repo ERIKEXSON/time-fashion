@@ -5,7 +5,7 @@ const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
 const { errorHandler,  home , user,  brand, detail_size, offer, country, bill, city, cancellation, department, direction, inventories,
-        line, offer_detail, products, requested_detayl,} = require('@time-fashion/api')
+        line, offer_detail, products, requested_detayl, size} = require('@time-fashion/api')
 const { getLogger, logHandler, terminate } = require('@time-fashion/utils')
 
 const app = express()
@@ -33,6 +33,7 @@ app.use('/line',line)
 app.use('/offer_detail',offer_detail)
 app.use('/products',products)
 app.use('/requested_detayl',requested_detayl)
+app.use('/size',size)
 app.get('/', home)
 app.use(errorHandler)
 

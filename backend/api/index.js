@@ -16,6 +16,7 @@ const line = require('./line')
 const offer_detail = require('./offer_datail')
 const products = require('./products')
 const requested_detayl = require('./requested_detayl')
+const size = require('./size')
 
 
 const log = getLogger(__dirname, __filename)
@@ -37,7 +38,8 @@ module.exports = {
       line:'/line',
       offer_detail:'/offer_detail',
       products:'/products',
-      requested_detayl:'/requested_detayl'
+      requested_detayl:'/requested_detayl',
+      size:'/size'
 
     })
   },
@@ -56,6 +58,7 @@ module.exports = {
   offer_detail,
   products,
   requested_detayl,
+  size,
 
   errorHandler (err, req, res, next) {
     if (err) {
