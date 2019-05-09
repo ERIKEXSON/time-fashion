@@ -14,7 +14,7 @@
         <v-img :src="tops" class="img-responsive2" @click="clickPush('/tops-mujer')"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
-        <img src="@/assets/frase.png" class="img-responsive img" alt="">
+        <v-img :src="frases" class="img-responsive2"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
         <v-img :src="tanks" class="img-responsive2" @click="clickPush('/tanks-hombre')"></v-img>
@@ -39,7 +39,7 @@ import TANKS from '@/assets/joggers.png'
 import SHORTS from '@/assets/shorts.png'
 import NIÑOS from '@/assets/busos.png'
 import CAMISETAS from '@/assets/camisas.png'
-
+import FRASES from '@/assets/frase.png'
 export default {
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
@@ -57,7 +57,8 @@ export default {
       tanks: TANKS,
       shorts: SHORTS,
       niños: NIÑOS,
-      camisetas: CAMISETAS
+      camisetas: CAMISETAS,
+      frases: FRASES
     }
   }
 }

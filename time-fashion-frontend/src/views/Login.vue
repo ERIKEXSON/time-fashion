@@ -17,7 +17,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <div style="width: 417.66px; text-align:center">
-                            <v-btn style="background-color:black; color:white">Ingresar</v-btn>
+                            <v-btn style="background-color:black; color:white" to="/cliente">Ingresar</v-btn>
                         </div>
                     </v-card-actions>
                     </v-card>

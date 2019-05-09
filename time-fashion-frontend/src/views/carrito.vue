@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <v-icon class="boton1">add_shopping_cart</v-icon>
-        <h2 class="titulo">TU CARRO ESTÁ VACÍO...</h2>
-        <h3 class="img-responsive">Encuentre las mejores marcas de moda.</h3>
-        <v-btn class="boton" to="/">Continua Comprando</v-btn>
+    <div class="imagenInicio2">
+      <img src="@/assets/favicon.png" width="250" height="250">
+      <h1>Bienvenido</h1>
+      <h1>Tu carrito de compras ahora está vacío.</h1>
+      <v-btn round to="/" color="primary">Entra y busca tus productos</v-btn>
     </div>
 </template>
 <style>
@@ -12,13 +12,9 @@
     max-width: 100%;
     height: auto;
     }
-    .boton{
-        margin-left: 50px;
-    }
-    .titulo{
-        margin-left: 29px;
-    }
-    .boton1{
-        margin-left: 130px;
-    }
+    .imagenInicio2{
+    text-align: center;
+    width: fit-content;
+    margin: 10px auto 50px auto
+  }
 </style>
