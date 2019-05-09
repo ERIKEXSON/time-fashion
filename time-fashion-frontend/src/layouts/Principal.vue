@@ -31,12 +31,12 @@
       app
       fixed
     >
-    <v-toolbar-title style="width: 100px" class="ml-0 pl-3">
+      <v-toolbar-title style="width: 100px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       </v-toolbar-title>
 
       <v-btn color="transparent" to="/" class="hidden-sm-and-down">
-          <img src="@/assets/logito.png" height="45px" width="90px">
+        <img src="@/assets/logito.png" height="45px" width="90px">
       </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
         <v-text class="hombres" >Hombre</v-text>
@@ -53,16 +53,24 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
+        class="busqueda"
+        style="margin-right: 70px"
       ></v-text-field>
-      <v-spacer></v-spacer>
-      <div class="text-xs-center">
-        <v-menu offset-y>
+      
+      <v-btn to="/carrito" style="margin-right: 95px " icon >
+        <v-icon>add_shopping_cart</v-icon>
+        <v-text>Mi pedido</v-text>
+      </v-btn>
+
+      <div class="text-xs-center" style="margin-right: 30px">
+        <v-menu offset-y class="mover">
           <template v-slot:activator="{ on }">
             <v-btn
               icon
               color="transparent"
               v-on="on"
             ><v-icon>perm_identity</v-icon>
+            <v-text>Ingresa</v-text>
             </v-btn>
           </template>
           <v-list>
@@ -75,9 +83,6 @@
           </v-list>
         </v-menu>
       </div>
-      <v-btn to="/carrito" icon >
-        <v-icon>add_shopping_cart</v-icon>
-      </v-btn>
     </v-toolbar>
     <v-content class="cyan lighten-5">
       <v-container fill-height>
@@ -155,8 +160,5 @@ export default {
   color:#00B0FF;
   font-family: 'Patua One', cursive;
   font-size: 20px;
-}
-.mover{
-  margin-right: 50px;
 }
 </style>

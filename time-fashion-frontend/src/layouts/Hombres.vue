@@ -48,38 +48,42 @@
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down" to="niños">
         <v-title class="niños" >Niños</v-title>
-      </v-btn>
-      <v-text-field
+      </v-btn><v-text-field
         flat
         solo-inverted
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
+        class="busqueda"
+        style="margin-right: 70px"
       ></v-text-field>
-      <v-spacer></v-spacer>
-         <div class="text-xs-center">
-            <v-menu offset-y>
-            <template v-slot:activator="{ on }">
-                <v-btn
-                icon="true"
-                color="transparent"
-                v-on="on"
-                ><v-icon>perm_identity</v-icon>
-                </v-btn>
-            </template>
-            <v-list>
+      
+      <v-btn to="/carrito" style="margin-right: 95px " icon >
+        <v-icon>add_shopping_cart</v-icon>
+        <v-text>Mi pedido</v-text>
+      </v-btn>
+
+      <div class="text-xs-center" style="margin-right: 30px">
+        <v-menu offset-y class="mover">
+          <template v-slot:activator="{ on }">
+            <v-btn
+              icon
+              color="transparent"
+              v-on="on"
+            ><v-icon>perm_identity</v-icon>
+            <v-text>Ingresa</v-text>
+            </v-btn>
+          </template>
+          <v-list>
               <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
               <v-btn to="/registrarse" color="transparent">
                 Registarse
               </v-btn>
-            </v-list>
-            </v-menu>
-        </div>
-      <v-btn icon to="/carrito" >
-        <v-icon>add_shopping_cart</v-icon>
-      </v-btn>
+          </v-list>
+        </v-menu>
+      </div>
 
       </v-toolbar>
       <v-content class="cyan lighten-5">
