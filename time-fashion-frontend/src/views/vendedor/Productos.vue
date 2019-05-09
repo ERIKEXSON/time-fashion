@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <nav class="cuadro">
+    <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white">
-        <h2>Agregar producto</h2>
-        <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
+        <h2>Agregar Producto</h2>
+        <v-snackbar v-model="snackbar" absolute top right color="success">
           <span>Producto agregado</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
@@ -13,23 +13,43 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.nombre" label="Descripción" required ></v-text-field>
+                <v-text-field v-model="form.nombre" :rules="rules.nombre" label="Nombre" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.codigo" :rules="rules.codigo" label="Código" required></v-text-field>
+                <v-text-field v-model="form.codigo" :rules="rules.codigo" label="Codigo" required></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.precio" :rules="rules.precio" label="Precio" required :mask="numeros"></v-text-field>
+              <v-flex xs12 sm4>
+                <v-text-field
+                  v-model="form.presio"
+                  :rules="rules.presio"
+                  label="Presio"
+                  required
+                  :mask="numeros"
+                ></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm4>
                 <v-text-field v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm4>
                 <v-text-field v-model="form.linea" :rules="rules.linea" label="Linea" required></v-text-field>
               </v-flex>
-              <!--cargar imagen-->
-              <v-text-field label="Seleccionar Imagen" @click='pickFile' v-model='imageName' prepend-icon='attach_file' required></v-text-field>
-					    <input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked" multiple>
+              <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
+                <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
+                <v-text-field
+                  label="Select Image"
+                  @click="pickFile"
+                  v-model="imageName"
+                  prepend-icon="attach_file"
+                ></v-text-field>
+                <input
+                  type="file"
+                  style="display: none"
+                  ref="image"
+                  accept="image/*"
+                  @change="onFilePicked"
+                  multiple
+                >
+              </v-flex>
             </v-layout>
           </v-container>
           <v-card-actions>
@@ -45,96 +65,95 @@
         </v-form>
       </v-card>
     </nav>
-    <!--Lista de Productos-->
-    <nav class="cuadro2">
+    <!--Lista de productos-->
+    <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
       <div style="background-color:#000000;padding: 5px;color: white">
         <h2>Productos</h2>
       </div>
-      <v-card width="1045">
+      <v-card width="1040">
         <v-card-title>
           <v-text-field
             v-model="search"
             append-icon="search"
-            label="Buscar"
+            label="Search"
             single-line
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table :headers="headers" :items="desserts" :search="search" expand>
+        <v-data-table :headers="headers" :items="desserts" :search="search">
           <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.codigo }}</td>
             <td class="text-xs-left">{{ props.item.nombre }}</td>
+            <td class="text-xs-left">{{ props.item.codigo }}</td>
+            <td class="text-xs-left">{{ props.item.presio }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
-            <td class="text-xs-left">{{ props.item.valor }}</td>
             <td class="text-xs-left">{{ props.item.linea }}</td>
-             <td class="text-xs-center">
-               <v-btn fab dark small color="error"><v-icon dark color="black">delete</v-icon></v-btn>
-              <v-btn fab dark small color="warning"><v-icon dark color="black">edit</v-icon></v-btn>
+            <td class="text-xs-left">
+              <v-btn fab small color="error"> <v-icon color="black">delete</v-icon></v-btn>
+              <v-btn fab small color="warning"><v-icon color="black">edit</v-icon></v-btn>
+              <v-btn fab small color="primary" @click="conditions=true"><v-icon color="black">image</v-icon></v-btn>
             </td>
-            <td class="text-xs-left"><div class="btd"><v-btn @click="conditions=true">Imágenes</v-btn></div></td>
           </template>
-        </v-data-table>
-      </v-card>
-      <v-dialog v-model="conditions" width="1085">
-         <v-card>
-            <v-card-text>
-                <nav>
-                <div class="tituloCuadro"><h2>Imagenes de muestra</h2></div>
-                <v-img :src="imageurl" class="imagen"></v-img>
-                <v-img :src="img" class="imagen"></v-img>
-                <v-img :src="img" class="imagen"></v-img>
-                <v-img :src="img" class="imagen"></v-img>
+          <!--mostrar la imagen-->
+          <v-dialog v-model="conditions" width="1085">
+            <v-card>
+              <v-card-text>
+                <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
+                  <h3>kajhscuybfnjQY</h3>
                 </nav>
                 <v-card-actions>
-                <v-spacer></v-spacer>
-                <div class="botonCerrar"><v-btn flat @click="conditions = false">Cerrar</v-btn></div>
+                  <v-spacer></v-spacer>
+                  <div class="bt">
+                    <v-btn flat @click="conditions=false">Cerrar</v-btn>
+                  </div>
                 </v-card-actions>
-            </v-card-text>
+              </v-card-text>
             </v-card>
-      </v-dialog>
+         </v-dialog>
+        </v-data-table>
+      </v-card>
     </nav>
   </v-app>
 </template>
 <script>
-import img from '@/assets/busos.png'
 export default {
   data () {
     const defaultForm = Object.freeze({
-      codigo: '',
       nombre: '',
+      codigo: '',
+      presio: '',
       marca: '',
-      precio: '',
       linea: ''
     })
     return {
-      numeros: '##############',
       imageName: '',
-      img,
+      numeros: '$###.###.##',
+      show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
         nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
         codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        precio: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        presio: [val => (val || '').length > 0 || 'Este campo es requerido'],
         marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
         linea: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
-      conditions: false,
+      conditions: true,
       snackbar: false,
       defaultForm,
       search: '',
       headers: [
-        { text: 'Código', value: 'codigo' },
         { text: 'Nombre', value: 'nombre' },
+        { text: 'Codigo', value: 'codigo' },
+        { text: 'Presio', value: 'presio' },
         { text: 'Marca', value: 'marca' },
-        { text: 'Precio', value: 'valor' },
-        { text: 'linea', value: 'linea' }
+        { text: 'Linea', value: 'linea' },
+        { text: 'Acciones', sortable: false }
       ],
       desserts: [
         {
-          codigo: 'ASD812',
-          nombre: 'Shorts',
+          nombre: 'camisa',
+          codigo: '654tgtg',
+          presio: '6454654',
           marca: 'roballo',
-          valor: 10000,
           linea: 'zapatos'
         }
       ]
@@ -145,7 +164,7 @@ export default {
       return (
         this.form.nombre &&
         this.form.codigo &&
-        this.form.precio &&
+        this.form.presio &&
         this.form.marca &&
         this.form.linea
       )
@@ -155,6 +174,10 @@ export default {
     resetForm () {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
+    },
+    submit () {
+      this.snackbar = true
+      this.resetForm()
     },
     pickFile () {
       this.$refs.image.click()
@@ -177,10 +200,6 @@ export default {
         this.imageFile = ''
         this.imageUrl = ''
       }
-    },
-    submit () {
-      this.snackbar = true
-      this.resetForm()
     }
   },
   created () {
@@ -188,32 +207,3 @@ export default {
   }
 }
 </script>
-<style>
-.cuadro {
-  text-align: center;
-  border: #000000 3px solid;
-  margin-bottom: 30px;
-}
-.cuadro2 {
-  border: #000000 3px solid;
-  width: fit-content;
-  text-align: center;
-  margin-top: 50px;
-}
-.detalle {
-  margin-left: 40px;
-  text-align: center;
-}
-.tituloCuadro{
-  text-align: center;
-   background-color:#000000;
-   padding: 5px;
-   color: white
- }
-.imagen{
-  margin:20px 10px;
-  width: 239px;
-  height: 349px;
-  display:inline-block
-}
-</style>

@@ -69,7 +69,7 @@ export default {
       },
       {
         text: 'Ventas',
-        icon: 'home',
+        icon: 'ballot',
         to: '/admin/ventas'
       },
       {

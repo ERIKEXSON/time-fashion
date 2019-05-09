@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav class="cuadro">
-      <div style="background-color:#000000;padding: 5px;color: white">
+    <nav class="cuadro2">
+      <div style="background-color:#000000;padding: 5px;color: white; text-align:center">
         <h2>Agregar inventario</h2>
         <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
           <span>Agregar inventario</span>
@@ -13,12 +13,7 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-select
-                  v-model="form.producto"
-                  :items="tipoproducto"
-                  :rules="rules.producto"
-                  label="Producto"
-                  required
+                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.producto" label="Producto" required
                 ></v-select>
               </v-flex>
               <!-- separador-->
@@ -28,13 +23,7 @@
                 </v-card>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.cantidad"
-                  :rules="rules.cantidad"
-                  :mask="numeros"
-                  label="Cantidad"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.cantidad" :rules="rules.cantidad" :mask="numeros" label="Cantidad" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field v-model="form.tallas" :rules="rules.tallas" label="Tallas" required></v-text-field>
@@ -43,11 +32,7 @@
                 <v-text-field v-model="form.color" :rules="rules.color" label="Color" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.posicion"
-                  :rules="rules.posicion"
-                  label="Posicion"
-                  required
+                <v-text-field v-model="form.posicion" :rules="rules.posicion" label="Posicion" required
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -67,8 +52,8 @@
     </nav>
     <!--Lista de Productos-->
     <nav class="cuadro2">
-      <div style="background-color:#000000;padding: 5px;color: white">
-        <h2>Productos Inventario</h2>
+      <div style="background-color:#000000;padding: 5px; color: white; text-align:center" >
+        <h2>Productos del Inventario</h2>
       </div>
       <v-card width="1045">
         <v-card-title>
@@ -120,8 +105,7 @@
                     <td class="text-xs-left">{{ props.item.cantidad }}</td>
                     <td class="text-xs-left">{{ props.item.posicion }}</td>
                     <td class="text-xs-left">{{ props.item.precio }}</td>
-
-                    <td class="text-xs-center">
+                    <td class="text-xs-left">
                       <v-btn fab dark small color="error">
                         <v-icon dark color="black">delete</v-icon>
                       </v-btn>
@@ -196,7 +180,8 @@ export default {
         { text: 'Tallas', value: 'tallas' },
         { text: 'Cantidad', value: 'cantidad' },
         { text: 'Posición', value: 'posicion' },
-        { text: 'Precio', value: 'Precio' }
+        { text: 'Precio', value: 'Precio' },
+        { text: 'Opciones', sortable: false }
       ],
       contenido: [
         {
@@ -254,5 +239,9 @@ export default {
 }
 .btd:hover:hover {
   background-color: rgb(145, 45, 45);
+}
+.cuadro2{
+  margin-top:50px;
+  border: #000000 3px solid
 }
 </style>

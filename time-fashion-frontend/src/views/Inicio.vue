@@ -32,13 +32,13 @@
   </v-container>
 </template>
 <script>
-  import MUJERES from '@/assets/mujeres.png'
-  import HOMBRES from '@/assets/hombres.png'
-  import TOPS from '@/assets/tops.png'
-  import TANKS from '@/assets/joggers.png'
-  import SHORTS from '@/assets/shorts.png'
-  import NIÑOS from '@/assets/busos.png'
-  import CAMISETAS from '@/assets/camisas.png'
+import MUJERES from '@/assets/mujeres.png'
+import HOMBRES from '@/assets/hombres.png'
+import TOPS from '@/assets/tops.png'
+import TANKS from '@/assets/joggers.png'
+import SHORTS from '@/assets/shorts.png'
+import NIÑOS from '@/assets/busos.png'
+import CAMISETAS from '@/assets/camisas.png'
 
 export default {
   created () {

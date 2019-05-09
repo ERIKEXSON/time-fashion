@@ -39,13 +39,13 @@
           <img src="@/assets/logito.png" height="45px" width="90px">
       </v-btn>
       <v-btn color="transparent" class="hidden-sm-and-down" to="hombre">
-        Hombre
+        <v-text class="hombres" >Hombre</v-text>
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down" to="mujer">
-        Mujer
+        <v-text class="mujeres" >Mujer</v-text>
       </v-btn>
       <v-btn color="transparent"  class="hidden-sm-and-down" to="niños">
-        Niños
+        <v-text class="niños" >Niños</v-text>
       </v-btn>
       <v-text-field
         flat
@@ -136,7 +136,24 @@ export default {
 }
 </script>
 <style>
-    .v-btn--active:before, .v-btn:hover:before, .v-btn:focus:before {
-    background-color: transparent;
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+.v-btn--active:before, .v-btn:hover:before, .v-btn:focus:before {
+  background-color: transparent;
+}
+.niños{
+  color:  rgb(255, 118, 0);
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 20px;
+}
+.mujeres{
+  color: #D500F9;
+  font-family: 'Patua One', cursive;
+  font-size: 20px;
+}
+.hombres{
+  color:#00B0FF;
+  font-family: 'Patua One', cursive;
+  font-size: 20px;
 }
 </style>
