@@ -11,12 +11,16 @@ const setupCountry = require('./lib/country')
 const setupBill = require('./lib/bill')
 const setupCity = require('./lib/city')
 const setupCancellation= require('./lib/cancellation')
+<<<<<<< HEAD
+const setupDepartment=require('./lib/department')
+=======
 const setupDepartment = require('./lib/department')
 const setupDirection = require('./lib/direction')
 const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
 
+>>>>>>> c82703db97c3d32119f676630d2ea33841a81590
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
@@ -155,6 +159,10 @@ module.exports = async function () {
   const DetailSize= setupDetailSize(Detail_sizeModel)
   const Offer = setupOffer(OfferModel)
   const Country = setupCountry(CountryModel)
+<<<<<<< HEAD
+  const Cancellation=setupCancellation(CancellationModel)
+  const Department=setupDepartment(DepartmentModel)
+=======
   const Bill = setupBill(BillModel)
   const City = setupCity(CityModel)
   const Cancellation = setupCancellation(CancellationModel)
@@ -163,6 +171,7 @@ module.exports = async function () {
   const Inventories = setupInventories(InventoriesModel)
   const Line = setupLine(LineModel)
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
+>>>>>>> c82703db97c3d32119f676630d2ea33841a81590
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -176,9 +185,12 @@ module.exports = async function () {
     City,
     Cancellation,
     Department,
+<<<<<<< HEAD
+=======
     Direction,
     Inventories,
     Line,
     Offerdetail,
+>>>>>>> c82703db97c3d32119f676630d2ea33841a81590
   }
 }
