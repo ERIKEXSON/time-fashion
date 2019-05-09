@@ -69,10 +69,11 @@ export default {
         to: '/cliente/direccion'
       },
       {
-        text: 'Cambiar contraseña'
+        text: 'Cambiar contraseña',
+        to: '/cliente/password'
       },
       {
-        text: 'Centro de Denuncias'
+        text: 'Centro de denuncias'
       },
       {
         text: 'Cerrar sesión',

@@ -1,8 +1,9 @@
 <template>
   <v-app>
     <div class="imagenInicio">
-      <img src="@/assets/perfil.png" width="300" height="300">
+      <img src="@/assets/favicon.png" width="300" height="300">
       <h1>Bienvenido, {{ usuario }}</h1>
+      <v-btn round to="/" color="primary">Entra y busca tus productos</v-btn>
     </div>
   </v-app>
 </template>
