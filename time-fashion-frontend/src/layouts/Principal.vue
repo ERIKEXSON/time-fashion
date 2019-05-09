@@ -156,4 +156,7 @@ export default {
   font-family: 'Patua One', cursive;
   font-size: 20px;
 }
+.mover{
+  margin-right: 50px;
+}
 </style>
