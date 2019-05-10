@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
-      <div style="background-color:#000000;padding: 5px;color: white">
+    <nav class="cdc">
+      <div class="cdt">
         <h2>Agregar Producto</h2>
         <v-snackbar v-model="snackbar" absolute top right color="success">
           <span>Producto agregado</span>
@@ -13,19 +13,13 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre" required></v-text-field>
+                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre del producto" required ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field
-                  v-model="form.presio"
-                  :rules="rules.requerido"
-                  label="Presio"
-                  required
-                  :mask="numeros"
-                ></v-text-field>
+                <v-text-field  v-model="form.presio"  :rules="rules.requerido"  label="Precio"  required  :mask="numeros"></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required></v-text-field>
@@ -34,13 +28,7 @@
                 <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required></v-text-field>
               </v-flex>
               <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
-                <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
-                <v-text-field
-                  label="Select Image"
-                  @click="pickFile"
-                  v-model="imageName"
-                  prepend-icon="attach_file"
-                ></v-text-field>
+               <v-text-field  label="Seleccione una imagen"  @click="pickFile"  v-model="imageName"  prepend-icon="attach_file"></v-text-field>
                 <input
                   type="file"
                   style="display: none"
@@ -53,24 +41,23 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
+            <v-btn flat @click="resetForm" class="bt" >Cancelar</v-btn>
             <v-btn
               :disabled="!formIsValid"
               flat
-              color
               type="submit"
-              style="background-color: #00FF08"
+              class="bt"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
     </nav>
     <!--Lista de productos-->
-    <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
-      <div style="background-color:#000000;padding: 5px;color: white">
+    <nav class="cdc">
+      <div class="cdt">
         <h2>Productos</h2>
       </div>
-      <v-card width="1040">
+      <v-card width="1038">
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -99,24 +86,23 @@
               </v-btn>
             </td>
           </template>
-          <!--mostrar la imagen-->
         </v-data-table>
       </v-card>
       <!--mostrar la imagen-->
-      <v-dialog v-model="conditions" width="1085">
+      <v-dialog v-model="conditions" width="1045">
         <v-card>
           <v-card-text>
-            <nav class="cuadima">
+            <nav class="cdima">
               <h3>Imagenes de muestra</h3>
             </nav>
-              <v-img :src="imageUrl" height="320" width="250" class="im"/>
-              <v-img :src="imageUrl" height="320" width="250" class="im"/>
-              <v-img :src="imageUrl" height="320" width="250" class="im"/>
-              <v-img :src="imageUrl" height="320" width="250" class="im"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im"/>
             <v-card-actions>
               <v-spacer></v-spacer>
               <div class="btce">
-                <v-btn flat @click="conditions=false">Cerrar</v-btn>
+                <v-btn flat @click="conditions=false" class="bt">Cerrar</v-btn>
               </div>
             </v-card-actions>
           </v-card-text>
@@ -217,20 +203,40 @@ export default {
 }
 </script>
 <style>
-.cuadima {
-  width: 1045px;
+.cdc{
+  width:1045px;
+  text-align: center;
+  border: #000000 3px solid;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+.cdt{
+  background-color:#000000;
+  padding: 5px;
+  color: white;
+  border-radius: 1px;
+}
+.cdima {
+  width: 1000px;
   text-align: center;
   margin-bottom: 30px;
   background-color: #000000;
   color: whitesmoke;
+  font-size: 25px;
+  border-radius: 5px;
 }
-.btce {
-  background-color: rgba(34, 194, 215, 0.61);
+.bt{
+  background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
   text-align: center;
+  border-radius:1px;
 }
+.bt:hover{
+      background-color: rgba(136, 16, 248, 0.795);
+      border-radius:1px;
+  }
 .im{
   display:inline-block;
-  margin-left: 10px
+  margin-left: 10px;
 }
 </style>

@@ -1,66 +1,55 @@
 <template>
   <v-app>
-    <nav style="width:1045px ;text-align: center; border: #000000 3px solid;margin-bottom: 30px">
-        <div style="background-color:#000000;padding: 5px;color: white">
-          <h2>Agregar empleado</h2>
-          <v-snackbar
-              v-model="snackbar"
-              absolute
-              top
-              right
-              color="success"
-            >
-              <span>Empleado agregado</span>
-              <v-icon dark>check_circle</v-icon>
-            </v-snackbar>
-          </div>
-          <v-card flat>
-            <v-form ref="form" @submit.prevent="submit">
-              <v-container grid-list-xl fluid>
-                <v-layout wrap>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.nombre"
-                      :rules="rules.requerido"
-                      label="Nombre"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.apellido"
-                      :rules="rules.requerido"
-                      label="Apellido"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.correo"
-                      :rules="rules.correo"
-                      label="Correo"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.telefono"
-                      :rules="rules.requerido"
-                      label="Teléfono"
-                      required
-                      :mask="numeros"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.documento"
-                      :rules="rules.requerido"
-                      label="Documento de Identidad"
-                      required
-                      :mask="numeros"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
+    <nav class="cde">
+      <div class="cdte">
+        <h2>Agregar empleado</h2>
+        <v-snackbar v-model="snackbar" absolute top right color="success">
+          <span>Empleado agregado</span>
+          <v-icon dark>check_circle</v-icon>
+        </v-snackbar>
+      </div>
+      <v-card flat>
+        <v-form ref="form" @submit.prevent="submit">
+          <v-container grid-list-xl fluid>
+            <v-layout wrap>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.nombre"
+                  :rules="rules.requerido"
+                  label="Nombre"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.apellido"
+                  :rules="rules.requerido"
+                  label="Apellido"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.telefono"
+                  :rules="rules.requerido"
+                  label="Teléfono"
+                  required
+                  :mask="numeros"
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
+                  v-model="form.documento"
+                  :rules="rules.requerido"
+                  label="Documento de Identidad"
+                  required
+                  :mask="docu"
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
                 <v-select
                   v-model="form.tipodocumento"
                   :items="tipos"
@@ -69,40 +58,37 @@
                   required
                 ></v-select>
               </v-flex>
-                </v-layout>
-            </v-container>
-            <v-card-actions>
-              <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
-              <v-btn
-                :disabled="!formIsValid"
-                flat
-                color=""
-                type="submit"
-                style="background-color: #00FF08"
-               >Agregar</v-btn>
+            </v-layout>
+          </v-container>
+          <v-card-actions>
+            <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
+            <v-btn
+              :disabled="!formIsValid"
+              flat
+              color
+              type="submit"
+              style="background-color: #00FF08"
+            >Agregar</v-btn>
           </v-card-actions>
-         </v-form>
+        </v-form>
       </v-card>
-   </nav>
-<!--Lista de empleados-->
-    <nav style="text-align:center;border: #000000 3px solid;margin-bottom: 30px">
-      <div style="background-color:#000000;padding: 5px;color: white"><h2>Empleados</h2></div>
+    </nav>
+    <!--Lista de empleados-->
+    <nav class="cde">
+      <div class="cdte">
+        <h2>Empleados</h2>
+      </div>
       <v-card width="1045">
         <v-card-title>
-        <v-text-field
-          v-model="search"
-          append-icon="search"
-          label="Search"
-          single-line
-          hide-details
-        >
-        </v-text-field>
+          <v-text-field
+            v-model="search"
+            append-icon="search"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
         </v-card-title>
-        <v-data-table
-        :headers="headers"
-        :items="desserts"
-        :search="search"
-        >
+        <v-data-table :headers="headers" :items="desserts" :search="search">
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
@@ -128,12 +114,16 @@ export default {
       tipodoc: ''
     })
     return {
-      numeros: '###########',
+      numeros: '###-###-####',
+      docu: '##########',
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
         requerido: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
+        correo: [
+          val => (val || '').length > 0 || 'Este campo es requerido',
+          v => /.+@.+/.test(v) || 'El correo debe ser válido'
+        ]
       },
       tipos: ['Tarjeta de identidad', 'Cédula de Ciudadania', 'Otro'],
       conditions: false,
@@ -165,11 +155,11 @@ export default {
     formIsValid () {
       return (
         this.form.nombre &&
-          this.form.apellido &&
-          this.form.correo &&
-          this.form.telefono &&
-          this.form.documento &&
-          this.form.tipodocumento
+        this.form.apellido &&
+        this.form.correo &&
+        this.form.telefono &&
+        this.form.documento &&
+        this.form.tipodocumento
       )
     }
   },
@@ -188,3 +178,18 @@ export default {
   }
 }
 </script>
+<style>
+.cde{
+  width:1045px ;
+  text-align: center;
+  border: #000000 3px solid;
+  margin-bottom: 30px;
+  border-radius:5px;
+}
+.cdte{
+  background-color:#000000;
+  padding: 5px;
+  color: white;
+  border-radius: 1px
+}
+</style>
