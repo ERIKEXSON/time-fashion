@@ -249,10 +249,10 @@ export default {
 }
 </script>
 <style>
-   .botonConfirmar{
-    background-color: rgba(206, 98, 252, 0.795);
-    margin: auto auto 20px auto;
-    transition: all .2s linear
+  .botonConfirmar{
+  background-color: rgba(206, 98, 252, 0.795);
+  margin: auto auto 20px auto;
+  transition: all .2s linear
  }
  .botonConfirmar button:not([disabled="disabled"]):hover{
     background-color: rgba(136, 16, 248, 0.795)
