@@ -13,25 +13,25 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.nombre" label="Nombre" required></v-text-field>
+                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.codigo" :rules="rules.codigo" label="Codigo" required></v-text-field>
+                <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-text-field
                   v-model="form.presio"
-                  :rules="rules.presio"
+                  :rules="rules.requerido"
                   label="Presio"
                   required
                   :mask="numeros"
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field v-model="form.marca" :rules="rules.marca" label="Marca" required></v-text-field>
+                <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field v-model="form.linea" :rules="rules.linea" label="Linea" required></v-text-field>
+                <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required></v-text-field>
               </v-flex>
               <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
                 <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
@@ -99,25 +99,7 @@
               </v-btn>
             </td>
           </template>
-<<<<<<< HEAD
-=======
           <!--mostrar la imagen-->
-          <v-dialog v-model="conditions" width="1085">
-            <v-card>
-              <v-card-text>
-                <nav style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px">
-                  <h3>kajhscuybfnjQY</h3>
-                </nav>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <div class="bt">
-                    <v-btn flat @click="conditions=false">Cerrar</v-btn>
-                  </div>
-                </v-card-actions>
-              </v-card-text>
-            </v-card>
-         </v-dialog>
->>>>>>> 380e29d7e04b6e0bde789a71443054de0521ee9d
         </v-data-table>
       </v-card>
       <!--mostrar la imagen-->
@@ -161,11 +143,7 @@ export default {
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
-        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        codigo: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        presio: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        marca: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        linea: [val => (val || '').length > 0 || 'Este campo es requerido']
+        requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       conditions: false,
       snackbar: false,

@@ -21,7 +21,7 @@
                   <v-flex xs12 sm6>
                     <v-text-field
                       v-model="form.nombre"
-                      :rules="rules.nombre"
+                      :rules="rules.requerido"
                       label="Nombre"
                       required
                     ></v-text-field>
@@ -29,7 +29,7 @@
                   <v-flex xs12 sm6>
                     <v-text-field
                       v-model="form.apellido"
-                      :rules="rules.apellido"
+                      :rules="rules.requerido"
                       label="Apellido"
                       required
                     ></v-text-field>
@@ -45,7 +45,7 @@
                   <v-flex xs12 sm6>
                     <v-text-field
                       v-model="form.telefono"
-                      :rules="rules.telefono"
+                      :rules="rules.requerido"
                       label="Teléfono"
                       required
                       :mask="numeros"
@@ -54,7 +54,7 @@
                   <v-flex xs12 sm6>
                     <v-text-field
                       v-model="form.documento"
-                      :rules="rules.documento"
+                      :rules="rules.requerido"
                       label="Documento de Identidad"
                       required
                       :mask="numeros"
@@ -64,7 +64,7 @@
                 <v-select
                   v-model="form.tipodocumento"
                   :items="tipos"
-                  :rules="rules.tipodocumento"
+                  :rules="rules.requerido"
                   label="Tipo de documento"
                   required
                 ></v-select>
@@ -132,12 +132,8 @@ export default {
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
-        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        apellido: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        telefono: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        requerido: [val => (val || '').length > 0 || 'Este campo es requerido'],
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
-        documento: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tipodocumento: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipos: ['Tarjeta de identidad', 'Cédula de Ciudadania', 'Otro'],
       conditions: false,

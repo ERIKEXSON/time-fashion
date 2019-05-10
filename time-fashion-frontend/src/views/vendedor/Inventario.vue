@@ -13,7 +13,7 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.producto" label="Producto" required
+                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.requerido" label="Producto" required
                 ></v-select>
               </v-flex>
               <!-- separador-->
@@ -23,16 +23,16 @@
                 </v-card>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.cantidad" :rules="rules.cantidad" :mask="numeros" label="Cantidad" required></v-text-field>
+                <v-text-field v-model="form.cantidad" :rules="rules.requerido" :mask="numeros" label="Cantidad" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.tallas" :rules="rules.tallas" label="Tallas" required></v-text-field>
+                <v-text-field v-model="form.tallas" :rules="rules.requerido" label="Tallas" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.color" :rules="rules.color" label="Color" required></v-text-field>
+                <v-text-field v-model="form.color" :rules="rules.requerido" label="Color" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.posicion" :rules="rules.posicion" label="Posicion" required
+                <v-text-field v-model="form.posicion" :rules="rules.requerido" label="Posicion" required
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -145,10 +145,7 @@ export default {
       form: Object.assign({}, defaultForm),
       numeros: '#########',
       rules: {
-        cantidad: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tallas: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        color: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        posicion: [val => (val || '').length > 0 || 'Este campo es requerido']
+        requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipoproducto: ['Pantalon', 'Camisa', 'Pantaloneta', 'Camisetilla', 'Boxer', 'zapatos', 'accesorios'],
       conditions: false,
@@ -203,7 +200,8 @@ export default {
         this.form.color &&
         this.form.tallas &&
         this.form.cantidad &&
-        this.form.posicion
+        this.form.posicion &&
+        this.form.producto
       )
     }
   },
