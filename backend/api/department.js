@@ -7,6 +7,8 @@ const db = require('@time-fashion/db')
 const log = getLogger(__dirname, __filename)
 const router = new Router()
 
+<<<<<<< HEAD
+=======
 //router.post('/', async function(req, res, next){
   //try {
     //const { departmentNew } = req.body
@@ -38,6 +40,7 @@ const router = new Router()
     //next(err)
   //}
 //})
+>>>>>>> c82703db97c3d32119f676630d2ea33841a81590
 router.get('/', async function (req, res, next) {
   try {
     const { Department } = await db()
@@ -50,11 +53,19 @@ router.get('/', async function (req, res, next) {
 router.get('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
+<<<<<<< HEAD
+    const { Department} = await db()
+=======
     const { Department } = await db()
+>>>>>>> c82703db97c3d32119f676630d2ea33841a81590
     const result = await Department.findUuidDepartment(uuid)
     res.send(result)
   } catch (err) {
     next(err)
   }
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> c82703db97c3d32119f676630d2ea33841a81590
 module.exports = router

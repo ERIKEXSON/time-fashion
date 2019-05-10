@@ -13,7 +13,7 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.producto" label="Producto" required
+                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.requerido" label="Producto" required
                 ></v-select>
               </v-flex>
               <!-- separador-->
@@ -52,10 +52,10 @@
     </nav>
     <!--Lista de Productos-->
     <nav class="cuadro2">
-      <div style="background-color:#000000;padding: 5px; color: white; text-align:center">
+      <div style="background-color:#000000;padding: 5px; color: white; text-align:center" >
         <h2>Productos del Inventario</h2>
       </div>
-      <v-card width="1120">
+      <v-card width="1045">
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -200,7 +200,8 @@ export default {
         this.form.color &&
         this.form.tallas &&
         this.form.cantidad &&
-        this.form.posicion
+        this.form.posicion &&
+        this.form.producto
       )
     }
   },
@@ -225,7 +226,7 @@ export default {
   background-color: rgba(34, 194, 215, 0.61);
   transition: all 0.2s linear;
 }
-.bt:hover {
+.bt:hover{
   background-color: rgb(145, 45, 45);
 }
 .btd {
@@ -238,7 +239,8 @@ export default {
   background-color: rgb(145, 45, 45);
 }
 .cuadro2{
-  margin-top:50px;
-  border: #000000 3px solid
+  margin-top:20px;
+  border: #000000 3px solid;
+  border-radius:5px;
 }
 </style>
