@@ -112,7 +112,7 @@
   </v-app>
 </template>
 <script>
-import buso from '@/assets/busos.png'
+import buso from '@/assets/ico.png'
 export default {
   data () {
     const defaultForm = Object.freeze({

@@ -226,7 +226,7 @@ export default {
   background-color: rgba(34, 194, 215, 0.61);
   transition: all 0.2s linear;
 }
-.bt:hover {
+.bt:hover{
   background-color: rgb(145, 45, 45);
 }
 .btd {
@@ -239,7 +239,8 @@ export default {
   background-color: rgb(145, 45, 45);
 }
 .cuadro2{
-  margin-top:50px;
-  border: #000000 3px solid
+  margin-top:20px;
+  border: #000000 3px solid;
+  border-radius:5px;
 }
 </style>
