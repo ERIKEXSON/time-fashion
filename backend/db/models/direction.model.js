@@ -13,6 +13,10 @@ module.exports = function setupMetricModel (config) {
     direccion: {
       type: Sequelize.TEXT,
       allowNull: false
+    },
+    celular: {
+      type: Sequelize.TEXT,
+      allowNull: false
     }
   })
 }

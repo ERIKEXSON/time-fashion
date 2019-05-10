@@ -53,6 +53,7 @@ import Busosniña from './views/niños/niña/busos.vue'
 import Joggersniña from './views/niños/niña/joggers.vue'
 import Vestidosniña from './views/niños/niña/vestidos.vue'
 import Topsniña from './views/niños/niña/tops.vue'
+import Pedidos from './views/pedidos.vue'
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/pedidos',
+      name: 'pedidos',
+      component: Pedidos
+    },
     {
       path: '/',
       name: 'inicio',

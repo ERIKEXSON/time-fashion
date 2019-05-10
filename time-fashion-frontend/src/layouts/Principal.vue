@@ -53,8 +53,7 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
-        class="busqueda"
-        style="margin-right: 70px"
+        style="margin: 0px 170px 0px 70px"
       ></v-text-field>
 
       <v-btn to="/carrito" style="margin-right: 95px " icon >
