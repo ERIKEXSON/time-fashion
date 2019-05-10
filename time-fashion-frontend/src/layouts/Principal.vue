@@ -53,6 +53,10 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
+<<<<<<< HEAD
+=======
+        style="margin: 0px 170px 0px 70px"
+>>>>>>> 17c49bc7fedb4c2e6c8871ed55d90d9dd1bfc1ed
       ></v-text-field>
       <v-spacer></v-spacer>
       <div class="text-xs-center">

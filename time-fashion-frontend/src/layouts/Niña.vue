@@ -55,6 +55,11 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
+<<<<<<< HEAD
+=======
+        class="busqueda"
+        style="margin-right: 170px; margin-left: 70px"
+>>>>>>> 17c49bc7fedb4c2e6c8871ed55d90d9dd1bfc1ed
       ></v-text-field>
       <v-spacer></v-spacer>
          <div class="text-xs-center">

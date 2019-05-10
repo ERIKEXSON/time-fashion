@@ -16,9 +16,9 @@ import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorPedidos from './views/vendedor/pedidos.vue'
 import VendedorFactura from './views/vendedor/factura.vue'
 import Cliente from './views/cliente/Inicio.vue'
-import ClientePerfil from './views/cliente/Perfil.vue'
+import ClientePerfil from './views/cliente/perfil.vue'
 import ClientePedidos from './views/cliente/MisPedidos.vue'
-import ClienteDireccion from './views/cliente/MisDirecciones.vue'
+import ClienteDireccion from './views/cliente/Misdirecciones.vue'
 import ClienteMisTarjetas from './views/cliente/MisTarjetas.vue'
 import ClienteCambiarPassword from './views/cliente/CambiarPassword.vue'
 import Hombre from './views/hombres/ropahombre.vue'
@@ -53,6 +53,7 @@ import Busosniña from './views/niños/niña/busos.vue'
 import Joggersniña from './views/niños/niña/joggers.vue'
 import Vestidosniña from './views/niños/niña/vestidos.vue'
 import Topsniña from './views/niños/niña/tops.vue'
+import Pedidos from './views/pedidos.vue'
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/pedidos',
+      name: 'pedidos',
+      component: Pedidos
+    },
     {
       path: '/',
       name: 'inicio',
