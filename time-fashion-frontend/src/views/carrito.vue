@@ -4,6 +4,8 @@
       <h1>Bienvenido</h1>
       <h1>Tu carrito de compras ahora está vacío.</h1>
       <v-btn round to="/" color="primary">Entra y busca tus productos</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn round to="/pedidos" color="primary">Revisar mis pedidos</v-btn>
     </div>
 </template>
 <style>
