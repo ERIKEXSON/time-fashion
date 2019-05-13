@@ -107,7 +107,7 @@ export default {
       historialPedidos: [
         { text: 'Número de pedido', value: 'numero' },
         { text: 'Información del pedido', value: 'informacion' },
-        { text: 'Fecha', value: 'fecha'},
+        { text: 'Fecha', value: 'fecha' },
         { text: 'Valor', value: 'valor' },
         { text: 'Estado del pedido', value: 'estado' },
         { text: 'Acciones de pedido', sortable: false }
