@@ -77,6 +77,7 @@
                             <v-data-table
                             :headers="factura"
                             :items="detallesFactura"
+                            hide-actions
                             >
                                 <template v-slot:items="props">
                                     <td class="text-xs-left">{{ props.item.cantidad }}</td>

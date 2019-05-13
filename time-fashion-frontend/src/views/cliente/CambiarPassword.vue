@@ -11,6 +11,9 @@
             <v-text-field
               v-model="currentPassword"
               box
+              :append-icon="show1 ? 'visibility' : 'visibility_off'"
+              :type="show1 ? 'text' : 'password'"
+              @click:append="show1 = !show1"
             ></v-text-field>
           </v-flex>
         </v-layout>
@@ -26,6 +29,9 @@
               @input="$v.password.$touch()"
               @blur="$v.password.$touch()"
               box
+              :append-icon="show2 ? 'visibility' : 'visibility_off'"
+              :type="show2 ? 'text' : 'password'"
+              @click:append="show2 = !show2"
             ></v-text-field>
           </v-flex>
         </v-layout>
@@ -41,6 +47,9 @@
               @input="$v.repeatPassword.$touch()"
               @blur="$v.repeatPassword.$touch()"
               box
+              :append-icon="show3 ? 'visibility' : 'visibility_off'"
+              :type="show3 ? 'text' : 'password'"
+              @click:append="show3 = !show3"
             ></v-text-field>
           </v-flex>
         </v-layout>
@@ -50,7 +59,7 @@
               flat
               :disabled="$v.$invalid"
               v-text="'Cambiar contraseña'"
-              @click="confirmar"
+              @click="submit"
             />
           </div>
         </v-card-actions>
@@ -64,6 +73,9 @@ import { required, sameAs, minLength } from 'vuelidate/lib/validators'
 export default {
   data () {
     return {
+      show1: false,
+      show2: false,
+      show3: false,
       password: '',
       repeatPassword: '',
       currentPassword: ''
@@ -101,8 +113,11 @@ export default {
     }
   },
   methods: {
-    confirmar () {
-      return this.$reset.currentPassword
+    submit () {
+      this.$v.$reset()
+      this.currentPassword = null
+      this.password = null
+      this.repeatPassword = null
     }
   },
   created () {
@@ -118,6 +133,7 @@ export default {
   margin: auto;
   transition: all 0.2s linear;
   align-content: center;
+  border-radius: 15px
 }
 .boton button:not([disabled="disabled"]):hover {
   background-color: rgba(136, 16, 248, 0.795);

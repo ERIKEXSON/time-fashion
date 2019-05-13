@@ -125,7 +125,8 @@ export default {
   }
   .botonCerrar{
     background-color: rgba(34, 194, 215, 0.61);
-    transition: all .2s linear
+    transition: all .2s linear;
+    border-radius: 15px
   }
   .botonCerrar:hover{
     background-color: rgb(145, 45, 45)

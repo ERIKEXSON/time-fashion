@@ -23,7 +23,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.nombre"
-                  :rules="rules.nombre"
+                  :rules="rules.required"
                   label="Nombre"
                   required
                 ></v-text-field>
@@ -31,7 +31,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.nit"
-                  :rules="rules.nit"
+                  :rules="rules.required"
                   label="Nit"
                   required
                 ></v-text-field>
@@ -47,8 +47,9 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.telefono"
-                  :rules="rules.telefono"
+                  :rules="rules.required"
                   label="Teléfono"
+                  :mask="tel"
                   required
                 ></v-text-field>
               </v-flex>
@@ -146,11 +147,10 @@ export default {
       correo: ''
     })
     return {
+      tel: 'phone',
       form: Object.assign({}, defaultForm),
       rules: {
-        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        nit: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        telefono: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
         correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
       },
       conditions: false,
@@ -220,7 +220,8 @@ export default {
 .borde{
    text-align:center;
    border: #000000 3px solid;
-   margin-bottom: 30px
+   margin-bottom: 30px;
+   border-radius: 5px
  }
  .tituloCuadro{
    background-color:#000000;
@@ -236,7 +237,8 @@ export default {
   }
   .botonCancelar{
     background-color: rgba(206, 98, 252, 0.795);
-    transition: all .2s linear
+    transition: all .2s linear;
+    border-radius: 15px
   }
   .botonCancelar:hover{
       background-color: rgba(136, 16, 248, 0.795)
@@ -244,7 +246,8 @@ export default {
   .botonRegistrar{
       background-color: rgba(206, 98, 252, 0.795);
       margin-left: 10px;
-      transition: all .2s linear
+      transition: all .2s linear;
+      border-radius: 15px
   }
   .botonRegistrar button:not([disabled="disabled"]):hover{
       background-color: rgba(136, 16, 248, 0.795)

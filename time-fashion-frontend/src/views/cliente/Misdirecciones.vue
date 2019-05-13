@@ -69,6 +69,7 @@
                         v-model="form.celular"
                         :rules="rules.required"
                         label="Celular"
+                        :mask="cel"
                         required
                       ></v-text-field>
                     </v-flex>
@@ -127,6 +128,7 @@ export default {
       celular: ''
     })
     return {
+      cel: '##############',
       form: Object.assign({}, defaultForm),
       rules: {
         required: [val => (val || '').length > 0 || 'Este campo es requerido']
@@ -201,7 +203,8 @@ export default {
       background-color: rgba(206, 98, 252, 0.795);
       margin-left: 10px;
       transition: all .2s linear;
-      margin-bottom: -30px
+      margin-bottom: -30px;
+      border-radius: 15px
   }
   .botonAgregarTarjeta button:not([disabled="disabled"]):hover{
       background-color: rgba(136, 16, 248, 0.795)

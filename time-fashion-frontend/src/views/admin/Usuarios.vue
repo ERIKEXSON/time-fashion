@@ -41,6 +41,7 @@
                   v-model="form.documento"
                   :rules="rules.documento"
                   label="Documento"
+                  :mask="doc"
                   required
                 ></v-text-field>
               </v-flex>
@@ -83,6 +84,7 @@
                   v-model="form.tel"
                   :rules="rules.tel"
                   label="Teléfono"
+                  :mask="doc"
                   required
                 ></v-text-field>
               </v-flex>
@@ -155,6 +157,7 @@
                   :headers="datosContacto"
                   :items="desserts"
                   :search="search"
+                  hide-actions
                 >
                   <template v-slot:items="props">
                     <td class="text-xs-left">{{ props.item.correo }}</td>
@@ -189,6 +192,7 @@ export default {
       empresa: ''
     })
     return {
+      doc: '#################',
       e1: 0,
       contacto: false,
       snackbar: false,

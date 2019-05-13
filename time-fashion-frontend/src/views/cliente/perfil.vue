@@ -119,7 +119,6 @@
                           :rules="rules.required"
                           :type="show1 ? 'text' : 'password'"
                           @click:append="show1 = !show1"
-                          counter
                           required
                         ></v-text-field>
                       </v-flex>
@@ -158,6 +157,7 @@
                         <v-text-field
                           v-model="form.documento"
                           :rules="rules.required"
+                          :mask="doc"
                           required
                         ></v-text-field>
                       </v-flex>
@@ -205,6 +205,7 @@ export default {
       nacionalidad: ''
     })
     return {
+      doc: '#################',
       phone: 'phone',
       form: Object.assign({}, defaultForm),
       rules: {
@@ -252,7 +253,8 @@ export default {
   .botonConfirmar{
   background-color: rgba(206, 98, 252, 0.795);
   margin: auto auto 20px auto;
-  transition: all .2s linear
+  transition: all .2s linear;
+  border-radius: 15px
  }
  .botonConfirmar button:not([disabled="disabled"]):hover{
     background-color: rgba(136, 16, 248, 0.795)
