@@ -39,20 +39,22 @@
                   </v-layout>
                   <v-layout row>
                     <v-flex sm6>
-                      <v-text-field
+                      <v-select
                         v-model="form.pais"
                         :rules="rules.required"
+                        :items="paises"
                         label="País"
                         required
-                      ></v-text-field>
+                      ></v-select>
                     </v-flex>
                     <v-flex sm6>
-                      <v-text-field
+                      <v-select
                         v-model="form.vivienda"
                         :rules="rules.required"
+                        :items="ciudades"
                         label="Provincia/estado/región"
                         required
-                      ></v-text-field>
+                      ></v-select>
                     </v-flex>
                   </v-layout>
                   <v-layout row>
@@ -124,6 +126,8 @@ export default {
       celular: ''
     })
     return {
+      paises: ['Algo', 'Algo más'],
+      ciudades: ['Una', 'Otra'],
       snackbar: false,
       cel: '##############',
       form: Object.assign({}, defaultForm),
