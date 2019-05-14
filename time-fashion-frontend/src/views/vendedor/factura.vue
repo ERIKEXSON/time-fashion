@@ -70,8 +70,8 @@
 </template>
 <script>
 import moment from 'moment'
-moment.locale('es')
 import img from '@/assets/logito.png'
+moment.locale('es')
 export default {
   data () {
     return {
