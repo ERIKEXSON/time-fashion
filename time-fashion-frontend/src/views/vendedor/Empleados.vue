@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="cde">
       <div class="cdte">
         <h2>Agregar empleado</h2>
@@ -78,7 +78,7 @@
       <div class="cdte">
         <h2>Empleados</h2>
       </div>
-      <v-card width="1039">
+      <v-card>
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -100,7 +100,7 @@
         </v-data-table>
       </v-card>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {
@@ -180,7 +180,6 @@ export default {
 </script>
 <style scoped>
 .cde{
-  width:1045px ;
   text-align: center;
   border: #000000 3px solid;
   margin-bottom: 30px;

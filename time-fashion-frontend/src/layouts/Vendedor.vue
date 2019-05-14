@@ -10,8 +10,8 @@
     >
       <v-list-tile
       color='words'
-      v-for="admin in admins"
-      :key="admin.admins"
+      v-for="(admin, index) in admins"
+      :key="index"
       :to="admin.to"
       >
         <v-list-tile-action v-if="admin.icon">

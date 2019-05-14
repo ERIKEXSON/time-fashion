@@ -1,8 +1,8 @@
 <template>
-    <v-app>
+    <v-flex xs12>
         <nav class="borde">
             <div class="tituloCuadro"><h2>Historial de pedidos</h2></div>
-            <v-card width="1045">
+            <v-card>
                 <v-card-title>
                 <v-text-field
                     v-model="search"
@@ -27,7 +27,7 @@
                 </v-data-table>
             </v-card>
         </nav>
-        <v-dialog v-model="seguirPedido" width="1085">
+        <v-dialog v-model="seguirPedido">
             <v-card>
             <v-card-text>
                 <nav class="borde">
@@ -69,7 +69,7 @@
                     >
                      <nav class="borde">
                         <div class="tituloCuadro"><h2>Factura</h2></div>
-                        <v-card width="993">
+                        <v-card>
                             <v-card-title>
                             </v-card-title>
                             <v-data-table
@@ -118,7 +118,7 @@
             </v-card-text>
             </v-card>
         </v-dialog>
-    </v-app>
+    </v-flex>
 </template>
 <script>
 export default {

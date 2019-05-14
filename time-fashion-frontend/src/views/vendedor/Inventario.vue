@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="cuadro2">
       <div class="cuadro22">
         <h2>Agregar inventario</h2>
@@ -52,10 +52,10 @@
     </nav>
     <!--Lista de Productos-->
     <nav class="cuadro2">
-      <div style="background-color:#000000;padding: 5px; color: white; text-align:center" >
+      <div class="cuadro22" >
         <h2>Productos del Inventario</h2>
       </div>
-      <v-card width="1045">
+      <v-card >
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -76,7 +76,7 @@
           </template>
         </v-data-table>
       </v-card>
-      <v-dialog v-model="conditions" width="1085">
+      <v-dialog v-model="conditions">
         <v-card>
           <v-card-text>
             <nav class="cdc2">
@@ -125,7 +125,7 @@
         </v-card>
       </v-dialog>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 

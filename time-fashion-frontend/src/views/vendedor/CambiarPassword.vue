@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-card width="845">
+  <v-flex xs12>
+    <v-card>
       <v-container fluid grid-list-lg>
         <v-layout row>
           <v-flex md1></v-flex>
@@ -66,7 +66,7 @@
         </v-card-actions>
       </v-container>
     </v-card>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 import { required, sameAs, minLength } from 'vuelidate/lib/validators'
