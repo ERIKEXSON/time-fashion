@@ -102,6 +102,7 @@
 export default {
   data () {
     return {
+      confirmarPedido: false,
       seguirPedido: false,
       search: '',
       historialPedidos: [

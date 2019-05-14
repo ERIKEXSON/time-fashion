@@ -9,7 +9,6 @@
           top
           right
           color="success"
-          timeout=2000
           class="snackbar"
         >
           <span>¡Registro exitoso!</span>

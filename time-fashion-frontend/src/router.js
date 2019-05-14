@@ -9,6 +9,7 @@ import AdminUsuarios from './views/admin/Usuarios.vue'
 import AdminPedidos from './views/admin/Pedidos.vue'
 import AdminVentas from './views/admin/Ventas.vue'
 import AdminInventario from './views/admin/Inventario.vue'
+import AdminPassword from './views/admin/CambiarPassword.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
@@ -105,6 +106,11 @@ export default new Router({
       path: '/admin/inventario',
       name: 'inventarioAdmin',
       component: AdminInventario
+    },
+    {
+      path: '/admin/password',
+      name: 'passwordAdmin',
+      component: AdminPassword
     },
     {
       path: '/hombre',

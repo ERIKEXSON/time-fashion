@@ -130,7 +130,7 @@ export default {
     }
   },
   created () {
-    this.$store.commit('SET_LAYOUT', 'cliente-layout')
+    this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }
 </script>

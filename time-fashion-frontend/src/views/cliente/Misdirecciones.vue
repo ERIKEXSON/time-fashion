@@ -75,16 +75,13 @@
                     </v-flex>
                   </v-layout>
                   <v-card-actions>
-                    <div class="botonCancelar">
-                    <v-btn flat @click="resetForm">Cancelar</v-btn>
-                    </div>
-                    <div class="botonAgregarTarjeta">
-                      <v-btn
-                        :disabled="!formIsValid"
-                        flat
-                        type="submit"
-                      >Agregar dirección</v-btn>
-                    </div>
+                    <v-btn class="botonCancelar" flat @click="resetForm">Cancelar</v-btn>
+                    <v-btn
+                      class="botonAgregarTarjeta"
+                      :disabled="!formIsValid"
+                      flat
+                      type="submit"
+                    >Agregar dirección</v-btn>
                   </v-card-actions>
                 </v-container>
               </v-card-actions>
@@ -99,7 +96,6 @@
         <v-data-table
           :headers="headers"
           :items="desserts"
-          :search="search"
           hide-actions
         >
           <template v-slot:items="props">
@@ -128,6 +124,7 @@ export default {
       celular: ''
     })
     return {
+      snackbar: false,
       cel: '##############',
       form: Object.assign({}, defaultForm),
       rules: {
