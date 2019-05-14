@@ -76,6 +76,11 @@ export default {
         to: '/vendedor/factura'
       },
       {
+        text: 'Cambiar contraseña',
+        icon: 'https',
+        to: '/vendedor/password'
+      },
+      {
         text: 'Cerrar sesión',
         to: '/'
       }

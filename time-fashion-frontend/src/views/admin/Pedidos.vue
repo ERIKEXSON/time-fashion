@@ -18,6 +18,7 @@
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.numero }}</td>
             <td class="text-xs-left">{{ props.item.informacion }}</td>
+            <td class="text-xs-left">{{ props.item.fecha }}</td>
             <td class="text-xs-left">{{ props.item.valor }}</td>
             <td class="text-xs-left">{{ props.item.estado }}</td>
             <td class="text-xs-left">
@@ -55,7 +56,7 @@
                       </div>
                       <v-card width="993">
                         <v-card-title></v-card-title>
-                        <v-data-table :headers="factura" :items="detallesFactura">
+                        <v-data-table :headers="factura" :items="detallesFactura" hide-actions>
                           <template v-slot:items="props">
                             <td class="text-xs-left">{{ props.item.cantidad }}</td>
                             <td class="text-xs-left">{{ props.item.descripcion }}</td>
@@ -101,11 +102,13 @@
 export default {
   data () {
     return {
+      confirmarPedido: false,
       seguirPedido: false,
       search: '',
       historialPedidos: [
         { text: 'Número de pedido', value: 'numero' },
         { text: 'Información del pedido', value: 'informacion' },
+        { text: 'Fecha', value: 'fecha' },
         { text: 'Valor', value: 'valor' },
         { text: 'Estado del pedido', value: 'estado' },
         { text: 'Acciones de pedido', sortable: false }
@@ -134,6 +137,7 @@ export default {
         {
           numero: '1363413',
           informacion: 'asdasd',
+          fecha: '10/2019',
           valor: 1231231,
           estado: 'Entrega pendiente'
         },
@@ -170,6 +174,7 @@ export default {
   text-align: center;
   border: #000000 3px solid;
   margin-bottom: 30px;
+  border-radius: 5px
 }
 .tituloCuadro {
   background-color: #000000;

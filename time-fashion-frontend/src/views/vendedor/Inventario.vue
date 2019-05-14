@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav class="cuadro2">
-      <div style="background-color:#000000;padding: 5px;color: white; text-align:center">
+      <div class="cuadro22">
         <h2>Agregar inventario</h2>
         <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
           <span>Agregar inventario</span>
@@ -13,7 +13,7 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.producto" label="Producto" required
+                <v-select v-model="form.producto" :items="tipoproducto" :rules="rules.requerido" label="Producto" required
                 ></v-select>
               </v-flex>
               <!-- separador-->
@@ -38,13 +38,13 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
+            <v-btn flat @click="resetForm" class="bt" >Cancelar</v-btn>
             <v-btn
               :disabled="!formIsValid"
               flat
               color
               type="submit"
-              style="background-color: #23fF48"
+              class="bt"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
@@ -52,10 +52,10 @@
     </nav>
     <!--Lista de Productos-->
     <nav class="cuadro2">
-      <div style="background-color:#000000;padding: 5px; color: white; text-align:center">
+      <div style="background-color:#000000;padding: 5px; color: white; text-align:center" >
         <h2>Productos del Inventario</h2>
       </div>
-      <v-card width="1120">
+      <v-card width="1045">
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -79,10 +79,8 @@
       <v-dialog v-model="conditions" width="1085">
         <v-card>
           <v-card-text>
-            <nav
-              style="width: 1045px; text-align: center;border:  #000000 3px solid;margin-bottom: 30px"
-            >
-              <div style="background-color: #000000;padding: 5px;color: white">
+            <nav class="cdc2">
+              <div class="cdc22">
                 <h2>Detalles</h2>
               </div>
               <v-card>
@@ -120,7 +118,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <div class="bt">
-                <v-btn round @click="conditions=false">Cerrar</v-btn>
+                <v-btn flat @click="conditions=false">Cerrar</v-btn>
               </div>
             </v-card-actions>
           </v-card-text>
@@ -130,6 +128,7 @@
   </v-app>
 </template>
 <script>
+
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -200,7 +199,8 @@ export default {
         this.form.color &&
         this.form.tallas &&
         this.form.cantidad &&
-        this.form.posicion
+        this.form.posicion &&
+        this.form.producto
       )
     }
   },
@@ -220,25 +220,43 @@ export default {
 }
 </script>
 <style>
+.cdc2{
+  width: 1045px;
+  text-align: center;
+  border:  #000000 3px solid;
+  margin-bottom: 30px
+}
+.cuadro22{
+  background-color:#000000;
+  padding: 5px;
+  color: white;
+   text-align:center
+}
 .bt {
   margin-left: 10px;
-  background-color: rgba(34, 194, 215, 0.61);
+  background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
 }
-.bt:hover {
-  background-color: rgb(145, 45, 45);
+.bt:hover{
+  background-color: rgba(136, 16, 248, 0.795);
 }
 .btd {
   display: inline-block;
   margin-left: 40px;
-  background-color: rgba(34, 194, 215, 0.61);
+  background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
 }
 .btd:hover:hover {
-  background-color: rgb(145, 45, 45);
+  background-color: rgba(136, 16, 248, 0.795);
 }
 .cuadro2{
-  margin-top:50px;
-  border: #000000 3px solid
+  margin-top:20px;
+  border: #000000 3px solid;
+  border-radius:5px;
+}
+.cdc22{
+  background-color: #000000;
+  padding: 5px;
+  color: white
 }
 </style>

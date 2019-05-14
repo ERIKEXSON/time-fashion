@@ -54,26 +54,28 @@ export default {
     admins: [
       {
         text: 'Perfil',
+        icon: 'account_circle',
         to: '/cliente/perfil'
       },
       {
         text: 'Mis tarjetas',
+        icon: 'credit_card',
         to: '/cliente/mistarjetas'
       },
       {
         text: 'Mis pedidos',
+        icon: 'shopping_basket',
         to: '/cliente/mispedidos'
       },
       {
         text: 'Mis direcciones',
+        icon: 'location_on',
         to: '/cliente/direccion'
       },
       {
         text: 'Cambiar contraseña',
+        icon: 'https',
         to: '/cliente/password'
-      },
-      {
-        text: 'Centro de denuncias'
       },
       {
         text: 'Cerrar sesión',

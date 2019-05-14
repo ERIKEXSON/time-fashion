@@ -16,8 +16,6 @@ const setupDirection = require('./lib/direction')
 const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
-const setupProducts = require('./lib/products')
-const setupRequesteddetayl = require('./lib/requested_detayl')
 
 //modelos
 const setupDatabase = require('./lib/db')
@@ -165,8 +163,6 @@ module.exports = async function () {
   const Inventories = setupInventories(InventoriesModel)
   const Line = setupLine(LineModel)
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
-  const Products = setupProducts(ProductsModel)
-  const Requesteddetayl = setupRequesteddetayl(Requested_detaylModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -184,7 +180,5 @@ module.exports = async function () {
     Inventories,
     Line,
     Offerdetail,
-    Products,
-    Requesteddetayl
   }
 }

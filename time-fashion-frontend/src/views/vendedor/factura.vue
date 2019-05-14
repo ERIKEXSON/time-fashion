@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <nav class="cuadrofactura">
-      <div style="background-color:#000000;padding: 5px;color: white">
+      <div class="cdfac">
         <h2>Factura</h2>
       </div>
       <nav>
-        <h2 class="fecha" type ="Date">Fecha: {{ }}</h2>
+        <h2 class="fecha" type="Date">Fecha: {{ fecha }}</h2>
         <h2 class="Numfac">Numero: {{ uno }}</h2>
       </nav>
       <v-card flat>
@@ -42,26 +42,26 @@
               </v-data-table>
             </template>
             <!--tercera parte-->
-              <nav class="resul1">
-                <div class="h2">
-                  <h3>TOTAL IVA:</h3>
-                </div>
-                <div class="h3">
-                  <h3>8742698</h3>
-                </div>
-                <div class="h2">
-                  <h3>TOTAL RETENCION:</h3>
-                </div>
-                <div class="h3">
-                  <h3>541264</h3>
-                </div>
-                <div class="h2">
-                  <h3>TOTAL FACTURA:</h3>
-                </div>
-                <div class="h3">
-                  <h3>526952584</h3>
-                </div>
-              </nav>
+            <nav class="resul1">
+              <div class="h2">
+                <h3>TOTAL IVA:</h3>
+              </div>
+              <div class="h3">
+                <h3>8742698</h3>
+              </div>
+              <div class="h2">
+                <h3>TOTAL RETENCION:</h3>
+              </div>
+              <div class="h3">
+                <h3>541264</h3>
+              </div>
+              <div class="h2">
+                <h3>TOTAL FACTURA:</h3>
+              </div>
+              <div class="h3">
+                <h3>526952584</h3>
+              </div>
+            </nav>
           </v-container>
         </v-form>
       </v-card>
@@ -69,12 +69,13 @@
   </v-app>
 </template>
 <script>
+import moment from 'moment'
+moment.locale('es')
 import img from '@/assets/logito.png'
 export default {
   data () {
     return {
-      date: Date(),
-      fecha: 'Date',
+      fecha: moment().format('LL'),
       img,
       headers: [
         { text: 'Cantidad', value: 'name', sortable: false },
@@ -111,6 +112,7 @@ export default {
   display: inline-block;
   margin: 2px 80px 5px 5px;
   text-align: left;
+  border-radius: 5px;
 }
 .cabe1 {
   display: inline-block;
@@ -128,6 +130,7 @@ export default {
   text-align: center;
   border: #000000 3px solid;
   margin-bottom: 30px;
+  border-radius: 5px;
 }
 .cuadcuenta {
   width: 745px;
@@ -142,18 +145,22 @@ export default {
   margin: 10px;
 }
 .resul1 {
-
   text-align: right;
-   margin-top: 20px;
+  margin-top: 20px;
 }
 .h2 {
   display: inline-block;
   width: 600px;
-  text-align: right
+  text-align: right;
 }
 .h3 {
   display: inline-block;
   text-align: right;
   width: 203px;
+}
+.cdfac{
+  background-color:#000000;
+  padding: 5px;
+  color: white
 }
 </style>

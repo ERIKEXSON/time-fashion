@@ -55,6 +55,8 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
+<<<<<<< HEAD
+=======
         class="busqueda"
         style="margin-right: 170px; margin-left: 70px"
       ></v-text-field>
@@ -63,28 +65,33 @@
         <v-icon>add_shopping_cart</v-icon>
         <v-text>Mi pedido</v-text>
       </v-btn>
+>>>>>>> 17c49bc7fedb4c2e6c8871ed55d90d9dd1bfc1ed
 
-      <div class="text-xs-center" style="margin-right: 30px">
-        <v-menu offset-y class="mover">
-          <template v-slot:activator="{ on }">
-            <v-btn
-              icon
-              color="transparent"
-              v-on="on"
-            ><v-icon>perm_identity</v-icon>
-            <v-text>Ingresa</v-text>
-            </v-btn>
-          </template>
-          <v-list>
+      ></v-text-field>
+      <v-spacer></v-spacer>
+         <div class="text-xs-center">
+            <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+                <v-btn
+                icon="true"
+                color="transparent"
+                v-on="on"
+                ><v-icon>perm_identity</v-icon>
+                </v-btn>
+            </template>
+            <v-list>
               <v-btn to="/login" color="transparent">
                 Iniciar sesión
               </v-btn>
               <v-btn to="/registrarse" color="transparent">
                 Registarse
               </v-btn>
-          </v-list>
-        </v-menu>
-      </div>
+            </v-list>
+            </v-menu>
+        </div>
+      <v-btn icon to="/carrito" >
+        <v-icon>add_shopping_cart</v-icon>
+      </v-btn>
 
       </v-toolbar>
       <v-content class="cyan lighten-5">

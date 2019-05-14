@@ -113,7 +113,7 @@
                 </nav>
                 <v-card-actions>
                 <v-spacer></v-spacer>
-                <div class="botonCerrar"><v-btn flat @click="seguirPedido = false">Cerrar</v-btn></div>
+                <v-btn flat class="btcerrar" @click="seguirPedido = false">Cerrar</v-btn>
                 </v-card-actions>
             </v-card-text>
             </v-card>
@@ -188,11 +188,12 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
  .borde{
    text-align:center;
    border: #000000 3px solid;
-   margin-bottom: 30px
+   margin-bottom: 30px;
+   border-radius:5px;
  }
  .tituloCuadro{
    background-color:#000000;
@@ -201,19 +202,28 @@ export default {
  }
   .botonSeguirPedido{
     display: inline-block;
-    background-color: rgba(34, 194, 215, 0.61);
+    background-color: rgba(206, 98, 252, 0.795);
     transition: all .2s linear
   }
   .botonSeguirPedido:hover{
-    background-color: rgb(145, 45, 45)
+   background-color: rgba(136, 16, 248, 0.795);
  }
  .botonConfirmarPedido{
      display: inline-block;
      margin-left: 10px;
-     background-color: rgba(34, 194, 215, 0.61);
+     background-color: rgba(206, 98, 252, 0.795);
      transition: all .2s linear
  }
  .botonConfirmarPedido:hover{
-    background-color: rgb(145, 45, 45)
+    background-color: rgba(136, 16, 248, 0.795);
+ }
+ .btcerrar{
+   background-color: rgba(206, 98, 252, 0.795);
+   border-radius: 15px;
+    transition: all .2s linear
+ }
+ .btcerrar:hover{
+   background-color: rgba(136, 16, 248, 0.795);
+   border-radius: 15px
  }
 </style>

@@ -14,9 +14,6 @@ const direction = require('./direction')
 const inventories = require('./inventories')
 const line = require('./line')
 const offer_detail = require('./offer_datail')
-const products = require('./products')
-const requested_detayl = require('./requested_detayl')
-const size = require('./size')
 
 
 const log = getLogger(__dirname, __filename)
@@ -36,10 +33,7 @@ module.exports = {
       direction: '/direction',
       inventories:'/inventories',
       line:'/line',
-      offer_detail:'/offer_detail',
-      products:'/products',
-      requested_detayl:'/requested_detayl',
-      size:'/size'
+      offer_detail:'/offer_detail'
 
     })
   },
@@ -56,9 +50,6 @@ module.exports = {
   inventories,
   line,
   offer_detail,
-  products,
-  requested_detayl,
-  size,
 
   errorHandler (err, req, res, next) {
     if (err) {
