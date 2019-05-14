@@ -1,11 +1,6 @@
 'use strict'
 
 function setupDepartment(departmentModel) {
-<<<<<<< HEAD
-   function findAllDepartment(){
-    return departmentModel.findAll()
-    }
-=======
   //async function createDepartment(department) {
     //const result = await departmentModel.create(department)
     //return result.toJSON()
@@ -23,19 +18,11 @@ function setupDepartment(departmentModel) {
   function findAllDepartment(){
     return departmentModel.findAll()
   }
->>>>>>> c82703db97c3d32119f676630d2ea33841a81590
   function findUuidDepartment(uuid) {
     const cond = { where : { uuid } }
     return departmentModel.findOne(cond)
   }
   return {
-<<<<<<< HEAD
-    findAllDepartment,
-    findUuidDepartment
-  }
-}
-
-=======
     //createDepartment,
     //updateDepartment,
     //deleteDepartment,
@@ -43,5 +30,4 @@ function setupDepartment(departmentModel) {
     findUuidDepartment,
   }
 }
->>>>>>> c82703db97c3d32119f676630d2ea33841a81590
 module.exports = setupDepartment
