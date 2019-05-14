@@ -16,6 +16,7 @@ import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorPedidos from './views/vendedor/pedidos.vue'
 import VendedorFactura from './views/vendedor/factura.vue'
+import VendedorPassword from './views/vendedor/CambiarPassword.vue'
 import Cliente from './views/cliente/Inicio.vue'
 import ClientePerfil from './views/cliente/perfil.vue'
 import ClientePedidos from './views/cliente/MisPedidos.vue'
@@ -151,6 +152,11 @@ export default new Router({
       path: '/vendedor/factura',
       name: 'facturavenndedor',
       component: VendedorFactura
+    },
+    {
+      path: '/vendedor/password',
+      name: 'passwordvendedor',
+      component: VendedorPassword
     },
     {
       path: '/niños',

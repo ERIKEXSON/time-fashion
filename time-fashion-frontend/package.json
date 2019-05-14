@@ -10,6 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
     "@mdi/font": "^3.6.95",
+    "moment": "^2.24.0",
     "roboto-fontface": "*",
     "sweetalert2": "^8.10.0",
     "vue": "^2.6.6",

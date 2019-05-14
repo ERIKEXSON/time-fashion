@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <nav class="cuadrofactura">
-      <div style="background-color:#000000;padding: 5px;color: white">
+      <div class="cdfac">
         <h2>Factura</h2>
       </div>
       <nav>
-        <h2 class="fecha" type="Date">Fecha: {{ }}</h2>
+        <h2 class="fecha" type="Date">Fecha: {{ fecha }}</h2>
         <h2 class="Numfac">Numero: {{ uno }}</h2>
       </nav>
       <v-card flat>
@@ -69,12 +69,13 @@
   </v-app>
 </template>
 <script>
+import moment from 'moment'
+moment.locale('es')
 import img from '@/assets/logito.png'
 export default {
   data () {
     return {
-      date: Date(),
-      fecha: 'Date',
+      fecha: moment().format('LL'),
       img,
       headers: [
         { text: 'Cantidad', value: 'name', sortable: false },
@@ -156,5 +157,10 @@ export default {
   display: inline-block;
   text-align: right;
   width: 203px;
+}
+.cdfac{
+  background-color:#000000;
+  padding: 5px;
+  color: white
 }
 </style>

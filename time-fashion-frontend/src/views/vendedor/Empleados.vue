@@ -61,13 +61,13 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm" style="background-color: #00FF08">Cancelar</v-btn>
+            <v-btn flat @click="resetForm" class="cdbt">Cancelar</v-btn>
             <v-btn
               :disabled="!formIsValid"
               flat
               color
               type="submit"
-              style="background-color: #00FF08"
+              class="cdbt"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
@@ -78,7 +78,7 @@
       <div class="cdte">
         <h2>Empleados</h2>
       </div>
-      <v-card width="1045">
+      <v-card width="1039">
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -137,7 +137,7 @@ export default {
         { text: 'Telefono', value: 'telefono' },
         { text: 'Documento', value: 'documento' },
         { text: 'Tipodocumento', value: 'tipodocumento' },
-        { text: '' }
+        { text: '', sortable: false }
       ],
       desserts: [
         {
@@ -178,7 +178,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .cde{
   width:1045px ;
   text-align: center;
@@ -188,8 +188,18 @@ export default {
 }
 .cdte{
   background-color:#000000;
-  padding: 5px;
+  padding: 2px;
   color: white;
   border-radius: 1px
 }
+.cdbt{
+  background-color: rgba(206, 98, 252, 0.795);
+  border-radius: 15px;
+  transition: all 0.2s linear;
+  text-align: center;
+}
+.cdbt:hover{
+  background-color: rgba(136, 16, 248, 0.795);
+  border-radius:15px;
+  }
 </style>

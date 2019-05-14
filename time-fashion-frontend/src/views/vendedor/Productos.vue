@@ -19,7 +19,7 @@
                 <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field  v-model="form.presio"  :rules="rules.requerido"  label="Precio"  required  :mask="numeros"></v-text-field>
+                <v-text-field  v-model="form.presio"  :rules="rules.requerido"  label="Presio"  required  :mask="numeros"></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required></v-text-field>
@@ -95,10 +95,10 @@
             <nav class="cdima">
               <h3>Imagenes de muestra</h3>
             </nav>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im" @click="pickFile"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im" @click="pickFile"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im" @click="pickFile"/>
+              <v-img :src="imageUrl" height="320" width="238" class="im" @click="pickFile"/>
             <v-card-actions>
               <v-spacer></v-spacer>
               <div class="btce">
@@ -229,11 +229,11 @@ export default {
   background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
   text-align: center;
-  border-radius:1px;
+  border-radius:15px;
 }
 .bt:hover{
       background-color: rgba(136, 16, 248, 0.795);
-      border-radius:1px;
+      border-radius:15px;
   }
 .im{
   display:inline-block;
