@@ -57,7 +57,7 @@
         label="Buscar"
         class="busqueda"
         style="margin-right: 170px; margin-left: 70px"></v-text-field>
-        
+
         <v-btn to="/carrito" style="margin-right: 95px " icon >
         <v-icon>add_shopping_cart</v-icon>
         <v-text>Mi pedido</v-text>

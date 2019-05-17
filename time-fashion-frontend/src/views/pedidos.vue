@@ -237,7 +237,7 @@
         >
           Volver al carrito
         </v-btn>
-        
+
         <v-btn flat to="/">Cancelar</v-btn>
       </v-stepper-content>
     </v-stepper-items>
