@@ -18,6 +18,10 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.TEXT,
       allowNull: false
     },
+    cedula: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
     nacionalidad: {
       type: Sequelize.TEXT,
       allowNull: false
@@ -27,6 +31,10 @@ module.exports = function setupMetricModel (config) {
       allowNull: true
     },
     contraseña: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
+    email: {
       type: Sequelize.TEXT,
       allowNull: false
     },
