@@ -14,8 +14,8 @@
             <v-card-text>
               <v-card-actions>
                 <v-container fluid>
-                  <v-layout row>
-                    <v-flex sm6>
+                  <v-layout wrap>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.nombres"
                         :rules="rules.required"
@@ -23,7 +23,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.apellidos"
                         :rules="rules.required"
@@ -31,9 +31,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                  </v-layout>
-                  <v-layout row>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-select
                         v-model="form.pais"
                         :rules="rules.required"
@@ -42,7 +40,7 @@
                         required
                       ></v-select>
                     </v-flex>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-select
                         v-model="form.vivienda"
                         :rules="rules.required"
@@ -51,9 +49,7 @@
                         required
                       ></v-select>
                     </v-flex>
-                  </v-layout>
-                  <v-layout row>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.direccion"
                         :rules="rules.required"
@@ -61,7 +57,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.celular"
                         :rules="rules.required"
@@ -73,6 +69,8 @@
                   </v-layout>
                   <v-card-actions>
                     <v-btn class="botonCancelar" flat @click="resetForm">Cancelar</v-btn>
+                  </v-card-actions>
+                  <v-card-actions>
                     <v-btn
                       class="botonAgregarTarjeta"
                       :disabled="!formIsValid"
@@ -186,7 +184,8 @@ export default {
 }
 .botonCancelar {
   background-color: rgba(206, 98, 252, 0.795);
-  transition: all 0.2s linear
+  transition: all 0.2s linear;
+  margin: auto
 }
 .botonCancelar:hover {
   background-color: rgba(136, 16, 248, 0.795);
@@ -195,6 +194,7 @@ export default {
   background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
   border-radius: 15px;
+  margin: auto auto -30px auto
 }
 .botonAgregarTarjeta button:not([disabled="disabled"]):hover {
   background-color: rgba(136, 16, 248, 0.795);

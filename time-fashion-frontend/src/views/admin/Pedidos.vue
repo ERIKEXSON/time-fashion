@@ -1,10 +1,10 @@
 <template>
-  <v-app>
+  <v-flex>
     <nav class="borde">
       <div class="tituloCuadro">
         <h2>Historial de pedidos</h2>
       </div>
-      <v-card width="1045">
+      <v-card>
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -22,15 +22,13 @@
             <td class="text-xs-left">{{ props.item.valor }}</td>
             <td class="text-xs-left">{{ props.item.estado }}</td>
             <td class="text-xs-left">
-              <div class="botonSeguirPedido">
-                <v-btn @click="seguirPedido = true">Seguir pedido</v-btn>
-              </div>
+              <div class="botonSeguirPedido"><v-btn @click="seguirPedido = true">Seguir pedido</v-btn></div>
             </td>
           </template>
         </v-data-table>
       </v-card>
     </nav>
-    <v-dialog v-model="seguirPedido" width="1085">
+    <v-dialog v-model="seguirPedido">
       <v-card>
         <v-card-text>
           <nav class="borde">
@@ -54,7 +52,7 @@
                       <div class="tituloCuadro">
                         <h2>Factura</h2>
                       </div>
-                      <v-card width="993">
+                      <v-card>
                         <v-card-title></v-card-title>
                         <v-data-table :headers="factura" :items="detallesFactura" hide-actions>
                           <template v-slot:items="props">
@@ -89,14 +87,12 @@
           </nav>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <div class="botonCerrar">
-              <v-btn flat @click="seguirPedido = false">Cerrar</v-btn>
-            </div>
+            <v-btn class="botonCerrar" flat @click="seguirPedido = false">Cerrar</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-card>
     </v-dialog>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {

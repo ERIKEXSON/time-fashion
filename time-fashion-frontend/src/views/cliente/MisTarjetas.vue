@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <v-snackbar
       v-model="snackbar"
       absolute
@@ -15,12 +15,12 @@
       <v-container grid-list-xl fluid>
         <nav class="borde">
           <div class="tituloCuadro"><h2>Agrega tu tarjeta</h2></div>
-          <v-card width="1045">
+          <v-card>
             <v-card-text>
               <v-card-actions>
                 <v-container fluid>
-                  <v-layout row>
-                    <v-flex xs12 sm4>
+                  <v-layout wrap>
+                    <v-flex xs12 sm3>
                       <v-text-field
                         v-model="form.numerotarjeta"
                         :mask="tarjetacredito"
@@ -29,7 +29,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex sm2>
+                    <v-flex xs6 sm2>
                       <v-text-field
                         v-model="form.caducidad"
                         :rules="rules.required"
@@ -38,7 +38,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex sm1>
+                    <v-flex xs6 sm1>
                       <v-text-field
                         :mask="codigo"
                         v-model="form.codigocvv"
@@ -47,7 +47,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex sm5>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.nombre"
                         :rules="rules.required"
@@ -55,9 +55,7 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                  </v-layout>
-                  <v-layout row>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-select
                         v-model="form.tipodocumento"
                         :rules="rules.required"
@@ -66,7 +64,7 @@
                         required
                       ></v-select>
                     </v-flex>
-                    <v-flex sm6>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.documento"
                         :rules="rules.required"
@@ -82,6 +80,8 @@
                       flat
                       @click="resetForm"
                     >Cancelar</v-btn>
+                  </v-card-actions>
+                  <v-card-actions>
                     <v-btn
                       :disabled="!formIsValid"
                       flat
@@ -98,7 +98,7 @@
     </v-form>
     <nav class="borde">
       <div class="tituloCuadro"><h2>Mis tarjetas</h2></div>
-      <v-card width="1045">
+      <v-card>
         <v-data-table
           :headers="headers"
           :items="desserts"
@@ -115,7 +115,7 @@
         </v-data-table>
       </v-card>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {
@@ -193,8 +193,7 @@ export default {
     text-align:center;
     border: #000000 3px solid;
     margin: 0 auto;
-    margin-bottom: 30px;
-    width: fit-content
+    margin-bottom: 30px
   }
   .snackbar{
       color: black
@@ -202,17 +201,16 @@ export default {
   .botonCancelar{
     background-color: rgba(206, 98, 252, 0.795);
     transition: all .2s linear;
-    margin-bottom: -30px
+    margin: auto
  }
  .botonCancelar:hover{
     background-color: rgba(136, 16, 248, 0.795)
  }
   .botonAgregarTarjeta{
       background-color: rgba(206, 98, 252, 0.795);
-      margin-left: 10px;
       transition: all .2s linear;
-      margin-bottom: -30px;
-      border-radius: 15px
+      border-radius: 15px;
+      margin: auto auto -30px auto
   }
   .botonAgregarTarjeta button:not([disabled="disabled"]):hover{
       background-color: rgba(136, 16, 248, 0.795)

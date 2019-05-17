@@ -1,8 +1,8 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="borde">
       <div class="tituloCuadro"><h2>Productos</h2></div>
-      <v-card width="1045">
+      <v-card>
         <v-card-title>
         <v-text-field
           v-model="search"
@@ -28,7 +28,7 @@
         </v-data-table>
       </v-card>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {
