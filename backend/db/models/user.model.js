@@ -26,6 +26,10 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.TEXT,
       allowNull: true
     },
+    contraseña: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
     rol: {
       type: Sequelize.ENUM('cliente', 'vendedor', 'administrador'),
       allowNull: false,
