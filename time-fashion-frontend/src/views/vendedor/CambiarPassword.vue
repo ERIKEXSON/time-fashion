@@ -1,13 +1,13 @@
 <template>
-  <v-flex xs12>
+  <v-app>
     <v-card>
-      <v-container fluid grid-list-lg>
-        <v-layout row>
-          <v-flex md1></v-flex>
-          <v-flex md3>
+      <v-container>
+        <v-layout wrap>
+          <v-flex xs0 sm1></v-flex>
+          <v-flex xs12 sm3>
             <v-subheader>Contraseña actual</v-subheader>
           </v-flex>
-          <v-flex md7>
+          <v-flex xs12 sm7>
             <v-text-field
               v-model="currentPassword"
               :error-messages="currentPassErrors"
@@ -19,13 +19,12 @@
               @click:append="show1 = !show1"
             ></v-text-field>
           </v-flex>
-        </v-layout>
-        <v-layout row>
-          <v-flex md1></v-flex>
-          <v-flex md3>
+          <v-flex xs0 sm1></v-flex>
+          <v-flex xs0 sm1></v-flex>
+          <v-flex xs12 sm3>
             <v-subheader>Contraseña nueva</v-subheader>
           </v-flex>
-          <v-flex md7>
+          <v-flex xs12 sm7>
             <v-text-field
               v-model="password"
               :error-messages="passErrors"
@@ -37,13 +36,12 @@
               @click:append="show2 = !show2"
             ></v-text-field>
           </v-flex>
-        </v-layout>
-        <v-layout row>
-          <v-flex md1></v-flex>
-          <v-flex md3>
+          <v-flex xs0 sm1></v-flex>
+          <v-flex xs0 sm1></v-flex>
+          <v-flex xs12 sm3>
             <v-subheader>Confirmar nueva contraseña</v-subheader>
           </v-flex>
-          <v-flex md7>
+          <v-flex xs12 sm7>
             <v-text-field
               v-model="repeatPassword"
               :error-messages="matchPass"
@@ -55,6 +53,7 @@
               @click:append="show3 = !show3"
             ></v-text-field>
           </v-flex>
+          <v-flex xs0 sm1></v-flex>
         </v-layout>
         <v-card-actions>
           <v-btn
@@ -66,7 +65,7 @@
         </v-card-actions>
       </v-container>
     </v-card>
-  </v-flex>
+  </v-app>
 </template>
 <script>
 import { required, sameAs, minLength } from 'vuelidate/lib/validators'
