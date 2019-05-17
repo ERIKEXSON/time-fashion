@@ -2,7 +2,7 @@
             <v-content>
             <v-container fluid fill-height>
                 <v-layout align-center justify-center>
-                <v-flex xs12 sm md12>
+                <v-flex xs6 sm6 md12> 
                     <v-card class="elevation-12">
                     <v-toolbar color="black">
                         <div style="width:417.66px; text-align:center">
