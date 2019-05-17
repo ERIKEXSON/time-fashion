@@ -64,7 +64,7 @@ export default {
       },
       {
         text: 'Pedidos',
-        icon: 'money',
+        icon: 'shopping_basket',
         to: '/admin/pedidos'
       },
       {
@@ -81,6 +81,11 @@ export default {
         text: 'Inventario',
         icon: 'all_inbox',
         to: '/admin/inventario'
+      },
+      {
+        text: 'Cambiar contraseña',
+        icon: 'https',
+        to: '/admin/password'
       },
       {
         text: 'Cerrar sesión',

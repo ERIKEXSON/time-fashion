@@ -23,7 +23,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.nombre"
-                  :rules="rules.nombre"
+                  :rules="rules.required"
                   label="Nombre"
                   required
                 ></v-text-field>
@@ -31,7 +31,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.apellido"
-                  :rules="rules.apellido"
+                  :rules="rules.required"
                   label="Apellido"
                   required
                 ></v-text-field>
@@ -39,7 +39,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.documento"
-                  :rules="rules.documento"
+                  :rules="rules.required"
                   label="Documento"
                   :mask="doc"
                   required
@@ -49,7 +49,7 @@
                 <v-select
                   v-model="form.tipodocumento"
                   :items="tipos"
-                  :rules="rules.tipodocumento"
+                  :rules="rules.required"
                   label="Tipo de documento"
                   required
                 ></v-select>
@@ -66,7 +66,7 @@
                 <v-select
                   v-model="form.rol"
                   :items="rol"
-                  :rules="rules.rol"
+                  :rules="rules.required"
                   label="Rol"
                   required
                 ></v-select>
@@ -74,7 +74,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.direccion"
-                  :rules="rules.direccion"
+                  :rules="rules.required"
                   label="Dirección"
                   required
                 ></v-text-field>
@@ -82,7 +82,7 @@
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.tel"
-                  :rules="rules.tel"
+                  :rules="rules.required"
                   label="Teléfono"
                   :mask="doc"
                   required
@@ -91,7 +91,7 @@
               <v-flex xs12 sm12>
                 <v-text-field
                   v-model="form.empresa"
-                  :rules="rules.empresa"
+                  :rules="rules.required"
                   label="Empresa"
                   required
                 ></v-text-field>
@@ -199,15 +199,8 @@ export default {
       tabs: null,
       form: Object.assign({}, defaultForm),
       rules: {
-        nombre: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        apellido: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        documento: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tipodocumento: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
-        rol: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        direccion: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        tel: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        empresa: [val => (val || '').length > 0 || 'Este campo es requerido']
+        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
       },
       tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
       rol: ['Administrador', 'Vendedor'],

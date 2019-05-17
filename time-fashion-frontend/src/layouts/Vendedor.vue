@@ -10,8 +10,8 @@
     >
       <v-list-tile
       color='words'
-      v-for="admin in admins"
-      :key="admin.admins"
+      v-for="(admin, index) in admins"
+      :key="index"
       :to="admin.to"
       >
         <v-list-tile-action v-if="admin.icon">
@@ -74,6 +74,11 @@ export default {
         text: 'Factura',
         icon: 'assignment',
         to: '/vendedor/factura'
+      },
+      {
+        text: 'Cambiar contraseña',
+        icon: 'https',
+        to: '/vendedor/password'
       },
       {
         text: 'Cerrar sesión',

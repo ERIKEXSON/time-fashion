@@ -175,13 +175,15 @@
                   </v-container>
               </v-card-actions>
               <v-card-actions>
-                <div class="botonConfirmar"><v-btn
-                  :disabled="!formIsValid"
-                  flat
-                  color="black"
-                  type="submit"
-                >Confirmar
-                </v-btn></div>
+                <div class="contornoboton">
+                  <v-btn
+                    :disabled="!formIsValid"
+                    class="botonConfirmar"
+                    flat
+                    color="black"
+                    type="submit"
+                  >Confirmar</v-btn>
+                </div>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -205,6 +207,9 @@ export default {
       nacionalidad: ''
     })
     return {
+      menu: '',
+      date: '',
+      snackbar: false,
       doc: '#################',
       phone: 'phone',
       form: Object.assign({}, defaultForm),
@@ -252,11 +257,13 @@ export default {
 <style>
   .botonConfirmar{
   background-color: rgba(206, 98, 252, 0.795);
-  margin: auto auto 20px auto;
   transition: all .2s linear;
   border-radius: 15px
  }
  .botonConfirmar button:not([disabled="disabled"]):hover{
     background-color: rgba(136, 16, 248, 0.795)
+ }
+ .contornoboton{
+   margin: auto
  }
 </style>

@@ -53,13 +53,15 @@
         hide-details
         prepend-inner-icon="search"
         label="Buscar"
-<<<<<<< HEAD
-=======
         style="margin: 0px 170px 0px 70px"
->>>>>>> 17c49bc7fedb4c2e6c8871ed55d90d9dd1bfc1ed
       ></v-text-field>
+      <v-btn to="/carrito" style="margin-right: 95px " icon >
+        <v-icon>add_shopping_cart</v-icon>
+        <v-text>Mi pedido</v-text>
+      </v-btn>
+
       <v-spacer></v-spacer>
-      <div class="text-xs-center">
+      <div class="text-xs-center" style="margin-right:50px">
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn
@@ -67,6 +69,7 @@
               color="transparent"
               v-on="on"
             ><v-icon>perm_identity</v-icon>
+            <v-text>Ingresa</v-text>
             </v-btn>
           </template>
           <v-list>
@@ -79,9 +82,6 @@
           </v-list>
         </v-menu>
       </div>
-      <v-btn to="/carrito" icon >
-        <v-icon>add_shopping_cart</v-icon>
-      </v-btn>
     </v-toolbar>
     <v-content class="cyan lighten-5">
       <v-container fill-height>

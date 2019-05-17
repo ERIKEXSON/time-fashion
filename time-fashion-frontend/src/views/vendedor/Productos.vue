@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="cdc">
       <div class="cdt">
         <h2>Agregar Producto</h2>
@@ -13,13 +13,29 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre del producto" required ></v-text-field>
+                <v-text-field
+                  v-model="form.nombre"
+                  :rules="rules.requerido"
+                  label="Nombre del producto"
+                  required
+                ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required></v-text-field>
+                <v-text-field
+                  v-model="form.codigo"
+                  :rules="rules.requerido"
+                  label="Codigo"
+                  required
+                ></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field  v-model="form.presio"  :rules="rules.requerido"  label="Precio"  required  :mask="numeros"></v-text-field>
+                <v-text-field
+                  v-model="form.presio"
+                  :rules="rules.requerido"
+                  label="Presio"
+                  required
+                  :mask="numeros"
+                ></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required></v-text-field>
@@ -28,7 +44,12 @@
                 <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required></v-text-field>
               </v-flex>
               <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
-               <v-text-field  label="Seleccione una imagen"  @click="pickFile"  v-model="imageName"  prepend-icon="attach_file"></v-text-field>
+                <v-text-field
+                  label="Seleccione una imagen"
+                  @click="pickFile"
+                  v-model="imageName"
+                  prepend-icon="attach_file"
+                ></v-text-field>
                 <input
                   type="file"
                   style="display: none"
@@ -41,13 +62,8 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <v-btn flat @click="resetForm" class="bt" >Cancelar</v-btn>
-            <v-btn
-              :disabled="!formIsValid"
-              flat
-              type="submit"
-              class="bt"
-            >Agregar</v-btn>
+            <v-btn flat @click="resetForm" class="bt">Cancelar</v-btn>
+            <v-btn :disabled="!formIsValid" flat type="submit" class="bt">Agregar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -57,7 +73,7 @@
       <div class="cdt">
         <h2>Productos</h2>
       </div>
-      <v-card width="1038">
+      <v-card>
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -89,16 +105,17 @@
         </v-data-table>
       </v-card>
       <!--mostrar la imagen-->
-      <v-dialog v-model="conditions" width="1045">
+      <v-dialog v-model="conditions">
         <v-card>
-          <v-card-text>
+          <v-card-text width="fif-content">
             <nav class="cdima">
               <h3>Imagenes de muestra</h3>
             </nav>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
-              <v-img :src="imageUrl" height="320" width="238" class="im"/>
+            <v-img :src="imageUrl" class="im" @click="pickFile"/>
+            <v-img :src="imageUrl" class="im" @click="pickFile"/>
+            <v-img :src="imageUrl" class="im" @click="pickFile"/>
+            <v-img :src="imageUrl" class="im" @click="pickFile"/>
+            <v-img :src="imageUrl" class="im" @click="pickFile"/>
             <v-card-actions>
               <v-spacer></v-spacer>
               <div class="btce">
@@ -109,7 +126,7 @@
         </v-card>
       </v-dialog>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 import buso from '@/assets/ico.png'
@@ -203,21 +220,19 @@ export default {
 }
 </script>
 <style>
-.cdc{
-  width:1045px;
+.cdc {
   text-align: center;
   border: #000000 3px solid;
   margin-bottom: 30px;
   border-radius: 5px;
 }
-.cdt{
-  background-color:#000000;
+.cdt {
+  background-color: #000000;
   padding: 5px;
   color: white;
   border-radius: 1px;
 }
 .cdima {
-  width: 1000px;
   text-align: center;
   margin-bottom: 30px;
   background-color: #000000;
@@ -225,18 +240,20 @@ export default {
   font-size: 25px;
   border-radius: 5px;
 }
-.bt{
+.bt {
   background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
   text-align: center;
-  border-radius:1px;
+  border-radius: 15px;
 }
-.bt:hover{
-      background-color: rgba(136, 16, 248, 0.795);
-      border-radius:1px;
-  }
-.im{
-  display:inline-block;
+.bt:hover {
+  background-color: rgba(136, 16, 248, 0.795);
+  border-radius: 15px;
+}
+.im {
+  display: inline-block;
   margin-left: 10px;
+  height: 320px;
+  width: 238px;
 }
 </style>

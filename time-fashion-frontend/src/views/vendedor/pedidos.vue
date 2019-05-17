@@ -1,8 +1,8 @@
 <template>
-    <v-app>
+    <v-flex xs12>
         <nav class="borde">
             <div class="tituloCuadro"><h2>Historial de pedidos</h2></div>
-            <v-card width="1045">
+            <v-card>
                 <v-card-title>
                 <v-text-field
                     v-model="search"
@@ -27,7 +27,7 @@
                 </v-data-table>
             </v-card>
         </nav>
-        <v-dialog v-model="seguirPedido" width="1085">
+        <v-dialog v-model="seguirPedido">
             <v-card>
             <v-card-text>
                 <nav class="borde">
@@ -69,7 +69,7 @@
                     >
                      <nav class="borde">
                         <div class="tituloCuadro"><h2>Factura</h2></div>
-                        <v-card width="993">
+                        <v-card>
                             <v-card-title>
                             </v-card-title>
                             <v-data-table
@@ -113,12 +113,12 @@
                 </nav>
                 <v-card-actions>
                 <v-spacer></v-spacer>
-                <div class="botonCerrar"><v-btn flat @click="seguirPedido = false">Cerrar</v-btn></div>
+                <v-btn flat class="btcerrar" @click="seguirPedido = false">Cerrar</v-btn>
                 </v-card-actions>
             </v-card-text>
             </v-card>
         </v-dialog>
-    </v-app>
+    </v-flex>
 </template>
 <script>
 export default {
@@ -188,7 +188,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
  .borde{
    text-align:center;
    border: #000000 3px solid;
@@ -216,5 +216,14 @@ export default {
  }
  .botonConfirmarPedido:hover{
     background-color: rgba(136, 16, 248, 0.795);
+ }
+ .btcerrar{
+   background-color: rgba(206, 98, 252, 0.795);
+   border-radius: 15px;
+    transition: all .2s linear
+ }
+ .btcerrar:hover{
+   background-color: rgba(136, 16, 248, 0.795);
+   border-radius: 15px
  }
 </style>

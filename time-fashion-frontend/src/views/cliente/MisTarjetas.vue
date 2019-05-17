@@ -77,16 +77,17 @@
                     </v-flex>
                   </v-layout>
                   <v-card-actions>
-                    <div class="botonCancelar">
-                    <v-btn flat @click="resetForm">Cancelar</v-btn>
-                    </div>
-                    <div class="botonAgregarTarjeta">
-                      <v-btn
-                        :disabled="!formIsValid"
-                        flat
-                        type="submit"
-                      >Agregar tarjeta</v-btn>
-                    </div>
+                    <v-btn
+                      class="botonCancelar"
+                      flat
+                      @click="resetForm"
+                    >Cancelar</v-btn>
+                    <v-btn
+                      :disabled="!formIsValid"
+                      flat
+                      type="submit"
+                      class="botonAgregarTarjeta"
+                    >Agregar tarjeta</v-btn>
                   </v-card-actions>
                 </v-container>
               </v-card-actions>
@@ -101,7 +102,6 @@
         <v-data-table
           :headers="headers"
           :items="desserts"
-          :search="search"
           hide-actions
         >
           <template v-slot:items="props">
@@ -130,6 +130,7 @@ export default {
       documento: ''
     })
     return {
+      snackbar: false,
       form: Object.assign({}, defaultForm),
       rules: {
         required: [val => (val || '').length > 0 || 'Este campo es requerido'],

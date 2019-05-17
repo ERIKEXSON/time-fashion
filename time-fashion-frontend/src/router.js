@@ -9,12 +9,14 @@ import AdminUsuarios from './views/admin/Usuarios.vue'
 import AdminPedidos from './views/admin/Pedidos.vue'
 import AdminVentas from './views/admin/Ventas.vue'
 import AdminInventario from './views/admin/Inventario.vue'
+import AdminPassword from './views/admin/CambiarPassword.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
 import VendedorPedidos from './views/vendedor/pedidos.vue'
 import VendedorFactura from './views/vendedor/factura.vue'
+import VendedorPassword from './views/vendedor/CambiarPassword.vue'
 import Cliente from './views/cliente/Inicio.vue'
 import ClientePerfil from './views/cliente/perfil.vue'
 import ClientePedidos from './views/cliente/MisPedidos.vue'
@@ -107,6 +109,11 @@ export default new Router({
       component: AdminInventario
     },
     {
+      path: '/admin/password',
+      name: 'passwordAdmin',
+      component: AdminPassword
+    },
+    {
       path: '/hombre',
       name: 'hombre',
       component: Hombre
@@ -145,6 +152,11 @@ export default new Router({
       path: '/vendedor/factura',
       name: 'facturavenndedor',
       component: VendedorFactura
+    },
+    {
+      path: '/vendedor/password',
+      name: 'passwordvendedor',
+      component: VendedorPassword
     },
     {
       path: '/niños',

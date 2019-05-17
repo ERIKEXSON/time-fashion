@@ -1,21 +1,16 @@
 <template>
-  <v-app>
-    <v-snackbar
-      v-model="snackbar"
-      absolute
-      top
-      right
-      color="success"
-      class="snackbar"
-    >
+  <v-flex xs12>
+    <v-snackbar v-model="snackbar" absolute top right color="success" class="snackbar">
       <span>Dirección agregada</span>
       <v-icon>check_circle</v-icon>
     </v-snackbar>
     <v-form ref="form" @submit.prevent="submit">
       <v-container grid-list-xl fluid>
         <nav class="borde">
-          <div class="tituloCuadro"><h2>Agrega tu dirección</h2></div>
-          <v-card width="1045">
+          <div class="tituloCuadro">
+            <h2>Agrega tu dirección</h2>
+          </div>
+          <v-card>
             <v-card-text>
               <v-card-actions>
                 <v-container fluid>
@@ -39,20 +34,22 @@
                   </v-layout>
                   <v-layout row>
                     <v-flex sm6>
-                      <v-text-field
+                      <v-select
                         v-model="form.pais"
                         :rules="rules.required"
+                        :items="paises"
                         label="País"
                         required
-                      ></v-text-field>
+                      ></v-select>
                     </v-flex>
                     <v-flex sm6>
-                      <v-text-field
+                      <v-select
                         v-model="form.vivienda"
                         :rules="rules.required"
+                        :items="ciudades"
                         label="Provincia/estado/región"
                         required
-                      ></v-text-field>
+                      ></v-select>
                     </v-flex>
                   </v-layout>
                   <v-layout row>
@@ -75,16 +72,13 @@
                     </v-flex>
                   </v-layout>
                   <v-card-actions>
-                    <div class="botonCancelar">
-                    <v-btn flat @click="resetForm">Cancelar</v-btn>
-                    </div>
-                    <div class="botonAgregarTarjeta">
-                      <v-btn
-                        :disabled="!formIsValid"
-                        flat
-                        type="submit"
-                      >Agregar dirección</v-btn>
-                    </div>
+                    <v-btn class="botonCancelar" flat @click="resetForm">Cancelar</v-btn>
+                    <v-btn
+                      class="botonAgregarTarjeta"
+                      :disabled="!formIsValid"
+                      flat
+                      type="submit"
+                    >Agregar dirección</v-btn>
                   </v-card-actions>
                 </v-container>
               </v-card-actions>
@@ -94,14 +88,11 @@
       </v-container>
     </v-form>
     <nav class="borde">
-      <div class="tituloCuadro"><h2>Mis direcciones</h2></div>
-      <v-card width="1045">
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          :search="search"
-          hide-actions
-        >
+      <div class="tituloCuadro">
+        <h2>Mis direcciones</h2>
+      </div>
+      <v-card>
+        <v-data-table :headers="headers" :items="desserts" hide-actions>
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombres }}</td>
             <td class="text-xs-left">{{ props.item.apellidos }}</td>
@@ -113,7 +104,7 @@
         </v-data-table>
       </v-card>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {
@@ -128,6 +119,9 @@ export default {
       celular: ''
     })
     return {
+      paises: ['Algo', 'Algo más'],
+      ciudades: ['Una', 'Otra'],
+      snackbar: false,
       cel: '##############',
       form: Object.assign({}, defaultForm),
       rules: {
@@ -181,35 +175,31 @@ export default {
 }
 </script>
 <style scoped>
-  .borde{
-    text-align:center;
-    border: #000000 3px solid;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    width: fit-content
-  }
-  .snackbar{
-      color: black
-  }
-  .botonCancelar{
-    background-color: rgba(206, 98, 252, 0.795);
-    transition: all .2s linear;
-    margin-bottom: -30px
- }
- .botonCancelar:hover{
-    background-color: rgba(136, 16, 248, 0.795)
- }
-  .botonAgregarTarjeta{
-      background-color: rgba(206, 98, 252, 0.795);
-      margin-left: 10px;
-      transition: all .2s linear;
-      margin-bottom: -30px;
-      border-radius: 15px
-  }
-  .botonAgregarTarjeta button:not([disabled="disabled"]):hover{
-      background-color: rgba(136, 16, 248, 0.795)
-  }
- .tabla{
-   margin: 0 auto
- }
+.borde {
+  text-align: center;
+  border: #000000 3px solid;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.snackbar {
+  color: black;
+}
+.botonCancelar {
+  background-color: rgba(206, 98, 252, 0.795);
+  transition: all 0.2s linear
+}
+.botonCancelar:hover {
+  background-color: rgba(136, 16, 248, 0.795);
+}
+.botonAgregarTarjeta {
+  background-color: rgba(206, 98, 252, 0.795);
+  transition: all 0.2s linear;
+  border-radius: 15px;
+}
+.botonAgregarTarjeta button:not([disabled="disabled"]):hover {
+  background-color: rgba(136, 16, 248, 0.795);
+}
+.tabla {
+  margin: 0 auto;
+}
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="cuadrofactura">
-      <div style="background-color:#000000;padding: 5px;color: white">
+      <div class="cdfac">
         <h2>Factura</h2>
       </div>
       <nav>
-        <h2 class="fecha" type="Date">Fecha: {{ }}</h2>
-        <h2 class="Numfac">Numero: {{ uno }}</h2>
+        <h2 class="fecha" type="Date">Fecha: {{ fecha }}</h2>
+        <h2 class="Numfac">Numero: {{ }}</h2>
       </nav>
       <v-card flat>
         <v-form ref="form" @submit.prevent="submit">
@@ -66,15 +66,16 @@
         </v-form>
       </v-card>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
+import moment from 'moment'
 import img from '@/assets/logito.png'
+moment.locale('es')
 export default {
   data () {
     return {
-      date: Date(),
-      fecha: 'Date',
+      fecha: moment().format('LL'),
       img,
       headers: [
         { text: 'Cantidad', value: 'name', sortable: false },
@@ -125,14 +126,12 @@ export default {
   margin: 2px 35px 5px 5px;
 }
 .cuadrofactura {
-  width: 845px;
   text-align: center;
   border: #000000 3px solid;
   margin-bottom: 30px;
   border-radius: 5px;
 }
 .cuadcuenta {
-  width: 745px;
   margin: auto;
 }
 .Numfac {
@@ -149,12 +148,15 @@ export default {
 }
 .h2 {
   display: inline-block;
-  width: 600px;
   text-align: right;
 }
 .h3 {
   display: inline-block;
   text-align: right;
-  width: 203px;
+}
+.cdfac{
+  background-color:#000000;
+  padding: 5px;
+  color: white
 }
 </style>
