@@ -1,8 +1,8 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="borde">
       <div class="tituloCuadro"><h2>Inventario</h2></div>
-      <v-card width="1045">
+      <v-card>
         <v-card-title>
           <v-text-field
           v-model="search"
@@ -26,12 +26,12 @@
         </template>
         </v-data-table>
       </v-card>
-      <v-dialog v-model="detalles" width="1085">
+      <v-dialog v-model="detalles">
         <v-card>
           <v-card-text>
             <nav class="borde">
               <div class="tituloCuadro"><h2>Detalles</h2></div>
-              <v-card width="1045">
+              <v-card>
                 <v-card-title>
                   <v-text-field
                   v-model="search"
@@ -59,12 +59,12 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <div class="botonCerrar"><v-btn flat @click="detalles = false">Cerrar</v-btn></div>
+            <v-btn class="botonCerrar" flat @click="detalles = false">Cerrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {

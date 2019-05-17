@@ -2,18 +2,16 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :clipped="$vuetify.breakpoint.lgAndUp"
       app
-      stateless
       width="250"
       class="secondary"
     >
       <v-list>
         <v-list-tile
-        color='words'
-        v-for="admin in admins"
-        :key="admin.admins"
-        :to="admin.to"
+          color='words'
+          v-for="(admin,index) in admins"
+          :key="index"
+          :to="admin.to"
         >
           <v-list-tile-action v-if="admin.icon">
             <v-icon>{{ admin.icon }}</v-icon>
@@ -25,22 +23,19 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
       color="black"
       dark
       app
-      fixed
     >
-    <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar-title>
       <v-btn depressed style="background-color: transparent" to="/"><img src="@/assets/logito.png" height="45px" width="90px"></v-btn>
     </v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fill-height>
         <v-layout justify-center align-center>
-          <v-flex shrink>
-            <router-view></router-view>
-          </v-flex>
+          <router-view></router-view>
         </v-layout>
       </v-container>
     </v-content>

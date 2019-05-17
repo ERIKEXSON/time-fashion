@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="borde">
       <div class="tituloCuadro">
         <h2>Agregar empresas</h2>
@@ -15,7 +15,7 @@
           <v-icon>check_circle</v-icon>
         </v-snackbar>
       </div>
-      <v-card width="1045">
+      <v-card>
         <v-form ref="form" @submit.prevent="submit">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
@@ -55,14 +55,14 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <div class="botonCancelar"><v-btn flat @click="resetForm">Cancelar</v-btn></div>
-            <div class="botonRegistrar"><v-btn
+            <v-btn class="botonCancelar" flat @click="resetForm">Cancelar</v-btn>
+            <v-btn
               :disabled="!formIsValid"
+              class="botonRegistrar"
               flat
               color="black"
               type="submit"
-            >Registrar
-            </v-btn></div>
+            >Registrar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -71,7 +71,7 @@
       <div class="tituloCuadro">
         <h2>Empresas</h2>
       </div>
-      <v-card width="1045">
+      <v-card>
         <v-card-title>
         <v-text-field
           v-model="search"
@@ -96,12 +96,12 @@
         </template>
         </v-data-table>
       </v-card>
-      <v-dialog v-model="empleados" width="1085">
+      <v-dialog v-model="empleados">
         <v-card>
           <v-card-text>
             <nav class="borde">
               <div class="tituloCuadro"><h2>Empleados</h2></div>
-              <v-card width="1045">
+              <v-card>
                 <v-card-title>
                   <v-text-field
                     v-model="search"
@@ -134,7 +134,7 @@
         </v-card>
       </v-dialog>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {
@@ -217,15 +217,15 @@ export default {
 </script>
 <style>
 .borde{
-   text-align:center;
-   border: #000000 3px solid;
-   margin-bottom: 30px;
-   border-radius: 5px
+    text-align:center;
+    border: #000000 3px solid;
+    margin-bottom: 30px;
+    border-radius: 5px
  }
  .tituloCuadro{
-   background-color:#000000;
-   padding: 5px;
-   color: white
+    background-color:#000000;
+    padding: 5px;
+    color: white
  }
   .botonCerrar{
     background-color: rgba(34, 194, 215, 0.61);
@@ -243,17 +243,15 @@ export default {
       background-color: rgba(136, 16, 248, 0.795)
   }
   .botonRegistrar{
-      background-color: rgba(206, 98, 252, 0.795);
-      margin-left: 10px;
-      transition: all .2s linear;
-      border-radius: 15px
+    background-color: rgba(206, 98, 252, 0.795);
+    transition: all .2s linear;
+    border-radius: 15px
   }
   .botonRegistrar button:not([disabled="disabled"]):hover{
-      background-color: rgba(136, 16, 248, 0.795)
+    background-color: rgba(136, 16, 248, 0.795)
   }
   .botonEmpleados{
     display: inline-block;
-    margin-right: 40px;
     background-color: rgba(34, 194, 215, 0.61);
     transition: all .2s linear
   }

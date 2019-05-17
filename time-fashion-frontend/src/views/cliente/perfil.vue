@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <v-snackbar
       v-model="snackbar"
       absolute
@@ -18,7 +18,7 @@
       >
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card width="1045">
+            <v-card>
               <v-card-title primary-title>
                 <div>
                   <div class="headline"><strong>Perfil</strong></div>
@@ -190,7 +190,7 @@
         </v-layout>
       </v-container>
     </v-form>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {

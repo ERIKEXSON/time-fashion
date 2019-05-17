@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-flex xs12>
     <nav class="borde">
       <div class="tituloCuadro">
         <h2>Agregar usuarios</h2>
@@ -9,14 +9,13 @@
           top
           right
           color="success"
-          :timeout="2000"
           class="snackbar"
         >
           <span>¡Registro exitoso!</span>
           <v-icon>check_circle</v-icon>
         </v-snackbar>
       </div>
-      <v-card width="1045">
+      <v-card>
         <v-form ref="form" @submit.prevent="submit">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
@@ -99,21 +98,21 @@
             </v-layout>
           </v-container>
           <v-card-actions>
-            <div class="botonCancelar"><v-btn flat @click="resetForm">Cancelar</v-btn></div>
-            <div class="botonRegistrar"><v-btn
+            <v-btn class="botonCancelar" flat @click="resetForm">Cancelar</v-btn>
+            <v-btn
+              class="botonRegistrar"
               :disabled="!formIsValid"
               flat
               color="black"
               type="submit"
-            >Registrar
-            </v-btn></div>
+            >Registrar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
     </nav>
     <nav class="borde">
       <div class="tituloCuadro"><h2>Usuarios</h2></div>
-      <v-card width="1045">
+      <v-card>
         <v-card-title>
           <v-text-field
             v-model="search"
@@ -152,7 +151,7 @@
           <v-card-text>
             <nav class="borde">
               <div class="tituloCuadro"><h2>Datos de contacto</h2></div>
-              <v-card width="1045">
+              <v-card>
                 <v-data-table
                   :headers="datosContacto"
                   :items="desserts"
@@ -169,13 +168,13 @@
             </nav>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <div class="botonCerrar"><v-btn flat @click="contacto = false">Cerrar</v-btn></div>
+              <v-btn class="botonCerrar" flat @click="contacto = false">Cerrar</v-btn>
             </v-card-actions>
           </v-card-text>
         </v-card>
       </v-dialog>
     </nav>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 export default {
