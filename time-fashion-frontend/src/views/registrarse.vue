@@ -11,20 +11,20 @@
                         </v-toolbar>
                         <v-card-text>
                             <v-form>
-                                <v-text-field name="login" label="Nombre" type="text" color="black"></v-text-field>
-                                <v-text-field name="login" label="Apellido" type="text" color="black"></v-text-field>
-                                <v-text-field name="login" label="Cedula" type="text" color="black"></v-text-field>
-                                <v-text-field name="login" label="Departamento" type="text" color="black"></v-text-field>
-                                <v-text-field name="login" label="Ciudad" type="text" color="black"></v-text-field>
+                                <v-text-field name="login" label="Nombre" type="text" color="black" v-model="nombre"></v-text-field>
+                                <v-text-field name="login" label="Apellido" type="text" color="black" v-model="apellido"></v-text-field>
+                                <v-text-field name="login" label="Cedula" type="text" color="black" v-model="cedula"></v-text-field>
+                                <v-text-field name="login" label="Nacionalidad" type="text" color="black" v-model="nacionalidad"></v-text-field>
+                                <v-text-field name="login" label="Telefono" type="text" color="black" v-model="telefono"></v-text-field>
                                 <v-text-field name="login" label="Dirección de Email" type="text" color="black"></v-text-field>
-                                <v-text-field name="login" label="Confirmar Email" type="text" color="black"></v-text-field>
+                                <v-text-field name="login" label="Confirmar Email" type="text" color="black" v-model="email"></v-text-field>
                                 <v-text-field name="password" label="Contraseña" id="password" type="password" color="black"></v-text-field>
-                                <v-text-field name="password" label="Confirmar Contraseña" id="password" type="password" color="black"></v-text-field>
+                                <v-text-field name="password" label="Confirmar Contraseña" id="password" type="password" color="black" v-model="contrasena"></v-text-field>
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
                             <div style="width: 417.66px; text-align:center">
-                                <v-btn style="background-color:black; color:white" to="/">Registrarse</v-btn>
+                                <v-btn style="background-color:black; color:white" @click="register">Registrarse</v-btn>
                             </div>
                         </v-card-actions>
                     </v-card>
@@ -34,7 +34,34 @@
     </v-content>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
+  data () {
+    return {
+      nombre: '',
+      apellido: '',
+      cedula: '',
+      nacionalidad: '',
+      telefono: '',
+      contrasena: '',
+      email: ''
+    }
+  },
+  methods: {
+    async register () {
+      const res = await api.post('/user', {
+        userNew: {
+          nombre: this.nombre,
+          apellido: this.apellido,
+          cedula: this.cedula,
+          nacionalidad: this.nacionalidad,
+          telefono: this.telefono,
+          contraseña: this.contrasena,
+          email: this.email
+        }
+      })
+    }
+  },
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
   }
