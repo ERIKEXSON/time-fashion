@@ -36,32 +36,32 @@
 <script>
 import api from '@/plugins/api'
 export default {
-    data() {
-        return {
-            nombre: '',
-            apellido: '',
-            cedula: '',
-            nacionalidad: '',
-            telefono: '',
-            contrasena: '',
-            email: ''
+  data () {
+    return {
+      nombre: '',
+      apellido: '',
+      cedula: '',
+      nacionalidad: '',
+      telefono: '',
+      contrasena: '',
+      email: ''
+    }
+  },
+  methods: {
+    async register () {
+      const res = await api.post('/user', {
+        userNew: {
+          nombre: this.nombre,
+          apellido: this.apellido,
+          cedula: this.cedula,
+          nacionalidad: this.nacionalidad,
+          telefono: this.telefono,
+          contraseña: this.contrasena,
+          email: this.email
         }
-    },
-    methods: {
-        async register() {
-            const res = await api.post('/user', {
-                userNew: {
-                    nombre: this.nombre,
-                    apellido: this.apellido,
-                    cedula: this.cedula,
-                    nacionalidad: this.nacionalidad,
-                    telefono: this.telefono,
-                    contraseña: this.contrasena,
-                    email: this.email
-                }
-            })
-        }
-    },
+      })
+    }
+  },
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
   }

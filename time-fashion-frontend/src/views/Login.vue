@@ -29,26 +29,26 @@
 <script>
 import api from '@/plugins/api'
 export default {
-    data() {
-        return {
-            email: '',
-            contrasena: ''
-        }
-    },
-    methods: {
-        async singin() {
-            const { data: res } = await api.post('/user/singin', {
-                email: this.email,
-                contraseña: this.contrasena
-            })
-            if(!res.login){
+  data () {
+    return {
+      email: '',
+      contrasena: ''
+    }
+  },
+  methods: {
+    async singin () {
+      const { data: res } = await api.post('/user/singin', {
+        email: this.email,
+        contraseña: this.contrasena
+      })
+      if (!res.login) {
 
-            }
-            if(res.user.rol === 'cliente'){
-                this.$router.push('cliente')
-            }
-        }
-    },
+      }
+      if (res.user.rol === 'cliente') {
+        this.$router.push('cliente')
+      }
+    }
+  },
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
   }
