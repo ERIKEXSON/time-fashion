@@ -9,9 +9,19 @@ const router = new Router()
 
 router.post('/', async function(req, res, next){
   try {
-    const { userNew } = req.body
+    const { userNew } = req.body  
     const { User } = await db()
     const result = await User.createUser(userNew)
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+router.post('/singin', async function(req, res, next){
+  try {
+    const credentials = req.body
+    const { User } = await db()
+    const result = await User.singin(credentials)
     res.send(result)
   } catch (err) {
     next(err)

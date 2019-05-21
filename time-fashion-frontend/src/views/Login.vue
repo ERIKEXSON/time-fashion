@@ -11,13 +11,13 @@
                     </v-toolbar>
                     <v-card-text>
                         <v-form>
-                        <v-text-field prepend-icon="person" name="login" label="Usuario" type="text" color="black"></v-text-field>
-                        <v-text-field prepend-icon="lock" name="password" label="Contraseña" id="password" type="password" color="black"></v-text-field>
+                        <v-text-field prepend-icon="person" name="login" label="Usuario" type="email" color="black" v-model="email"></v-text-field>
+                        <v-text-field prepend-icon="lock" name="password" label="Contraseña" id="password" type="password" color="black" v-model="contrasena"></v-text-field>
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
                         <div style="width: 417.66px; text-align:center">
-                            <v-btn style="background-color:black; color:white" to="/cliente">Ingresar</v-btn>
+                            <v-btn style="background-color:black; color:white" @click="singin">Ingresar</v-btn>
                         </div>
                     </v-card-actions>
                     </v-card>
@@ -27,7 +27,28 @@
             </v-content>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
+    data() {
+        return {
+            email: '',
+            contrasena: ''
+        }
+    },
+    methods: {
+        async singin() {
+            const { data: res } = await api.post('/user/singin', {
+                email: this.email,
+                contraseña: this.contrasena
+            })
+            if(!res.login){
+
+            }
+            if(res.user.rol === 'cliente'){
+                this.$router.push('cliente')
+            }
+        }
+    },
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
   }
