@@ -382,7 +382,7 @@ Actualizado el 11/12/2017
       </v-stepper-content>
 
       <v-stepper-content step="3">
-        proceso pedido
+        pedido en proceso
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
