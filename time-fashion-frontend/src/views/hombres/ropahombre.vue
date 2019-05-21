@@ -44,7 +44,7 @@ export default {
     clickPush (value) {
       this.$router.push(value)
     }
-  },
+  }
 }
 </script>
 <style>
