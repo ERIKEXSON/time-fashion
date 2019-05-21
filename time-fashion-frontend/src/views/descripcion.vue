@@ -1,16 +1,21 @@
 <template>
   <app>
-    <v-carousel>
-      <v-carousel-item
-        v-for="(item,i) in items"
-        :key="i"
-        :src="item.src"
-        reverse-transition="fade"
-        transition="fade"
-      ></v-carousel-item>
-    </v-carousel>
+    <v-container style="margin-left: -360px; width:950px">
+      <v-flex xs6 sm6 md>
+        <v-carousel >
+          <v-carousel-item
+            v-for="(item,i) in items"
+            :key="i"
+            :src="item.src"
+            reverse-transition="fade"
+            transition="fade"
+          ></v-carousel-item>
+        </v-carousel>
+      </v-flex>
+  </v-container>
+  <v-flex xs6 sm6 md style="width: 450px; margin-left: 200px; margin-top: -225px">
     <v-expansion-panel
-      style="width: 450px"
+      style="width: 450px "
     >
       <v-expansion-panel-content
         v-for="(item,i) in 1"
@@ -111,6 +116,7 @@
     </v-container>
       </v-expansion-panel-content>
     </v-expansion-panel>
+    </v-flex>
   </app>
 </template>
 <script>
@@ -120,16 +126,16 @@ export default {
       dialog: false,
         items: [
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-1.jpg'
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-2.jpg'
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-3.jpg'
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-4.jpg'
           }
         ]
       }
