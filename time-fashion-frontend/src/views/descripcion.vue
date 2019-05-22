@@ -105,25 +105,25 @@ export default {
   data () {
     return {
       dialog: false,
-        items: [
-          {
-            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-1.jpg'
-          },
-          {
-            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-2.jpg'
-          },
-          {
-            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-3.jpg'
-          },
-          {
-            src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-4.jpg'
-          }
-        ],
-        items2: ['Escoge una opción', 'S', 'M', 'L'],
-        message2: '1',
-      }
+      items: [
+        {
+          src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-1.jpg'
+        },
+        {
+          src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-2.jpg'
+        },
+        {
+          src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-3.jpg'
+        },
+        {
+          src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-4.jpg'
+        }
+      ],
+      items2: ['Escoge una opción', 'S', 'M', 'L'],
+      message2: '1'
     }
   }
+}
 </script>
 <style lang="stylus">
   #example-custom-transition

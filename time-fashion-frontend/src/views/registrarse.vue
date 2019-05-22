@@ -1,37 +1,93 @@
 <template>
-    <v-content>
-        <v-container fluid fill-height>
-            <v-layout align-center justify-center>
-                <v-flex xs6 sm6 md12>
-                    <v-card class="elevation-12">
-                        <v-toolbar color="black">
-                            <div style="width:417.66px; text-align:center">
-                                <v-toolbar-title style="color:white">Crea cuenta nueva</v-toolbar-title>
-                            </div>
-                        </v-toolbar>
-                        <v-card-text>
-                            <v-form>
-                                <v-text-field name="login" label="Nombre" type="text" color="black" v-model="nombre"></v-text-field>
-                                <v-text-field name="login" label="Apellido" type="text" color="black" v-model="apellido"></v-text-field>
-                                <v-text-field name="login" label="Cedula" type="text" color="black" v-model="cedula"></v-text-field>
-                                <v-text-field name="login" label="Nacionalidad" type="text" color="black" v-model="nacionalidad"></v-text-field>
-                                <v-text-field name="login" label="Telefono" type="text" color="black" v-model="telefono"></v-text-field>
-                                <v-text-field name="login" label="Dirección de Email" type="text" color="black"></v-text-field>
-                                <v-text-field name="login" label="Confirmar Email" type="text" color="black" v-model="email"></v-text-field>
-                                <v-text-field name="password" label="Contraseña" id="password" type="password" color="black"></v-text-field>
-                                <v-text-field name="password" label="Confirmar Contraseña" id="password" type="password" color="black" v-model="contrasena"></v-text-field>
-                            </v-form>
-                        </v-card-text>
-                      <v-card-actions>
-                            <div style="width: 417.66px; text-align:center">
-                                <v-btn style="background-color:black; color:white" @click="register">Registrarse</v-btn>
-                            </div>
-                        </v-card-actions>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-        </v-container>
-    </v-content>
+  <v-layout justify-center>
+        <div style="width:417.66px; text-align:center">
+            <v-toolbar-title >Crea cuenta nueva</v-toolbar-title>
+            <v-flex>
+      <v-card ref="form">
+        <v-card-text>
+          <v-text-field
+            ref="name"
+            v-model="nombre"
+            :rules="[() => !!name || 'This field is required']"
+            :error-messages="errorMessages"
+            label="Nombre"
+            required
+          ></v-text-field>
+          <v-text-field
+            ref="address"
+            v-model="apellido"
+            :rules="[
+              () => !!address || 'This field is required',
+              () => !!address && address.length <= 25 || 'Address must be less than 25 characters',
+              addressCheck
+            ]"
+            label="Apellido"
+            required
+          ></v-text-field>
+          <v-text-field
+            ref="city"
+            v-model="cedula"
+            :rules="[() => !!city || 'This field is required', addressCheck]"
+            label="Cedula"
+            required
+          ></v-text-field>
+          <v-text-field
+            ref="country"
+            v-model="nacionalidad"
+            :rules="[() => !!country || 'This field is required']"
+            label="nacionalidad"
+            required
+          ></v-text-field>
+          <v-text-field
+            ref="zip"
+            v-model="telefono"
+            :rules="[() => !!zip || 'This field is required']"
+            label="Telefono"
+            required
+          ></v-text-field>
+          <v-text-field
+            ref="state"
+            v-model="email"
+            :rules="[() => !!state || 'This field is required']"
+            label="Dirección Email"
+            required
+          ></v-text-field>
+          <v-text-field
+            ref="password"
+            v-model="contrasena"
+            :rules="[() => !!password || 'This field is required']"
+            label="Contraseña"
+            required
+          ></v-text-field>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn flat to="/">Cancelar</v-btn>
+          <v-spacer></v-spacer>
+          <v-slide-x-reverse-transition>
+            <v-tooltip
+              v-if="formHasErrors"
+              left
+            >
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  icon
+                  class="my-0"
+                  @click="resetForm"
+                  v-on="on"
+                >
+                  <v-icon>refresh</v-icon>
+                </v-btn>
+              </template>
+              <span>Refresh form</span>
+            </v-tooltip>
+          </v-slide-x-reverse-transition>
+          <v-btn color="primary" flat @click="register">Registrarse</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-flex>
+    </div>
+
+    </v-layout>
 </template>
 <script>
 import api from '@/plugins/api'
@@ -62,10 +118,6 @@ export default {
       })
     }
   },
-  rules: {
-        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
-        required: [val => (val || '').length > 0 || 'Este campo es requerido']
-      },
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
   }
