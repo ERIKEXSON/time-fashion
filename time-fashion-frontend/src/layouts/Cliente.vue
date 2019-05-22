@@ -63,11 +63,6 @@ export default {
         to: '/cliente/mispedidos'
       },
       {
-        text: 'Mis direcciones',
-        icon: 'location_on',
-        to: '/cliente/direccion'
-      },
-      {
         text: 'Cambiar contraseña',
         icon: 'https',
         to: '/cliente/password'

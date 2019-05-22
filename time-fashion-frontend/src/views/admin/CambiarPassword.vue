@@ -134,16 +134,16 @@ export default {
 }
 </script>
 <style scoped>
-.boton {
-  width: fit-content;
-  background-color: rgba(206, 98, 252, 0.795);
-  color: black;
-  margin: auto;
-  transition: all 0.2s linear;
-  align-content: center;
-  border-radius: 15px
-}
-.boton button:not([disabled="disabled"]):hover {
-  background-color: rgba(136, 16, 248, 0.795);
-}
+  .boton {
+    width: fit-content;
+    background-color: rgba(206, 98, 252, 0.795);
+    color: black;
+    margin: auto;
+    transition: all 0.2s linear;
+    align-content: center;
+    border-radius: 15px
+  }
+  .boton button:not([disabled="disabled"]):hover {
+    background-color: rgba(136, 16, 248, 0.795);
+  }
 </style>

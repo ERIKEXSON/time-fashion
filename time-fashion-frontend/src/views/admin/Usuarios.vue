@@ -3,14 +3,7 @@
     <nav class="borde">
       <div class="tituloCuadro">
         <h2>Agregar usuarios</h2>
-        <v-snackbar
-          v-model="snackbar"
-          absolute
-          top
-          right
-          color="success"
-          class="snackbar"
-        >
+        <v-snackbar v-model="snackbar" absolute top right color="success" class="snackbar">
           <span>¡Registro exitoso!</span>
           <v-icon>check_circle</v-icon>
         </v-snackbar>
@@ -20,12 +13,7 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.nombre"
-                  :rules="rules.required"
-                  label="Nombre"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.nombre" :rules="rules.required" label="Nombre" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
@@ -39,27 +27,13 @@
                 <v-text-field
                   v-model="form.documento"
                   :rules="rules.required"
-                  label="Documento"
+                  label="Cédula"
                   :mask="doc"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select
-                  v-model="form.tipodocumento"
-                  :items="tipos"
-                  :rules="rules.required"
-                  label="Tipo de documento"
-                  required
-                ></v-select>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.correo"
-                  :rules="rules.correo"
-                  label="Correo"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
@@ -87,7 +61,7 @@
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12 sm12>
+              <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.empresa"
                   :rules="rules.required"
@@ -111,7 +85,9 @@
       </v-card>
     </nav>
     <nav class="borde">
-      <div class="tituloCuadro"><h2>Usuarios</h2></div>
+      <div class="tituloCuadro">
+        <h2>Usuarios</h2>
+      </div>
       <v-card>
         <v-card-title>
           <v-text-field
@@ -122,16 +98,11 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          :search="search"
-        >
+        <v-data-table :headers="headers" :items="desserts" :search="search">
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
-            <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
             <td class="text-xs-left">{{ props.item.empresa }}</td>
             <td class="text-xs-left">{{ props.item.rol }}</td>
             <div style="text-align: center; display: inline-block;">
@@ -142,7 +113,9 @@
                 <v-icon dark color="white">delete</v-icon>
               </v-btn>
             </div>
-            <div class="botonContacto"><v-btn @click="contacto = true">Datos de contacto</v-btn></div>
+            <div class="botonContacto">
+              <v-btn @click="contacto = true">Datos de contacto</v-btn>
+            </div>
           </template>
         </v-data-table>
       </v-card>
@@ -150,7 +123,9 @@
         <v-card>
           <v-card-text>
             <nav class="borde">
-              <div class="tituloCuadro"><h2>Datos de contacto</h2></div>
+              <div class="tituloCuadro">
+                <h2>Datos de contacto</h2>
+              </div>
               <v-card>
                 <v-data-table
                   :headers="datosContacto"
@@ -177,13 +152,13 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
   data () {
     const defaultForm = Object.freeze({
       nombre: '',
       apellido: '',
       documento: '',
-      tipodocumento: '',
       correo: '',
       rol: '',
       direccion: '',
@@ -199,17 +174,18 @@ export default {
       form: Object.assign({}, defaultForm),
       rules: {
         required: [val => (val || '').length > 0 || 'Este campo es requerido'],
-        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido']
+        correo: [
+          val => (val || '').length > 0 || 'Este campo es requerido',
+          v => /.+@.+/.test(v) || 'El correo debe ser válido'
+        ]
       },
-      tipos: ['Tarjeta de identidad', 'Cédula de ciudadanía'],
       rol: ['Administrador', 'Vendedor'],
       defaultForm,
       search: '',
       headers: [
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
-        { text: 'Documento', value: 'documento' },
-        { text: 'Tipo de documento', value: 'tipodocumento' },
+        { text: 'Cédula', value: 'documento' },
         { text: 'Empresa', value: 'empresa' },
         { text: 'Rol', value: 'rol' },
         { text: '', sortable: false }
@@ -219,7 +195,6 @@ export default {
           nombre: 'Errik',
           apellido: 'Mamerto',
           documento: '123123123',
-          tipodocumento: 'CC',
           correo: 'asdasda@hola.com',
           direccion: 'asdasdasd123123',
           telefono: '123123123',
@@ -240,7 +215,6 @@ export default {
         this.form.nombre &&
         this.form.apellido &&
         this.form.documento &&
-        this.form.tipodocumento &&
         this.form.correo &&
         this.form.rol &&
         this.form.direccion &&
@@ -257,6 +231,19 @@ export default {
     submit () {
       this.snackbar = true
       this.resetForm()
+    },
+    async register () {
+      const res = await api.post('/user', {
+        userNew: {
+          nombre: this.nombre,
+          apellido: this.apellido,
+          cedula: this.documento,
+          telefono: this.tel,
+          email: this.correo,
+          rol: this.rol,
+          empresa: this.empresa
+        }
+      })
     }
   },
   created () {
@@ -265,57 +252,60 @@ export default {
 }
 </script>
 <style>
- .borde{
-   text-align:center;
-   border: #000000 3px solid;
-   margin-bottom: 30px
- }
- .tituloCuadro{
-   background-color:#000000;
-   padding: 5px;
-   color: white
- }
- .botonCancelar{
-    background-color: rgba(206, 98, 252, 0.795);
-    transition: all .2s linear
- }
- .botonCancelar:hover{
-    background-color: rgba(136, 16, 248, 0.795)
- }
- .botonRegistrar{
-    background-color: rgba(206, 98, 252, 0.795);
-    margin-left: 10px;
-    transition: all .2s linear
- }
- .botonRegistrar button:not([disabled="disabled"]):hover{
-    background-color: rgba(136, 16, 248, 0.795)
- }
- .snackbar{
-    color: black
- }
- .botonContacto{
-    display: inline-block;
-    background-color: rgba(34, 194, 215, 0.61);
-    transition: all .2s linear
- }
- .botonCompras{
-    display: inline-block;
-    margin-left: 20px;
-    background-color: rgba(34, 194, 215, 0.61);
-    transition: all .2s linear
- }
- .botonContacto:hover{
-    background-color: rgb(145, 45, 45)
- }
- .botonCompras:hover{
-    background-color: rgb(145, 45, 45)
- }
-  .botonSeguirPedido{
-    display: inline-block;
-    background-color: rgba(34, 194, 215, 0.61);
-    transition: all .2s linear
-  }
-  .botonSeguirPedido:hover{
-    background-color: rgb(145, 45, 45)
- }
+.borde {
+  text-align: center;
+  border: #000000 3px solid;
+  margin-bottom: 30px;
+}
+.tituloCuadro {
+  background-color: #000000;
+  padding: 5px;
+  color: white;
+}
+.botonCancelar {
+  background-color: rgba(206, 98, 252, 0.795);
+  transition: all 0.2s linear;
+}
+.botonCancelar:hover {
+  background-color: rgba(136, 16, 248, 0.795);
+}
+.botonRegistrar {
+  background-color: rgba(206, 98, 252, 0.795);
+  margin-left: 10px;
+  transition: all 0.2s linear;
+}
+.botonRegistrar button:not([disabled="disabled"]):hover {
+  background-color: rgba(136, 16, 248, 0.795);
+}
+.snackbar {
+  color: black;
+}
+.botonContacto {
+  display: inline-block;
+  background-color: rgba(34, 194, 215, 0.61);
+  transition: all 0.2s linear;
+}
+.botonCompras {
+  display: inline-block;
+  margin-left: 20px;
+  background-color: rgba(34, 194, 215, 0.61);
+  transition: all 0.2s linear;
+}
+.botonContacto:hover {
+  background-color: rgb(145, 45, 45);
+}
+.botonCompras:hover {
+  background-color: rgb(145, 45, 45);
+}
+.botonSeguirPedido {
+  display: inline-block;
+  background-color: rgba(34, 194, 215, 0.61);
+  transition: all 0.2s linear;
+}
+.botonSeguirPedido:hover {
+  background-color: rgb(145, 45, 45);
+}
+.v-text-field input {
+  text-transform: uppercase;
+}
 </style>

@@ -20,7 +20,6 @@ import VendedorPassword from './views/vendedor/CambiarPassword.vue'
 import Cliente from './views/cliente/Inicio.vue'
 import ClientePerfil from './views/cliente/perfil.vue'
 import ClientePedidos from './views/cliente/MisPedidos.vue'
-import ClienteDireccion from './views/cliente/Misdirecciones.vue'
 import ClienteMisTarjetas from './views/cliente/MisTarjetas.vue'
 import ClienteCambiarPassword from './views/cliente/CambiarPassword.vue'
 import Hombre from './views/hombres/ropahombre.vue'
@@ -328,11 +327,6 @@ export default new Router({
       path: '/cliente/mispedidos',
       name: 'clienteMisPedidos',
       component: ClientePedidos
-    },
-    {
-      path: '/cliente/direccion',
-      name: 'clienteMisdirecciones',
-      component: ClienteDireccion
     },
     {
       path: '/cliente/mistarjetas',
