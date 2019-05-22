@@ -10,7 +10,6 @@ const bill = require('./bill')
 const city = require('./city')
 const cancellation = require('./cancellation')
 const department = require('./department')
-const direction = require('./direction')
 const inventories = require('./inventories')
 const line = require('./line')
 const offer_detail = require('./offer_datail')
@@ -31,7 +30,6 @@ module.exports = {
       city:'/city',
       cancellation: '/cancellation',
       department: '/department',
-      direction: '/direction',
       inventories:'/inventories',
       line:'/line',
       offer_detail:'/offer_detail',
@@ -48,7 +46,6 @@ module.exports = {
   city,
   cancellation,
   department,
-  direction,
   inventories,
   line,
   offer_detail,
