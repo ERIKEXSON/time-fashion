@@ -16,6 +16,7 @@ const setupDirection = require('./lib/direction')
 const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
+const setupCompany = require('./lib/company')
 
 //modelos
 const setupDatabase = require('./lib/db')
@@ -37,6 +38,7 @@ const setupDetail_sizeModel = require('./models/detail_size.model')
 const setupCountryModel = require('./models/country.model')
 const setupDepartmentModel = require('./models/department.model')
 const setupCityModel = require('./models/city.model')
+const setupCompanyModel= require('./models/company.model')
 
 
 
@@ -60,6 +62,7 @@ module.exports = async function () {
   const CountryModel = setupCountryModel(config)
   const DepartmentModel = setupDepartmentModel(config)
   const CityModel = setupCityModel(config)
+  const CompanyModel= setupCompanyModel(config)
 
   // relacion de usuario a pedidos
   UserModel.hasMany(OrderModel)
@@ -147,6 +150,11 @@ module.exports = async function () {
   DepartmentModel.hasMany(CityModel)
   CityModel.belongsTo(DepartmentModel)
 
+  // relacion de empresas a usuarios
+  CompanyModel.hasMany(UserModel)
+  UserModel.belongsTo(CompanyModel)
+  
+
 
   await sequelize.authenticate()
 
@@ -163,6 +171,7 @@ module.exports = async function () {
   const Inventories = setupInventories(InventoriesModel)
   const Line = setupLine(LineModel)
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
+  const Company = setupCompany(CompanyModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -180,5 +189,6 @@ module.exports = async function () {
     Inventories,
     Line,
     Offerdetail,
+    Company,
   }
 }
