@@ -47,5 +47,9 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.TEXT,
       allowNull: true
     },
+    dirrecciones: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
   })
 }
