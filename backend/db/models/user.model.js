@@ -32,7 +32,7 @@ module.exports = function setupMetricModel (config) {
     },
     contraseña: {
       type: Sequelize.TEXT,
-      allowNull: false
+      allowNull: true
     },
     email: {
       type: Sequelize.TEXT,
