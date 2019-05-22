@@ -22,7 +22,7 @@
                                 <v-text-field name="password" label="Confirmar Contraseña" id="password" type="password" color="black" v-model="contrasena"></v-text-field>
                             </v-form>
                         </v-card-text>
-                        <v-card-actions>
+                      <v-card-actions>
                             <div style="width: 417.66px; text-align:center">
                                 <v-btn style="background-color:black; color:white" @click="register">Registrarse</v-btn>
                             </div>
@@ -62,6 +62,10 @@ export default {
       })
     }
   },
+  rules: {
+        correo: [val => (val || '').length > 0 || 'Este campo es requerido', v => /.+@.+/.test(v) || 'El correo debe ser válido'],
+        required: [val => (val || '').length > 0 || 'Este campo es requerido']
+      },
   created () {
     this.$store.commit('SET_LAYOUT', 'principal-layout')
   }

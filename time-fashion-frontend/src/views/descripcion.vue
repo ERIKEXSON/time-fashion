@@ -1,5 +1,48 @@
 <template>
   <app>
+    <v-flex style="margin-left: 250px; margin-bottom: -290px">
+      <div class="title">Jeans Azul Rotos</div>
+      <div class="caption">Item: *****</div>
+      <v-card-actions></v-card-actions>
+      <div class="title">$84.000</div>
+      <v-card-actions></v-card-actions>
+      <v-card-actions></v-card-actions>
+      <v-card-actions></v-card-actions>
+      <div class="body-2" style="display: inline-block">Talla</div>
+      <div class="body-2" style="display: inline-block; margin-left: 190px">Talla</div>
+      <v-container style="margin-left: -25px; width: 250px; margin-top: -20px" >
+        <v-layout wrap align-center>
+          <v-flex >
+            <v-select
+              :items="items2"
+              label="Escoge una opción"
+              solo
+            ></v-select>
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <v-form>
+        <v-container style="margin-left: 200px; margin-top: -116px">
+          <v-flex sm2>
+            <v-text-field
+              v-model="message2"
+              solo
+            ></v-text-field>
+          </v-flex>
+        </v-container>
+      </v-form>
+      <v-btn color="black" style="margin-left: -2px; margin-top: -20px">
+        <v-layout
+          align-end
+          fill-height
+          pa-1
+          white--text
+        >
+          <v-icon>add_shopping_cart</v-icon>
+          <div class="titlefont-weight-thin">Agregar al carrito</div>
+        </v-layout>
+      </v-btn>
+    </v-flex>
     <v-container style="margin-left: -360px; width:950px">
       <v-flex xs6 sm6 md>
         <v-carousel >
@@ -13,72 +56,10 @@
         </v-carousel>
       </v-flex>
   </v-container>
-  <v-flex xs6 sm6 md style="width: 450px; margin-left: 200px; margin-top: -225px">
+  <v-flex xs6 sm6 md style="width: 450px; margin-left: 200px; margin-top: -175px">
     <v-expansion-panel
       style="width: 450px "
     >
-      <v-expansion-panel-content
-        v-for="(item,i) in 1"
-        :key="i"
-        expand-icon="swap_vertical_circle"
-      >
-        <template v-slot:header>
-          <div class="title">Cuál es mi talla</div>
-        </template>
-        <v-card>
-          <v-card-text class="grey lighten-3">
-            La modelo usa talla S <v-spacer></v-spacer>
-            Altura 174 cms <v-spacer></v-spacer>
-
-            <div class="text-xs-center">
-              <v-dialog
-                v-model="dialog"
-                width="900"
-              >
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    color="blue"
-                    dark
-                    v-on="on"
-                  >
-                  Tabla de medidas y más información
-                  </v-btn>
-                </template>
-
-                <v-card>
-                  <v-card-actions class="black">
-                    <v-layout
-                      align-end
-                      fill-height
-                      pa-1
-                      white--text
-                    >
-                      <div class="titlefont-weight-thin">GUÍA DE TALLAS
-                        <v-btn
-                        color="black" @click="dialog = false"
-                        style="margin-left: 679px"
-                        >
-                          <v-icon color="white">cancel</v-icon>
-                        </v-btn></div>
-                    </v-layout>
-                  </v-card-actions>
-
-                  <v-card-text>
-                    <v-layout row wrap>
-                      <v-flex xs6 sm6 md>
-                        <img src="@/assets/guia.jpg" alt="">
-                      </v-flex>
-                      <v-flex xs6 sm6 md>
-                        <img style="margin-top: 100px; margin-left: -30px" src="@/assets/tallaje.png" alt="">
-                      </v-flex>
-                    </v-layout>
-                  </v-card-text>
-                </v-card>
-              </v-dialog>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-expansion-panel-content>
       <v-expansion-panel-content
         v-for="(item,i) in 1"
         :key="i"
@@ -137,7 +118,9 @@ export default {
           {
             src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-4.jpg'
           }
-        ]
+        ],
+        items2: ['Escoge una opción', 'S', 'M', 'L'],
+        message2: '1',
       }
     }
   }
