@@ -49,7 +49,7 @@ module.exports = function setupMetricModel (config) {
     },
     dirrecciones: {
       type: Sequelize.TEXT,
-      allowNull: false
+      defaultValue: ''
     },
   })
 }
