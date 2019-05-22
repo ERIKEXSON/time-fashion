@@ -12,16 +12,15 @@ const setupBill = require('./lib/bill')
 const setupCity = require('./lib/city')
 const setupCancellation= require('./lib/cancellation')
 const setupDepartment = require('./lib/department')
-const setupDirection = require('./lib/direction')
 const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
+const setupCompany = require('./lib/company')
 
 //modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
 const setupOrderModel = require('./models/order.model')
-const setupDirectionModel = require('./models/direction.model')
 const setupCancellationModel = require('./models/cancellation.model')
 const setupBillModel = require('./models/bill.model')
 const setupPayment_methodModel = require('./models/payment_method.model')
@@ -37,6 +36,7 @@ const setupDetail_sizeModel = require('./models/detail_size.model')
 const setupCountryModel = require('./models/country.model')
 const setupDepartmentModel = require('./models/department.model')
 const setupCityModel = require('./models/city.model')
+const setupCompanyModel= require('./models/company.model')
 
 
 
@@ -44,7 +44,6 @@ module.exports = async function () {
   const sequelize = setupDatabase(config)
   const UserModel = setupUserModel(config)
   const OrderModel = setupOrderModel(config)
-  const DirectionModel = setupDirectionModel(config)
   const CancellationModel = setupCancellationModel(config)
   const BillModel = setupBillModel(config)
   const Payment_methodModel = setupPayment_methodModel(config)
@@ -60,18 +59,11 @@ module.exports = async function () {
   const CountryModel = setupCountryModel(config)
   const DepartmentModel = setupDepartmentModel(config)
   const CityModel = setupCityModel(config)
+  const CompanyModel= setupCompanyModel(config)
 
   // relacion de usuario a pedidos
   UserModel.hasMany(OrderModel)
   OrderModel.belongsTo(UserModel)
-
-  // relacion de direcciones a pedidos
-  OrderModel.hasMany(DirectionModel)
-  DirectionModel.belongsTo(OrderModel)
-
-  // relacion de personas a direcciones
-  UserModel.hasMany(DirectionModel)
-  DirectionModel.belongsTo(UserModel)
 
   // relacion de pedidos a cancelacion
   OrderModel.hasMany(CancellationModel)
@@ -147,6 +139,11 @@ module.exports = async function () {
   DepartmentModel.hasMany(CityModel)
   CityModel.belongsTo(DepartmentModel)
 
+  // relacion de empresas a usuarios
+  CompanyModel.hasMany(UserModel)
+  UserModel.belongsTo(CompanyModel)
+  
+
 
   await sequelize.authenticate()
 
@@ -159,10 +156,10 @@ module.exports = async function () {
   const City = setupCity(CityModel)
   const Cancellation = setupCancellation(CancellationModel)
   const Department = setupDepartment(DepartmentModel)
-  const Direction = setupDirection(DirectionModel)
   const Inventories = setupInventories(InventoriesModel)
   const Line = setupLine(LineModel)
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
+  const Company = setupCompany(CompanyModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -176,9 +173,9 @@ module.exports = async function () {
     City,
     Cancellation,
     Department,
-    Direction,
     Inventories,
     Line,
     Offerdetail,
+    Company,
   }
 }

@@ -4,8 +4,8 @@ const http = require('http')
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
-const { errorHandler,  home , user,  brand, detail_size, offer, country, bill, city, cancellation, department, direction, inventories,
-        line, offer_detail} = require('@time-fashion/api')
+const { errorHandler,  home , user,  brand, detail_size, offer, country, bill, city, cancellation, department, inventories,
+        line, offer_detail, company} = require('@time-fashion/api')
 const { getLogger, logHandler, terminate } = require('@time-fashion/utils')
 
 const app = express()
@@ -27,10 +27,10 @@ app.use('/bill', bill)
 app.use('/city', city)
 app.use('/cancellation', cancellation)
 app.use('/department',department)
-app.use('/direction',direction)
 app.use('/inventories',inventories)
 app.use('/line',line)
 app.use('/offer_detail',offer_detail)
+app.use('/company',company)
 app.get('/', home)
 app.use(errorHandler)
 

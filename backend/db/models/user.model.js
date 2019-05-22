@@ -32,7 +32,7 @@ module.exports = function setupMetricModel (config) {
     },
     contraseña: {
       type: Sequelize.TEXT,
-      allowNull: false
+      allowNull: true
     },
     email: {
       type: Sequelize.TEXT,
@@ -42,6 +42,14 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.ENUM('cliente', 'vendedor', 'administrador'),
       allowNull: false,
       defaultValue: 'cliente'
-    }
+    },
+    empresa: {
+      type: Sequelize.TEXT,
+      allowNull: true
+    },
+    dirrecciones: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
   })
 }
