@@ -99,7 +99,7 @@
         pa-3
         white--text
       >
-        <div class="titlefont-weight-thin">Conéctate con nosotros en las redes sociales!</div>
+        <div class="titlefont-weight-thin">¡Conéctate con nosotros en las redes sociales!</div>
       </v-layout>
         <v-spacer></v-spacer>
 
