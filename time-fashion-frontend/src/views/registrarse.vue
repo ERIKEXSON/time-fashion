@@ -2,12 +2,12 @@
   <v-layout justify-center>
     <div style="width:417.66px; text-align:center">
       <v-toolbar-title >Crea cuenta nueva</v-toolbar-title>
-      <v-card ref="form">
+      <v-card>
         <v-card-text>
           <v-text-field
             ref="nombre"
             v-model="nombre"
-            :rules="[() => !!nombre || 'This field is required']"
+            :rules="[() => !!nombre || 'Este campo es requerido']"
             :error-messages="errorMessages"
             label="Nombre"
             required
@@ -15,47 +15,49 @@
           <v-text-field
             ref="apellido"
             v-model="apellido"
-            :rules="[() => !!apellido || 'This field is required']"
+            :rules="[() => !!apellido || 'Este campo es requerido']"
             label="Apellido"
             required
           ></v-text-field>
           <v-text-field
             ref="cedula"
             v-model="cedula"
-            :rules="[() => !!cedula || 'This field is required', addressCheck]"
+            :rules="[() => !!cedula || 'Este campo es requerido']"
             label="Cedula"
             required
           ></v-text-field>
           <v-text-field
             ref="nacionalidad"
             v-model="nacionalidad"
-            :rules="[() => !!nacionalidad || 'This field is required']"
+            :rules="[() => !!nacionalidad || 'Este campo es requerido']"
             label="nacionalidad"
             required
           ></v-text-field>
           <v-text-field
             ref="telefono"
             v-model="telefono"
-            :rules="[() => !!telefono || 'This field is required']"
+            :rules="[() => !!telefono || 'Este campo es requerido']"
             label="Telefono"
             required
           ></v-text-field>
           <v-text-field
             ref="email"
             v-model="email"
-            :rules="[() => !!email || 'This field is required']"
+            :rules="[() => !!email || 'Este campo es requerido', rules.required, rules.email]"
             label="Dirección Email"
             required
           ></v-text-field>
           <v-text-field
             ref="contraseña"
             v-model="contrasena"
-            :rules="[() => !!contrasena || 'This field is required']"
+            :rules="[() => !!contrasena || 'Este campo es requerido']"
             label="Contraseña"
             required
+            :append-icon="show1 ? 'visibility' : 'visibility_off'"
+            :type="show1 ? 'text' : 'password'"
+            @click:append="show1 = !show1"
           ></v-text-field>
         </v-card-text>
-        <v-divider class="mt-5"></v-divider>
         <v-card-actions>
           <v-btn flat to="/">Cancelar</v-btn>
           <v-spacer></v-spacer>
@@ -77,7 +79,30 @@
               <span>Refresh form</span>
             </v-tooltip>
           </v-slide-x-reverse-transition>
-          <v-btn color="primary" flat @click="register">Registrarse</v-btn>
+          <v-layout row justify-center>
+            <v-dialog v-model="dialog" persistent max-width="300">
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  style="margin-left: 150px"
+                  color="primary"
+                  v-on="on"
+                  :disabled="!formIsValid"
+                  @click="register">Registrarse</v-btn>
+              </template>
+              <v-card>
+                <v-card-text class="text-xs-center">
+                  <img src="@/assets/favicon.png" width="100px" alt=""><v-spacer></v-spacer>
+                  Tu cuenta a sido creada exitosamente<v-spacer></v-spacer>
+                  Entra y conoce nuestros productos
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green darken-1" flat @click="dialog = false" to="/">Aceptar</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-layout>
         </v-card-actions>
       </v-card>
     </div>
@@ -94,7 +119,31 @@ export default {
       nacionalidad: '',
       telefono: '',
       contrasena: '',
-      email: ''
+      email: '',
+      show1: false,
+      dialog: false,
+      email: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        counter: value => value.length <= 20 || 'Max 20 characters',
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'E-mail incorrecto.'
+        }
+      }
+    }
+  },
+  computed: {
+    formIsValid () {
+      return (
+        this.nombre &&
+        this.apellido &&
+        this.cedula &&
+        this.nacionalidad &&
+        this.telefono &&
+        this.contrasena &&
+        this.email
+      )
     }
   },
   methods: {
