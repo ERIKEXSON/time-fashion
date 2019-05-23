@@ -32,40 +32,15 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex xs12 sm4>
-                      <v-menu
-                        ref="menu"
-                        v-model="menu"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        lazy
-                        transition="scale-transition"
-                        offset-y
-                        full-width
-                        min-width="290px"
-                      >
-                        <template v-slot:activator="{ on }">
-                          <v-text-field
-                            v-model="date"
-                            prepend-icon="event"
-                            readonly
-                            v-on="on"
-                            label="Fecha de nacimiento"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          ref="picker"
-                          v-model="date"
-                          :max="new Date().toISOString().substr(0, 10)"
-                          min="1930-01-01"
-                          @change="save"
-                        ></v-date-picker>
-                      </v-menu>
+                    <v-flex xs12 sm6>
+                      <v-text-field
+                        v-model="form.correo"
+                        label="Correo electrónico"
+                        :rules="rules.correo"
+                        required
+                      ></v-text-field>
                     </v-flex>
-                    <v-flex xs12 sm4>
-                      <v-select v-model="form.genero" :items="generos" label="Género"></v-select>
-                    </v-flex>
-                    <v-flex xs12 sm4>
+                    <v-flex xs12 sm6>
                       <v-text-field
                         v-model="form.telefono"
                         :rules="rules.required"
@@ -105,6 +80,7 @@
                     flat
                     color="black"
                     type="submit"
+                    @click="update"
                   >Actualizar</v-btn>
                 </div>
               </v-card-actions>
@@ -153,6 +129,30 @@
               </v-card-actions>
             </v-card>
           </nav>
+          <nav class="borde">
+                <div class="tituloCuadro"><h2>Mis direcciones</h2></div>
+            <v-card>
+              <v-data-table
+                :headers="headers"
+                :items="desserts"
+                hide-actions
+              >
+                <template v-slot:items="props">
+                  <td class="text-xs-left">{{ props.item.departamento }}</td>
+                  <td class="text-xs-left">{{ props.item.ciudad }}</td>
+                  <td class="text-xs-left">{{ props.item.direccion }}</td>
+                  <td class="text-xs-left">
+                    <v-btn fab dark small color="warning">
+                      <v-icon dark color="white">edit</v-icon>
+                    </v-btn>
+                    <v-btn fab dark small color="error">
+                      <v-icon dark color="white">delete</v-icon>
+                    </v-btn>
+                  </td>
+                </template>
+              </v-data-table>
+            </v-card>
+          </nav>
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn class="botonCerrar" flat @click="agregarDireccion = false">Cerrar</v-btn>
@@ -163,14 +163,13 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
   data () {
     const defaultForm = Object.freeze({
       nombres: '',
       apellidos: '',
-      genero: '',
       correo: '',
-      direccion: '',
       telefono: '',
       documento: '',
       nacionalidad: ''
@@ -181,7 +180,6 @@ export default {
       direccion: '',
       agregarDireccion: false,
       menu: '',
-      date: '',
       snackbar: false,
       doc: '#################',
       phone: 'phone',
@@ -193,13 +191,20 @@ export default {
         ],
         required: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
-      generos: ['Masculino', 'Femenino'],
-      show1: false
-    }
-  },
-  watch: {
-    menu (val) {
-      val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+      show1: false,
+      headers: [
+        { text: 'Departamento', value: 'departamento', sortable: false },
+        { text: 'Ciudad', value: 'ciudad', sortable: false },
+        { text: 'Dirección', value: 'direccion', sortable: false },
+        { text: 'Opciones', sortable: false }
+      ],
+      desserts: [
+        {
+          departamento: '13asdasd4642756125',
+          ciudad: '31asd5',
+          direccion: '13asdasdas4'
+        }
+      ]
     }
   },
   computed: {
@@ -216,7 +221,8 @@ export default {
         this.form.apellidos &&
         this.form.correo &&
         this.form.telefono &&
-        this.form.documento
+        this.form.documento &&
+        this.form.nacionalidad
       )
     }
   },
@@ -230,8 +236,17 @@ export default {
       this.snackbar = true
       this.resetForm()
     },
-    save (date) {
-      this.$refs.menu.save(date)
+    async update () {
+      const res = await api.put('/user/9680b1e5-0474-4105-8e7e-8bdb17a2316c', {
+        userUpdate: {
+          nombre: this.form.nombres,
+          apellido: this.form.apellidos,
+          cedula: this.form.documento,
+          telefono: this.form.telefono,
+          email: this.form.correo,
+          nacionalidad: this.form.nacionalidad
+        }
+      })
     }
   },
   created () {
