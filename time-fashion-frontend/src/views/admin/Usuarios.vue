@@ -9,7 +9,7 @@
         </v-snackbar>
       </div>
       <v-card>
-        <v-form ref="form" @submit.prevent="submit">
+        <v-form ref="form">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
@@ -33,7 +33,12 @@
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required></v-text-field>
+                <v-text-field
+                  v-model="form.correo"
+                  :rules="rules.correo"
+                  label="Correo"
+                  required
+                ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
@@ -57,7 +62,7 @@
                   v-model="form.tel"
                   :rules="rules.required"
                   label="Teléfono"
-                  :mask="doc"
+                  :mask="tel"
                   required
                 ></v-text-field>
               </v-flex>
@@ -78,7 +83,7 @@
               :disabled="!formIsValid"
               flat
               color="black"
-              type="submit"
+              @click="register"
             >Registrar</v-btn>
           </v-card-actions>
         </v-form>
@@ -162,10 +167,13 @@ export default {
       correo: '',
       rol: '',
       direccion: '',
+      nacionalidad: 'colombia',
       tel: '',
-      empresa: ''
+      empresa: '',
+      pass: 'asdasdasd'
     })
     return {
+      tel: 'phone',
       doc: '#################',
       e1: 0,
       contacto: false,
@@ -186,6 +194,7 @@ export default {
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
         { text: 'Cédula', value: 'documento' },
+        { text: 'Nacionalidad', value: 'nacionalidad' },
         { text: 'Empresa', value: 'empresa' },
         { text: 'Rol', value: 'rol' },
         { text: '', sortable: false }
@@ -196,6 +205,7 @@ export default {
           apellido: 'Mamerto',
           documento: '123123123',
           correo: 'asdasda@hola.com',
+          nacionalidad: 'colombia',
           direccion: 'asdasdasd123123',
           telefono: '123123123',
           empresa: 'adidas',
@@ -217,6 +227,7 @@ export default {
         this.form.documento &&
         this.form.correo &&
         this.form.rol &&
+        this.form.nacionalidad &&
         this.form.direccion &&
         this.form.tel &&
         this.form.empresa
@@ -228,22 +239,26 @@ export default {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
     },
-    submit () {
+    async register () {
+      console.log(this.lowerCase(this.form.nombre))
+      const res = await api.post('/user', {
+        userNew: {
+          nombre: this.lowerCase(this.form.nombre),
+          apellido: this.lowerCase(this.form.apellido),
+          cedula: this.lowerCase(this.form.documento),
+          telefono: this.lowerCase(this.form.tel),
+          email: this.lowerCase(this.form.correo),
+          rol: this.lowerCase(this.form.rol),
+          empresa: this.lowerCase(this.form.empresa),
+          nacionalidad: this.lowerCase(this.form.nacionalidad),
+          contraseña: this.form.password
+        }
+      })
       this.snackbar = true
       this.resetForm()
     },
-    async register () {
-      const res = await api.post('/user', {
-        userNew: {
-          nombre: this.nombre,
-          apellido: this.apellido,
-          cedula: this.documento,
-          telefono: this.tel,
-          email: this.correo,
-          rol: this.rol,
-          empresa: this.empresa
-        }
-      })
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {
@@ -304,8 +319,5 @@ export default {
 }
 .botonSeguirPedido:hover {
   background-color: rgb(145, 45, 45);
-}
-.v-text-field input {
-  text-transform: uppercase;
 }
 </style>
