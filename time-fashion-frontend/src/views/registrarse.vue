@@ -24,6 +24,7 @@
             v-model="cedula"
             :rules="[() => !!cedula || 'Este campo es requerido']"
             label="Cedula"
+            :mask="ced"
             required
           ></v-text-field>
           <v-text-field
@@ -38,12 +39,13 @@
             v-model="telefono"
             :rules="[() => !!telefono || 'Este campo es requerido']"
             label="Telefono"
+            :mask="tel"
             required
           ></v-text-field>
           <v-text-field
             ref="email"
             v-model="email"
-            :rules="[() => !!email || 'Este campo es requerido', rules.required, rules.email]"
+            :rules="[() => !!email, rules.required, rules.email || 'Este campo es requerido']"
             label="Dirección Email"
             required
           ></v-text-field>
@@ -109,6 +111,7 @@
   </v-layout>
 </template>
 <script>
+import Swal from 'sweetalert2'
 import api from '@/plugins/api'
 export default {
   data () {
@@ -120,11 +123,13 @@ export default {
       telefono: '',
       contrasena: '',
       email: '',
+      ced: '##########',
+      tel: '##########',
       show1: false,
       dialog: false,
       email: '',
       rules: {
-        required: value => !!value || 'Required.',
+        required: value => !!value || 'Este campo es requerido.',
         counter: value => value.length <= 20 || 'Max 20 characters',
         email: value => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -133,6 +138,7 @@ export default {
       }
     }
   },
+  
   computed: {
     formIsValid () {
       return (
