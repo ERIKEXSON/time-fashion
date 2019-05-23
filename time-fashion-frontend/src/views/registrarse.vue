@@ -1,65 +1,61 @@
 <template>
   <v-layout justify-center>
-        <div style="width:417.66px; text-align:center">
-            <v-toolbar-title >Crea cuenta nueva</v-toolbar-title>
-            <v-flex>
+    <div style="width:417.66px; text-align:center">
+      <v-toolbar-title >Crea cuenta nueva</v-toolbar-title>
       <v-card ref="form">
         <v-card-text>
           <v-text-field
-            ref="name"
+            ref="nombre"
             v-model="nombre"
-            :rules="[() => !!name || 'This field is required']"
+            :rules="[() => !!nombre || 'This field is required']"
             :error-messages="errorMessages"
             label="Nombre"
             required
           ></v-text-field>
           <v-text-field
-            ref="address"
+            ref="apellido"
             v-model="apellido"
-            :rules="[
-              () => !!address || 'This field is required',
-              () => !!address && address.length <= 25 || 'Address must be less than 25 characters',
-              addressCheck
-            ]"
+            :rules="[() => !!apellido || 'This field is required']"
             label="Apellido"
             required
           ></v-text-field>
           <v-text-field
-            ref="city"
+            ref="cedula"
             v-model="cedula"
-            :rules="[() => !!city || 'This field is required', addressCheck]"
+            :rules="[() => !!cedula || 'This field is required', addressCheck]"
             label="Cedula"
             required
           ></v-text-field>
           <v-text-field
-            ref="country"
+            ref="nacionalidad"
             v-model="nacionalidad"
-            :rules="[() => !!country || 'This field is required']"
+            :rules="[() => !!nacionalidad || 'This field is required']"
             label="nacionalidad"
             required
           ></v-text-field>
           <v-text-field
-            ref="zip"
+            ref="telefono"
             v-model="telefono"
-            :rules="[() => !!zip || 'This field is required']"
+            :rules="[() => !!telefono || 'This field is required']"
             label="Telefono"
             required
           ></v-text-field>
           <v-text-field
-            ref="state"
+            ref="email"
             v-model="email"
-            :rules="[() => !!state || 'This field is required']"
+            :rules="[() => !!email || 'This field is required']"
             label="Dirección Email"
             required
           ></v-text-field>
           <v-text-field
-            ref="password"
+            ref="contraseña"
             v-model="contrasena"
-            :rules="[() => !!password || 'This field is required']"
+            :rules="[() => !!contrasena || 'This field is required']"
             label="Contraseña"
             required
           ></v-text-field>
         </v-card-text>
+        <v-divider class="mt-5"></v-divider>
         <v-card-actions>
           <v-btn flat to="/">Cancelar</v-btn>
           <v-spacer></v-spacer>
@@ -84,10 +80,8 @@
           <v-btn color="primary" flat @click="register">Registrarse</v-btn>
         </v-card-actions>
       </v-card>
-    </v-flex>
     </div>
-
-    </v-layout>
+  </v-layout>
 </template>
 <script>
 import api from '@/plugins/api'
