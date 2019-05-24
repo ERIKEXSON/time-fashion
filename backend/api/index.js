@@ -35,7 +35,6 @@ module.exports = {
       offer_detail:'/offer_detail',
       company:'/company',
       products:'/products',
-
     })
   },
   user,

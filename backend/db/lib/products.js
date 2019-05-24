@@ -1,7 +1,7 @@
 'use strict'
 
 function setupProducts(productsModel) {
-  async function createProducts(productsModel){
+  async function createProducts(products){
     const result  = await productsModel.create(products)
     return result.toJSON()
   }
