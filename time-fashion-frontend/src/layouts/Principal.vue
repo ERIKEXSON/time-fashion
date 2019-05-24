@@ -31,7 +31,7 @@
       app
       fixed
     >
-    <v-toolbar-title style="width: 100px" class="ml-0 pl-3">
+    <v-toolbar-title style="width: 100px" class="ml-0 pl-1">
         <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       </v-toolbar-title>
 

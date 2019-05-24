@@ -14,7 +14,7 @@ const inventories = require('./inventories')
 const line = require('./line')
 const offer_detail = require('./offer_datail')
 const company= require ('./company')
-
+const products= require ('./products')
 
 const log = getLogger(__dirname, __filename)
 // prueba
@@ -33,8 +33,8 @@ module.exports = {
       inventories:'/inventories',
       line:'/line',
       offer_detail:'/offer_detail',
-      company:'/company'
-
+      company:'/company',
+      products:'/products',
     })
   },
   user,
@@ -50,6 +50,7 @@ module.exports = {
   line,
   offer_detail,
   company,
+  products,
 
   errorHandler (err, req, res, next) {
     if (err) {

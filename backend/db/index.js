@@ -16,6 +16,7 @@ const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
 const setupCompany = require('./lib/company')
+const setupProducts = require('./lib/products')
 
 //modelos
 const setupDatabase = require('./lib/db')
@@ -37,6 +38,7 @@ const setupCountryModel = require('./models/country.model')
 const setupDepartmentModel = require('./models/department.model')
 const setupCityModel = require('./models/city.model')
 const setupCompanyModel= require('./models/company.model')
+
 
 
 
@@ -160,6 +162,7 @@ module.exports = async function () {
   const Line = setupLine(LineModel)
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
   const Company = setupCompany(CompanyModel)
+  const Products = setupProducts(ProductsModel)
   return {
     async setup() {
       await sequelize.sync({ force: true })
@@ -177,5 +180,6 @@ module.exports = async function () {
     Line,
     Offerdetail,
     Company,
+    Products,
   }
 }
