@@ -16,7 +16,7 @@
         </v-snackbar>
       </div>
       <v-card>
-        <v-form ref="form" @submit.prevent="submit">
+        <v-form ref="form">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
@@ -61,7 +61,7 @@
               class="botonRegistrar"
               flat
               color="black"
-              type="submit"
+              @click="register"
             >Registrar</v-btn>
           </v-card-actions>
         </v-form>
@@ -137,6 +137,7 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -205,9 +206,20 @@ export default {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
     },
-    submit () {
+    async register () {
+      const res = await api.post('/company', {
+        companyNew: {
+          nombre: this.lowerCase(this.form.nombre),
+          nit: this.lowerCase(this.form.nit),
+          correo: this.lowerCase(this.form.correo),
+          telefono: this.lowerCase(this.form.telefono)
+        }
+      })
       this.snackbar = true
       this.resetForm()
+    },
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {

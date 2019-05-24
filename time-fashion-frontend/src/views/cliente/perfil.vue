@@ -8,7 +8,7 @@
       <div class="tituloCuadro">
         <h2>Perfil</h2>
       </div>
-      <v-form ref="form" @submit.prevent="submit">
+      <v-form ref="form">
         <v-layout row wrap>
           <v-flex xs12>
             <v-card>
@@ -123,7 +123,7 @@
                   :disabled="!datosValidos"
                   flat
                   color="black"
-                  @click="agregarDir"
+                  @click="actualizarDireccion"
                   v-text="'Agregar dirección'"
                 ></v-btn>
               </v-card-actions>
@@ -133,14 +133,12 @@
                 <div class="tituloCuadro"><h2>Mis direcciones</h2></div>
             <v-card>
               <v-data-table
-                :headers="headers"
                 :items="desserts"
                 hide-actions
+                hide-headers
               >
                 <template v-slot:items="props">
-                  <td class="text-xs-left">{{ props.item.departamento }}</td>
-                  <td class="text-xs-left">{{ props.item.ciudad }}</td>
-                  <td class="text-xs-left">{{ props.item.direccion }}</td>
+                  <td class="text-xs-left" v-text="this.union"></td>
                   <td class="text-xs-left">
                     <v-btn fab dark small color="warning">
                       <v-icon dark color="white">edit</v-icon>
@@ -227,17 +225,13 @@ export default {
     }
   },
   methods: {
-    agregarDir () {
-      this.departamento = ''
-      this.ciudad = ''
-      this.direccion = ''
-    },
-    submit () {
-      this.snackbar = true
-      this.resetForm()
-    },
+    // resetForm () {
+    //   direccion = (this.departamento, this.ciudad, this.direccion)
+    //   return direccion.reset()
+    // },
     async update () {
-      const res = await api.put('/user/9680b1e5-0474-4105-8e7e-8bdb17a2316c', {
+      
+      const res = await api.put(`/user/${JSON.parse(localStorage.getItem('userLogin')).uuid}`, {
         userUpdate: {
           nombre: this.form.nombres,
           apellido: this.form.apellidos,
@@ -247,6 +241,19 @@ export default {
           nacionalidad: this.form.nacionalidad
         }
       })
+      this.snackbar = true
+    },
+    async actualizarDireccion () {
+      const union = (this.departamento+'-'+this.ciudad+'-'+this.direccion)
+      console.log(union)
+      const res = await api.put('/user/045d0f7d-ad63-4b51-9084-1d2db33346fc', {
+        userUpdate: {
+          direccion: this.lowerCase(this.direccion)
+        }
+      })
+    },
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {
