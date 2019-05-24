@@ -11,7 +11,7 @@
           color='words'
           v-for="(admin, index) in admins"
           :key="index"
-          :to="admin.to"
+          @click="click(admin.to)"
         >
           <v-list-tile-action v-if="admin.icon">
             <v-icon v-text="admin.icon"></v-icon>
@@ -76,6 +76,16 @@ export default {
   ),
   props: {
     source: String
+  },
+  methods: {
+    click (to) {
+      if (to === '/') {
+        localStorage.removeItem('userLogin')
+        this.$router.push(to)
+        return
+      }
+      this.$router.push(to)
+    }
   }
 }
 </script>

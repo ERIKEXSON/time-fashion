@@ -138,7 +138,7 @@
                 hide-headers
               >
                 <template v-slot:items="props">
-                  <td class="text-xs-left" v-text="this.union"></td>
+                  <td class="text-xs-left">{{ props.item.direccion }}</td>
                   <td class="text-xs-left">
                     <v-btn fab dark small color="warning">
                       <v-icon dark color="white">edit</v-icon>
@@ -230,27 +230,26 @@ export default {
     //   return direccion.reset()
     // },
     async update () {
-      
       const res = await api.put(`/user/${JSON.parse(localStorage.getItem('userLogin')).uuid}`, {
         userUpdate: {
-          nombre: this.form.nombres,
-          apellido: this.form.apellidos,
-          cedula: this.form.documento,
-          telefono: this.form.telefono,
-          email: this.form.correo,
-          nacionalidad: this.form.nacionalidad
+          nombre: this.lowerCase(this.form.nombres),
+          apellido: this.lowerCase(this.form.apellidos),
+          cedula: this.lowerCase(this.form.documento),
+          telefono: this.lowerCase(this.form.telefono),
+          email: this.lowerCase(this.form.correo),
+          nacionalidad: this.lowerCase(this.form.nacionalidad)
         }
       })
       this.snackbar = true
     },
     async actualizarDireccion () {
-      const union = (this.departamento+'-'+this.ciudad+'-'+this.direccion)
-      console.log(union)
-      const res = await api.put('/user/045d0f7d-ad63-4b51-9084-1d2db33346fc', {
+      const union = (this.departamento + '-' + this.ciudad + '-' + this.direccion)
+      const res = await api.put(`/user/${JSON.parse(localStorage.getItem('userLogin')).uuid}`, {
         userUpdate: {
-          direccion: this.lowerCase(this.direccion)
+          dirrecciones: this.lowerCase(union)
         }
       })
+      console.log(res)
     },
     lowerCase (val) {
       return val.toLowerCase()
