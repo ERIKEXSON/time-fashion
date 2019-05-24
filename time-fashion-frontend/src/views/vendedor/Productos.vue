@@ -13,39 +13,28 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.nombre"
-                  :rules="rules.requerido"
-                  label="Nombre del producto"
-                  required
+                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre del producto" required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.codigo"
-                  :rules="rules.requerido"
-                  label="Codigo"
-                  required
+                <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required>
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 sm4>
+                <v-text-field v-model="form.precio" :rules="rules.requerido" label="Precio" required :mask="numeros"
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field
-                  v-model="form.presio"
-                  :rules="rules.requerido"
-                  label="Presio"
-                  required
-                  :mask="numeros"
-                ></v-text-field>
+                <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required>
+                </v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
-                <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required></v-text-field>
+                <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required>
+                </v-text-field>
               </v-flex>
-              <v-flex xs12 sm4>
-                <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
-                <v-text-field
-                  label="Seleccione una imagen"
+              <v-flex xs12 sm12>
+                  <v-text-field
+                  label="Selecciona una imagen"
                   @click="pickFile"
                   v-model="imageName"
                   prepend-icon="attach_file"
@@ -63,7 +52,7 @@
           </v-container>
           <v-card-actions>
             <v-btn flat @click="resetForm" class="bt">Cancelar</v-btn>
-            <v-btn :disabled="!formIsValid" flat type="submit" class="bt">Agregar</v-btn>
+            <v-btn :disabled="!formIsValid" flat type="submit" class="bt" @click="add">Agregar</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -87,7 +76,7 @@
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.codigo }}</td>
-            <td class="text-xs-left">{{ props.item.presio }}</td>
+            <td class="text-xs-left">{{ props.item.precio }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
             <td class="text-xs-left">{{ props.item.linea }}</td>
             <td class="text-xs-left">
@@ -130,19 +119,20 @@
 </template>
 <script>
 import buso from '@/assets/ico.png'
+import api from '@/plugins/api'
 export default {
   data () {
     const defaultForm = Object.freeze({
-      nombre: '',
-      codigo: '',
-      presio: '',
-      marca: '',
-      linea: ''
+      nombre: 'sdasdas',
+      codigo: 'sdf,n',
+      precio: '35468',
+      marca: 'msdjf',
+      linea: 'msdbf'
     })
     return {
       imageUrl: buso,
       imageName: '',
-      numeros: '$###.###.##',
+      numeros: '###.#####',
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
@@ -155,18 +145,18 @@ export default {
       headers: [
         { text: 'Nombre', value: 'nombre' },
         { text: 'Codigo', value: 'codigo' },
-        { text: 'Presio', value: 'presio' },
+        { text: 'Precio', value: 'precio' },
         { text: 'Marca', value: 'marca' },
         { text: 'Linea', value: 'linea' },
         { text: 'Acciones', sortable: false }
       ],
       desserts: [
         {
-          nombre: 'camisa',
-          codigo: '654tgtg',
-          presio: '6454654',
-          marca: 'roballo',
-          linea: 'zapatos'
+          nombre: '',
+          codigo: '',
+          presio: '',
+          marca: '',
+          linea: ''
         }
       ]
     }
@@ -176,7 +166,7 @@ export default {
       return (
         this.form.nombre &&
         this.form.codigo &&
-        this.form.presio &&
+        this.form.precio &&
         this.form.marca &&
         this.form.linea
       )
@@ -197,7 +187,11 @@ export default {
     onFilePicked (e) {
       const files = e.target.files
       if (files[0] !== undefined) {
-        this.imageName = files[0].name
+        if (files.length === 1) {
+          this.imageName = files[0].name
+        } else {
+          this.imageName = `${files.length}`
+        }
         if (this.imageName.lastIndexOf('.') <= 0) {
           return
         }
@@ -212,6 +206,17 @@ export default {
         this.imageFile = ''
         this.imageUrl = ''
       }
+    },
+    async add () {
+      const res = await api.post('/products', {
+        productsNew: {
+          nombre: this.lowerCase(this.form.nombre),
+          codigo: this.lowerCase(this.form.codigo),
+          precio: this.lowerCase(this.form.precio)
+        }
+      })    },
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {

@@ -9,7 +9,7 @@
         </v-snackbar>
       </div>
       <v-card flat>
-        <v-form ref="form" @submit.prevent="submit">
+        <v-form ref="form">
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
@@ -33,6 +33,14 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
+                  v-model="form.nacionalidad"
+                  :rules="rules.requerido"
+                  label="nacionalidad"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field
                   v-model="form.telefono"
                   :rules="rules.requerido"
                   label="Teléfono"
@@ -44,19 +52,11 @@
                 <v-text-field
                   v-model="form.documento"
                   :rules="rules.requerido"
-                  label="Documento de Identidad"
+                  label="Cedula de ciudadania"
                   required
                   :mask="docu"
+                  counter
                 ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-select
-                  v-model="form.tipodocumento"
-                  :items="tipos"
-                  :rules="rules.requerido"
-                  label="Tipo de documento"
-                  required
-                ></v-select>
               </v-flex>
             </v-layout>
           </v-container>
@@ -66,8 +66,8 @@
               :disabled="!formIsValid"
               flat
               color
-              type="submit"
               class="cdbt"
+              @click="agregar"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
@@ -93,9 +93,17 @@
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.correo }}</td>
+            <td class="text-xs-left">{{ props.item.nacionalidad }}</td>
             <td class="text-xs-left">{{ props.item.telefono }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
-            <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
+            <td class="text-xs-left">
+              <v-btn fab small color="error">
+                <v-icon color="black">delete</v-icon>
+              </v-btn>
+              <v-btn fab small color="warning">
+                <v-icon color="black">edit</v-icon>
+              </v-btn>
+            </td>
           </template>
         </v-data-table>
       </v-card>
@@ -103,15 +111,18 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
   data () {
     const defaultForm = Object.freeze({
       nombre: '',
       apellido: '',
       correo: '',
+      nacionalidad: '',
       telefono: '',
       documento: '',
-      tipodoc: ''
+      contrasena: '12345',
+      rol: 'vendedor'
     })
     return {
       numeros: '###-###-####',
@@ -134,19 +145,19 @@ export default {
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
         { text: 'Correo', value: 'correo' },
+        { text: 'Nacionalidad', value: 'nacionalidad' },
         { text: 'Telefono', value: 'telefono' },
         { text: 'Documento', value: 'documento' },
-        { text: 'Tipodocumento', value: 'tipodocumento' },
-        { text: '', sortable: false }
+        { text: 'Acciones', sortable: false }
       ],
       desserts: [
         {
-          nombre: 'simon',
-          apellido: 'tolomeo',
-          correo: 'elmontador@simon.co',
-          telefono: '8622t347627364',
-          documento: '9872920',
-          tipodocumento: ''
+          nombre: '',
+          apellido: '',
+          correo: '',
+          nacionalidad: '',
+          telefono: '',
+          documento: ''
         }
       ]
     }
@@ -157,9 +168,9 @@ export default {
         this.form.nombre &&
         this.form.apellido &&
         this.form.correo &&
+        this.form.nacionalidad &&
         this.form.telefono &&
-        this.form.documento &&
-        this.form.tipodocumento
+        this.form.documento
       )
     }
   },
@@ -168,9 +179,38 @@ export default {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
     },
-    submit () {
+    async agregar () {
+      const res = await api.post('/user', {
+        userNew: {
+          nombre: this.lowerCase(this.form.nombre),
+          apellido: this.lowerCase(this.form.apellido),
+          email: this.lowerCase(this.form.correo),
+          nacionalidad: this.lowerCase(this.form.nacionalidad),
+          telefono: this.lowerCase(this.form.telefono),
+          cedula: this.lowerCase(this.form.documento),
+          contraseña: this.form.contrasena,
+          rol: this.lowerCase(this.form.rol)
+        }
+      })
       this.snackbar = true
       this.resetForm()
+    },
+    // async update () {
+    //   const res = await api.put('/user/f99a7b43-705c-4b0e-8489-338ffb202f7f', {
+    //     userUpdate: {
+    //       nombre: this.form.nombre,
+    //       apellido: this.form.apellidos,
+    //       telefono: this.form.telefono,
+    //       email: this.form.correo,
+    //       nacionalidad: this.form.nacionalidad,
+    //       cedula: this.form.documento,
+    //       contraseña: this.form.contrasena
+    //     }
+    //   })
+    //   this.snackbar = true
+    // },
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {

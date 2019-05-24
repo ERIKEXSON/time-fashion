@@ -32,7 +32,7 @@
                 <v-text-field v-model="form.color" :rules="rules.requerido" label="Color" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.posicion" :rules="rules.requerido" label="Posicion" required
+                <v-text-field v-model="form.posicion" :rules="rules.requerido" label="Proveedor" required
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -175,7 +175,7 @@ export default {
         { text: 'Color', value: 'color' },
         { text: 'Tallas', value: 'tallas' },
         { text: 'Cantidad', value: 'cantidad' },
-        { text: 'Posición', value: 'posicion' },
+        { text: 'Proveedor', value: 'posicion' },
         { text: 'Precio', value: 'Precio' },
         { text: 'Opciones', sortable: false }
       ],
@@ -221,7 +221,6 @@ export default {
 </script>
 <style>
 .cdc2{
-  width: 1045px;
   text-align: center;
   border:  #000000 3px solid;
   margin-bottom: 30px
