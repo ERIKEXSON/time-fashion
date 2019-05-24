@@ -381,8 +381,9 @@ Actualizado el 11/12/2017
         <v-btn flat to="/">Cancelar</v-btn>
       </v-stepper-content>
 
-      <v-stepper-content step="3">
-        pedido en proceso
+      <v-stepper-content step="3" class="text-xs-center">
+        <img src="@/assets/favicon.png"  width="100px" alt="">
+        <div class="headline">Tu pedido esta en proceso</div>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>

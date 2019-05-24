@@ -32,7 +32,11 @@
             </v-card-text>
             <v-card-actions>
               <div style="width: 417.66px; text-align:center">
-                <v-btn style="background-color:black; color:white" @click="singin">Ingresar</v-btn>
+                <v-btn
+                :disabled="!formIsValid"
+                style="background-color:black; color:white"
+                @click="singin"
+                >Ingresar</v-btn>
               </div>
             </v-card-actions>
           </v-card>
@@ -73,6 +77,14 @@ export default {
       if (res.user.rol === 'administrador') {
         this.$router.push('admin')
       }
+    }
+  },
+  computed: {
+    formIsValid () {
+      return (
+        this.email &&
+        this.contrasena
+      )
     }
   },
   created () {
