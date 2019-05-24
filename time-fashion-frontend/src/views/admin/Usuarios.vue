@@ -13,13 +13,18 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.required" label="Nombre" required></v-text-field>
+                <v-text-field
+                  v-model="form.nombre"
+                  :rules="rules.required"
+                  label="Nombres"
+                  required
+                ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
                   v-model="form.apellido"
                   :rules="rules.required"
-                  label="Apellido"
+                  label="Apellidos"
                   required
                 ></v-text-field>
               </v-flex>
@@ -40,7 +45,7 @@
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm4>
                 <v-select
                   v-model="form.rol"
                   :items="rol"
@@ -49,11 +54,19 @@
                   required
                 ></v-select>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm4>
                 <v-text-field
                   v-model="form.direccion"
                   :rules="rules.required"
                   label="Dirección"
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex>
+                <v-text-field
+                  v-model="form.nacionalidad"
+                  :rules="rules.required"
+                  label="Nacionalidad"
                   required
                 ></v-text-field>
               </v-flex>
@@ -167,10 +180,10 @@ export default {
       correo: '',
       rol: '',
       direccion: '',
-      nacionalidad: 'colombia',
+      nacionalidad: '',
       tel: '',
       empresa: '',
-      pass: 'asdasdasd'
+      password: '12345'
     })
     return {
       tel: 'phone',
@@ -240,7 +253,6 @@ export default {
       this.$refs.form.reset()
     },
     async register () {
-      console.log(this.lowerCase(this.form.nombre))
       const res = await api.post('/user', {
         userNew: {
           nombre: this.lowerCase(this.form.nombre),
