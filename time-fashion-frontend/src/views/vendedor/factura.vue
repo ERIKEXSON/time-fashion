@@ -110,18 +110,18 @@ export default {
 <style>
 .cabe {
   display: inline-block;
-  margin: 2px 80px 5px 5px;
+  margin: 2px 5px 5px 5px;
   text-align: left;
   border-radius: 5px;
 }
 .cabe1 {
   display: inline-block;
-  margin: 2px 25px 5px 10px;
-  text-align: left;
+  margin: 2px 5px 5px 10px;
+  text-align: left
 }
 .ima {
-  width: 300px;
-  height: 120px;
+  width: 310px;
+  height: 150px;
   display: inline-block;
   margin: 2px 35px 5px 5px;
 }
