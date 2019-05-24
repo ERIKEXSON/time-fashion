@@ -1,16 +1,16 @@
 <template>
   <app>
     <v-flex style="margin-left: 250px; margin-bottom: -290px">
-      <div class="title">Jeans Azul Rotos</div>
-      <div class="caption">Item: *****</div>
+      <div class="title" style="margin-left: 200px" >Jeans Azul Rotos</div>
+      <div class="caption" style="margin-left: 200px">Item: *****</div>
       <v-card-actions></v-card-actions>
-      <div class="title">$84.000</div>
+      <div class="title" style="margin-left: 200px">$84.000</div>
       <v-card-actions></v-card-actions>
       <v-card-actions></v-card-actions>
       <v-card-actions></v-card-actions>
-      <div class="body-2" style="display: inline-block">Talla</div>
-      <div class="body-2" style="display: inline-block; margin-left: 190px">Talla</div>
-      <v-container style="margin-left: -25px; width: 250px; margin-top: -20px" >
+      <div class="body-2" style="margin-left: 200px; display: inline-block">Talla</div>
+      <div class="body-2" style="display: inline-block; margin-left: 200px">Cantidad</div>
+      <v-container style="margin-left: 175px; width: 250px; margin-top: -20px" >
         <v-layout wrap align-center>
           <v-flex >
             <v-select
@@ -22,16 +22,17 @@
         </v-layout>
       </v-container>
       <v-form>
-        <v-container style="margin-left: 200px; margin-top: -116px">
+        <v-container style="margin-left: 410px; margin-top: -116px">
           <v-flex sm2>
             <v-text-field
+              :mask="can"
               v-model="message2"
               solo
             ></v-text-field>
           </v-flex>
         </v-container>
       </v-form>
-      <v-btn color="black" style="margin-left: -2px; margin-top: -20px">
+      <v-btn color="black" style="margin-left: 200px; margin-top: -20px">
         <v-layout
           align-end
           fill-height
@@ -43,7 +44,7 @@
         </v-layout>
       </v-btn>
     </v-flex>
-    <v-container style="margin-left: -360px; width:950px">
+    <v-container style="margin-left: -120px; width:950px">
       <v-flex xs6 sm6 md>
         <v-carousel >
           <v-carousel-item
@@ -56,7 +57,7 @@
         </v-carousel>
       </v-flex>
   </v-container>
-  <v-flex xs6 sm6 md style="width: 450px; margin-left: 200px; margin-top: -175px">
+  <v-flex xs6 sm6 md style="width: 450px; margin-left: 450px; margin-top: -175px">
     <v-expansion-panel
       style="width: 450px "
     >
@@ -105,6 +106,7 @@ export default {
   data () {
     return {
       dialog: false,
+      can: '###',
       items: [
         {
           src: 'https://www.mattelsa.net/media/catalog/product/cache/1/small_image/420x500/9df78eab33525d08d6e5fb8d27136e95/3/4/34269-1.jpg'
