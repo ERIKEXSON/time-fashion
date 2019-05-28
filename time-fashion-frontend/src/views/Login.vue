@@ -68,10 +68,8 @@ export default {
           text: 'Ingresa bien los datos'
         })
       }
-      this.$store.commit('SET_LOGIN', res.user)
-      if (!localStorage.getItem('userLogin')) {
-        localStorage.setItem('userLogin', JSON.stringify(res.user))
-      }
+      console.log(res)
+      this.$store.commit('SET_USER', res.user)
       if (res.user.rol === 'cliente') {
         this.$router.push('cliente')
       }

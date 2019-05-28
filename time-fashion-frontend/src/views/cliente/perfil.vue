@@ -79,7 +79,6 @@
                     class="botonConfirmar"
                     flat
                     color="black"
-                    type="submit"
                     @click="update"
                   >Actualizar</v-btn>
                 </div>
@@ -144,6 +143,7 @@
 </template>
 <script>
 import api from '@/plugins/api'
+import {mapState} from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -176,6 +176,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user']),
     datosValidos () {
       return (
         this.departamento &&
@@ -196,7 +197,7 @@ export default {
   },
   methods: {
     async update () {
-      const res = await api.put(`/user/${JSON.parse(localStorage.getItem('userLogin')).uuid}`, {
+      const {data:res} = await api.put(`/user/${this.user.uuid}`, {
         userUpdate: {
           nombre: this.lowerCase(this.form.nombres),
           apellido: this.lowerCase(this.form.apellidos),
@@ -206,6 +207,7 @@ export default {
           nacionalidad: this.lowerCase(this.form.nacionalidad)
         }
       })
+      this.$store.commit('SET_USER', res)
       this.snackbar = true
     },
     async actualizarDireccion () {
@@ -222,6 +224,14 @@ export default {
     }
   },
   created () {
+    this.form = {
+      nombres: this.user.nombre,
+      apellidos: this.user.apellido,
+      correo: this.user.email,
+      telefono: this.user.telefono,
+      documento: this.user.cedula,
+      nacionalidad: this.user.nacionalidad
+    }
     this.$store.commit('SET_LAYOUT', 'cliente-layout')
   }
 }

@@ -80,7 +80,7 @@ export default {
   methods: {
     click (to) {
       if (to === '/') {
-        localStorage.removeItem('userLogin')
+        this.$store.commit('SET_USER', {})
         this.$router.push(to)
         return
       }
