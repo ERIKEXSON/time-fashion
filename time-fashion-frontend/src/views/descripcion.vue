@@ -44,7 +44,7 @@
         </v-layout>
       </v-btn>
     </v-flex>
-    <v-container style="margin-left: -120px; width:950px">
+    <v-container style="margin-left: -120px; width:950px; margin-top: -300px">
       <v-flex xs6 sm6 md>
         <v-carousel >
           <v-carousel-item
