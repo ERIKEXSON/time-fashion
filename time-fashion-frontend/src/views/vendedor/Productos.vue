@@ -214,7 +214,8 @@ export default {
           codigo: this.lowerCase(this.form.codigo),
           precio: this.lowerCase(this.form.precio)
         }
-      })    },
+      })
+    },
     lowerCase (val) {
       return val.toLowerCase()
     }
