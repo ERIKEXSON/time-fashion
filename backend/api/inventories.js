@@ -7,7 +7,7 @@ const db = require('@time-fashion/db')
 const log = getLogger(__dirname, __filename)
 const router = new Router()
 
-router.post('/', async function(req, res, next){
+router.post('/', async function (req, res, next) {
   try {
     const { inventoriesNew } = req.body
     const { Inventories } = await db()
@@ -28,12 +28,12 @@ router.put('/:uuid', async function (req, res, next) {
     next(err)
   }
 })
-router.delete('/:uuid', async function(req, res, next) {
+router.delete('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
     const { Inventories } = await db()
     const result = await Inventories.deleteInventories(uuid)
-    res.send(result)    
+    res.send(result)
   } catch (err) {
     next(err)
   }

@@ -1,24 +1,25 @@
 'use strict'
-//config
-const { db:config } = require('@time-fashion/config')
+// config
+const { db: config } = require('@time-fashion/config')
 
-//controladores
+// controladores
 const setupUser = require('./lib/users')
 const setupBrand = require('./lib/brand')
-const setupDetailSize= require('./lib/detail_size')
+const setupDetailSize = require('./lib/detail_size')
 const setupOffer = require('./lib/offer')
 const setupCountry = require('./lib/country')
 const setupBill = require('./lib/bill')
 const setupCity = require('./lib/city')
-const setupCancellation= require('./lib/cancellation')
+const setupCancellation = require('./lib/cancellation')
 const setupDepartment = require('./lib/department')
 const setupInventories = require('./lib/inventories')
 const setupLine = require('./lib/line')
 const setupOfferdetail = require('./lib/offer_detail')
 const setupCompany = require('./lib/company')
 const setupProducts = require('./lib/products')
+const setupPaymentMethod = require('./lib/paymentMethod')
 
-//modelos
+// modelos
 const setupDatabase = require('./lib/db')
 const setupUserModel = require('./models/user.model')
 const setupOrderModel = require('./models/order.model')
@@ -37,10 +38,7 @@ const setupDetail_sizeModel = require('./models/detail_size.model')
 const setupCountryModel = require('./models/country.model')
 const setupDepartmentModel = require('./models/department.model')
 const setupCityModel = require('./models/city.model')
-const setupCompanyModel= require('./models/company.model')
-
-
-
+const setupCompanyModel = require('./models/company.model')
 
 module.exports = async function () {
   const sequelize = setupDatabase(config)
@@ -61,7 +59,7 @@ module.exports = async function () {
   const CountryModel = setupCountryModel(config)
   const DepartmentModel = setupDepartmentModel(config)
   const CityModel = setupCityModel(config)
-  const CompanyModel= setupCompanyModel(config)
+  const CompanyModel = setupCompanyModel(config)
 
   // relacion de usuario a pedidos
   UserModel.hasMany(OrderModel)
@@ -86,7 +84,6 @@ module.exports = async function () {
   // relacion de pedidos  a detalles_pedido
   OrderModel.hasMany(Requested_detaylModel)
   Requested_detaylModel.belongsTo(OrderModel)
-
 
   // relacion de inventario a talla
   SizeModel.hasMany(InventoriesModel)
@@ -116,7 +113,6 @@ module.exports = async function () {
   BrandModel.hasMany(ProductsModel)
   ProductsModel.belongsTo(BrandModel)
 
-
   // relacion de tallas a detalle_tallas
   SizeModel.hasMany(Detail_sizeModel)
   Detail_sizeModel.belongsTo(SizeModel)
@@ -129,29 +125,27 @@ module.exports = async function () {
   Requested_detaylModel.hasMany(InventoriesModel)
   InventoriesModel.belongsTo(Requested_detaylModel)
 
-  //reacion de personas a paises
+  // reacion de personas a paises
   CountryModel.hasMany(UserModel)
   UserModel.belongsTo(CountryModel)
 
-  //relacion de paises a departamentos
+  // relacion de paises a departamentos
   CountryModel.hasMany(DepartmentModel)
   DepartmentModel.belongsTo(CountryModel)
 
-  //relacion de Departamentos a ciudades
+  // relacion de Departamentos a ciudades
   DepartmentModel.hasMany(CityModel)
   CityModel.belongsTo(DepartmentModel)
 
   // relacion de empresas a usuarios
   CompanyModel.hasMany(UserModel)
   UserModel.belongsTo(CompanyModel)
-  
-
 
   await sequelize.authenticate()
 
   const User = setupUser(UserModel)
   const Brand = setupBrand(BrandModel)
-  const DetailSize= setupDetailSize(Detail_sizeModel)
+  const DetailSize = setupDetailSize(Detail_sizeModel)
   const Offer = setupOffer(OfferModel)
   const Country = setupCountry(CountryModel)
   const Bill = setupBill(BillModel)
@@ -163,8 +157,9 @@ module.exports = async function () {
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
   const Company = setupCompany(CompanyModel)
   const Products = setupProducts(ProductsModel)
+  const PaymentMethod = setupPaymentMethod(Payment_methodModel)
   return {
-    async setup() {
+    async setup () {
       await sequelize.sync({ force: true })
     },
     User,
@@ -181,5 +176,6 @@ module.exports = async function () {
     Offerdetail,
     Company,
     Products,
+    PaymentMethod
   }
 }

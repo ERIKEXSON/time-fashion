@@ -10,11 +10,15 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.CHAR(36),
       defaultValue: Sequelize.UUIDV4
     },
+    nombre: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
     numero: {
       type: Sequelize.FLOAT,
       allowNull: false
     },
-    cod: {
+    cvv: {
       type: Sequelize.FLOAT,
       allowNull: false
     },

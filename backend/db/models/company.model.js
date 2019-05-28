@@ -19,12 +19,12 @@ module.exports = function setupMetricModel (config) {
       allowNull: false
     },
     correo: {
-        type: Sequelize.TEXT,
-        allowNull: false
+      type: Sequelize.TEXT,
+      allowNull: false
     },
     telefono: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
+      type: Sequelize.TEXT,
+      allowNull: false
+    }
   })
 }

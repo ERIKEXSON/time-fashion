@@ -1,26 +1,26 @@
 'use strict'
 
-function setupCompany(companyModel) {
-  async function createCompany (company){
-    const result  = await companyModel.create(company)
+function setupCompany (companyModel) {
+  async function createCompany (company) {
+    const result = await companyModel.create(company)
     return result.toJSON()
   }
 
-  async function updateCompany(uuid, company) {
-    const cond = { where : { uuid } }
+  async function updateCompany (uuid, company) {
+    const cond = { where: { uuid } }
     const result = await companyModel.update(company, cond)
-    return result ? companyModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    return result ? companyModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function deleteCompany(uuid) {
-    const cond = { where : { uuid } }
+  async function deleteCompany (uuid) {
+    const cond = { where: { uuid } }
     const result = await companyModel.destroy(cond)
-    return result ? true : false
+    return !!result
   }
-  function findAllCompany(){
+  function findAllCompany () {
     return companyModel.findAll()
   }
-  function findUuidCompany(uuid) {
-    const cond = { where : { uuid } }
+  function findUuidCompany (uuid) {
+    const cond = { where: { uuid } }
     return companyModel.findOne(cond)
   }
   return {

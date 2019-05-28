@@ -11,7 +11,7 @@
       <span>Tarjeta agregada</span>
       <v-icon>check_circle</v-icon>
     </v-snackbar>
-    <v-form ref="form" @submit.prevent="submit">
+    <v-form ref="form">
       <v-container grid-list-xl fluid>
         <nav class="borde">
           <div class="tituloCuadro"><h2>Agrega tu tarjeta</h2></div>
@@ -55,38 +55,20 @@
                         required
                       ></v-text-field>
                     </v-flex>
-                    <v-flex xs12 sm6>
-                      <v-select
-                        v-model="form.tipodocumento"
-                        :rules="rules.required"
-                        label="Tipo de documento"
-                        :items="tipos"
-                        required
-                      ></v-select>
-                    </v-flex>
-                    <v-flex xs12 sm6>
-                      <v-text-field
-                        v-model="form.documento"
-                        :rules="rules.required"
-                        label="Documento"
-                        required
-                        :mask="doc"
-                      ></v-text-field>
-                    </v-flex>
                   </v-layout>
                   <v-card-actions>
                     <v-btn
                       class="botonCancelar"
                       flat
-                      @click="resetForm"
+                      @click="update"
                     >Cancelar</v-btn>
                   </v-card-actions>
                   <v-card-actions>
                     <v-btn
                       :disabled="!formIsValid"
                       flat
-                      type="submit"
                       class="botonAgregarTarjeta"
+                      @click="update"
                     >Agregar tarjeta</v-btn>
                   </v-card-actions>
                 </v-container>
@@ -109,8 +91,6 @@
             <td class="text-xs-left">{{ props.item.caducidad }}</td>
             <td class="text-xs-left">{{ props.item.codigocvv }}</td>
             <td class="text-xs-left">{{ props.item.nombre }}</td>
-            <td class="text-xs-left">{{ props.item.tipodocumento }}</td>
-            <td class="text-xs-left">{{ props.item.documento }}</td>
           </template>
         </v-data-table>
       </v-card>
@@ -118,6 +98,7 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
 export default {
   name: 'mis tarjetas',
   data () {
@@ -125,9 +106,7 @@ export default {
       numerotarjeta: '',
       caducidad: '',
       codigocvv: '',
-      nombre: '',
-      tipodocumento: '',
-      documento: ''
+      nombre: ''
     })
     return {
       snackbar: false,
@@ -136,7 +115,6 @@ export default {
         required: [val => (val || '').length > 0 || 'Este campo es requerido'],
         tarjeta: [val => (val || '').length > 0 || 'Este campo es requerido', val => (val || '').length > 15 || 'Ingrese número de tarjeta válido']
       },
-      tipos: ['Cédula de ciudadanía', 'Tarjeta de identidad'],
       tarjetacredito: 'credit-card',
       caducidad: '##/####',
       codigo: '###',
@@ -145,18 +123,14 @@ export default {
         { text: 'N° de tarjeta', value: 'numerotarjeta', sortable: false },
         { text: 'Fecha caducidad', value: 'caducidad', sortable: false },
         { text: 'CVV', value: 'codigocvv', sortable: false },
-        { text: 'Nombre y apellido', value: 'nombre', sortable: false },
-        { text: 'Tipo de documento', value: 'tipodocumento', sortable: false },
-        { text: 'Documento', value: 'documento', sortable: false }
+        { text: 'Nombre y apellido', value: 'nombre', sortable: false }
       ],
       desserts: [
         {
           numerotarjeta: '134642756125',
           caducidad: '31/1235',
           codigocvv: '134',
-          nombre: 'adasdasdsa',
-          tipodocumento: 'CC',
-          documento: '56456464'
+          nombre: 'adasdasdsa'
         }
       ]
     }
@@ -167,9 +141,7 @@ export default {
         this.form.numerotarjeta &&
         this.form.caducidad &&
         this.form.codigocvv &&
-        this.form.nombre &&
-        this.form.tipodocumento &&
-        this.form.documento
+        this.form.nombre
       )
     }
   },
@@ -178,7 +150,17 @@ export default {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
     },
-    submit () {
+    async update () {
+      const res = await api.post('/paymentMethod', {
+        paymentMethodNew: {
+          nombre: this.lowerCase(this.form.nombre),
+          numero: this.lowerCase(this.form.numerotarjeta),
+          cvv: this.lowerCase(this.form.codigocvv),
+          fecha: this.lowerCase(this.form.caducidad)
+        }
+      })
+      console.log(res)
+
       this.snackbar = true
       this.resetForm()
     }

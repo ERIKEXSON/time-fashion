@@ -19,7 +19,7 @@ module.exports = function setupMetricModel (config) {
       allowNull: false
     },
     precio: {
-      type: Sequelize.FLOAT,
+      type: Sequelize.DECIMAL,
       allowNull: false
     }
   })

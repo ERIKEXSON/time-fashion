@@ -1,25 +1,25 @@
 'use strict'
 
-function setupCountry(countryModel) {
-  async function createCountry(country) {
+function setupCountry (countryModel) {
+  async function createCountry (country) {
     const result = await countryModel.create(country)
     return result.toJSON()
   }
-  async function updateCountry(uuid, country) {
-    const cond = { where : { uuid } }
+  async function updateCountry (uuid, country) {
+    const cond = { where: { uuid } }
     const result = await countryModel.update(country, cond)
-    return result ? countryModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    return result ? countryModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function deleteCountry(uuid) {
-    const cond = { where : { uuid } }
+  async function deleteCountry (uuid) {
+    const cond = { where: { uuid } }
     const result = await countryModel.destroy(cond)
-    return result ? true : false
+    return !!result
   }
-  function findAllCountry(){
+  function findAllCountry () {
     return countryModel.findAll()
   }
-  function findUuidCountry(uuid) {
-    const cond = { where : { uuid } }
+  function findUuidCountry (uuid) {
+    const cond = { where: { uuid } }
     return countryModel.findOne(cond)
   }
   return {
@@ -29,7 +29,6 @@ function setupCountry(countryModel) {
     findAllCountry,
     findUuidCountry
   }
-
 }
 
 module.exports = setupCountry

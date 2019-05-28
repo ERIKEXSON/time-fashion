@@ -9,9 +9,9 @@ const router = new Router()
 
 router.post('/', async function (req, res, next) {
   try {
-    const { offerdetailNew } = req.body
-    const { Offerdetail } = await db()
-    const result = await Offerdetail.createOfferdetail(offerdetailNew)
+    const { paymentMethodNew } = req.body
+    const { PaymentMethod } = await db()
+    const result = await PaymentMethod.createPaymentMethod(paymentMethodNew)
     res.send(result)
   } catch (err) {
     next(err)
@@ -20,9 +20,9 @@ router.post('/', async function (req, res, next) {
 router.put('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { offerdetailUpdate } = req.body
-    const { Offerdetail } = await db()
-    const result = await Offerdetail.updateOfferdetail(uuid, offerdetailUpdate)
+    const { PaymentMethodUpdate } = req.body
+    const { PaymentMethod } = await db()
+    const result = await PaymentMethod.updatePaymentMethod(uuid, PaymentMethodUpdate)
     res.send(result)
   } catch (err) {
     next(err)
@@ -31,8 +31,8 @@ router.put('/:uuid', async function (req, res, next) {
 router.delete('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { Offerdetail } = await db()
-    const result = await Offerdetail.deleteOfferdetail(uuid)
+    const { PaymentMethod } = await db()
+    const result = await PaymentMethod.deletePaymentMethod(uuid)
     res.send(result)
   } catch (err) {
     next(err)
@@ -40,8 +40,8 @@ router.delete('/:uuid', async function (req, res, next) {
 })
 router.get('/', async function (req, res, next) {
   try {
-    const { Offerdetail } = await db()
-    const result = await Offerdetail.findAllOfferdetail()
+    const { PaymentMethod } = await db()
+    const result = await PaymentMethod.findAllPaymentMethod()
     res.send(result)
   } catch (err) {
     next(err)
@@ -50,12 +50,11 @@ router.get('/', async function (req, res, next) {
 router.get('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
-    const { Offerdetail } = await db()
-    const result = await Offerdetail.findUuidOfferdetail(uuid)
+    const { PaymentMethod} = await db()
+    const result = await PaymentMethod.findUuidPaymentMethod(uuid)
     res.send(result)
   } catch (err) {
     next(err)
   }
 })
-
 module.exports = router

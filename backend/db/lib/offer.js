@@ -1,25 +1,25 @@
 'use strict'
 
-function setupOffer(offerModel) {
-  async function createOffer(offer) {
+function setupOffer (offerModel) {
+  async function createOffer (offer) {
     const result = await offerModel.create(offer)
     return result.toJSON()
-}
-async function updateOffer(uuid, offer) {
-    const cond = { where : { uuid } }
+  }
+  async function updateOffer (uuid, offer) {
+    const cond = { where: { uuid } }
     const result = await offerModel.update(offer, cond)
-    return result ? offerModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    return result ? offerModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function deleteOffer(uuid) {
-    const cond = { where : { uuid } }
+  async function deleteOffer (uuid) {
+    const cond = { where: { uuid } }
     const result = await offerModel.destroy(cond)
-    return result ? true : false
+    return !!result
   }
-  function findAllOffer(){
+  function findAllOffer () {
     return offerModel.findAll()
   }
-  function findUuidOffer(uuid) {
-    const cond = { where : { uuid } }
+  function findUuidOffer (uuid) {
+    const cond = { where: { uuid } }
     return offerModel.findOne(cond)
   }
   return {
@@ -29,7 +29,6 @@ async function updateOffer(uuid, offer) {
     findAllOffer,
     findUuidOffer
   }
-
 }
 
 module.exports = setupOffer
