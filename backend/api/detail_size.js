@@ -7,7 +7,7 @@ const db = require('@time-fashion/db')
 const log = getLogger(__dirname, __filename)
 const router = new Router()
 
-router.post('/', async function(req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
     const { DetailSizeNew } = req.body
     const { DetailSize} = await db()
@@ -28,12 +28,12 @@ router.post('/', async function(req, res, next) {
     }
   })
 })
-router.delete('/:uuid', async function(req, res, next) {
+router.delete('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params
     const { DetailSize} = await db()
     const result = await DetailSize.deleteDetailSize(uuid)
-    res.send(result)    
+    res.send(result)
   } catch (err) {
     next(err)
   }
@@ -57,4 +57,4 @@ router.get('/:uuid', async function (req, res, next) {
     next(err)
   }
 })
-  module.exports = router
+module.exports = router

@@ -10,17 +10,17 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.CHAR(36),
       defaultValue: Sequelize.UUIDV4
     },
-      nombre: {
-        type: Sequelize.TEXT,
-        sequelize:false
-      },
-      codigo_nacional:{
-          type:Sequelize.TEXT,
-          allowNull:false
-      },
-      continente:{
-          type: Sequelize.TEXT,
-          allowNull:false
-      }
+    nombre: {
+      type: Sequelize.TEXT,
+      sequelize: false
+    },
+    codigo_nacional: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    },
+    continente: {
+      type: Sequelize.TEXT,
+      allowNull: false
+    }
   })
 }

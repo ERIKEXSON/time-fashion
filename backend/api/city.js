@@ -33,7 +33,7 @@ const router = new Router()
 //     const { uuid } = req.params
 //     const { City } = await db()
 //     const result = await City.deleteCity(uuid)
-//     res.send(result)    
+//     res.send(result)
 //   } catch (err) {
 //     next(err)
 //   }

@@ -1,32 +1,32 @@
 'use strict'
 const { password } = require('@time-fashion/utils')
 
-function setupUser(userModel) {
-  async function createUser(user) {
+function setupUser (userModel) {
+  async function createUser (user) {
     user.contraseña = password.generateHash(user.contraseña)
     const result = await userModel.create(user)
     return result.toJSON()
   }
-  async function updateUser(uuid, user) {
-    const cond = { where : { uuid } }
+  async function updateUser (uuid, user) {
+    const cond = { where: { uuid } }
     const result = await userModel.update(user, cond)
-    return result ? userModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    return result ? userModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function deleteUser(uuid) {
-    const cond = { where : { uuid } }
+  async function deleteUser (uuid) {
+    const cond = { where: { uuid } }
     const result = await userModel.destroy(cond)
-    return result ? true : false
+    return !!result
   }
-  function findAllUser(){
+  function findAllUser () {
     return userModel.findAll()
   }
-  function findUuidUser(uuid) {
-    const cond = { where : { uuid } }
+  function findUuidUser (uuid) {
+    const cond = { where: { uuid } }
     return userModel.findOne(cond)
   }
-  async function singin(credentials){
+  async function singin (credentials) {
     let dataFail = 'datos incorrectos'
-    const cond = { where : { email: credentials.email } }
+    const cond = { where: { email: credentials.email } }
     const user = await userModel.findOne(cond)
     if (!user) {
       return {
@@ -45,7 +45,6 @@ function setupUser(userModel) {
       user,
       login: true
     }
-
   }
   return {
     createUser,
@@ -55,7 +54,6 @@ function setupUser(userModel) {
     findUuidUser,
     singin
   }
-
 }
 
 module.exports = setupUser

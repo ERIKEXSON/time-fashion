@@ -1,25 +1,25 @@
 'use strict'
 
-function setupBill(billModel) {
-  async function createBill(bill) {
+function setupBill (billModel) {
+  async function createBill (bill) {
     const result = await billModel.create(bill)
     return result.toJSON()
   }
-  async function updateBill(uuid, bill) {
-    const cond = { where : { uuid } }
+  async function updateBill (uuid, bill) {
+    const cond = { where: { uuid } }
     const result = await billModel.update(bill, cond)
-    return result ? billModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    return result ? billModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function deleteBill(uuid) {
-    const cond = { where : { uuid } }
+  async function deleteBill (uuid) {
+    const cond = { where: { uuid } }
     const result = await billModel.destroy(cond)
-    return result ? true : false
+    return !!result
   }
-  function findAllBill(){
+  function findAllBill () {
     return billModel.findAll()
   }
-  function findUuidBill(uuid) {
-    const cond = { where : { uuid } }
+  function findUuidBill (uuid) {
+    const cond = { where: { uuid } }
     return billModel.findOne(cond)
   }
   return {
@@ -29,7 +29,6 @@ function setupBill(billModel) {
     findAllBill,
     findUuidBill
   }
-
 }
 
 module.exports = setupBill

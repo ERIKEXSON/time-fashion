@@ -1,25 +1,25 @@
 'use strict'
 
-function setupOfferdetail(offerdetailModel) {
-  async function createOfferdetail(offerdetail) {
+function setupOfferdetail (offerdetailModel) {
+  async function createOfferdetail (offerdetail) {
     const result = await offerdetailModel.create(offerdetail)
     return result.toJSON()
   }
-  async function updateOfferdetail(uuid, offerdetail) {
-    const cond = { where : { uuid } }
+  async function updateOfferdetail (uuid, offerdetail) {
+    const cond = { where: { uuid } }
     const result = await offerdetailModel.update(offerdetail, cond)
-    return result ? offerdetailModel.findOne(cond) :  new Error ('no se actualizo ningun registro')
+    return result ? offerdetailModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function deleteOfferdetail(uuid) {
-    const cond = { where : { uuid } }
+  async function deleteOfferdetail (uuid) {
+    const cond = { where: { uuid } }
     const result = await offerdetailModel.destroy(cond)
-    return result ? true : false
+    return !!result
   }
-  function findAllOfferdetail(){
+  function findAllOfferdetail () {
     return offerdetailModel.findAll()
   }
-  function findUuidOfferdetail(uuid) {
-    const cond = { where : { uuid } }
+  function findUuidOfferdetail (uuid) {
+    const cond = { where: { uuid } }
     return offerdetailModel.findOne(cond)
   }
   return {
@@ -29,7 +29,6 @@ function setupOfferdetail(offerdetailModel) {
     findAllOfferdetail,
     findUuidOfferdetail
   }
-
 }
 
 module.exports = setupOfferdetail
