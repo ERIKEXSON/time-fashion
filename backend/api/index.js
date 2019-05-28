@@ -15,6 +15,7 @@ const line = require('./line')
 const offer_detail = require('./offer_datail')
 const company= require ('./company')
 const products= require ('./products')
+const paymentMethod= require('./paymentMethod')
 
 const log = getLogger(__dirname, __filename)
 // prueba
@@ -35,6 +36,7 @@ module.exports = {
       offer_detail:'/offer_detail',
       company:'/company',
       products:'/products',
+      paymentMethod:'/paymentMethod'
     })
   },
   user,
@@ -51,6 +53,7 @@ module.exports = {
   offer_detail,
   company,
   products,
+  paymentMethod,
 
   errorHandler (err, req, res, next) {
     if (err) {
