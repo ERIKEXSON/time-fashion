@@ -89,11 +89,15 @@
         </v-layout>
       </v-form>
     </nav>
+    <v-snackbar v-model="snackbarDireccion" absolute top right color="success" class="snackbar">
+      <span>Direccion actualizada</span>
+      <v-icon>check_circle</v-icon>
+    </v-snackbar>
     <v-dialog v-model="agregarDireccion">
       <v-card>
         <v-card-text>
           <nav class="borde">
-            <div class="tituloCuadro"><h2>Agregar dirección</h2></div>
+            <div class="tituloCuadro"><h2>Dirección</h2></div>
             <v-card>
               <v-card-actions>
                 <v-container grid-list-xl fluid>
@@ -124,31 +128,9 @@
                   flat
                   color="black"
                   @click="actualizarDireccion"
-                  v-text="'Agregar dirección'"
+                  v-text="'Actualizar dirección'"
                 ></v-btn>
               </v-card-actions>
-            </v-card>
-          </nav>
-          <nav class="borde">
-                <div class="tituloCuadro"><h2>Mis direcciones</h2></div>
-            <v-card>
-              <v-data-table
-                :items="desserts"
-                hide-actions
-                hide-headers
-              >
-                <template v-slot:items="props">
-                  <td class="text-xs-left">{{ props.item.direccion }}</td>
-                  <td class="text-xs-left">
-                    <v-btn fab dark small color="warning">
-                      <v-icon dark color="white">edit</v-icon>
-                    </v-btn>
-                    <v-btn fab dark small color="error">
-                      <v-icon dark color="white">delete</v-icon>
-                    </v-btn>
-                  </td>
-                </template>
-              </v-data-table>
             </v-card>
           </nav>
           <v-card-actions>
@@ -179,6 +161,7 @@ export default {
       agregarDireccion: false,
       menu: '',
       snackbar: false,
+      snackbarDireccion: false,
       doc: '#################',
       phone: 'phone',
       form: Object.assign({}, defaultForm),
@@ -189,20 +172,7 @@ export default {
         ],
         required: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
-      show1: false,
-      headers: [
-        { text: 'Departamento', value: 'departamento', sortable: false },
-        { text: 'Ciudad', value: 'ciudad', sortable: false },
-        { text: 'Dirección', value: 'direccion', sortable: false },
-        { text: 'Opciones', sortable: false }
-      ],
-      desserts: [
-        {
-          departamento: '13asdasd4642756125',
-          ciudad: '31asd5',
-          direccion: '13asdasdas4'
-        }
-      ]
+      show1: false
     }
   },
   computed: {
@@ -225,10 +195,6 @@ export default {
     }
   },
   methods: {
-    // resetForm () {
-    //   direccion = (this.departamento, this.ciudad, this.direccion)
-    //   return direccion.reset()
-    // },
     async update () {
       const res = await api.put(`/user/${JSON.parse(localStorage.getItem('userLogin')).uuid}`, {
         userUpdate: {
@@ -249,7 +215,7 @@ export default {
           dirrecciones: this.lowerCase(union)
         }
       })
-      console.log(res)
+      this.snackbarDireccion = true
     },
     lowerCase (val) {
       return val.toLowerCase()
