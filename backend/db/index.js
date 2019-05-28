@@ -141,6 +141,10 @@ module.exports = async function () {
   CompanyModel.hasMany(UserModel)
   UserModel.belongsTo(CompanyModel)
 
+  // relacion personas a metodos de pago
+  UserModel.hasMany(Payment_methodModel)
+  Payment_methodModel.belongsTo(UserModel)
+
   await sequelize.authenticate()
 
   const User = setupUser(UserModel)
