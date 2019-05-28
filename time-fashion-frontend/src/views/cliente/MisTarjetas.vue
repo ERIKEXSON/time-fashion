@@ -159,8 +159,6 @@ export default {
           fecha: this.lowerCase(this.form.caducidad)
         }
       })
-      console.log(res)
-
       this.snackbar = true
       this.resetForm()
     }

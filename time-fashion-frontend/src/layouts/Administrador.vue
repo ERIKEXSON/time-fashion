@@ -48,6 +48,11 @@ export default {
     drawer: true,
     admins: [
       {
+        text: 'Perfil',
+        icon: 'account_circle',
+        to: '/admin/perfil'
+      },
+      {
         text: 'Empresas',
         icon: 'domain',
         to: '/admin/empresas'

@@ -92,6 +92,14 @@
           <td class="text-xs-left">{{ props.item.nit }}</td>
           <td class="text-xs-left">{{ props.item.telefono }}</td>
           <td class="text-xs-left">{{ props.item.correo }}</td>
+          <div style="text-align: center; display: inline-block;">
+            <v-btn fab dark small color="warning">
+              <v-icon dark color="white">edit</v-icon>
+            </v-btn>
+            <v-btn fab dark small color="error">
+              <v-icon dark color="white">delete</v-icon>
+            </v-btn>
+          </div>
           <div class="botonEmpleados"><v-btn @click="empleados = true">Empleados</v-btn></div>
         </template>
         </v-data-table>
@@ -122,6 +130,14 @@
                     <td class="text-xs-left">{{ props.item.correo }}</td>
                     <td class="text-xs-left">{{ props.item.direccion }}</td>
                     <td class="text-xs-left">{{ props.item.telefono }}</td>
+                    <div>
+                      <v-btn fab dark small color="warning">
+                        <v-icon dark color="white">edit</v-icon>
+                      </v-btn>
+                      <v-btn fab dark small color="error">
+                        <v-icon dark color="white">delete</v-icon>
+                      </v-btn>
+                    </div>
                   </template>
                 </v-data-table>
               </v-card>
@@ -163,7 +179,7 @@ export default {
         { text: 'NIT', value: 'nit' },
         { text: 'Teléfono', value: 'telefono' },
         { text: 'Correo', value: 'correo' },
-        { text: '', sortable: false }
+        { text: 'Opciones', sortable: false }
       ],
       desserts: [
         {
@@ -178,7 +194,8 @@ export default {
         { text: 'Apellido', value: 'apellido' },
         { text: 'Correo', value: 'correo' },
         { text: 'Dirección', value: 'direccion' },
-        { text: 'Teléfono', value: 'telefono' }
+        { text: 'Teléfono', value: 'telefono' },
+        { text: 'Opciones', sortable: false }
       ],
       contenido: [
         {

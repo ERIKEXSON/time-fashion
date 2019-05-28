@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // vistas
 import Inicio from './views/Inicio.vue'
 import Admin from './views/admin/Inicio.vue'
+import AdminPerfil from './views/admin/perfil.vue'
 import AdminProductos from './views/admin/Productos.vue'
 import AdminEmpresas from './views/admin/Empresas.vue'
 import AdminUsuarios from './views/admin/Usuarios.vue'
@@ -82,6 +83,11 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin
+    },
+    {
+      path: '/admin/perfil',
+      name: 'perfilAdmin',
+      component: AdminPerfil
     },
     {
       path: '/admin/productos',

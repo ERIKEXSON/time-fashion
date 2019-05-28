@@ -232,7 +232,7 @@ export default {
       documento: this.user.cedula,
       nacionalidad: this.user.nacionalidad
     }
-    this.$store.commit('SET_LAYOUT', 'cliente-layout')
+    this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }
 </script>
