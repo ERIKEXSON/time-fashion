@@ -93,7 +93,17 @@ export default {
       }
     ]
   }
-  )
+  ),
+  methods: {
+    click (to) {
+      if (to === '/') {
+        this.$store.commit('SET_USER', {})
+        this.$router.push(to)
+        return
+      }
+      this.$router.push(to)
+    }
+  }
 }
 </script>
 <style lang="stylus">
