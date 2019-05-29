@@ -84,12 +84,15 @@
                   <v-layout row wrap>
                     <v-flex xs6>
                       <v-text-field
+                        v-model="email"
                         label="Email"
                         outline
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs6>
                       <v-text-field
+                        type="password"
+                        v-model="contrasena"
                         label="Contraseña"
                         outline
                       ></v-text-field>
@@ -100,7 +103,7 @@
             </v-card-actions>
           </div>
           <v-btn color="#546E7A" to="/registrarse">registrate</v-btn>
-          <v-btn color="#546E7A"  @click="step++" >Entrar</v-btn>
+          <v-btn color="#546E7A" :disabled="!formIsValid" @click="step++" >Entrar</v-btn>
         </v-card-text>
       </v-window-item>
 
@@ -362,7 +365,7 @@ Actualizado el 11/12/2017
         Finalizar Compra
       </v-btn>
       <v-btn
-        :disabled="step >4"
+        :disabled="step ===1"
         color="primary"
         depressed
         @click="step++"
@@ -395,7 +398,9 @@ export default {
     return {
       step: 1,
       e1: 0,
-      frases: FRASES
+      frases: FRASES,
+      email: '',
+      contrasena: ''
     }
   },
   methods: {
@@ -414,7 +419,15 @@ export default {
         default: return 'Account created'
       }
     }
-  }
+  },
+  computed: {
+    formIsValid () {
+      return (
+        this.email &&
+        this.contrasena
+      )
+    }
+  },
 }
 
 </script>
