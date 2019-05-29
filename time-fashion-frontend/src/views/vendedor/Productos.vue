@@ -120,19 +120,20 @@
 <script>
 import buso from '@/assets/ico.png'
 import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
-      nombre: 'sdasdas',
-      codigo: 'sdf,n',
-      precio: '35468',
-      marca: 'msdjf',
-      linea: 'msdbf'
+      nombre: '',
+      codigo: '',
+      precio: '',
+      marca: '#######',
+      linea: '######'
     })
     return {
       imageUrl: buso,
       imageName: '',
-      numeros: '###.#####',
+      numeros: '##.#####',
       show1: false,
       form: Object.assign({}, defaultForm),
       rules: {
@@ -162,6 +163,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['products']),
     formIsValid () {
       return (
         this.form.nombre &&
@@ -221,6 +223,11 @@ export default {
     }
   },
   created () {
+    this.form = {
+      nombre: this.products.nombre,
+      codigo: this.products.codigo,
+      precio: this.products.precio
+      }
     this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }

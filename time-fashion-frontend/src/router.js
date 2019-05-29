@@ -12,6 +12,7 @@ import AdminVentas from './views/admin/Ventas.vue'
 import AdminInventario from './views/admin/Inventario.vue'
 import AdminPassword from './views/admin/CambiarPassword.vue'
 import Vendedor from './views/vendedor/Inicio.vue'
+import VendedorPerfil from './views/vendedor/perfilVendedor.vue'
 import VendedorEmpleados from './views/vendedor/Empleados.vue'
 import VendedorInventario from './views/vendedor/Inventario.vue'
 import VendedorProductos from './views/vendedor/Productos.vue'
@@ -138,6 +139,11 @@ export default new Router({
       path: '/vendedor',
       name: 'vendedor',
       component: Vendedor
+    },
+    {
+      path:'/vendedor/perfil',
+      name:'vendedorPerfil',
+      component: VendedorPerfil
     },
     {
       path: '/vendedor/empleados',

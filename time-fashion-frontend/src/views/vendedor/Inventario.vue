@@ -3,7 +3,7 @@
     <nav class="cuadro2">
       <div class="cuadro22">
         <h2>Agregar inventario</h2>
-        <v-snackbar v-model="snackbar" absolute top right color="success" timeout="2000">
+        <v-snackbar v-model="snackbar" absolute top right color="success" >
           <span>Agregar inventario</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
@@ -45,6 +45,7 @@
               color
               type="submit"
               class="bt"
+              @click="agrep"
             >Agregar</v-btn>
           </v-card-actions>
         </v-form>
@@ -129,6 +130,7 @@
 </template>
 <script>
 
+import api from '@/plugins/api'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -144,7 +146,7 @@ export default {
       form: Object.assign({}, defaultForm),
       numeros: '#########',
       rules: {
-        requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
+      requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipoproducto: ['Pantalon', 'Camisa', 'Pantaloneta', 'Camisetilla', 'Boxer', 'zapatos', 'accesorios'],
       conditions: false,
@@ -212,6 +214,18 @@ export default {
     submit () {
       this.snackbar = true
       this.resetForm()
+    },
+    async agrep () {
+    const res = await api.post('/inventories', {
+      inventoriesNew: {
+        cantidad: this.lowerCase(this.form.cantidad)
+      }
+    })
+    this.snackbar = true
+    this.resetForm()
+  },
+  lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {

@@ -101,7 +101,7 @@
                 <v-icon color="black">delete</v-icon>
               </v-btn>
               <v-btn fab small color="warning">
-                <v-icon color="black">edit</v-icon>
+                <v-icon @click="update" color="black">edit</v-icon>
               </v-btn>
             </td>
           </template>
@@ -112,6 +112,7 @@
 </template>
 <script>
 import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -163,6 +164,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user']),
     formIsValid () {
       return (
         this.form.nombre &&
@@ -195,25 +197,32 @@ export default {
       this.snackbar = true
       this.resetForm()
     },
-    // async update () {
-    //   const res = await api.put('/user/f99a7b43-705c-4b0e-8489-338ffb202f7f', {
-    //     userUpdate: {
-    //       nombre: this.form.nombre,
-    //       apellido: this.form.apellidos,
-    //       telefono: this.form.telefono,
-    //       email: this.form.correo,
-    //       nacionalidad: this.form.nacionalidad,
-    //       cedula: this.form.documento,
-    //       contraseña: this.form.contrasena
-    //     }
-    //   })
-    //   this.snackbar = true
-    // },
+     async update () {
+        const { data: res } = await api.put(`/user/${this.user.uuid}`, {
+         userUpdate: {
+           nombre: this.form.nombre,
+           apellido: this.form.apellidos,
+           telefono: this.form.telefono,
+           email: this.form.correo,
+           nacionalidad: this.form.nacionalidad,
+           cedula: this.form.documento
+         }
+       })
+       this.snackbar = true
+     },
     lowerCase (val) {
       return val.toLowerCase()
     }
   },
   created () {
+    this.form = {
+      nombre: this.user.nombre,
+      apellido: this.user.apellido,
+      correo: this.user.email,
+      nacionalidad: this.user.nacionalidad,
+      telefono: this.user.telefono,
+      documento: this.user.cedula
+    }
     this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }
