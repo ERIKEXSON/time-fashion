@@ -68,7 +68,6 @@ export default {
           text: 'Ingresa bien los datos'
         })
       }
-      console.log(res)
       this.$store.commit('SET_USER', res.user)
       if (res.user.rol === 'cliente') {
         this.$router.push('cliente')
