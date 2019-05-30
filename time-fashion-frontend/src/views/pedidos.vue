@@ -189,7 +189,7 @@
         <v-card-text>
           <div class="headline">3. Información de pago</div>
           <v-container fluid>
-            <v-radio-group v-model="radios" :mandatory="false">
+            <v-radio-group v-model="radios">
               <v-radio label="Tarjeta de crédito" value="radio-1"></v-radio>
               <v-radio label="Pago con débito - PSE" value="radio-2"></v-radio>
               <v-radio label="Pago en efectivo - Efecty" value="radio-3"></v-radio>
@@ -387,6 +387,7 @@ Actualizado el 11/12/2017
       <v-stepper-content step="3" class="text-xs-center">
         <img src="@/assets/favicon.png"  width="100px" alt="">
         <div class="headline">Tu pedido esta en proceso</div>
+        <v-btn round to="/" color="primary">Entra y busca tus productos</v-btn>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
