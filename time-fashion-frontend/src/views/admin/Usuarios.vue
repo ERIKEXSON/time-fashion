@@ -4,7 +4,7 @@
       <div class="tituloCuadro">
         <h2>Agregar usuarios</h2>
         <v-snackbar v-model="snackbar" absolute top right color="success" class="snackbar">
-          <span>¡Registro exitoso!</span>
+          <span>Registro exitoso</span>
           <v-icon>check_circle</v-icon>
         </v-snackbar>
       </div>
@@ -121,10 +121,11 @@
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
             <td class="text-xs-left">{{ props.item.documento }}</td>
+            <td class="text-xs-left">{{ props.item.nacionalidad }}</td>
             <td class="text-xs-left">{{ props.item.empresa }}</td>
             <td class="text-xs-left">{{ props.item.rol }}</td>
-            <div style="text-align: center; display: inline-block;">
-              <v-btn fab dark small color="warning">
+            <div style="display: inline-block">
+              <v-btn @click="editar = true" fab dark small color="warning">
                 <v-icon dark color="white">edit</v-icon>
               </v-btn>
               <v-btn fab dark small color="error">
@@ -137,7 +138,82 @@
           </template>
         </v-data-table>
       </v-card>
-      <v-dialog v-model="contacto" width="1085">
+      <v-dialog v-model="editar">
+        <v-card>
+          <v-card-text>
+            <nav class="borde">
+              <div class="tituloCuadro">
+                <h2>Editar usuario</h2>
+              </div>
+              <v-container grid-list-xl fluid>
+                <v-layout wrap>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.nombre"
+                      label="Nombre"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.apellido"
+                      label="Apellido"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.documento"
+                      label="Cédula"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.nacionalidad"
+                      label="Nacionalidad"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.empresa"
+                      label="Empresa"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-select
+                      v-model="form.rol"
+                      label="Rol"
+                      :items="rol"
+                      :rules="rules.required"
+                      required
+                    ></v-select>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+              <div class="contornoboton">
+                <v-btn
+                  class="botonConfirmar"
+                  flat
+                  color="black"
+                >Actualizar</v-btn>
+              </div>
+            </nav>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn class="botonCerrar" flat @click="editar = false">Cerrar</v-btn>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="contacto">
         <v-card>
           <v-card-text>
             <nav class="borde">
@@ -170,70 +246,72 @@
   </v-flex>
 </template>
 <script>
-import api from '@/plugins/api'
+import api from "@/plugins/api";
 export default {
-  data () {
+  data() {
     const defaultForm = Object.freeze({
-      nombre: '',
-      apellido: '',
-      documento: '',
-      correo: '',
-      rol: '',
-      direccion: '',
-      nacionalidad: '',
-      tel: '',
-      empresa: '',
-      password: '12345'
-    })
+      nombre: "",
+      apellido: "",
+      documento: "",
+      correo: "",
+      rol: "",
+      direccion: "",
+      nacionalidad: "",
+      tel: "",
+      empresa: "",
+      password: "12345"
+    });
     return {
-      tel: 'phone',
-      doc: '#################',
+      editar: false,
+      tel: "phone",
+      doc: "#################",
       e1: 0,
       contacto: false,
       snackbar: false,
+      snackbarEditar: false,
       tabs: null,
       form: Object.assign({}, defaultForm),
       rules: {
-        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
+        required: [val => (val || "").length > 0 || "Este campo es requerido"],
         correo: [
-          val => (val || '').length > 0 || 'Este campo es requerido',
-          v => /.+@.+/.test(v) || 'El correo debe ser válido'
+          val => (val || "").length > 0 || "Este campo es requerido",
+          v => /.+@.+/.test(v) || "El correo debe ser válido"
         ]
       },
-      rol: ['Administrador', 'Vendedor'],
+      rol: ["Administrador", "Vendedor"],
       defaultForm,
-      search: '',
+      search: "",
       headers: [
-        { text: 'Nombre', value: 'nombre' },
-        { text: 'Apellido', value: 'apellido' },
-        { text: 'Cédula', value: 'documento' },
-        { text: 'Nacionalidad', value: 'nacionalidad' },
-        { text: 'Empresa', value: 'empresa' },
-        { text: 'Rol', value: 'rol' },
-        { text: '', sortable: false }
+        { text: "Nombre", value: "nombre" },
+        { text: "Apellido", value: "apellido" },
+        { text: "Cédula", value: "documento" },
+        { text: "Nacionalidad", value: "nacionalidad" },
+        { text: "Empresa", value: "empresa" },
+        { text: "Rol", value: "rol" },
+        { text: "", sortable: false }
       ],
       desserts: [
         {
-          nombre: 'Errik',
-          apellido: 'Mamerto',
-          documento: '123123123',
-          correo: 'asdasda@hola.com',
-          nacionalidad: 'colombia',
-          direccion: 'asdasdasd123123',
-          telefono: '123123123',
-          empresa: 'adidas',
-          rol: 'administrador'
+          nombre: "Errik",
+          apellido: "Mamerto",
+          documento: "123123123",
+          nacionalidad: "colombia",
+          empresa: "adidas",
+          rol: "administrador",
+          correo: "prueba@prueba.com",
+          direccion: "asdasda",
+          telefono: "123123123123"
         }
       ],
       datosContacto: [
-        { text: 'Correo', value: 'correo' },
-        { text: 'Dirección', value: 'direccion' },
-        { text: 'Teléfono', value: 'telefono' }
+        { text: "Correo", value: "correo", sortable: false },
+        { text: "Dirección", value: "direccion", sortable: false },
+        { text: "Teléfono", value: "telefono", sortable: false }
       ]
-    }
+    };
   },
   computed: {
-    formIsValid () {
+    formIsValid() {
       return (
         this.form.nombre &&
         this.form.apellido &&
@@ -244,16 +322,16 @@ export default {
         this.form.direccion &&
         this.form.tel &&
         this.form.empresa
-      )
+      );
     }
   },
   methods: {
-    resetForm () {
-      this.form = Object.assign({}, this.defaultForm)
-      this.$refs.form.reset()
+    resetForm() {
+      this.form = Object.assign({}, this.defaultForm);
+      this.$refs.form.reset();
     },
-    async register () {
-      const res = await api.post('/user', {
+    async register() {
+      const res = await api.post("/user", {
         userNew: {
           nombre: this.lowerCase(this.form.nombre),
           apellido: this.lowerCase(this.form.apellido),
@@ -265,20 +343,20 @@ export default {
           nacionalidad: this.lowerCase(this.form.nacionalidad),
           contraseña: this.form.password
         }
-      })
-      this.snackbar = true
-      this.resetForm()
+      });
+      this.snackbar = true;
+      this.resetForm();
     },
-    lowerCase (val) {
-      return val.toLowerCase()
+    lowerCase(val) {
+      return val.toLowerCase();
     }
   },
-  created () {
-    this.$store.commit('SET_LAYOUT', 'administrador-layout')
+  created() {
+    this.$store.commit("SET_LAYOUT", "administrador-layout");
   }
-}
+};
 </script>
-<style>
+<style scoped>
 .borde {
   text-align: center;
   border: #000000 3px solid;
@@ -312,24 +390,18 @@ export default {
   background-color: rgba(34, 194, 215, 0.61);
   transition: all 0.2s linear;
 }
-.botonCompras {
-  display: inline-block;
-  margin-left: 20px;
-  background-color: rgba(34, 194, 215, 0.61);
-  transition: all 0.2s linear;
-}
 .botonContacto:hover {
   background-color: rgb(145, 45, 45);
 }
-.botonCompras:hover {
-  background-color: rgb(145, 45, 45);
+.contornoboton {
+  margin: auto;
 }
-.botonSeguirPedido {
-  display: inline-block;
-  background-color: rgba(34, 194, 215, 0.61);
+.botonConfirmar {
+  background-color: rgba(206, 98, 252, 0.795);
   transition: all 0.2s linear;
+  border-radius: 15px;
 }
-.botonSeguirPedido:hover {
-  background-color: rgb(145, 45, 45);
+.botonConfirmar:hover {
+  background-color: rgba(136, 16, 248, 0.795);
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
-  <v-app>
+  <v-flex xs12>
+    <v-snackbar v-model="snackbar" absolute top right color="success" class="snackbar">
+      <span>Contraseña actualizada</span>
+      <v-icon>check_circle</v-icon>
+    </v-snackbar>
     <v-card>
       <v-container>
         <v-layout wrap>
@@ -65,14 +69,16 @@
         </v-card-actions>
       </v-container>
     </v-card>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 import { required, sameAs, minLength } from 'vuelidate/lib/validators'
-
+import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
+      snackbar: false,
       show1: false,
       show2: false,
       show3: false,
@@ -94,6 +100,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user']),
     currentPassErrors () {
       const errors = []
       if (!this.$v.currentPassword.$dirty) return errors
@@ -121,6 +128,15 @@ export default {
     }
   },
   methods: {
+    async updatePassword () {
+      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
+        userUpdate: {
+          contraseña: this.password
+        }
+      })
+      this.$store.commit('SET_USER', res)
+      this.snackbar = true
+    },
     submit () {
       this.$v.$reset()
       this.currentPassword = null

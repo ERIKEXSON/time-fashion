@@ -100,7 +100,6 @@
 <script>
 import api from '@/plugins/api'
 export default {
-  name: 'mis tarjetas',
   data () {
     const defaultForm = Object.freeze({
       numerotarjeta: '',
