@@ -227,7 +227,7 @@ export default {
       nombre: this.products.nombre,
       codigo: this.products.codigo,
       precio: this.products.precio
-      }
+    }
     this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }

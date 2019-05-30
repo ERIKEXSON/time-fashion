@@ -48,9 +48,9 @@ export default {
     drawer: true,
     admins: [
       {
-        text:'Perfil',
-        icon:'account_circle',
-        to:'/vendedor/perfil'
+        text: 'Perfil',
+        icon: 'account_circle',
+        to: '/vendedor/perfil'
       },
       {
         text: 'Empleados',

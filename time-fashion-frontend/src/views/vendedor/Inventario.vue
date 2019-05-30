@@ -146,7 +146,7 @@ export default {
       form: Object.assign({}, defaultForm),
       numeros: '#########',
       rules: {
-      requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
+        requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
       tipoproducto: ['Pantalon', 'Camisa', 'Pantaloneta', 'Camisetilla', 'Boxer', 'zapatos', 'accesorios'],
       conditions: false,
@@ -216,15 +216,15 @@ export default {
       this.resetForm()
     },
     async agrep () {
-    const res = await api.post('/inventories', {
-      inventoriesNew: {
-        cantidad: this.lowerCase(this.form.cantidad)
-      }
-    })
-    this.snackbar = true
-    this.resetForm()
-  },
-  lowerCase (val) {
+      const res = await api.post('/inventories', {
+        inventoriesNew: {
+          cantidad: this.lowerCase(this.form.cantidad)
+        }
+      })
+      this.snackbar = true
+      this.resetForm()
+    },
+    lowerCase (val) {
       return val.toLowerCase()
     }
   },
