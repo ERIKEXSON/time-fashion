@@ -141,8 +141,8 @@ export default new Router({
       component: Vendedor
     },
     {
-      path:'/vendedor/perfil',
-      name:'vendedorPerfil',
+      path: '/vendedor/perfil',
+      name: 'vendedorPerfil',
       component: VendedorPerfil
     },
     {

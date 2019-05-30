@@ -93,7 +93,7 @@
           <td class="text-xs-left">{{ props.item.telefono }}</td>
           <td class="text-xs-left">{{ props.item.correo }}</td>
           <div style="text-align: center; display: inline-block;">
-            <v-btn fab dark small color="warning">
+            <v-btn @click="editar = true" fab dark small color="warning">
               <v-icon dark color="white">edit</v-icon>
             </v-btn>
             <v-btn fab dark small color="error">
@@ -104,6 +104,130 @@
         </template>
         </v-data-table>
       </v-card>
+      <v-dialog v-model="editar">
+        <v-card>
+          <v-card-text>
+            <nav class="borde">
+              <div class="tituloCuadro">
+                <h2>Editar usuario</h2>
+              </div>
+              <v-container grid-list-xl fluid>
+                <v-layout wrap>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.nombre"
+                      label="Nombre"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.nit"
+                      label="Nit"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.telefono"
+                      label="Teléfono"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.correo"
+                      label="Correo"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+              <div class="contornoboton">
+                <v-btn
+                  class="botonConfirmar"
+                  flat
+                  color="black"
+                >Actualizar</v-btn>
+              </div>
+            </nav>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn class="botonCerrar" flat @click="editar = false">Cerrar</v-btn>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="editarEmpleados">
+        <v-card>
+          <v-card-text>
+            <nav class="borde">
+              <div class="tituloCuadro">
+                <h2>Editar usuario</h2>
+              </div>
+              <v-container grid-list-xl fluid>
+                <v-layout wrap>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.nombre"
+                      label="Nombre"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.apellido"
+                      label="Apellido"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.correo"
+                      label="Correo"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <v-text-field
+                      v-model="form.direccion"
+                      label="Dirección"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm12>
+                    <v-text-field
+                      v-model="form.telefono"
+                      label="Teléfono"
+                      :rules="rules.required"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+              <div class="contornoboton">
+                <v-btn
+                  class="botonConfirmar"
+                  flat
+                  color="black"
+                >Actualizar</v-btn>
+              </div>
+            </nav>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn class="botonCerrar" flat @click="editarEmpleados = false">Cerrar</v-btn>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
       <v-dialog v-model="empleados">
         <v-card>
           <v-card-text>
@@ -131,7 +255,7 @@
                     <td class="text-xs-left">{{ props.item.direccion }}</td>
                     <td class="text-xs-left">{{ props.item.telefono }}</td>
                     <div>
-                      <v-btn fab dark small color="warning">
+                      <v-btn @click="editarEmpleados = true" fab dark small color="warning">
                         <v-icon dark color="white">edit</v-icon>
                       </v-btn>
                       <v-btn fab dark small color="error">
@@ -163,6 +287,8 @@ export default {
       correo: ''
     })
     return {
+      editarEmpleados: false,
+      editar: false,
       tel: 'phone',
       form: Object.assign({}, defaultForm),
       rules: {

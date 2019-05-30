@@ -197,19 +197,19 @@ export default {
       this.snackbar = true
       this.resetForm()
     },
-     async update () {
-        const { data: res } = await api.put(`/user/${this.user.uuid}`, {
-         userUpdate: {
-           nombre: this.form.nombre,
-           apellido: this.form.apellidos,
-           telefono: this.form.telefono,
-           email: this.form.correo,
-           nacionalidad: this.form.nacionalidad,
-           cedula: this.form.documento
-         }
-       })
-       this.snackbar = true
-     },
+    async update () {
+      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
+        userUpdate: {
+          nombre: this.form.nombre,
+          apellido: this.form.apellidos,
+          telefono: this.form.telefono,
+          email: this.form.correo,
+          nacionalidad: this.form.nacionalidad,
+          cedula: this.form.documento
+        }
+      })
+      this.snackbar = true
+    },
     lowerCase (val) {
       return val.toLowerCase()
     }
