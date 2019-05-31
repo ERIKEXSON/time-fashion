@@ -104,13 +104,22 @@
                 <v-container grid-list-xl fluid>
                   <v-layout wrap>
                     <v-flex xs12 sm4>
-                      <v-text-field v-model="form2.departamento" label="Departamento"></v-text-field>
+                      <v-text-field
+                        v-model="departamento"
+                        label="Departamento"
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm4>
-                      <v-text-field v-model="form2.ciudad" label="Ciudad"></v-text-field>
+                      <v-text-field
+                        v-model="ciudad"
+                        label="Ciudad"
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm4>
-                      <v-text-field v-model="form2.direccion" label="Dirección"></v-text-field>
+                      <v-text-field
+                        v-model="direccion"
+                        label="Dirección"
+                      ></v-text-field>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -125,7 +134,6 @@
               </v-card-actions>
             </v-card>
           </nav>
-          <v-text-field v-model="form2.muestra" label="Mi dirección es" disabled></v-text-field>
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn class="botonCerrar" flat @click="agregarDireccion = false">Cerrar</v-btn>
@@ -148,20 +156,16 @@ export default {
       documento: '',
       nacionalidad: ''
     })
-    const formDirecciones = Object.freeze({
+    return {
       departamento: '',
       ciudad: '',
       direccion: '',
-      muestra: ''
-    })
-    return {
       agregarDireccion: false,
       menu: '',
       snackbar: false,
       snackbarDireccion: false,
       doc: '#################',
       phone: 'phone',
-      form2: Object.assign({}, formDirecciones),
       form: Object.assign({}, defaultForm),
       rules: {
         correo: [
@@ -177,9 +181,9 @@ export default {
     ...mapState(['user']),
     datosValidos () {
       return (
-        this.form2.departamento &&
-        this.form2.ciudad &&
-        this.form2.direccion
+        this.departamento &&
+        this.ciudad &&
+        this.direccion
       )
     },
     formIsValid () {
@@ -209,7 +213,7 @@ export default {
       this.snackbar = true
     },
     async actualizarDireccion () {
-      const union = this.form2.departamento + '-' + this.form2.ciudad + '-' + this.form2.direccion
+      const union = (this.departamento + '-' + this.ciudad + '-' + this.direccion)
       const res = await api.put(`/user/${this.user.uuid}`, {
         userUpdate: {
           direcciones: this.lowerCase(union)
@@ -222,9 +226,6 @@ export default {
     }
   },
   created () {
-    this.form2 = {
-      muestra: this.user.direcciones
-    }
     this.form = {
       nombres: this.user.nombre,
       apellidos: this.user.apellido,
@@ -233,6 +234,9 @@ export default {
       documento: this.user.cedula,
       nacionalidad: this.user.nacionalidad
     }
+    this.departamento = this.user.direcciones.split('-')[0]
+    this.ciudad = this.user.direcciones.split('-')[1]
+    this.direccion = this.user.direcciones.split('-')[2]
     this.$store.commit('SET_LAYOUT', 'cliente-layout')
   }
 }

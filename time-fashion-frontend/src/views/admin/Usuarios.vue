@@ -116,7 +116,11 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table :headers="headers" :items="desserts" :search="search">
+        <v-data-table
+          :headers="headers"
+          :items="usuarios"
+          :search="search"
+        >
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
@@ -128,7 +132,7 @@
               <v-btn @click="editar = true" fab dark small color="warning">
                 <v-icon dark color="white">edit</v-icon>
               </v-btn>
-              <v-btn fab dark small color="error">
+              <v-btn fab dark small color="error" @click="deteleUsuario(props.item)">
                 <v-icon dark color="white">delete</v-icon>
               </v-btn>
             </div>
@@ -247,6 +251,7 @@
 </template>
 <script>
 import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -290,19 +295,6 @@ export default {
         { text: 'Rol', value: 'rol' },
         { text: '', sortable: false }
       ],
-      desserts: [
-        {
-          nombre: 'Errik',
-          apellido: 'Mamerto',
-          documento: '123123123',
-          nacionalidad: 'colombia',
-          empresa: 'adidas',
-          rol: 'administrador',
-          correo: 'prueba@prueba.com',
-          direccion: 'asdasda',
-          telefono: '123123123123'
-        }
-      ],
       datosContacto: [
         { text: 'Correo', value: 'correo', sortable: false },
         { text: 'Dirección', value: 'direccion', sortable: false },
@@ -311,6 +303,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['usuarios']),
     formIsValid () {
       return (
         this.form.nombre &&
@@ -344,14 +337,33 @@ export default {
           contraseña: this.form.password
         }
       })
+      let clonUsuarios = [...this.usuarios]
+      clonUsuarios.push(user)
+      this.$store.commit('SET_USUARIOS', clonUsuarios)
       this.snackbar = true
       this.resetForm()
     },
     lowerCase (val) {
       return val.toLowerCase()
+    },
+    async getUsuarios(){
+      const { data : usuariosData } =  await api.get('/user')
+      this.$store.commit('SET_USUARIOS', usuariosData)
+    },
+    async deteleUsuario(item) {
+      try {
+        const { data } = await api.delete(`/user/${item.uuid}`)
+        let clonUsuarios = [...this.usuarios]
+        const index = this.usuarios.indexOf(item)
+        clonUsuarios.splice(index, 1)
+        this.$store.commit('SET_USUARIOS', clonUsuarios)
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   created () {
+    this.getUsuarios()
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }

@@ -308,14 +308,6 @@ export default {
         { text: 'Correo', value: 'correo' },
         { text: 'Opciones', sortable: false }
       ],
-      desserts: [
-        {
-          name: 'Totto',
-          nit: '87364502-1',
-          telefono: '321564651',
-          correo: 'jbfjhbue@erjg.com'
-        }
-      ],
       encabezados: [
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
@@ -371,7 +363,6 @@ export default {
     },
     async getEmpresas(){
       const { data : empresasData } =  await api.get('/company')
-      console.log(empresasData)
       this.$store.commit('SET_EMPRESAS', empresasData)
     },
     async deteleEmpresa(item) {
