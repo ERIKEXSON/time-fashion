@@ -91,6 +91,11 @@
             <td class="text-xs-left">{{ props.item.caducidad }}</td>
             <td class="text-xs-left">{{ props.item.codigocvv }}</td>
             <td class="text-xs-left">{{ props.item.nombre }}</td>
+            <td class="text-xs-left">
+              <v-btn fab dark small color="error">
+                <v-icon dark color="white">delete</v-icon>
+              </v-btn>
+            </td>
           </template>
         </v-data-table>
       </v-card>
@@ -122,7 +127,8 @@ export default {
         { text: 'N° de tarjeta', value: 'numerotarjeta', sortable: false },
         { text: 'Fecha caducidad', value: 'caducidad', sortable: false },
         { text: 'CVV', value: 'codigocvv', sortable: false },
-        { text: 'Nombre y apellido', value: 'nombre', sortable: false }
+        { text: 'Nombre y apellido', value: 'nombre', sortable: false },
+        { text: 'Opciones', sortable: false }
       ],
       desserts: [
         {

@@ -246,25 +246,25 @@
   </v-flex>
 </template>
 <script>
-import api from "@/plugins/api";
+import api from '@/plugins/api'
 export default {
-  data() {
+  data () {
     const defaultForm = Object.freeze({
-      nombre: "",
-      apellido: "",
-      documento: "",
-      correo: "",
-      rol: "",
-      direccion: "",
-      nacionalidad: "",
-      tel: "",
-      empresa: "",
-      password: "12345"
-    });
+      nombre: '',
+      apellido: '',
+      documento: '',
+      correo: '',
+      rol: '',
+      direccion: '',
+      nacionalidad: '',
+      tel: '',
+      empresa: '',
+      password: '12345'
+    })
     return {
       editar: false,
-      tel: "phone",
-      doc: "#################",
+      tel: 'phone',
+      doc: '#################',
       e1: 0,
       contacto: false,
       snackbar: false,
@@ -272,46 +272,46 @@ export default {
       tabs: null,
       form: Object.assign({}, defaultForm),
       rules: {
-        required: [val => (val || "").length > 0 || "Este campo es requerido"],
+        required: [val => (val || '').length > 0 || 'Este campo es requerido'],
         correo: [
-          val => (val || "").length > 0 || "Este campo es requerido",
-          v => /.+@.+/.test(v) || "El correo debe ser válido"
+          val => (val || '').length > 0 || 'Este campo es requerido',
+          v => /.+@.+/.test(v) || 'El correo debe ser válido'
         ]
       },
-      rol: ["Administrador", "Vendedor"],
+      rol: ['Administrador', 'Vendedor'],
       defaultForm,
-      search: "",
+      search: '',
       headers: [
-        { text: "Nombre", value: "nombre" },
-        { text: "Apellido", value: "apellido" },
-        { text: "Cédula", value: "documento" },
-        { text: "Nacionalidad", value: "nacionalidad" },
-        { text: "Empresa", value: "empresa" },
-        { text: "Rol", value: "rol" },
-        { text: "", sortable: false }
+        { text: 'Nombre', value: 'nombre' },
+        { text: 'Apellido', value: 'apellido' },
+        { text: 'Cédula', value: 'documento' },
+        { text: 'Nacionalidad', value: 'nacionalidad' },
+        { text: 'Empresa', value: 'empresa' },
+        { text: 'Rol', value: 'rol' },
+        { text: '', sortable: false }
       ],
       desserts: [
         {
-          nombre: "Errik",
-          apellido: "Mamerto",
-          documento: "123123123",
-          nacionalidad: "colombia",
-          empresa: "adidas",
-          rol: "administrador",
-          correo: "prueba@prueba.com",
-          direccion: "asdasda",
-          telefono: "123123123123"
+          nombre: 'Errik',
+          apellido: 'Mamerto',
+          documento: '123123123',
+          nacionalidad: 'colombia',
+          empresa: 'adidas',
+          rol: 'administrador',
+          correo: 'prueba@prueba.com',
+          direccion: 'asdasda',
+          telefono: '123123123123'
         }
       ],
       datosContacto: [
-        { text: "Correo", value: "correo", sortable: false },
-        { text: "Dirección", value: "direccion", sortable: false },
-        { text: "Teléfono", value: "telefono", sortable: false }
+        { text: 'Correo', value: 'correo', sortable: false },
+        { text: 'Dirección', value: 'direccion', sortable: false },
+        { text: 'Teléfono', value: 'telefono', sortable: false }
       ]
-    };
+    }
   },
   computed: {
-    formIsValid() {
+    formIsValid () {
       return (
         this.form.nombre &&
         this.form.apellido &&
@@ -322,16 +322,16 @@ export default {
         this.form.direccion &&
         this.form.tel &&
         this.form.empresa
-      );
+      )
     }
   },
   methods: {
-    resetForm() {
-      this.form = Object.assign({}, this.defaultForm);
-      this.$refs.form.reset();
+    resetForm () {
+      this.form = Object.assign({}, this.defaultForm)
+      this.$refs.form.reset()
     },
-    async register() {
-      const res = await api.post("/user", {
+    async register () {
+      const res = await api.post('/user', {
         userNew: {
           nombre: this.lowerCase(this.form.nombre),
           apellido: this.lowerCase(this.form.apellido),
@@ -343,18 +343,18 @@ export default {
           nacionalidad: this.lowerCase(this.form.nacionalidad),
           contraseña: this.form.password
         }
-      });
-      this.snackbar = true;
-      this.resetForm();
+      })
+      this.snackbar = true
+      this.resetForm()
     },
-    lowerCase(val) {
-      return val.toLowerCase();
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
-  created() {
-    this.$store.commit("SET_LAYOUT", "administrador-layout");
+  created () {
+    this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
-};
+}
 </script>
 <style scoped>
 .borde {
