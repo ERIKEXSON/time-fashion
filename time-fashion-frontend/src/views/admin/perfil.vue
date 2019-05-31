@@ -232,6 +232,9 @@ export default {
       documento: this.user.cedula,
       nacionalidad: this.user.nacionalidad
     }
+    this.departamento = this.user.direcciones.split('-')[0]
+    this.ciudad = this.user.direcciones.split('-')[1]
+    this.direccion = this.user.direcciones.split('-')[2]
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }

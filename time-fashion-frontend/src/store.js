@@ -10,7 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     layout: 'principal-layout',
-    user: {}
+    user: {},
+    empresas: []
   },
   mutations: {
     SET_LAYOUT (state, newVal) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     SET_USER (state, newVal) {
       state.user = newVal
+    },
+    SET_EMPRESAS (state, newVal) {
+      state.empresas = newVal
     }
   },
   actions: {

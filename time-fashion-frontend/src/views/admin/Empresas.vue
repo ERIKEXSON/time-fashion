@@ -84,11 +84,11 @@
         </v-card-title>
         <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="empresas"
         :search="search"
         >
         <template v-slot:items="props">
-          <td class="text-xs-left">{{ props.item.name }}</td>
+          <td class="text-xs-left">{{ props.item.nombre }}</td>
           <td class="text-xs-left">{{ props.item.nit }}</td>
           <td class="text-xs-left">{{ props.item.telefono }}</td>
           <td class="text-xs-left">{{ props.item.correo }}</td>
@@ -96,7 +96,7 @@
             <v-btn @click="editar = true" fab dark small color="warning">
               <v-icon dark color="white">edit</v-icon>
             </v-btn>
-            <v-btn fab dark small color="error">
+            <v-btn fab dark small color="error" @click="deteleEmpresa(props.item)">
               <v-icon dark color="white">delete</v-icon>
             </v-btn>
           </div>
@@ -278,6 +278,7 @@
 </template>
 <script>
 import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -335,6 +336,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['empresas']),
     formIsValid () {
       return (
         this.form.nombre &&
@@ -350,7 +352,7 @@ export default {
       this.$refs.form.reset()
     },
     async register () {
-      const res = await api.post('/company', {
+      const { data:company } = await api.post('/company', {
         companyNew: {
           nombre: this.lowerCase(this.form.nombre),
           nit: this.lowerCase(this.form.nit),
@@ -358,14 +360,34 @@ export default {
           telefono: this.lowerCase(this.form.telefono)
         }
       })
+      let clonEmpresas = [...this.empresas]
+      clonEmpresas.push(company)
+      this.$store.commit('SET_EMPRESAS', clonEmpresas)
       this.snackbar = true
       this.resetForm()
     },
     lowerCase (val) {
       return val.toLowerCase()
+    },
+    async getEmpresas(){
+      const { data : empresasData } =  await api.get('/company')
+      console.log(empresasData)
+      this.$store.commit('SET_EMPRESAS', empresasData)
+    },
+    async deteleEmpresa(item) {
+      try {
+        const { data } = await api.delete(`/company/${item.uuid}`)
+        let clonEmpresas = [...this.empresas]
+        const index = this.empresas.indexOf(item)
+        clonEmpresas.splice(index, 1)
+        this.$store.commit('SET_EMPRESAS', clonEmpresas)
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   created () {
+    this.getEmpresas()
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }
