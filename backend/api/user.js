@@ -38,6 +38,17 @@ router.put('/:uuid', async function (req, res, next) {
     next(err)
   }
 })
+router.put('/updatePassword/:uuid', async function (req, res, next) {
+  try {
+    const { uuid } = req.params
+    const user = req.body
+    const { User } = await db()
+    const result = await User.updatePassword(uuid, user)
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
 router.delete('/:uuid', async function (req, res, next) {
   try {
     const { uuid } = req.params

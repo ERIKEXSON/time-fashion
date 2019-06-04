@@ -9,17 +9,25 @@ function setupUser (userModel) {
   }
   async function updateUser (uuid, user) {
     const cond = { where: { uuid } }
-    user.contraseña = password.generateHash(user.contraseña)
     const result = await userModel.update(user, cond)
     return result ? userModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
-  async function comparar (uuid, credentials) {
+  async function updatePassword (uuid, user) {
     const cond = { where: { uuid } }
-    if(password.compareHash(credentials.contraseña, user.contraseña)){
-      return{
-        comparado:true
-      } 
+    const result = await userModel.findOne(cond)
+    if (!result) {
+      return {
+        message: 'No existe el usuario a actualizar'
+      }
     }
+    if (!(password.compareHash(user.contrasena, result.contraseña))) {
+      return {
+        message: 'Contraseña actual no coincide'
+      }
+    }
+    user.contrasenaNew = password.generateHash(user.contrasenaNew)
+    const result2 = await userModel.update({contraseña: user.contrasenaNew}, cond)
+    return result2
   }
   async function deleteUser (uuid) {
     const cond = { where: { uuid } }
@@ -62,7 +70,7 @@ function setupUser (userModel) {
     findAllUser,
     findUuidUser,
     singin,
-    comparar
+    updatePassword
   }
 }
 
