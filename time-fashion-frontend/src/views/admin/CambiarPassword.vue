@@ -61,7 +61,7 @@
             flat
             :disabled="$v.$invalid"
             v-text="'Cambiar contraseña'"
-            @click="submit"/>
+            @click="cambiarPassword"/>
         </v-card-actions>
       </v-container>
     </v-card>
@@ -69,6 +69,8 @@
 </template>
 <script>
 import { required, sameAs, minLength } from 'vuelidate/lib/validators'
+import api from '@/plugins/api'
+import { mapState } from 'vuex'
 
 export default {
   data () {
@@ -94,6 +96,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user']),
     currentPassErrors () {
       const errors = []
       if (!this.$v.currentPassword.$dirty) return errors
@@ -121,11 +124,14 @@ export default {
     }
   },
   methods: {
-    submit () {
-      this.$v.$reset()
-      this.currentPassword = null
-      this.password = null
-      this.repeatPassword = null
+    async cambiarPassword () {
+      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
+        updateUser: {
+          contraseña: this.password
+        }
+      })
+      console.log(this.user)
+      console.log(res)
     }
   },
   created () {

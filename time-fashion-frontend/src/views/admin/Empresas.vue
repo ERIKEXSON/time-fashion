@@ -344,7 +344,7 @@ export default {
       this.$refs.form.reset()
     },
     async register () {
-      const { data:company } = await api.post('/company', {
+      const { data: company } = await api.post('/company', {
         companyNew: {
           nombre: this.lowerCase(this.form.nombre),
           nit: this.lowerCase(this.form.nit),
@@ -361,11 +361,11 @@ export default {
     lowerCase (val) {
       return val.toLowerCase()
     },
-    async getEmpresas(){
-      const { data : empresasData } =  await api.get('/company')
+    async getEmpresas () {
+      const { data: empresasData } = await api.get('/company')
       this.$store.commit('SET_EMPRESAS', empresasData)
     },
-    async deteleEmpresa(item) {
+    async deteleEmpresa (item) {
       try {
         const { data } = await api.delete(`/company/${item.uuid}`)
         let clonEmpresas = [...this.empresas]

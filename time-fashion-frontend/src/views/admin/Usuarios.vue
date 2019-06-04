@@ -38,12 +38,7 @@
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.correo"
-                  :rules="rules.correo"
-                  label="Correo"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-select
@@ -116,11 +111,7 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table
-          :headers="headers"
-          :items="usuarios"
-          :search="search"
-        >
+        <v-data-table :headers="headers" :items="usuarios" :search="search">
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
@@ -203,11 +194,7 @@
                 </v-layout>
               </v-container>
               <div class="contornoboton">
-                <v-btn
-                  class="botonConfirmar"
-                  flat
-                  color="black"
-                >Actualizar</v-btn>
+                <v-btn class="botonConfirmar" flat color="black">Actualizar</v-btn>
               </div>
             </nav>
             <v-card-actions>
@@ -299,6 +286,13 @@ export default {
         { text: 'Correo', value: 'correo', sortable: false },
         { text: 'Dirección', value: 'direccion', sortable: false },
         { text: 'Teléfono', value: 'telefono', sortable: false }
+      ],
+      desserts: [
+        {
+          correo: 'asdasdas@asdasd.com',
+          direccion: 'asdasdasd',
+          telefono: '12121212'
+        }
       ]
     }
   },
@@ -324,7 +318,7 @@ export default {
       this.$refs.form.reset()
     },
     async register () {
-      const res = await api.post('/user', {
+      const { data: user } = await api.post('/user', {
         userNew: {
           nombre: this.lowerCase(this.form.nombre),
           apellido: this.lowerCase(this.form.apellido),
@@ -346,11 +340,11 @@ export default {
     lowerCase (val) {
       return val.toLowerCase()
     },
-    async getUsuarios(){
-      const { data : usuariosData } =  await api.get('/user')
+    async getUsuarios () {
+      const { data: usuariosData } = await api.get('/user')
       this.$store.commit('SET_USUARIOS', usuariosData)
     },
-    async deteleUsuario(item) {
+    async deteleUsuario (item) {
       try {
         const { data } = await api.delete(`/user/${item.uuid}`)
         let clonUsuarios = [...this.usuarios]
