@@ -20,10 +20,6 @@ function setupUser (userModel) {
         comparado:true
       } 
     }
-    
-    const cond = { where: { contraseña: credentials.contraseña } }
-    const result = await userModel.update(user, cond)
-    return result ? userModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }
   async function deleteUser (uuid) {
     const cond = { where: { uuid } }
