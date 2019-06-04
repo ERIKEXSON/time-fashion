@@ -51,7 +51,7 @@ export default {
 .precio{
   margin-top:-30px;
   display:block;
-  font-size: 14px;
+  font-size: 19px;
   font-family: 'HelvNeueHeavy', Arial, Helvetica, sans-serif;
 }
 </style>
