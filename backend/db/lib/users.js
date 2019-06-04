@@ -9,6 +9,7 @@ function setupUser (userModel) {
   }
   async function updateUser (uuid, user) {
     const cond = { where: { uuid } }
+    user.contraseña = password.generateHash(user.contraseña)
     const result = await userModel.update(user, cond)
     return result ? userModel.findOne(cond) : new Error('no se actualizo ningun registro')
   }

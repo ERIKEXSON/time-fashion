@@ -6,7 +6,6 @@ const salt = bcrypt.genSaltSync(10)
 
 module.exports = {
   generateHash: function (password) {
-    console.log(password)
     return bcrypt.hashSync(password, salt)
   },
   compareHash: function (plainPassword, hashPassword) {
