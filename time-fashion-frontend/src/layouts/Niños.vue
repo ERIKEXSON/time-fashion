@@ -87,7 +87,7 @@
         </div>
 
       </v-toolbar>
-      <v-content class="cyan lighten-5">
+      <v-content class="light-blue lighten-2">
         <v-container fill-height>
           <v-layout justify-center align-center>
             <v-flex shrink>
