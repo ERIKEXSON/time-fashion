@@ -130,6 +130,7 @@
                     </v-flex>
                     <v-flex xs6>
                       <v-text-field
+                        :rules="[() => !!email, rules.required, rules.email || 'Este campo es requerido']"
                         label="Correo electronico"
                         outline
                       ></v-text-field>
@@ -138,12 +139,14 @@
                       <v-text-field
                         label="Cédula"
                         outline
+                        :mask="ced"
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs6>
                       <v-text-field
                         label="Teléfono/Celular"
                         outline
+                        :mask="tel"
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs6>
@@ -400,6 +403,8 @@ import FRASES from '@/assets/hombre/tanks/azuloscuro.jpg'
 export default {
   data () {
     return {
+      ced: '##########',
+      tel: '##########',
       step: 1,
       e1: 0,
       frases: FRASES,

@@ -11,22 +11,22 @@
 
       <v-layout row wrap>
       <v-flex xs6 sm4 md>
-        <v-img :src="tops" class="img-responsive2" @click="clickPush('/joggers-hombre')"></v-img>
+        <v-img :src="tanks" class="img-responsive2" @click="clickPush('/shorts-y-faldas-mujer')"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
         <v-img :src="frases" class="img-responsive2" @click="clickPush('/niños')"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
-        <v-img :src="tanks" class="img-responsive2" @click="clickPush('/jeans-y-pantalones-mujer')"></v-img>
+        <v-img :src="tops" class="img-responsive2" @click="clickPush('/joggers-hombre')"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
-        <v-img :src="shorts" class="img-responsive2" @click="clickPush('/shorts-y-faldas-mujer')"></v-img>
+        <v-img :src="shorts" class="img-responsive2" @click="clickPush('/tops-mujer')"></v-img>
+      </v-flex>
+      <v-flex xs6 sm4 md>
+        <v-img :src="camisetas" class="img-responsive2" @click="clickPush('/busos-mujer')"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
         <v-img :src="niños" class="img-responsive2" @click="clickPush('/camisetas-hombre')"></v-img>
-      </v-flex>
-      <v-flex xs6 sm4 md>
-        <v-img :src="camisetas" class="img-responsive2" @click="clickPush('/busos-hombre')"></v-img>
       </v-flex>
     </v-layout>
   </v-container>
