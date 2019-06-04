@@ -65,7 +65,7 @@
             flat
             :disabled="$v.$invalid"
             v-text="'Cambiar contraseña'"
-            @click="submit"/>
+            @click="cambiarPassword"/>
         </v-card-actions>
       </v-container>
     </v-card>
@@ -75,6 +75,7 @@
 import { required, sameAs, minLength } from 'vuelidate/lib/validators'
 import api from '@/plugins/api'
 import { mapState } from 'vuex'
+import Swal from 'sweetalert2'
 export default {
   data () {
     return {
@@ -128,20 +129,20 @@ export default {
     }
   },
   methods: {
-    async updatePassword () {
-      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
-        userUpdate: {
-          contraseña: this.password
-        }
+    async cambiarPassword () {
+      const { data: res } = await api.put(`/user/updatePassword/${this.user.uuid}`, {
+        contrasena: this.currentPassword,
+        contrasenaNew: this.password
       })
-      this.$store.commit('SET_USER', res)
-      this.snackbar = true
-    },
-    submit () {
-      this.$v.$reset()
-      this.currentPassword = null
-      this.password = null
-      this.repeatPassword = null
+      if (res.update === false) {
+        Swal.fire({
+          type: 'error',
+          title: 'Usuario/contraseña erróneos',
+          text: 'Ingresa bien los datos'
+        })
+      } else {
+        this.snackbar = true
+      }
     }
   },
   created () {
@@ -150,16 +151,19 @@ export default {
 }
 </script>
 <style scoped>
-.boton {
-  width: fit-content;
-  background-color: rgba(206, 98, 252, 0.795);
-  color: black;
-  margin: auto;
-  transition: all 0.2s linear;
-  align-content: center;
-  border-radius: 15px
-}
-.boton button:not([disabled="disabled"]):hover {
-  background-color: rgba(136, 16, 248, 0.795);
-}
+  .boton {
+    width: fit-content;
+    background-color: rgba(206, 98, 252, 0.795);
+    color: black;
+    margin: auto;
+    transition: all 0.2s linear;
+    align-content: center;
+    border-radius: 15px
+  }
+  .boton button:not([disabled="disabled"]):hover {
+    background-color: rgba(136, 16, 248, 0.795);
+  }
+  .snackbar {
+    color: black;
+  }
 </style>

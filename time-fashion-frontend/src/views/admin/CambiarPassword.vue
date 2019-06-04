@@ -1,5 +1,9 @@
 <template>
-  <v-app>
+  <v-flex xs12>
+    <v-snackbar v-model="snackbar" absolute top right color="success" class="snackbar">
+      <span>Contraseña actualizada</span>
+      <v-icon>check_circle</v-icon>
+    </v-snackbar>
     <v-card>
       <v-container>
         <v-layout wrap>
@@ -65,19 +69,20 @@
         </v-card-actions>
       </v-container>
     </v-card>
-  </v-app>
+  </v-flex>
 </template>
 <script>
 import { required, sameAs, minLength } from 'vuelidate/lib/validators'
 import api from '@/plugins/api'
 import { mapState } from 'vuex'
-
+import Swal from 'sweetalert2'
 export default {
   data () {
     return {
       show1: false,
       show2: false,
       show3: false,
+      snackbar: false,
       password: '',
       repeatPassword: '',
       currentPassword: ''
@@ -124,12 +129,20 @@ export default {
     }
   },
   methods: {
-    async cambiarPassword () { 
-      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
-        userUpdate: {
-          contraseña: this.password
-        }
+    async cambiarPassword () {
+      const { data: res } = await api.put(`/user/updatePassword/${this.user.uuid}`, {
+        contrasena: this.currentPassword,
+        contrasenaNew: this.password
       })
+      if (res.update === false) {
+        Swal.fire({
+          type: 'error',
+          title: 'Usuario/contraseña erróneos',
+          text: 'Ingresa bien los datos'
+        })
+      } else {
+        this.snackbar = true
+      }
     }
   },
   created () {
@@ -149,5 +162,8 @@ export default {
   }
   .boton button:not([disabled="disabled"]):hover {
     background-color: rgba(136, 16, 248, 0.795);
+  }
+  .snackbar {
+    color: black;
   }
 </style>
