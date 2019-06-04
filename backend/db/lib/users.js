@@ -17,17 +17,19 @@ function setupUser (userModel) {
     const result = await userModel.findOne(cond)
     if (!result) {
       return {
-        message: 'No existe el usuario a actualizar'
+        message: 'No existe el usuario a actualizar',
+        update: false
       }
     }
     if (!(password.compareHash(user.contrasena, result.contraseña))) {
       return {
-        message: 'Contraseña actual no coincide'
+        message: 'Contraseña actual no coincide',
+        update: false
       }
     }
     user.contrasenaNew = password.generateHash(user.contrasenaNew)
     const result2 = await userModel.update({contraseña: user.contrasenaNew}, cond)
-    return result2
+    return result2 ? {message: 'Actualizado', update : true} : {message: 'No actualizo', update: false}
   }
   async function deleteUser (uuid) {
     const cond = { where: { uuid } }
