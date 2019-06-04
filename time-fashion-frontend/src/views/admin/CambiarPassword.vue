@@ -125,13 +125,12 @@ export default {
   },
   methods: {
     async cambiarPassword () {
-      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
+      const { data: user } = await api.put(`/user/${this.user.uuid}`, {
         updateUser: {
           contraseña: this.password
         }
       })
-      console.log(this.user)
-      console.log(res)
+      console.log(user)
     }
   },
   created () {
