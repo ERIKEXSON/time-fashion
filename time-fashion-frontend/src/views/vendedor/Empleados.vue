@@ -13,49 +13,27 @@
           <v-container grid-list-xl fluid>
             <v-layout wrap>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.nombre"
-                  :rules="rules.requerido"
-                  label="Nombre"
-                  required
+                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre" required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.apellido"
-                  :rules="rules.requerido"
-                  label="Apellido"
-                  required
+                <v-text-field v-model="form.apellido" :rules="rules.requerido" label="Apellido" required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required></v-text-field>
+                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required>
+                </v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.nacionalidad"
-                  :rules="rules.requerido"
-                  label="nacionalidad"
-                  required
+                <v-text-field v-model="form.nacionalidad" :rules="rules.requerido" label="nacionalidad" required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.telefono"
-                  :rules="rules.requerido"
-                  label="Teléfono"
-                  required
-                  :mask="numeros"
+                <v-text-field v-model="form.telefono" :rules="rules.requerido" label="Teléfono" required :mask="numeros"
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field
-                  v-model="form.documento"
-                  :rules="rules.requerido"
-                  label="Cedula de ciudadania"
-                  required
-                  :mask="docu"
-                  counter
+                <v-text-field v-model="form.documento" :rules="rules.requerido" label="Cedula de ciudadania" required :mask="docu" counter
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -88,7 +66,7 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table :headers="headers" :items="desserts" :search="search">
+        <v-data-table :headers="headers" :items="empleados" :search="search">
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
@@ -98,14 +76,62 @@
             <td class="text-xs-left">{{ props.item.documento }}</td>
             <td class="text-xs-left">
               <v-btn fab small color="error">
-                <v-icon color="black">delete</v-icon>
+                <v-icon @click="deteleEmpleados(props.item)" color="black">delete</v-icon>
               </v-btn>
               <v-btn fab small color="warning">
-                <v-icon @click="update" color="black">edit</v-icon>
+                <v-icon @click="editempleado = true" color="black">edit</v-icon>
               </v-btn>
             </td>
           </template>
         </v-data-table>
+        <!-- editar empleados -->
+        <v-dialog v-model="editempleado">
+        <v-card>
+          <v-card-text width="fif-content">
+            <nav>
+              <h3>Editar datos del empleado</h3>
+            </nav>
+             <v-card flat>
+        <v-form ref="form">
+          <v-container grid-list-xl fluid>
+            <v-layout wrap>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre" required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.apellido" :rules="rules.requerido" label="Apellido" required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required>
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.nacionalidad" :rules="rules.requerido" label="nacionalidad" required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.telefono" :rules="rules.requerido" label="Teléfono" required :mask="numeros"
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.documento" :rules="rules.requerido" label="Cedula de ciudadania" required :mask="docu" counter
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-form>
+      </v-card>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="btce">
+                <v-btn flat @click="editempleado = false"  class="bt">Cerrar</v-btn>
+              </div>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
       </v-card>
     </nav>
   </v-flex>
@@ -126,6 +152,7 @@ export default {
       rol: 'vendedor'
     })
     return {
+      editempleado: false,
       numeros: '###-###-####',
       docu: '##########',
       show1: false,
@@ -150,21 +177,11 @@ export default {
         { text: 'Telefono', value: 'telefono' },
         { text: 'Documento', value: 'documento' },
         { text: 'Acciones', sortable: false }
-      ],
-      desserts: [
-        {
-          nombre: '',
-          apellido: '',
-          correo: '',
-          nacionalidad: '',
-          telefono: '',
-          documento: ''
-        }
       ]
     }
   },
   computed: {
-    ...mapState(['user']),
+    ...mapState(['empleados']),
     formIsValid () {
       return (
         this.form.nombre &&
@@ -194,11 +211,14 @@ export default {
           rol: this.lowerCase(this.form.rol)
         }
       })
+      let clonEmpleados = [...this.empleados]
+      clonEmpleados.push(user)
+      this.$store.commit('SET_EMPLEADOS', clonEmpleados)
       this.snackbar = true
       this.resetForm()
     },
     async update () {
-      const { data: res } = await api.put(`/user/${this.user.uuid}`, {
+      const { data: user } = await api.put(`/user/${this.user.uuid}`, {
         userUpdate: {
           nombre: this.form.nombre,
           apellido: this.form.apellidos,
@@ -212,17 +232,25 @@ export default {
     },
     lowerCase (val) {
       return val.toLowerCase()
+    },
+    async getEmpleados(){
+      const { data : empleadosData } =  await api.get('/user')
+      this.$store.commit('SET_EMPLEADOS', empleadosData)
+    },
+    async deteleEmpleados(item) {
+      try {
+        const { data } = await api.delete(`/user/${item.uuid}`)
+        let clonEmpleados = [...this.empleados]
+        const index = this.empleados.indexOf(item)
+        clonEmpleados.splice(index, 1)
+        this.$store.commit('SET_EMPLEADOS', clonEmpleados)
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   created () {
-    this.form = {
-      nombre: this.user.nombre,
-      apellido: this.user.apellido,
-      correo: this.user.email,
-      nacionalidad: this.user.nacionalidad,
-      telefono: this.user.telefono,
-      documento: this.user.cedula
-    }
+    this.getEmpleados()
     this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }
