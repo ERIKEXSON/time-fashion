@@ -30,7 +30,7 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.documento"
+                  v-model="form.cedula"
                   :rules="rules.required"
                   label="Cédula"
                   :mask="doc"
@@ -38,7 +38,7 @@
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required></v-text-field>
+                <v-text-field v-model="form.email" :rules="rules.correo" label="Correo" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm4>
                 <v-select
@@ -51,7 +51,7 @@
               </v-flex>
               <v-flex xs12 sm4>
                 <v-text-field
-                  v-model="form.direccion"
+                  v-model="form.direcciones"
                   :rules="rules.required"
                   label="Dirección"
                   required
@@ -67,7 +67,7 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                  v-model="form.tel"
+                  v-model="form.telefono"
                   :rules="rules.required"
                   label="Teléfono"
                   :mask="tel"
@@ -92,7 +92,7 @@
               flat
               color="black"
               @click="register"
-            >Registrar</v-btn>
+            >{{ btnText }}</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -115,124 +115,22 @@
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
-            <td class="text-xs-left">{{ props.item.documento }}</td>
-            <td class="text-xs-left">{{ props.item.nacionalidad }}</td>
+            <td class="text-xs-left">{{ props.item.cedula }}</td>
             <td class="text-xs-left">{{ props.item.empresa }}</td>
             <td class="text-xs-left">{{ props.item.rol }}</td>
+            <td class="text-xs-left">{{ props.item.email }}</td>
+            <td class="text-xs-left">{{ props.item.telefono }}</td>
             <div style="display: inline-block">
-              <v-btn @click="editar = true" fab dark small color="warning">
+              <v-btn @click="editarUsuario(props.item)" fab dark small color="warning">
                 <v-icon dark color="white">edit</v-icon>
               </v-btn>
               <v-btn fab dark small color="error" @click="deteleUsuario(props.item)">
                 <v-icon dark color="white">delete</v-icon>
               </v-btn>
             </div>
-            <div class="botonContacto">
-              <v-btn @click="contacto = true">Datos de contacto</v-btn>
-            </div>
           </template>
         </v-data-table>
       </v-card>
-      <v-dialog v-model="editar">
-        <v-card>
-          <v-card-text>
-            <nav class="borde">
-              <div class="tituloCuadro">
-                <h2>Editar usuario</h2>
-              </div>
-              <v-container grid-list-xl fluid>
-                <v-layout wrap>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.nombre"
-                      label="Nombre"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.apellido"
-                      label="Apellido"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.documento"
-                      label="Cédula"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.nacionalidad"
-                      label="Nacionalidad"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.empresa"
-                      label="Empresa"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-select
-                      v-model="form.rol"
-                      label="Rol"
-                      :items="rol"
-                      :rules="rules.required"
-                      required
-                    ></v-select>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-              <div class="contornoboton">
-                <v-btn class="botonConfirmar" flat color="black">Actualizar</v-btn>
-              </div>
-            </nav>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn class="botonCerrar" flat @click="editar = false">Cerrar</v-btn>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-      <v-dialog v-model="contacto">
-        <v-card>
-          <v-card-text>
-            <nav class="borde">
-              <div class="tituloCuadro">
-                <h2>Datos de contacto</h2>
-              </div>
-              <v-card>
-                <v-data-table
-                  :headers="datosContacto"
-                  :items="desserts"
-                  :search="search"
-                  hide-actions
-                >
-                  <template v-slot:items="props">
-                    <td class="text-xs-left">{{ props.item.correo }}</td>
-                    <td class="text-xs-left">{{ props.item.direccion }}</td>
-                    <td class="text-xs-left">{{ props.item.telefono }}</td>
-                  </template>
-                </v-data-table>
-              </v-card>
-            </nav>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn class="botonCerrar" flat @click="contacto = false">Cerrar</v-btn>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
     </nav>
   </v-flex>
 </template>
@@ -244,16 +142,18 @@ export default {
     const defaultForm = Object.freeze({
       nombre: '',
       apellido: '',
-      documento: '',
-      correo: '',
+      cedula: '',
+      email: '',
       rol: '',
-      direccion: '',
+      direcciones: '',
       nacionalidad: '',
-      tel: '',
+      telefono: '',
       empresa: '',
       password: '12345'
     })
     return {
+      editIndex: '',
+      btnText: 'Registrar',
       editar: false,
       tel: 'phone',
       doc: '#################',
@@ -270,29 +170,18 @@ export default {
           v => /.+@.+/.test(v) || 'El correo debe ser válido'
         ]
       },
-      rol: ['Administrador', 'Vendedor'],
+      rol: ['administrador', 'vendedor'],
       defaultForm,
       search: '',
       headers: [
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
-        { text: 'Cédula', value: 'documento' },
-        { text: 'Nacionalidad', value: 'nacionalidad' },
+        { text: 'Cédula', value: 'cedula' },
         { text: 'Empresa', value: 'empresa' },
         { text: 'Rol', value: 'rol' },
+        { text: 'Correo', value: 'email', sortable: false },
+        { text: 'Teléfono', value: 'telefono', sortable: false },
         { text: '', sortable: false }
-      ],
-      datosContacto: [
-        { text: 'Correo', value: 'correo', sortable: false },
-        { text: 'Dirección', value: 'direccion', sortable: false },
-        { text: 'Teléfono', value: 'telefono', sortable: false }
-      ],
-      desserts: [
-        {
-          correo: 'asdasdas@asdasd.com',
-          direccion: 'asdasdasd',
-          telefono: '12121212'
-        }
       ]
     }
   },
@@ -302,12 +191,12 @@ export default {
       return (
         this.form.nombre &&
         this.form.apellido &&
-        this.form.documento &&
-        this.form.correo &&
+        this.form.cedula &&
+        this.form.email &&
         this.form.rol &&
         this.form.nacionalidad &&
-        this.form.direccion &&
-        this.form.tel &&
+        this.form.direcciones &&
+        this.form.telefono &&
         this.form.empresa
       )
     }
@@ -316,26 +205,48 @@ export default {
     resetForm () {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
+      this.btnText = 'Registrar'
     },
     async register () {
-      const { data: user } = await api.post('/user', {
-        userNew: {
-          nombre: this.lowerCase(this.form.nombre),
-          apellido: this.lowerCase(this.form.apellido),
-          cedula: this.lowerCase(this.form.documento),
-          telefono: this.lowerCase(this.form.tel),
-          email: this.lowerCase(this.form.correo),
-          rol: this.lowerCase(this.form.rol),
-          empresa: this.lowerCase(this.form.empresa),
-          nacionalidad: this.lowerCase(this.form.nacionalidad),
-          contraseña: this.form.password
-        }
-      })
-      let clonUsuarios = [...this.usuarios]
-      clonUsuarios.push(user)
-      this.$store.commit('SET_USUARIOS', clonUsuarios)
-      this.snackbar = true
-      this.resetForm()
+      if (this.btnText === 'Registrar') {
+        const { data: user } = await api.post('/user', {
+          userNew: {
+            nombre: this.lowerCase(this.form.nombre),
+            apellido: this.lowerCase(this.form.apellido),
+            cedula: this.lowerCase(this.form.cedula),
+            direcciones: this.lowerCase(this.form.direcciones),
+            telefono: this.lowerCase(this.form.telefono),
+            email: this.lowerCase(this.form.email),
+            rol: this.lowerCase(this.form.rol),
+            empresa: this.lowerCase(this.form.empresa),
+            nacionalidad: this.lowerCase(this.form.nacionalidad),
+            contraseña: this.form.password
+          }
+        })
+        let clonUsuarios = [...this.usuarios]
+        clonUsuarios.push(user)
+        this.$store.commit('SET_USUARIOS', clonUsuarios)
+        this.snackbar = true
+        this.resetForm()
+      } else {
+        const { data: user } = await api.put(`/user/${this.form.uuid}`, {
+          userUpdate: {
+            nombre: this.lowerCase(this.form.nombre),
+            apellido: this.lowerCase(this.form.apellido),
+            cedula: this.lowerCase(this.form.cedula),
+            direcciones: this.lowerCase(this.form.direcciones),
+            telefono: this.lowerCase(this.form.telefono),
+            email: this.lowerCase(this.form.email),
+            rol: this.lowerCase(this.form.rol),
+            empresa: this.lowerCase(this.form.empresa),
+            nacionalidad: this.lowerCase(this.form.nacionalidad)
+          }
+        })
+        let clonUsers = [...this.usuarios]
+        clonUsers[this.editIndex] = user
+        this.$store.commit('SET_USUARIOS', clonUsers)
+        this.resetForm()
+      }
     },
     lowerCase (val) {
       return val.toLowerCase()
@@ -354,6 +265,11 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    editarUsuario (item) {
+      this.btnText = 'Actualizar'
+      this.editIndex = this.usuarios.indexOf(item)
+      this.form = Object.assign({}, item)
     }
   },
   created () {

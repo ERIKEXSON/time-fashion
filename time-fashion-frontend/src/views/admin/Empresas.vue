@@ -62,7 +62,7 @@
               flat
               color="black"
               @click="register"
-            >Registrar</v-btn>
+            >{{ btnText }}</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -93,7 +93,7 @@
           <td class="text-xs-left">{{ props.item.telefono }}</td>
           <td class="text-xs-left">{{ props.item.correo }}</td>
           <div style="text-align: center; display: inline-block;">
-            <v-btn @click="editar = true" fab dark small color="warning">
+            <v-btn @click="editarEmpresa(props.item)" fab dark small color="warning">
               <v-icon dark color="white">edit</v-icon>
             </v-btn>
             <v-btn fab dark small color="error" @click="deteleEmpresa(props.item)">
@@ -104,130 +104,6 @@
         </template>
         </v-data-table>
       </v-card>
-      <v-dialog v-model="editar">
-        <v-card>
-          <v-card-text>
-            <nav class="borde">
-              <div class="tituloCuadro">
-                <h2>Editar usuario</h2>
-              </div>
-              <v-container grid-list-xl fluid>
-                <v-layout wrap>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.nombre"
-                      label="Nombre"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.nit"
-                      label="Nit"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.telefono"
-                      label="Teléfono"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.correo"
-                      label="Correo"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-              <div class="contornoboton">
-                <v-btn
-                  class="botonConfirmar"
-                  flat
-                  color="black"
-                >Actualizar</v-btn>
-              </div>
-            </nav>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn class="botonCerrar" flat @click="editar = false">Cerrar</v-btn>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-      <v-dialog v-model="editarEmpleados">
-        <v-card>
-          <v-card-text>
-            <nav class="borde">
-              <div class="tituloCuadro">
-                <h2>Editar usuario</h2>
-              </div>
-              <v-container grid-list-xl fluid>
-                <v-layout wrap>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.nombre"
-                      label="Nombre"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.apellido"
-                      label="Apellido"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.correo"
-                      label="Correo"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6>
-                    <v-text-field
-                      v-model="form.direccion"
-                      label="Dirección"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm12>
-                    <v-text-field
-                      v-model="form.telefono"
-                      label="Teléfono"
-                      :rules="rules.required"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-              <div class="contornoboton">
-                <v-btn
-                  class="botonConfirmar"
-                  flat
-                  color="black"
-                >Actualizar</v-btn>
-              </div>
-            </nav>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn class="botonCerrar" flat @click="editarEmpleados = false">Cerrar</v-btn>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
       <v-dialog v-model="empleados">
         <v-card>
           <v-card-text>
@@ -288,6 +164,8 @@ export default {
       correo: ''
     })
     return {
+      btnText: 'Registrar',
+      editIndex: '',
       editarEmpleados: false,
       editar: false,
       tel: 'phone',
@@ -342,21 +220,37 @@ export default {
     resetForm () {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
+      this.btnText = 'Registrar'
     },
     async register () {
-      const { data: company } = await api.post('/company', {
-        companyNew: {
-          nombre: this.lowerCase(this.form.nombre),
-          nit: this.lowerCase(this.form.nit),
-          correo: this.lowerCase(this.form.correo),
-          telefono: this.lowerCase(this.form.telefono)
-        }
-      })
-      let clonEmpresas = [...this.empresas]
-      clonEmpresas.push(company)
-      this.$store.commit('SET_EMPRESAS', clonEmpresas)
-      this.snackbar = true
-      this.resetForm()
+      if (this.btnText === 'Registrar') {
+        const { data: company } = await api.post('/company', {
+          companyNew: {
+            nombre: this.lowerCase(this.form.nombre),
+            nit: this.lowerCase(this.form.nit),
+            correo: this.lowerCase(this.form.correo),
+            telefono: this.lowerCase(this.form.telefono)
+          }
+        })
+        let clonEmpresas = [...this.empresas]
+        clonEmpresas.push(company)
+        this.$store.commit('SET_EMPRESAS', clonEmpresas)
+        this.snackbar = true
+        this.resetForm()
+      } else {
+        const { data: empresa } = await api.put(`/company/${this.form.uuid}`, {
+          companyUpdate: {
+            nombre: this.lowerCase(this.form.nombre),
+            nit: this.lowerCase(this.form.nit),
+            correo: this.lowerCase(this.form.correo),
+            telefono: this.lowerCase(this.form.telefono)
+          }
+        })
+        let clonEmpresas = [...this.empresas]
+        clonEmpresas[this.editIndex] = empresa
+        this.$store.commit('SET_EMPRESAS', clonEmpresas)
+        this.resetForm()
+      }
     },
     lowerCase (val) {
       return val.toLowerCase()
@@ -375,6 +269,11 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    editarEmpresa (item) {
+      this.btnText = 'Actualizar'
+      this.editIndex = this.empresas.indexOf(item)
+      this.form = Object.assign({}, item)
     }
   },
   created () {

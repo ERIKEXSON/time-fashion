@@ -183,7 +183,7 @@ export default {
       rules: {
         requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
-      editPro:false,
+      editPro: false,
       conditions: false,
       snackbar: false,
       defaultForm,
@@ -281,11 +281,11 @@ export default {
     lowerCase (val) {
       return val.toLowerCase()
     },
-    async getProductos(){
-      const { data : productosData } =  await api.get('/products')
+    async getProductos () {
+      const { data: productosData } = await api.get('/products')
       this.$store.commit('SET_PRODUCTOS', productosData)
     },
-    async deteleProducctos(item) {
+    async deteleProducctos (item) {
       try {
         const { data } = await api.delete(`/products/${item.uuid}`)
         let clonProductos = [...this.productos]

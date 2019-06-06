@@ -233,11 +233,11 @@ export default {
     lowerCase (val) {
       return val.toLowerCase()
     },
-    async getEmpleados(){
-      const { data : empleadosData } =  await api.get('/user')
+    async getEmpleados () {
+      const { data: empleadosData } = await api.get('/user')
       this.$store.commit('SET_EMPLEADOS', empleadosData)
     },
-    async deteleEmpleados(item) {
+    async deteleEmpleados (item) {
       try {
         const { data } = await api.delete(`/user/${item.uuid}`)
         let clonEmpleados = [...this.empleados]
