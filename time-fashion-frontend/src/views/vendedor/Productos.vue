@@ -84,7 +84,7 @@
                 <v-icon color="black">delete</v-icon>
               </v-btn>
               <v-btn fab small color="warning">
-                <v-icon color="black">edit</v-icon>
+                <v-icon color="black" @click="editPro =true">edit</v-icon>
               </v-btn>
               <v-btn fab small color="primary" @click="conditions=true">
                 <v-icon color="black">image</v-icon>
@@ -109,6 +109,50 @@
               <v-spacer></v-spacer>
               <div class="btce">
                 <v-btn flat @click="conditions=false" class="bt">Cerrar</v-btn>
+              </div>
+            </v-card-actions>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+      <!-- editar  productos -->
+      <v-dialog v-model="editPro">
+        <v-card>
+          <v-card-text width="fif-content">
+            <nav class="cdima">
+              <h3>Editar producto</h3>
+            </nav>
+            <v-card flat>
+        <v-form ref="form" @submit.prevent="submit">
+          <v-container grid-list-xl fluid>
+            <v-layout wrap>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre del producto" required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required>
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 sm4>
+                <v-text-field v-model="form.precio" :rules="rules.requerido" label="Precio" required :mask="numeros"
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm4>
+                <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required>
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 sm4>
+                <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-form>
+      </v-card>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <div class="btce">
+                <v-btn flat @click="editPro=false" class="bt">Cerrar</v-btn>
               </div>
             </v-card-actions>
           </v-card-text>
@@ -139,6 +183,7 @@ export default {
       rules: {
         requerido: [val => (val || '').length > 0 || 'Este campo es requerido']
       },
+      editPro:false,
       conditions: false,
       snackbar: false,
       defaultForm,
@@ -217,17 +262,43 @@ export default {
           precio: this.lowerCase(this.form.precio)
         }
       })
+      let clonProductos = [...this.productos]
+      clonProductos.push(products)
+      this.$store.commit('SET_PRODUCTOS', clonProductos)
+      this.snackbar = true
+      this.resetForm()
+    },
+    async update () {
+      const { data: products } = await api.put(`/products/${this.products.uuid}`, {
+        productsUpdate: {
+          nombre: this.form.nombre,
+          codigo: this.form.codigo,
+          precio: this.form.precio
+        }
+      })
+      this.snackbar = true
     },
     lowerCase (val) {
       return val.toLowerCase()
+    },
+    async getProductos(){
+      const { data : productosData } =  await api.get('/products')
+      this.$store.commit('SET_PRODUCTOS', productosData)
+    },
+    async deteleProducctos(item) {
+      try {
+        const { data } = await api.delete(`/products/${item.uuid}`)
+        let clonProductos = [...this.productos]
+        const index = this.productos.indexOf(item)
+        clonProductos.splice(index, 1)
+        this.$store.commit('SET_PRODUCTOS', clonProductos)
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   created () {
-    this.form = {
-      nombre: this.products.nombre,
-      codigo: this.products.codigo,
-      precio: this.products.precio
-    }
+    this.getProductos()
     this.$store.commit('SET_LAYOUT', 'vendedor-layout')
   }
 }

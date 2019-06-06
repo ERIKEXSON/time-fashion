@@ -13,7 +13,8 @@ export default new Vuex.Store({
     user: {},
     empresas: [],
     usuarios: [],
-    empleados: []
+    empleados: [],
+    productos: []
   },
   mutations: {
     SET_LAYOUT (state, newVal) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     },
     SET_EMPLEADOS (state, newVal) {
       state.empleados = newVal
+    },
+    SET_PRODUCTOS (state, newVal) {
+      state.productos = newVal
     }
   },
   actions: {
