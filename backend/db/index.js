@@ -73,10 +73,6 @@ module.exports = async function () {
   BillModel.hasMany(OrderModel)
   OrderModel.belongsTo(BillModel)
 
-  // relacion de metodos de pago a facturas
-  BillModel.hasMany(Payment_methodModel)
-  Payment_methodModel.belongsTo(BillModel)
-
   // relacion de  ofertas a detalle_oferta
   OfferModel.hasMany(Offer_DetailModel)
   Offer_DetailModel.belongsTo(OfferModel)

@@ -137,7 +137,7 @@ export default {
       if (res.update === false) {
         Swal.fire({
           type: 'error',
-          title: 'Usuario/contraseña erróneos',
+          title: 'Contraseña actual no coincide',
           text: 'Ingresa bien los datos'
         })
       } else {

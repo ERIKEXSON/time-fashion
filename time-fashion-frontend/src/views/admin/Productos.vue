@@ -15,11 +15,11 @@
         </v-card-title>
         <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="productos"
         :search="search"
         >
           <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.name }}</td>
+            <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.codigo }}</td>
             <td class="text-xs-left">{{ props.item.precio }}</td>
             <td class="text-xs-left">{{ props.item.marca }}</td>
@@ -31,29 +31,32 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       search: '',
       headers: [
-        { text: 'Nombre', value: 'name' },
+        { text: 'Nombre', value: 'nombre' },
         { text: 'Codigo', value: 'codigo' },
         { text: 'Precio', value: 'precio' },
         { text: 'Marca', value: 'marca' },
         { text: 'Empresa', value: 'empresa' }
-      ],
-      desserts: [
-        {
-          name: 'Shorts',
-          codigo: 'ASD812A',
-          precio: 1000000,
-          marca: 'roballo',
-          empresa: 'asdasd'
-        }
       ]
     }
   },
+  computed: {
+    ...mapState(['productos'])
+  },
+  methods: {
+    async getProductos () {
+      const { data: productosData } = await api.get('/products')
+      this.$store.commit('SET_PRODUCTOS', productosData)
+    }
+  },
   created () {
+    this.getProductos()
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }

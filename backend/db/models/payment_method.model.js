@@ -15,7 +15,7 @@ module.exports = function setupMetricModel (config) {
       allowNull: false
     },
     numero: {
-      type: Sequelize.FLOAT,
+      type: Sequelize.DECIMAL,
       allowNull: false
     },
     cvv: {

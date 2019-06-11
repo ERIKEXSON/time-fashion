@@ -60,7 +60,7 @@
                     <v-btn
                       class="botonCancelar"
                       flat
-                      @click="update"
+                      @click="resetForm"
                     >Cancelar</v-btn>
                   </v-card-actions>
                   <v-card-actions>
@@ -68,7 +68,7 @@
                       :disabled="!formIsValid"
                       flat
                       class="botonAgregarTarjeta"
-                      @click="update"
+                      @click="register"
                     >Agregar tarjeta</v-btn>
                   </v-card-actions>
                 </v-container>
@@ -83,7 +83,7 @@
       <v-card>
         <v-data-table
           :headers="headers"
-          :items="desserts"
+          :items="tarjetas"
           hide-actions
         >
           <template v-slot:items="props">
@@ -104,6 +104,7 @@
 </template>
 <script>
 import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
@@ -113,6 +114,7 @@ export default {
       nombre: ''
     })
     return {
+      editIndex: '',
       snackbar: false,
       form: Object.assign({}, defaultForm),
       rules: {
@@ -129,18 +131,11 @@ export default {
         { text: 'CVV', value: 'codigocvv', sortable: false },
         { text: 'Nombre y apellido', value: 'nombre', sortable: false },
         { text: 'Opciones', sortable: false }
-      ],
-      desserts: [
-        {
-          numerotarjeta: '134642756125',
-          caducidad: '31/1235',
-          codigocvv: '134',
-          nombre: 'adasdasdsa'
-        }
       ]
     }
   },
   computed: {
+    ...mapState(['tarjetas']),
     formIsValid () {
       return (
         this.form.numerotarjeta &&
@@ -155,20 +150,31 @@ export default {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
     },
-    async update () {
-      const res = await api.post('/paymentMethod', {
+    async register () {
+      const { data: tarjeta } = await api.post('/paymentMethod', {
         paymentMethodNew: {
           nombre: this.lowerCase(this.form.nombre),
-          numero: this.lowerCase(this.form.numerotarjeta),
-          cvv: this.lowerCase(this.form.codigocvv),
-          fecha: this.lowerCase(this.form.caducidad)
+          numero: this.form.numerotarjeta,
+          cvv: this.form.codigocvv,
+          fecha: this.form.caducidad
         }
       })
       this.snackbar = true
       this.resetForm()
+      let clonTarjetas = [...this.tarjetas]
+      clonTarjetas.push(tarjeta)
+      this.$store.commit('SET_TARJETAS', clonTarjetas)
+    },
+    async getTarjetas () {
+      const { data: tarjetasData } = await api.get(`/paymentMethod/${this.form.uuid}`)
+      this.$store.commit('SET_TARJETAS', tarjetasData)
+    },
+    lowerCase (val) {
+      return val.toLowerCase()
     }
   },
   created () {
+    this.getTarjetas()
     this.$store.commit('SET_LAYOUT', 'cliente-layout')
   }
 }
