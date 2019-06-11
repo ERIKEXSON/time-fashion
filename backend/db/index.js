@@ -18,6 +18,7 @@ const setupOfferdetail = require('./lib/offer_detail')
 const setupCompany = require('./lib/company')
 const setupProducts = require('./lib/products')
 const setupPaymentMethod = require('./lib/paymentMethod')
+const setupOrder = require('./lib/order')
 
 // modelos
 const setupDatabase = require('./lib/db')
@@ -157,7 +158,8 @@ module.exports = async function () {
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
   const Company = setupCompany(CompanyModel)
   const Products = setupProducts(ProductsModel)
-  const PaymentMethod = setupPaymentMethod(Payment_methodModel)
+  const PaymentMethod = setupPaymentMethod(Payment_methodModel, UserModel)
+  const Order = setupOrder(OrderModel)
   return {
     async setup () {
       await sequelize.sync({ force: true })
@@ -176,6 +178,7 @@ module.exports = async function () {
     Offerdetail,
     Company,
     Products,
-    PaymentMethod
+    PaymentMethod,
+    Order
   }
 }

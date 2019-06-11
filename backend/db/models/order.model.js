@@ -17,6 +17,11 @@ module.exports = function setupMetricModel (config) {
     valor: {
       type: Sequelize.FLOAT,
       allowNull: false
-    }
+    },
+    estado: {
+      type: Sequelize.ENUM('Entrega pendiente', 'Entrega confirmada', 'Cancelado', 'Pendiente de envio', 'Devolucion'),
+      allowNull: false,
+      defaultValue: 'Entrega pendiente'
+    },
   })
 }
