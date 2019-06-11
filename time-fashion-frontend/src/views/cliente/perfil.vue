@@ -214,7 +214,7 @@ export default {
     },
     async actualizarDireccion () {
       const union = (this.departamento + '-' + this.ciudad + '-' + this.direccion)
-      const res = await api.put(`/user/${this.user.uuid}`, {
+      const { data: direccion } = await api.put(`/user/${this.user.uuid}`, {
         userUpdate: {
           direcciones: this.lowerCase(union)
         }

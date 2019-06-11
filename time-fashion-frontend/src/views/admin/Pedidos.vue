@@ -14,7 +14,7 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table :headers="historialPedidos" :items="pedidoInventado" :search="search">
+        <v-data-table :headers="historialPedidos" :items="pedidos" :search="search">
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.numero }}</td>
             <td class="text-xs-left">{{ props.item.informacion }}</td>
@@ -95,6 +95,8 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -128,39 +130,20 @@ export default {
           preciounitario: 9000,
           valorventa: 54000
         }
-      ],
-      pedidoInventado: [
-        {
-          numero: '1363413',
-          informacion: 'asdasd',
-          fecha: '10/2019',
-          valor: 1231231,
-          estado: 'Entrega pendiente'
-        },
-        {
-          numero: '3452',
-          valor: 1432423,
-          estado: 'Entrega confirmada'
-        },
-        {
-          numero: '678678',
-          valor: 6345,
-          estado: 'Cancelado'
-        },
-        {
-          numero: '678678546',
-          valor: 235472,
-          estado: 'Devolucion'
-        },
-        {
-          numero: '345234',
-          valor: 23423523,
-          estado: 'Pendiente de envio'
-        }
       ]
     }
   },
+  computed: {
+    ...mapState(['pedidos'])
+  },
+  methods: {
+    async getPedidos () {
+      const { data: pedidosData } = await api.get('/order')
+      this.$store.commit('SET_PEDIDOS', pedidosData)
+    }
+  },
   created () {
+    this.getPedidos()
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }

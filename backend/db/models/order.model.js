@@ -22,6 +22,6 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.ENUM('Entrega pendiente', 'Entrega confirmada', 'Cancelado', 'Pendiente de envio', 'Devolucion'),
       allowNull: false,
       defaultValue: 'Entrega pendiente'
-    },
+    }
   })
 }

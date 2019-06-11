@@ -2,9 +2,9 @@
 
 function setupPaymentMethod (paymentMethodModel, userModel) {
   async function createPaymentMethod (paymentMethod) {
-    const cond = { where : { uuid : paymentMethod.userId} }
+    const cond = { where: { uuid: paymentMethod.userId} }
     const user = await userModel.findOne(cond)
-    if(!user) {
+    if (!user) {
       return {
         message: 'no existe un usuario con ese uuid'
       }

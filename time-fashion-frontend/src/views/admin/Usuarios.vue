@@ -154,7 +154,6 @@ export default {
     return {
       editIndex: '',
       btnText: 'Registrar',
-      editar: false,
       tel: 'phone',
       doc: '#################',
       e1: 0,
@@ -257,7 +256,7 @@ export default {
     },
     async deteleUsuario (item) {
       try {
-        const { data } = await api.delete(`/user/${item.uuid}`)
+        const { data: usuario } = await api.delete(`/user/${item.uuid}`)
         let clonUsuarios = [...this.usuarios]
         const index = this.usuarios.indexOf(item)
         clonUsuarios.splice(index, 1)

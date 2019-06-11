@@ -15,7 +15,9 @@ export default new Vuex.Store({
     usuarios: [],
     empleados: [],
     productos: [],
-    tarjetas: []
+    tarjetas: [],
+    pedidos: [],
+    inventario: []
   },
   mutations: {
     SET_LAYOUT (state, newVal) {
@@ -38,6 +40,12 @@ export default new Vuex.Store({
     },
     SET_TARJETAS (state, newVal) {
       state.tarjetas = newVal
+    },
+    SET_PEDIDOS (state, newVal) {
+      state.pedidos = newVal
+    },
+    SET_INVENTARIO (state, newVal) {
+      state.inventario = newVal
     }
   },
   actions: {

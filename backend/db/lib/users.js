@@ -29,7 +29,7 @@ function setupUser (userModel) {
     }
     user.contrasenaNew = password.generateHash(user.contrasenaNew)
     const result2 = await userModel.update({contraseña: user.contrasenaNew}, cond)
-    return result2 ? {message: 'Actualizado', update : true} : {message: 'No actualizo', update: false}
+    return result2 ? {message: 'Actualizado', update: true} : {message: 'No actualizo', update: false}
   }
   async function deleteUser (uuid) {
     const cond = { where: { uuid } }
