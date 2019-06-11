@@ -158,7 +158,7 @@ module.exports = async function () {
   const Offerdetail = setupOfferdetail(Offer_DetailModel)
   const Company = setupCompany(CompanyModel)
   const Products = setupProducts(ProductsModel)
-  const PaymentMethod = setupPaymentMethod(Payment_methodModel)
+  const PaymentMethod = setupPaymentMethod(Payment_methodModel, UserModel)
   const Order = setupOrder(OrderModel)
   return {
     async setup () {

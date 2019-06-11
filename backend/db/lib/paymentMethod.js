@@ -1,7 +1,15 @@
 'use strict'
 
-function setupPaymentMethod (paymentMethodModel) {
+function setupPaymentMethod (paymentMethodModel, userModel) {
   async function createPaymentMethod (paymentMethod) {
+    const cond = { where : { uuid : paymentMethod.userId} }
+    const user = await userModel.findOne(cond)
+    if(!user) {
+      return {
+        message: 'no existe un usuario con ese uuid'
+      }
+    }
+    paymentMethod.userId = user.id
     const result = await paymentMethodModel.create(paymentMethod)
     return result.toJSON()
   }
