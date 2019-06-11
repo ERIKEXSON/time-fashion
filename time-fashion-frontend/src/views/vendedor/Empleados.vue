@@ -46,7 +46,7 @@
               color
               class="cdbt"
               @click="agregar"
-            >Agregar</v-btn>
+            >{{btnText}}</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -79,7 +79,7 @@
                 <v-icon @click="deteleEmpleados(props.item)" color="black">delete</v-icon>
               </v-btn>
               <v-btn outline fab small color="warning">
-                <v-icon @click="editempleado = true" color="black">edit</v-icon>
+                <v-icon @click="editEmpleado(props.item)" color="black">edit</v-icon>
               </v-btn>
             </td>
           </template>
@@ -104,7 +104,8 @@ export default {
       rol: 'vendedor'
     })
     return {
-      editempleado: false,
+      editIndex: '',
+      btnText: 'Agregar',
       numeros: '###-###-####',
       docu: '##########',
       show1: false,
@@ -149,38 +150,44 @@ export default {
     resetForm () {
       this.form = Object.assign({}, this.defaultForm)
       this.$refs.form.reset()
+      this.btnText = 'Agregar'
     },
     async agregar () {
-      const res = await api.post('/user', {
-        userNew: {
-          nombre: this.lowerCase(this.form.nombre),
-          apellido: this.lowerCase(this.form.apellido),
-          email: this.lowerCase(this.form.email),
-          nacionalidad: this.lowerCase(this.form.nacionalidad),
-          telefono: this.lowerCase(this.form.telefono),
-          cedula: this.lowerCase(this.form.cedula),
-          contraseña: this.form.contrasena,
-          rol: this.lowerCase(this.form.rol)
-        }
-      })
-      let clonEmpleados = [...this.empleados]
-      clonEmpleados.push(user)
-      this.$store.commit('SET_EMPLEADOS', clonEmpleados)
-      this.snackbar = true
-      this.resetForm()
-    },
-    async update () {
-      const { data: user } = await api.put(`/user/${this.user.uuid}`, {
-        userUpdate: {
-          nombre: this.form.nombre,
-          apellido: this.form.apellidos,
-          telefono: this.form.telefono,
-          email: this.form.email,
-          nacionalidad: this.form.nacionalidad,
-          cedula: this.form.cedula
-        }
-      })
-      this.snackbar = true
+      if (this.btnText === 'Agregar') {
+        const res = await api.post('/user', {
+          userNew: {
+            nombre: this.lowerCase(this.form.nombre),
+            apellido: this.lowerCase(this.form.apellido),
+            email: this.lowerCase(this.form.email),
+            nacionalidad: this.lowerCase(this.form.nacionalidad),
+            telefono: this.lowerCase(this.form.telefono),
+            cedula: this.lowerCase(this.form.cedula),
+            contraseña: this.form.contrasena,
+            rol: this.lowerCase(this.form.rol)
+          }
+        })
+        let clonEmpleados = [...this.empleados]
+        clonEmpleados.push(user)
+        this.$store.commit('SET_EMPLEADOS', clonEmpleados)
+        this.snackbar = true
+        this.resetForm()
+      } else {
+        const { data: user } = await api.put(`/user/${this.form.uuid}`, {
+          userUpdate: {
+            nombre: this.form.nombre,
+            apellido: this.form.apellidos,
+            telefono: this.form.telefono,
+            email: this.form.email,
+            nacionalidad: this.form.nacionalidad,
+            cedula: this.form.cedula
+          }
+        })
+        let clonEmpleador = [...this.usuarios]
+        clonEmpleador[this.editIndex] = user
+        this.$store.commit('SET_EMPLEADOS', clonEmpleador)
+        this.resetForm()
+        this.snackbar = true
+      }
     },
     lowerCase (val) {
       return val.toLowerCase()
@@ -199,6 +206,11 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    editEmpleado (item) {
+      this.btnText = 'Actualizar'
+      this.editIndex = this.empleados.indexOf(item)
+      this.form = Object.assign({}, item)
     }
   },
   created () {

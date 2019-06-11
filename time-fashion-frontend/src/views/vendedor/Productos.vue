@@ -52,7 +52,7 @@
           </v-container>
           <v-card-actions>
             <v-btn flat @click="resetForm" class="bt">Cancelar</v-btn>
-            <v-btn :disabled="!formIsValid" flat type="submit" class="bt" @click="add">Agregar</v-btn>
+            <v-btn :disabled="!formIsValid" flat type="submit" class="bt" @click="add">{{btnText}}</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -72,7 +72,7 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table :headers="headers" :items="desserts" :search="search">
+        <v-data-table :headers="headers" :items="productos" :search="search">
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.codigo }}</td>
@@ -81,10 +81,10 @@
             <td class="text-xs-left">{{ props.item.linea }}</td>
             <td class="text-xs-left">
               <v-btn outline fab small color="error">
-                <v-icon color="black">delete</v-icon>
+                <v-icon color="black" @click="deleteProductos(props.item)">delete</v-icon>
               </v-btn>
               <v-btn outline fab small color="warning">
-                <v-icon color="black" @click="editPro =true">edit</v-icon>
+                <v-icon color="black" @click="editProducto(props.item)">edit</v-icon>
               </v-btn>
               <v-btn outline fab small color="primary" @click="conditions=true">
                 <v-icon color="black">image</v-icon>
@@ -114,50 +114,6 @@
           </v-card-text>
         </v-card>
       </v-dialog>
-      <!-- editar  productos -->
-      <v-dialog v-model="editPro">
-        <v-card>
-          <v-card-text width="fif-content">
-            <nav class="cdima">
-              <h3>Editar producto</h3>
-            </nav>
-            <v-card flat>
-        <v-form ref="form" @submit.prevent="submit">
-          <v-container grid-list-xl fluid>
-            <v-layout wrap>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre del producto" required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.codigo" :rules="rules.requerido" label="Codigo" required>
-                </v-text-field>
-              </v-flex>
-              <v-flex xs12 sm4>
-                <v-text-field v-model="form.precio" :rules="rules.requerido" label="Precio" required :mask="numeros"
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm4>
-                <v-text-field v-model="form.marca" :rules="rules.requerido" label="Marca" required>
-                </v-text-field>
-              </v-flex>
-              <v-flex xs12 sm4>
-                <v-text-field v-model="form.linea" :rules="rules.requerido" label="Linea" required>
-                </v-text-field>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-form>
-      </v-card>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <div class="btce">
-                <v-btn flat @click="editPro=false" class="bt">Cerrar</v-btn>
-              </div>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
     </nav>
   </v-flex>
 </template>
@@ -175,6 +131,8 @@ export default {
       linea: '######'
     })
     return {
+      editIndex: '',
+      btnText: 'Agregar',
       imageUrl: buso,
       imageName: '',
       numeros: '##.#####',
@@ -200,7 +158,7 @@ export default {
         {
           nombre: '',
           codigo: '',
-          presio: '',
+          precio: '',
           marca: '',
           linea: ''
         }
@@ -208,7 +166,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['products']),
+    ...mapState(['productos']),
     formIsValid () {
       return (
         this.form.nombre &&
@@ -222,6 +180,7 @@ export default {
   methods: {
     resetForm () {
       this.form = Object.assign({}, this.defaultForm)
+      this.btnText = 'Agregar'
       this.$refs.form.reset()
     },
     submit () {
@@ -255,28 +214,36 @@ export default {
       }
     },
     async add () {
-      const res = await api.post('/products', {
-        productsNew: {
-          nombre: this.lowerCase(this.form.nombre),
-          codigo: this.lowerCase(this.form.codigo),
-          precio: this.lowerCase(this.form.precio)
-        }
-      })
-      let clonProductos = [...this.productos]
-      clonProductos.push(products)
-      this.$store.commit('SET_PRODUCTOS', clonProductos)
-      this.snackbar = true
-      this.resetForm()
-    },
-    async update () {
-      const { data: products } = await api.put(`/products/${this.products.uuid}`, {
-        productsUpdate: {
-          nombre: this.form.nombre,
-          codigo: this.form.codigo,
-          precio: this.form.precio
-        }
-      })
-      this.snackbar = true
+      if (this.btnText === 'Agregar') {
+        const res = await api.post('/products', {
+          productsNew: {
+            nombre: this.lowerCase(this.form.nombre),
+            codigo: this.lowerCase(this.form.codigo),
+            precio: this.lowerCase(this.form.precio),
+            brandId: this.lowerCase(this.form.marca),
+            lineId: this.lowerCase(this.form.linea)
+          }
+        })
+        let clonProductos = [...this.productos]
+        clonProductos.push(products)
+        this.$store.commit('SET_PRODUCTOS', clonProductos)
+        this.snackbar = true
+        this.resetForm()
+      } else {
+        const { data: products } = await api.put(`/products/${this.form.uuid}`, {
+          productsUpdate: {
+            nombre: this.lowerCase(this.form.nombre),
+            codigo: this.lowerCase(this.form.codigo),
+            precio: this.lowerCase(this.form.precio),
+            brandId: this.lowerCase(this.form.marca),
+            lineId: this.lowerCase(this.form.line)
+          }
+        })
+        let clonProductos = [...this.productos]
+        clonProducto.push(products)
+        this.$store.commit('SET_PRODUCTOS', clonProductos)
+        this.snackbar = true
+      }
     },
     lowerCase (val) {
       return val.toLowerCase()
@@ -285,7 +252,7 @@ export default {
       const { data: productosData } = await api.get('/products')
       this.$store.commit('SET_PRODUCTOS', productosData)
     },
-    async deteleProducctos (item) {
+    async deteleProductos (item) {
       try {
         const { data } = await api.delete(`/products/${item.uuid}`)
         let clonProductos = [...this.productos]
@@ -295,6 +262,11 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    editProducto (item) {
+      this.btnText = 'Actualizar'
+      this.editIndex = this.productos.indexOf(item)
+      this.form = Object.assign({}, item)
     }
   },
   created () {
