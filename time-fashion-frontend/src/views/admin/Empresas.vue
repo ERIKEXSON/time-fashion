@@ -261,7 +261,7 @@ export default {
     },
     async deteleEmpresa (item) {
       try {
-        const { data } = await api.delete(`/company/${item.uuid}`)
+        const { data: empresa } = await api.delete(`/company/${item.uuid}`)
         let clonEmpresas = [...this.empresas]
         const index = this.empresas.indexOf(item)
         clonEmpresas.splice(index, 1)

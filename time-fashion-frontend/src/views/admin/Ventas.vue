@@ -1,5 +1,6 @@
 <template>
     <v-flex xs12>
+      <h1><strong>Fuera de servicio</strong></h1>
         <nav class="borde">
             <div class="tituloCuadro"><h2>Ventas</h2></div>
             <v-card>

@@ -15,13 +15,14 @@
       </v-card-title>
       <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="inventario"
         :search="search"
       >
         <template v-slot:items="props">
           <td class="text-xs-left">{{ props.item.name }}</td>
           <td class="text-xs-left">{{ props.item.codigo }}</td>
           <td class="text-xs-left">{{ props.item.marca }}</td>
+          <td class="text-xs-left">{{ props.item.cantidad }}</td>
           <div class="botonDetalles"><v-btn @click="detalles = true">Detalles</v-btn></div>
         </template>
         </v-data-table>
@@ -51,7 +52,6 @@
                     <td class="text-xs-left">{{ props.item.color }}</td>
                     <td class="text-xs-left">{{ props.item.codigo }}</td>
                     <td class="text-xs-left">{{ props.item.tallas }}</td>
-                    <td class="text-xs-left">{{ props.item.cantidad }}</td>
                   </template>
                 </v-data-table>
               </v-card>
@@ -67,6 +67,8 @@
   </v-flex>
 </template>
 <script>
+import api from '@/plugins/api'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -76,38 +78,34 @@ export default {
         { text: 'Nombre', value: 'name' },
         { text: 'Código', value: 'codigo' },
         { text: 'Marca', value: 'marca' },
+        { text: 'Cantidad', value: 'cantidad' },
         { text: '', sortable: false }
-      ],
-      desserts: [
-        {
-          name: 'camison',
-          codigo: '87364502-1',
-          marca: 'roballo'
-        }
       ],
       encabezados: [
         { text: 'Color', value: 'color' },
         { text: 'Código', value: 'codigo' },
-        { text: 'Tallas', value: 'tallas' },
-        { text: 'Cantidad', value: 'cantidad' }
+        { text: 'Tallas', value: 'tallas' }
       ],
       contenido: [
         {
-          color: 'Verde',
-          codigo: 'AS981DA',
-          tallas: 'S, M, XL',
-          cantidad: 15
-        },
-        {
-          color: 'Rojo',
-          codigo: 'KOKD9I3J',
-          tallas: 'S, M',
-          cantidad: 10
+          color: 'asdasd',
+          codigo: '87364502-1',
+          tallas: 'ras'
         }
       ]
     }
   },
+  computed: {
+    ...mapState(['inventario'])
+  },
+  methods: {
+    async getInventario () {
+      const { data: inventarioData } = await api.get('/inventories')
+      this.$store.commit('SET_INVENTARIO', inventarioData)
+    }
+  },
   created () {
+    this.getInventario()
     this.$store.commit('SET_LAYOUT', 'administrador-layout')
   }
 }

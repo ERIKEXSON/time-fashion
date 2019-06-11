@@ -19,7 +19,7 @@ function setupOrder (orderModel) {
   function findAllOrder () {
     return orderModel.findAll()
   }
-  function findUuidOrder(uuid) {
+  function findUuidOrder (uuid) {
     const cond = { where: { uuid } }
     return orderModel.findOne(cond)
   }
@@ -28,7 +28,7 @@ function setupOrder (orderModel) {
     updateOrder,
     deleteOrder,
     findAllOrder,
-    findUuidOrder,
+    findUuidOrder
   }
 }
 

@@ -15,15 +15,15 @@ module.exports = function setupMetricModel (config) {
       allowNull: false
     },
     numero: {
-      type: Sequelize.DECIMAL,
+      type: Sequelize.TEXT,
       allowNull: false
     },
     cvv: {
-      type: Sequelize.FLOAT,
+      type: Sequelize.TEXT,
       allowNull: false
     },
     fecha: {
-      type: Sequelize.DATE,
+      type: Sequelize.TEXT,
       allowNull: false
     }
   })

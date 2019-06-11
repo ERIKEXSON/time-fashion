@@ -22,7 +22,7 @@
                   <v-layout wrap>
                     <v-flex xs12 sm3>
                       <v-text-field
-                        v-model="form.numerotarjeta"
+                        v-model="form.numero"
                         :mask="tarjetacredito"
                         :rules="rules.tarjeta"
                         label="Número de tarjeta"
@@ -31,7 +31,7 @@
                     </v-flex>
                     <v-flex xs6 sm2>
                       <v-text-field
-                        v-model="form.caducidad"
+                        v-model="form.fecha"
                         :rules="rules.required"
                         :mask="caducidad"
                         label="Fecha caducidad"
@@ -41,7 +41,7 @@
                     <v-flex xs6 sm1>
                       <v-text-field
                         :mask="codigo"
-                        v-model="form.codigocvv"
+                        v-model="form.cvv"
                         :rules="rules.required"
                         label="CVV"
                         required
@@ -87,12 +87,12 @@
           hide-actions
         >
           <template v-slot:items="props">
-            <td class="text-xs-left">{{ props.item.numerotarjeta }}</td>
-            <td class="text-xs-left">{{ props.item.caducidad }}</td>
-            <td class="text-xs-left">{{ props.item.codigocvv }}</td>
+            <td class="text-xs-left">{{ props.item.numero }}</td>
+            <td class="text-xs-left">{{ props.item.fecha }}</td>
+            <td class="text-xs-left">{{ props.item.cvv }}</td>
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">
-              <v-btn fab dark small color="error">
+              <v-btn @click="deteleTarjeta(props.item)" fab dark small color="error">
                 <v-icon dark color="white">delete</v-icon>
               </v-btn>
             </td>
@@ -108,9 +108,9 @@ import { mapState } from 'vuex'
 export default {
   data () {
     const defaultForm = Object.freeze({
-      numerotarjeta: '',
-      caducidad: '',
-      codigocvv: '',
+      numero: '',
+      fecha: '',
+      cvv: '',
       nombre: ''
     })
     return {
@@ -126,21 +126,21 @@ export default {
       codigo: '###',
       doc: '###############',
       headers: [
-        { text: 'N° de tarjeta', value: 'numerotarjeta', sortable: false },
-        { text: 'Fecha caducidad', value: 'caducidad', sortable: false },
-        { text: 'CVV', value: 'codigocvv', sortable: false },
+        { text: 'N° de tarjeta', value: 'numero', sortable: false },
+        { text: 'Fecha caducidad', value: 'fecha', sortable: false },
+        { text: 'CVV', value: 'cvv', sortable: false },
         { text: 'Nombre y apellido', value: 'nombre', sortable: false },
         { text: 'Opciones', sortable: false }
       ]
     }
   },
   computed: {
-    ...mapState(['tarjetas']),
+    ...mapState(['tarjetas', 'user']),
     formIsValid () {
       return (
-        this.form.numerotarjeta &&
-        this.form.caducidad &&
-        this.form.codigocvv &&
+        this.form.numero &&
+        this.form.fecha &&
+        this.form.cvv &&
         this.form.nombre
       )
     }
@@ -154,9 +154,10 @@ export default {
       const { data: tarjeta } = await api.post('/paymentMethod', {
         paymentMethodNew: {
           nombre: this.lowerCase(this.form.nombre),
-          numero: this.form.numerotarjeta,
-          cvv: this.form.codigocvv,
-          fecha: this.form.caducidad
+          numero: this.form.numero,
+          cvv: this.form.cvv,
+          fecha: this.form.fecha,
+          userId: this.user.uuid
         }
       })
       this.snackbar = true
@@ -166,8 +167,19 @@ export default {
       this.$store.commit('SET_TARJETAS', clonTarjetas)
     },
     async getTarjetas () {
-      const { data: tarjetasData } = await api.get(`/paymentMethod/${this.form.uuid}`)
+      const { data: tarjetasData } = await api.get('/paymentMethod')
       this.$store.commit('SET_TARJETAS', tarjetasData)
+    },
+    async deteleTarjeta (item) {
+      try {
+        const { data: tarjeta } = await api.delete(`/paymentMethod/${item.uuid}`)
+        let clonTarjeta = [...this.tarjetas]
+        const index = this.tarjetas.indexOf(item)
+        clonTarjeta.splice(index, 1)
+        this.$store.commit('SET_TARJETAS', clonTarjeta)
+      } catch (error) {
+        console.error(error)
+      }
     },
     lowerCase (val) {
       return val.toLowerCase()
