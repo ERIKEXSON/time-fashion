@@ -26,7 +26,7 @@
         <v-img :src="camisetas" class="img-responsive2" @click="clickPush('/busos-mujer')"></v-img>
       </v-flex>
       <v-flex xs6 sm4 md>
-        <v-img :src="niños" class="img-responsive2" @click="clickPush('/camisetas-hombre')"></v-img>
+        <v-img :src="niños" class="img-responsive2" @click="clickPush('/camisas-hombre')"></v-img>
       </v-flex>
     </v-layout>
   </v-container>
