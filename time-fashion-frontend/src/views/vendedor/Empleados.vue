@@ -21,7 +21,7 @@
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required>
+                <v-text-field v-model="form.email" :rules="rules.correo" label="Correo" required>
                 </v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
@@ -33,7 +33,7 @@
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="form.documento" :rules="rules.requerido" label="Cedula de ciudadania" required :mask="docu" counter
+                <v-text-field v-model="form.cedula" :rules="rules.requerido" label="Cedula de ciudadania" required :mask="docu" counter
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -70,68 +70,20 @@
           <template v-slot:items="props">
             <td class="text-xs-left">{{ props.item.nombre }}</td>
             <td class="text-xs-left">{{ props.item.apellido }}</td>
-            <td class="text-xs-left">{{ props.item.correo }}</td>
+            <td class="text-xs-left">{{ props.item.email }}</td>
             <td class="text-xs-left">{{ props.item.nacionalidad }}</td>
             <td class="text-xs-left">{{ props.item.telefono }}</td>
-            <td class="text-xs-left">{{ props.item.documento }}</td>
+            <td class="text-xs-left">{{ props.item.cedula }}</td>
             <td class="text-xs-left">
-              <v-btn fab small color="error">
+              <v-btn outline fab small color="error">
                 <v-icon @click="deteleEmpleados(props.item)" color="black">delete</v-icon>
               </v-btn>
-              <v-btn fab small color="warning">
+              <v-btn outline fab small color="warning">
                 <v-icon @click="editempleado = true" color="black">edit</v-icon>
               </v-btn>
             </td>
           </template>
         </v-data-table>
-        <!-- editar empleados -->
-        <v-dialog v-model="editempleado">
-        <v-card>
-          <v-card-text width="fif-content">
-            <nav>
-              <h3>Editar datos del empleado</h3>
-            </nav>
-             <v-card flat>
-        <v-form ref="form">
-          <v-container grid-list-xl fluid>
-            <v-layout wrap>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.nombre" :rules="rules.requerido" label="Nombre" required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.apellido" :rules="rules.requerido" label="Apellido" required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.correo" :rules="rules.correo" label="Correo" required>
-                </v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.nacionalidad" :rules="rules.requerido" label="nacionalidad" required
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.telefono" :rules="rules.requerido" label="Teléfono" required :mask="numeros"
-                ></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6>
-                <v-text-field v-model="form.documento" :rules="rules.requerido" label="Cedula de ciudadania" required :mask="docu" counter
-                ></v-text-field>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-form>
-      </v-card>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <div class="btce">
-                <v-btn flat @click="editempleado = false"  class="bt">Cerrar</v-btn>
-              </div>
-            </v-card-actions>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
       </v-card>
     </nav>
   </v-flex>
@@ -144,10 +96,10 @@ export default {
     const defaultForm = Object.freeze({
       nombre: '',
       apellido: '',
-      correo: '',
+      email: '',
       nacionalidad: '',
       telefono: '',
-      documento: '',
+      cedula: '',
       contrasena: '12345',
       rol: 'vendedor'
     })
@@ -172,10 +124,10 @@ export default {
       headers: [
         { text: 'Nombre', value: 'nombre' },
         { text: 'Apellido', value: 'apellido' },
-        { text: 'Correo', value: 'correo' },
+        { text: 'Correo', value: 'email' },
         { text: 'Nacionalidad', value: 'nacionalidad' },
         { text: 'Telefono', value: 'telefono' },
-        { text: 'Documento', value: 'documento' },
+        { text: 'Documento', value: 'cedula' },
         { text: 'Acciones', sortable: false }
       ]
     }
@@ -186,10 +138,10 @@ export default {
       return (
         this.form.nombre &&
         this.form.apellido &&
-        this.form.correo &&
+        this.form.email &&
         this.form.nacionalidad &&
         this.form.telefono &&
-        this.form.documento
+        this.form.cedula
       )
     }
   },
@@ -203,10 +155,10 @@ export default {
         userNew: {
           nombre: this.lowerCase(this.form.nombre),
           apellido: this.lowerCase(this.form.apellido),
-          email: this.lowerCase(this.form.correo),
+          email: this.lowerCase(this.form.email),
           nacionalidad: this.lowerCase(this.form.nacionalidad),
           telefono: this.lowerCase(this.form.telefono),
-          cedula: this.lowerCase(this.form.documento),
+          cedula: this.lowerCase(this.form.cedula),
           contraseña: this.form.contrasena,
           rol: this.lowerCase(this.form.rol)
         }
@@ -223,9 +175,9 @@ export default {
           nombre: this.form.nombre,
           apellido: this.form.apellidos,
           telefono: this.form.telefono,
-          email: this.form.correo,
+          email: this.form.email,
           nacionalidad: this.form.nacionalidad,
-          cedula: this.form.documento
+          cedula: this.form.cedula
         }
       })
       this.snackbar = true
@@ -233,11 +185,11 @@ export default {
     lowerCase (val) {
       return val.toLowerCase()
     },
-    async getEmpleados(){
-      const { data : empleadosData } =  await api.get('/user')
+    async getEmpleados () {
+      const { data: empleadosData } = await api.get('/user')
       this.$store.commit('SET_EMPLEADOS', empleadosData)
     },
-    async deteleEmpleados(item) {
+    async deteleEmpleados (item) {
       try {
         const { data } = await api.delete(`/user/${item.uuid}`)
         let clonEmpleados = [...this.empleados]
